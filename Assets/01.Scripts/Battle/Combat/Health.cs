@@ -15,11 +15,11 @@ public enum AilmentEnum : int
 
 public enum StackEnum : int
 {
-    Forging = 0, // ´ÜÁ¶
-    Lightning, // ¹ø°³
-    DEFMusicalNote, // ¹æ¾î·Â Áõ°¡
-    DMGMusicaldNote, // ¹Þ´Â µ¥¹ÌÁö Áõ°¡
-    FAINTMusicalNote, // ±âÀý
+    Forging = 0, // ï¿½ï¿½ï¿½ï¿½
+    Lightning, // ï¿½ï¿½ï¿½ï¿½
+    DEFMusicalNote, // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    DMGMusicaldNote, // ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    FAINTMusicalNote, // ï¿½ï¿½ï¿½ï¿½
 }
 
 public class Health : MonoBehaviour, IDamageable
@@ -28,7 +28,7 @@ public class Health : MonoBehaviour, IDamageable
 
     [SerializeField] private int _currentHealth;
 
-    public Action<Color, int> OnDamageText; //µ¥¹ÌÁö ÅØ½ºÆ®¸¦ ¶ç¿ö¾ß ÇÒ¶§.
+    public Action<Color, int> OnDamageText; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¶ï¿½.
     public Action<float, float> OnDamageEvent;
 
     public Action OnBeforeHit;
@@ -46,11 +46,11 @@ public class Health : MonoBehaviour, IDamageable
             _isDead = value;
         }
     }
-    private bool _isInvincible = false; //¹«Àû»óÅÂ
-    [SerializeField] private AilmentStat _ailmentStat; //Áúº´ ¹× µð¹öÇÁ °ü¸® ½ºÅÈ
+    private bool _isInvincible = false; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] private AilmentStat _ailmentStat; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public AilmentStat AilmentStat => _ailmentStat;
 
-    public bool isLastHitCritical = false; //¸¶Áö¸· °ø°ÝÀÌ Å©¸®Æ¼ÄÃ·Î ÀûÁßÇß³Ä?
+    public bool isLastHitCritical = false; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½Æ¼ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½?
 
     public bool IsFreeze;
 
@@ -76,14 +76,14 @@ public class Health : MonoBehaviour, IDamageable
     private void HandleEndOfAilment(AilmentEnum ailment)
     {
         Debug.Log($"{gameObject.name} : cure from {ailment.ToString()}");
-        //¿©±â¼­ ¾ÆÀÌÄÜ Á¦°ÅµîÀÇ ÀÏµéÀÌ ÀÏ¾î³ª¾ß ÇÑ´Ù.
+        //ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Åµï¿½ï¿½ï¿½ ï¿½Ïµï¿½ï¿½ï¿½ ï¿½Ï¾î³ªï¿½ï¿½ ï¿½Ñ´ï¿½.
         OnAilmentChanged?.Invoke(_ailmentStat.currentAilment);
 
     }
 
     public void AilementDamage(AilmentEnum ailment, int damage)
     {
-        //Á¾·ù¿¡ ¸ÂÃç ±ÛÀÚ°¡ ¶ßµµ·Ï ÇØ¾ßÇÑ´Ù.
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ßµï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½Ñ´ï¿½.
         Debug.Log($"{ailment.ToString()} dot damaged : {damage}");
         OnHitEvent?.Invoke();
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
@@ -92,7 +92,7 @@ public class Health : MonoBehaviour, IDamageable
 
     protected void UpdateHealth()
     {
-        _ailmentStat.UpdateAilment(); //Áúº´ ¾÷µ¥ÀÌÆ®
+        _ailmentStat.UpdateAilment(); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     }
 
     public void SetOwner(Entity owner)
@@ -116,17 +116,16 @@ public class Health : MonoBehaviour, IDamageable
 
     public void ApplyTrueDamage(int damage)
     {
-        if (_isDead || _isInvincible) return; //»ç¸ÁÇÏ°Å³ª ¹«Àû»óÅÂ¸é ´õÀÌ»ó µ¥¹ÌÁö ¾øÀ½.
+        if (_isDead || _isInvincible) return; //ï¿½ï¿½ï¿½ï¿½Ï°Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
     }
     public void ApplyDamage(int damage, Entity dealer, Action action = null)
     {
-        if (_isDead || _isInvincible) return; //»ç¸ÁÇÏ°Å³ª ¹«Àû»óÅÂ¸é ´õÀÌ»ó µ¥¹ÌÁö ¾øÀ½.
+        if (_isDead || _isInvincible) return; //ï¿½ï¿½ï¿½ï¿½Ï°Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 
 
         if (dealer.CharStat.IsCritical(ref damage))
         {
-            Debug.Log($"Critical! : {damage}"); //µ¥¹ÌÁö Áõµ©µÇ¾úÀ½.
             isLastHitCritical = true;
         }
         else
@@ -153,7 +152,7 @@ public class Health : MonoBehaviour, IDamageable
         OnDamageEvent?.Invoke(_currentHealth, maxHealth);
 
 
-        //¿©±â¼­ µ¥¹ÌÁö ¶ç¿öÁÖ±â
+        //ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
         //DamageTextManager.Instance.PopupReactionText(_owner.transform.position, isLastHitCritical ? DamageCategory.Critical : DamageCategory.Noraml);
 
 
@@ -184,7 +183,7 @@ public class Health : MonoBehaviour, IDamageable
         TurnCounter.ChangeRound();
     }
 
-    //»óÅÂÀÌ»ó °É±â.
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½É±ï¿½.
     public void SetAilment(AilmentEnum ailment, int duration)
     {
         _ailmentStat.ApplyAilments(ailment, duration);
@@ -194,8 +193,8 @@ public class Health : MonoBehaviour, IDamageable
 
     public void AilmentByDamage(AilmentEnum ailment, int damage)
     {
-        //¼îÅ©µ¥¹ÌÁö Ãß°¡ ºÎºÐ.
-        //µð¹öÇÁ¿ë µ¥¹ÌÁö ÅØ½ºÆ® Ãß°¡
+        //ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Îºï¿½.
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ® ï¿½ß°ï¿½
         DamageTextManager.Instance.PopupDamageText(_owner.transform.position, damage, DamageCategory.Debuff);
         OnDamageEvent?.Invoke(_currentHealth, maxHealth);
         //Debug.Log($"{gameObject.name} : shocked damage added = {shockDamage}");

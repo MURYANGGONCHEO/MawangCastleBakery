@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -56,12 +57,18 @@ public class LookBakingPreviewPanel : PreviewPanel
 
             BakeryUI bui = UIManager.Instance.GetSceneUI<BakeryUI>();
 
-            CakeData cakeData = new CakeData(cake.itemName, false);
-            if (!bui.BakeryData.CakeDataList.Contains(cakeData))
+            CakeData cakeData = bui.BakeryData.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
+
+            if (cakeData == null)
             {
                 bui.BakeryData.CakeDataList.Add(cakeData);
-                bui.SaveData();
             }
+            else
+            {
+                cakeData.Count++;
+            }
+
+            bui.SaveData();
 
             bui.GetCakePanel.SetUp(cake);
             bui.FilteringPreviewContent(MySortType);

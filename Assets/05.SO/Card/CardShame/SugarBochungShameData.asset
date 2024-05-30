@@ -14,122 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardLevel: 1
   cardExp: 0
-  cardLevelUppervalueGroup:
-  - shameType: 2
-    perValue: 5
-  normalValueGroup:
-  - cardShameType: 8
-    currentShame: 4
-    info: 
-  - cardShameType: 2
-    currentShame: 15
-    info: 
+  increaseValuePerLevel: []
   cardShameDataList:
   - list:
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 15
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 20
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 25
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 30
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 35
-        info: 
+    - cardShameType: 1
+      currentShame: 20
+      afterShame: 20
+      info: 
   - list:
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 30
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 40
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 50
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 60
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 70
-        info: 
+    - cardShameType: 0
+      currentShame: 0
+      afterShame: 0
+      info: 
   - list:
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 45
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 60
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 75
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 90
-        info: 
-    - list:
-      - cardShameType: 8
-        currentShame: 4
-        info: 
-      - cardShameType: 2
-        currentShame: 105
-        info: 
+    - cardShameType: 0
+      currentShame: 0
+      afterShame: 0
+      info: 
+  - list:
+    - cardShameType: 0
+      currentShame: 0
+      afterShame: 0
+      info: 
+  - list:
+    - cardShameType: 0
+      currentShame: 0
+      afterShame: 0
+      info: 

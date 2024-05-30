@@ -10,6 +10,10 @@ public class CardLevelSetter : CardSetter
 {
     [SerializeField] private TextMeshProUGUI _cardCurrentLevelText;
     [SerializeField] private TextMeshProUGUI _cardAfterLevelText;
+
+    [SerializeField] private GameObject _cardLevelGroup;
+    [SerializeField] private GameObject _cardMaxLevelGroup;
+
     [SerializeField] private Slider _cardEXPGazer;
 
     [SerializeField] private UnityEvent<CardShameElementSO> _cardShameUpperEvent;
@@ -26,12 +30,25 @@ public class CardLevelSetter : CardSetter
     public override void SetCardInfo(CardShameElementSO shameData, CardInfo cardInfo, int combineLevel)
     {
         if (_isInCalculating) return;
+
+        _cardLevelGroup.SetActive(!(shameData.cardLevel >= 5));
+        _cardMaxLevelGroup.SetActive(shameData.cardLevel >= 5);
+
         _isInCalculating = true;
-
         _selectShameData = shameData;
-
+        
         _cardCurrentLevelText.text = shameData.cardLevel.ToString();
-        _cardAfterLevelText.text = Mathf.Clamp(shameData.cardLevel + 1, 1, 5).ToString();
+
+        string afterLvText = string.Empty;
+        if (shameData.cardLevel + 1 == 5)
+        {
+            afterLvText = "MAX";
+        }
+        else
+        {
+            afterLvText = (shameData.cardLevel + 1).ToString();
+        }
+        _cardAfterLevelText.text = afterLvText;
         _maxEXP = shameData.cardLevel * _magnificationOfLevelArr[shameData.cardLevel - 1];
 
         SetEXP(shameData.cardExp);
@@ -39,6 +56,12 @@ public class CardLevelSetter : CardSetter
 
     public void SetEXP(float currentExp)
     {
+        if(_selectShameData.cardLevel >= 5)
+        {
+            _cardEXPGazer.value = 1;
+            return;
+        }
+
         if(currentExp >= _maxEXP)
         {
             _selectShameData.cardExp = 0;

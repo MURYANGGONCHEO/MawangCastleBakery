@@ -17,9 +17,9 @@ public class CardShameElement : MonoBehaviour
 
         if(shameGroup.Item5 == string.Empty)
         {
-            string comparison = $"{shameGroup.Item3} -> {shameGroup.Item4}";
+            string comparison = $"{shameGroup.Item4} -> {shameGroup.Item3}";
 
-            int difference = shameGroup.Item4 - shameGroup.Item3;
+            int difference = shameGroup.Item3 - shameGroup.Item4;
             string richTexting;
 
             if(difference > 0)
@@ -32,7 +32,7 @@ public class CardShameElement : MonoBehaviour
             }
             else
             {
-                richTexting = $"<size=25>  (+-{difference})</size>";
+                richTexting = $"<size=25>  (+{difference})</size>";
             }
 
             _shameText.text = comparison + richTexting ;

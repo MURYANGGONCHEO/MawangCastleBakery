@@ -26,7 +26,7 @@ public class DeckSearch : MonoBehaviour
             }
         }
 
-        _deckGenerator.ResetDeckList(filteringList);
+        _deckGenerator.FilteringDeckList(filteringList);
         //if (deckName != string.Empty)
         //{
             

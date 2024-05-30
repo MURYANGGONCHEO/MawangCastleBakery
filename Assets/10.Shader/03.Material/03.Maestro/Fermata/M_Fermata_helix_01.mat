@@ -97,6 +97,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _gradient_tex:
+        m_Texture: {fileID: 2800000, guid: f4e4c8d22a48388469d23e7e2d168d31, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _main_tex:
         m_Texture: {fileID: 2800000, guid: 066e15edc2616b445a46680a76cb1aad, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -106,6 +110,10 @@ Material:
         m_Scale: {x: 3.6, y: 1.46}
         m_Offset: {x: 0, y: 0}
     - _sub_tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -184,6 +192,7 @@ Material:
     - _normal_upanner: 1
     - _normal_vpanner: 0
     - _opacity: 1.46
+    - _step_diss: 0
     - _sub_upanner: 0
     - _sub_vpanner: 0
     - _subs_ins: 0
@@ -197,7 +206,7 @@ Material:
     - _Main_Color: {r: 8.47419, g: 8.47419, b: 8.47419, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _edge_color: {r: 1, g: 1, b: 1, a: 0}
-    - _main_color: {r: 1.319508, g: 1.319508, b: 1.319508, a: 0}
+    - _main_color: {r: 3.9533498, g: 3.9533498, b: 3.9533498, a: 0}
     - _main_color_a: {r: 5.278032, g: 5.278032, b: 5.278032, a: 0}
     - _main_color_b: {r: 1, g: 1, b: 1, a: 0}
     - _subs_color: {r: 0, g: 0, b: 0, a: 0}

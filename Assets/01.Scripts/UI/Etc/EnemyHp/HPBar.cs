@@ -16,7 +16,6 @@ public class HPBar : MonoBehaviour
             _canStartFollowOwner = true;
         }
     }
-
     private Sequence _playerGetDamageSequence;
 
     [SerializeField] private Slider _hpBar;
@@ -24,20 +23,19 @@ public class HPBar : MonoBehaviour
     [SerializeField] private float _easingTime;
 
     [SerializeField] private Image _fillImg;
-    [SerializeField] private Color enemyColor;
-    [SerializeField] private Color friendColor;
+    [SerializeField] private Sprite _enemySprite;
+    [SerializeField] private Sprite _freindSprite;
 
     public BuffingMarkSetter BuffMarkSetter { get; private set; }
 
     public void Init(bool isEnemy)
     {
         BuffMarkSetter = GetComponent<BuffingMarkSetter>();
-        Debug.Log(BuffMarkSetter);
 
         if (!_canStartFollowOwner) return;
         transform.position = _ownerOfThisHpBar.position;
 
-        _fillImg.color = isEnemy ? enemyColor : friendColor;
+        _fillImg.sprite = isEnemy ? _enemySprite : _freindSprite;
     }
     private void Update()
     {

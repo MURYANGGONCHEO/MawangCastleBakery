@@ -193,16 +193,6 @@ public abstract class Entity : PoolableMono
         seq.Append(transform.DOJump(target.forwardTrm.position, 1,1,0.6f));
         seq.OnComplete(OnMoveTarget.Invoke);
     }
-
-    public virtual void MoveToEnemiesCenter()
-    {
-        lastMovePos = transform.position;
-
-        Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOJump(BattleController.Instance.enemyGroupCenter.position, 1, 1, 0.6f));
-        seq.OnComplete(OnMoveTarget.Invoke);
-    }
-
     protected abstract void HandleEndMoveToTarget();
     public virtual void MoveToOriginPos()
     {

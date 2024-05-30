@@ -221,7 +221,7 @@ public class AbilityTargettingSystem : MonoBehaviour
 
             CombatMarkingData data =
                 new CombatMarkingData(BuffingType.Targetting,
-                $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.");
+                $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.", 1);
 
             e.BuffSetter.AddBuffingMark(data);
         }
@@ -278,7 +278,7 @@ public class AbilityTargettingSystem : MonoBehaviour
 
                 CombatMarkingData data =
                 new CombatMarkingData(BuffingType.Targetting,
-                $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.");
+                $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.", 1);
 
                 e.BuffSetter.AddBuffingMark(data);
             }

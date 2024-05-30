@@ -62,9 +62,10 @@ public class EditDeckPanel : MonoBehaviour
         }
 
         DeckElement de = _saveDeckData.SaveDeckList.Find(x => x.deckName == _editDeckElement.deckName);
-        Debug.Log($"{de.deckName} ?= {_editDeckElement.deckName}");
+        int idx = _saveDeckData.SaveDeckList.IndexOf(de);
+        DeckManager.Instance.SaveDummyDeck = (de, idx);
         _saveDeckData.SaveDeckList.Remove(de);
-        
+
         DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
         _deckEditEvent?.Invoke(_editDeckElement);
     }

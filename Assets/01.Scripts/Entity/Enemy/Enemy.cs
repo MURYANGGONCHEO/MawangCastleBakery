@@ -77,9 +77,8 @@ public abstract class Enemy : Entity
     protected override void OnDisable()
     {
         base.OnDisable();
-        OnAttackStart -= HandleAttackStart;
-        OnAttackStart -= HandleCameraAction;
-        OnAttackEnd -= HandleAttackEnd;
+        OnAttackStart = null;
+        OnAttackEnd = null;
     }
     public abstract void Attack();
     public virtual void TurnStart()

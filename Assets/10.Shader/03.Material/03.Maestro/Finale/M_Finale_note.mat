@@ -11,8 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 4b7c34181f4d74244be6861121c94efa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _USE_MAINTEXALPHA_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -108,10 +107,6 @@ Material:
         m_Texture: {fileID: 2800000, guid: 89077298ef5a77c44a33b40e1e7122fc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _grad_tex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _noise_tex_a:
         m_Texture: {fileID: 2800000, guid: d6b17fdebfb35da4f9bd82661ff94718, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -149,7 +144,6 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CULLMODE: 0
     - _Ceil: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -189,7 +183,7 @@ Material:
     - _Noise_VPanner: 0
     - _Noise_str: 1
     - _OcclusionStrength: 1
-    - _Opacity: 1
+    - _Opacity: 0.68
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -212,7 +206,6 @@ Material:
     - _Use_Customdata: 0
     - _Use_MaskTex: 0
     - _Use_ToonDissolve: 0
-    - _Use_grad: 0
     - _Use_lerp: 0
     - _Use_main_step: 0
     - _Use_vertex: 0
@@ -227,7 +220,6 @@ Material:
     - _dissolve: 0.69
     - _down_range: 1
     - _edge_width: 0.06
-    - _grad_intencity: 0
     - _int: 1
     - _main_step: 0.5
     - _main_upanner: 0
@@ -246,7 +238,6 @@ Material:
     - _smoothness: 0.58
     - _step_a: 0.548
     - _step_b: 1
-    - _use_mainTexAlpha: 1
     - _use_other_diss: 0
     - _use_polar: 0
     - _vertex_pow: 3.71
@@ -266,7 +257,7 @@ Material:
     - _color_b: {r: 0.44139373, g: 0.48180932, b: 0.8584906, a: 0}
     - _edge_color: {r: 0, g: 0, b: 0, a: 0}
     - _main_color: {r: 1, g: 1, b: 1, a: 0}
-    - _main_color_a: {r: 3.6886055, g: 3.6886055, b: 3.6886055, a: 0}
+    - _main_color_a: {r: 7.4642644, g: 7.4642644, b: 7.4642644, a: 0}
     - _main_color_b: {r: 1, g: 1, b: 1, a: 0}
     - _main_scale: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

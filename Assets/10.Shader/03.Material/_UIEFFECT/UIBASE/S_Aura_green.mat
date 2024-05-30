@@ -112,7 +112,7 @@ Material:
     - _multiplier: 100
     - _noise_size: 64.8
     - _noise_str: 1.5
-    - _normal_str: 0
+    - _normal_str: 0.023
     - _normal_upanner: 0
     - _normal_vpanner: -0.37
     - _outline_thick: 288.47

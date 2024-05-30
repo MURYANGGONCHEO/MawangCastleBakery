@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct CakeData
+public class CakeData
 {
-    public string CakeName;
-    public bool IsFavorites;
+    public string CakeName { get; private set; }
+    public bool IsFavorites { get; set; }
+    public int Count { get; set; } = 1;
 
     public CakeData(string _cakeName,  bool _isFavorites)
     {

@@ -49,9 +49,12 @@ public class BakeryContentPanel : MonoBehaviour
 
     private void FastRecipeSortAction()
     {
+        if(_bakeryData == null) return;
+
         foreach (CakeData cd in _bakeryData.CakeDataList)
         {
             RecipeElement re = Instantiate(_recipeElementPrefab, _recipeElementTrm);
+            re.ThisCakeData = cd;
             re.SetCakeInfo(BakingManager.Instance.GetCakeDataByName(cd.CakeName));
             re.ClickAction += UIManager.Instance.GetSceneUI<BakeryUI>().SelectRecipe;
 
@@ -85,10 +88,11 @@ public class BakeryContentPanel : MonoBehaviour
         foreach (CakeData cd in _favorites)
         {
             RecipeElement re = Instantiate(_recipeElementPrefab, _recipeElementTrm);
-            re.SetCakeInfo(BakingManager.Instance.GetCakeDataByName(cd.CakeName));
             re.ThisCakeData = cd;
+            re.SetCakeInfo(BakingManager.Instance.GetCakeDataByName(cd.CakeName));
+            re.ClickAction += UIManager.Instance.GetSceneUI<BakeryUI>().SelectRecipe;
 
-            _recipeElementTrm.sizeDelta += new Vector2(_recipeElementInterval, 0);
+            _recipeElementTrm.sizeDelta += new Vector2(0, _recipeElementInterval);
         }
     }
 

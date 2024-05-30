@@ -25,7 +25,6 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - USE_CUSTOM_ON
   - _MASK_MIRROR_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -120,7 +119,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Use_Custom: 1
+    - Use_Custom: 0
     - _AlphaClip: 0
     - _AlphaCutoff: 0.5
     - _AlphaToMask: 0
@@ -149,10 +148,10 @@ Material:
     - _Main_Ins: 8.44
     - _Main_Pow: 2.36
     - _Main_UPanner: 0
-    - _Main_VPanner: 1.5
+    - _Main_VPanner: 0.39
     - _Mask_1x: 0
     - _Mask_Mirror: 1
-    - _Mask_Pow: 1
+    - _Mask_Pow: 5.346326
     - _Metallic: 0
     - _Noise_Str: 0
     - _Noise_Tex_UPanner: 0

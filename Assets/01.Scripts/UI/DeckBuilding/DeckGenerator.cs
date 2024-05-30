@@ -4,10 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeckGenerator : MonoBehaviour
 {
     [SerializeField] private RectTransform _deckElemetTrm;
+    [SerializeField] private GridLayoutGroup _gridLayoutGroup;
     [SerializeField] private CanUseDeckElement _canUseDeckPrefab;
     [SerializeField] private SelectedDeck _selectDeckObj;
     [SerializeField] private int _startPage = 1;
@@ -38,7 +40,7 @@ public class DeckGenerator : MonoBehaviour
         _currentPage = _startPage;
 
         GenerateDeckList();
-        ResetDeckList(_saveDeckData.SaveDeckList);
+        ResetDeckList();
     }
 
     public void GenerateDeckList()
@@ -69,7 +71,7 @@ public class DeckGenerator : MonoBehaviour
 
         ++_currentPage;
         SetPageText();
-        ResetDeckList(_saveDeckData.SaveDeckList);
+        ResetDeckList();
     }
 
     public void GoBeforePage()
@@ -81,17 +83,27 @@ public class DeckGenerator : MonoBehaviour
 
         --_currentPage;
         SetPageText();
-        ResetDeckList(_saveDeckData.SaveDeckList);
+        ResetDeckList();
     }
 
-    public void ResetDeckList(List<DeckElement> deList)
+    public void ResetDeckList()
+    {
+        GenerateDeckList(_saveDeckData.SaveDeckList);
+    }
+
+    public void FilteringDeckList(List<DeckElement> deList)
+    {
+        GenerateDeckList(deList);
+    }
+
+    private void GenerateDeckList(List<DeckElement> deList)
     {
         _deckElemetTrm.Clear();
 
         int startIdx = 4 * (_currentPage - 1);
         int maxIdx;
 
-        if(_currentPage * 4 <= deList.Count)
+        if (_currentPage * 4 <= deList.Count)
         {
             maxIdx = 4;
         }
@@ -102,14 +114,25 @@ public class DeckGenerator : MonoBehaviour
 
         if (startIdx == maxIdx) return;
 
+        string deckName = string.Empty;
+        if (DataManager.Instance.IsHaveData(DataKeyList.playerDeckDataKey))
+        {
+            deckName =
+            DataManager.Instance.LoadData<PlayerSelectDeckInfoData>(DataKeyList.playerDeckDataKey).deckName;
+        }
+
         for (int i = startIdx; i < maxIdx; i++)
         {
             CanUseDeckElement cude = Instantiate(_canUseDeckPrefab, _deckElemetTrm);
-            cude.SetDeckInfo(deList[i], this);
+            Debug.Log($"{deList[i].deckName}, {deckName}");
+            cude.SetDeckInfo(deList[i], this, deList[i].deckName == deckName);
         }
 
         _scalingTween?.Kill();
-        _scalingTween = _deckElemetTrm.DOScale(Vector3.one * 1.1f, 0.2f).SetEase(Ease.OutBack);
+        _scalingTween = DOTween.To(() => new Vector2(320, 320),
+                        x => _gridLayoutGroup.cellSize = x, new Vector2(330, 330), 0.2f).
+       OnComplete(() => DOTween.To(() => new Vector2(330, 330),
+                        x => _gridLayoutGroup.cellSize = x, new Vector2(320, 320), 0.2f));
     }
 
     protected virtual void SetSelectDeck(DeckElement deckElement)

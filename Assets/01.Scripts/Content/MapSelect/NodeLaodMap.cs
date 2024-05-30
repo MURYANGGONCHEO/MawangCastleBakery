@@ -7,7 +7,6 @@ public class NodeLaodMap : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _chapterNameText;
     [SerializeField] private Transform _loadMapParent;
-    [SerializeField] private Transform _deckSelectParent;
 
     private GameObject _currentLoadMap;
 
@@ -28,5 +27,10 @@ public class NodeLaodMap : MonoBehaviour
     public void ExitLoadMap()
     {
         gameObject.SetActive(false);
+    }
+
+    public void GoDeckSelect()
+    {
+        GameManager.Instance.ChangeScene(SceneType.deckBuild);
     }
 }

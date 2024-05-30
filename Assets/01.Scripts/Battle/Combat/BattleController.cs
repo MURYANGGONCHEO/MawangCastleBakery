@@ -178,6 +178,10 @@ public class BattleController : MonoSingleton<BattleController>
                 e.turnStatus = TurnStatus.End;
                 betweenTime = 0.3f;
             }
+            if (e is null) continue;
+            Player.VFXManager.SetBackgroundColor(Color.gray);
+
+            e.TurnAction();
             yield return new WaitUntil(() => e.turnStatus == TurnStatus.End);
 
             Player.VFXManager.SetBackgroundColor(Color.white);
@@ -225,6 +229,9 @@ public class BattleController : MonoSingleton<BattleController>
 
             onFieldMonsterList[idx] = selectEnemy;
             selectEnemy.target = Player;
+
+            selectEnemy.OnAttackStart += _battleCutter.Cutting;
+            selectEnemy.OnAttackEnd += _battleCutter.Reverting;
 
             SpawnEnemyList.Add(selectEnemy);
             _hpBarMaker.SetupHpBar(selectEnemy);

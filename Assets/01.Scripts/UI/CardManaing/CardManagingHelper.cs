@@ -17,7 +17,7 @@ public static class CardManagingHelper
 
     public static int GetAfterLevelShame(CardShameElementSO shameData, CardShameType type, int combineLevel)
     {
-        if (shameData.cardLevel >= 5) return 0;
+        if (shameData.cardLevel >= 5) return GetCardShame(shameData, type, combineLevel);
 
         return shameData.cardShameDataList[combineLevel].list[shameData.cardLevel].list.FirstOrDefault(x => (x.cardShameType & type) != 0).currentShame;
     }

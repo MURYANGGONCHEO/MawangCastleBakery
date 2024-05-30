@@ -21,15 +21,12 @@ public class DeckEditor : MonoBehaviour
             {
                 _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
             }
-            _saveDeckData.SaveDeckList.Add(_deckElement);
             DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
         }
     }
 
     public void SetEditDeckInfo(DeckElement deckElement)
     {
-        _deckElement = deckElement;
-
         _autoSetDeckNameEvent?.Invoke(deckElement.deckName);
         StartCoroutine(AutoSelectCardCo(DeckManager.Instance.GetDeck(deckElement.deck)));
     }

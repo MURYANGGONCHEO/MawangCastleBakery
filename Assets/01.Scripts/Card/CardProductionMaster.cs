@@ -26,7 +26,7 @@ public class CardProductionMaster : MonoBehaviour
 
     [Header("카드 아이들")]
     private List<CardBase> _onHandCardList = new List<CardBase>();
-    private float _onPointerInCardValue;
+    private float _onPointerInCardValue = 1;
 
     private void Start()
     {
@@ -98,24 +98,10 @@ public class CardProductionMaster : MonoBehaviour
         {
             if (CardReader.OnPointerCard == card || !card.CanUseThisCard) continue;
 
-            if(!card.OnPointerInCard)
-            {
-                float sineX = Mathf.Sin(Time.time + card.CardIdlingAddValue);
-                float cosineY = Mathf.Cos(Time.time + card.CardIdlingAddValue);
+            float sineX = Mathf.Sin(Time.time + card.CardIdlingAddValue);
+            float cosineY = Mathf.Cos(Time.time + card.CardIdlingAddValue);
 
-                card.VisualTrm.eulerAngles = new Vector3(sineX, cosineY, 0) * 10;
-            }
-            else
-            {
-                Debug.Log($"OnHoverSomeCard : {card}");
-                Vector3 mouse = MaestrOffice.GetWorldPosToScreenPos(Input.mousePosition);
-                Vector3 offset = card.transform.transform.localPosition - mouse;
-
-                float tiltX = offset.y * -1;
-                float tiltY = offset.x;
-
-                card.VisualTrm.localRotation = Quaternion.Euler(new Vector3(tiltX, tiltY, 0) * _onPointerInCardValue);
-            }
+            card.VisualTrm.localEulerAngles = new Vector3(sineX, cosineY, 0) * 10;
         }
     }
 }

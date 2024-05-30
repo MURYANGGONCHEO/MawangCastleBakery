@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ManagingCardPanel : MonoBehaviour
 {
     [SerializeField] private RectTransform _cardElementParent;
     [SerializeField] private SelectToManagingCardElement _cardElementPrefab;
+    [SerializeField] private UnityEvent _unMarkingEvent;
 
     public void CreatCardElement(List<CardInfo> cardList)
     {
@@ -18,6 +20,13 @@ public class ManagingCardPanel : MonoBehaviour
 
             SelectToManagingCardElement stmce = Instantiate(_cardElementPrefab, _cardElementParent);
             stmce.SetInfo(cardList[i]);
+            stmce.UnSelectedAction += HandleUnSelectedAction;
         }
+    }
+
+    public void HandleUnSelectedAction()
+    {
+        gameObject.SetActive(false);
+        _unMarkingEvent?.Invoke();
     }
 }

@@ -41,12 +41,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _gradient_texture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _main_tex:
-        m_Texture: {fileID: 2800000, guid: 3cc1ff9ace6d23d4580831d6050d505f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6230fd78838c081499ec82a3c6e3d6e6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _normal_tex:
@@ -54,10 +50,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _sub_tex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -83,13 +75,13 @@ Material:
     - _UOffset: 1
     - _Use_Custom: 1
     - _VOffset: -0.021
-    - _intencity: 0.77
+    - _intencity: 2.37
     - _main_pow: 3.91
     - _mask_pow: 4.78
     - _normal_str: 0
     - _normal_upanner: 0
     - _normal_vpanner: 0
-    - _opacity: 0.91
+    - _opacity: 0.86
     - _sub_upanner: 0
     - _sub_vpanner: 0
     - _subs_ins: 0
@@ -99,6 +91,6 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _main_color: {r: 22.363523, g: 22.363523, b: 22.363523, a: 0}
+    - _main_color: {r: 12.996038, g: 12.996038, b: 12.996038, a: 0}
     - _subs_color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
