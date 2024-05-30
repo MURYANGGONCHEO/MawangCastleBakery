@@ -66,6 +66,7 @@ public class AbilityTargettingSystem : MonoBehaviour
     }
     public void ActivationCardSelect(CardBase selectCard)
     {
+        Debug.Log("FF");
         List<CardBase> onActiveZoneList = CardReader.SkillCardManagement.InCardZoneList;
 
         foreach (CardBase cb in onActiveZoneList)

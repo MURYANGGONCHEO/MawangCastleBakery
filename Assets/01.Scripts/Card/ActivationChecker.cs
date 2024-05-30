@@ -30,11 +30,16 @@ public class ActivationChecker : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && CardReader.OnBinding && CardReader.OnPointerCard.CanUseThisCard)
         {
+            if(CardReader.OnPointerCard.Paneling)
+            {
+                CardReader.OnPointerCard.BattlePanelDown();
+            }
+
             Transform cardTrm = CardReader.OnPointerCard.transform;
             Vector3  mousePos = MaestrOffice.GetWorldPosToScreenPos(Input.mousePosition);
 
             float distance = (mousePos - cardTrm.position).x;
-            float rotation = Mathf.Clamp(distance * 50, -30, 30);
+            float rotation = Mathf.Clamp(distance * 50, -20, 20);
 
             Vector3 euler = cardTrm.eulerAngles;
             euler.z = rotation;
