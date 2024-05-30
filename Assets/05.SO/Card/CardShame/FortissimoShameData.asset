@@ -1,0 +1,320 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fa8952d0ebc614ab0f91bb5c5c3b19, type: 3}
+  m_Name: FortissimoShameData
+  m_EditorClassIdentifier: 
+  cardLevel: 1
+  cardExp: 0
+  cardLevelUppervalueGroup:
+  - shameType: 1
+    perValue: 15
+  - shameType: 2
+    perValue: 2
+  normalValueGroup:
+  - cardShameType: 1
+    currentShame: 70
+    info: 
+  - cardShameType: 8
+    currentShame: 3
+    info: 
+  - cardShameType: 16
+    currentShame: 1
+    info: 
+  cardShameDataList:
+  - list:
+    - list:
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 85
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 100
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 115
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 130
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+  - list:
+    - list:
+      - cardShameType: 1
+        currentShame: 140
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 170
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 200
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 230
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 260
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+  - list:
+    - list:
+      - cardShameType: 1
+        currentShame: 210
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 255
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 300
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 345
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 390
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 
+      - cardShameType: 1
+        currentShame: 70
+        info: 
+      - cardShameType: 8
+        currentShame: 3
+        info: 
+      - cardShameType: 16
+        currentShame: 1
+        info: 

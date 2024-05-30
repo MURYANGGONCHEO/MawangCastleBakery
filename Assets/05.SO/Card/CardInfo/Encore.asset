@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5896723930e00cd458e877f2f5442079, type: 3}
+  m_Name: Encore
+  m_EditorClassIdentifier: 
+  CardName: "\uD55C\uBC88 \uB354!"
+  CardType: 0
+  CardVisual: {fileID: 21300000, guid: 6c849c706c5bc7541a9fe8ca07191001, type: 3}
+  skillPersonalColor: {r: 1, g: 1, b: 1, a: 1}
+  abilityAnimation: {fileID: 7400000, guid: fa0da448e6c6a9845abf8b8b082d79f8, type: 2}
+  cardShameData: {fileID: 11400000, guid: 444fe1584407f5844b620299c0c14ab7, type: 2}
+  cameraSequenceData: {fileID: 0}
+  hitEffect: {fileID: 7993180798688134084, guid: d1b4ff7625bef694c9ddc8c4f34e375a, type: 3}
+  targetEffect: {fileID: 7991482987039085331, guid: 988a17af331576c4cb9bc6e9be72644d, type: 3}
+  AbillityInfo: 
