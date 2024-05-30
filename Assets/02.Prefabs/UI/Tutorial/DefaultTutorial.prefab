@@ -581,17 +581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _curPanelImg: {fileID: 8502421927703269474}
   _curPanelDesc: {fileID: 1409775694299775651}
-  _panelList:
-  - img: {fileID: -939635858, guid: 9570b04025ec3f24fb0d77666039700b, type: 3}
-    desc: Test1
-  - img: {fileID: -391348937, guid: 9570b04025ec3f24fb0d77666039700b, type: 3}
-    desc: Test2
-  - img: {fileID: 831626267, guid: 9570b04025ec3f24fb0d77666039700b, type: 3}
-    desc: Test3
-  - img: {fileID: 1981802803, guid: 9570b04025ec3f24fb0d77666039700b, type: 3}
-    desc: Test4
-  - img: {fileID: 322342691, guid: 9570b04025ec3f24fb0d77666039700b, type: 3}
-    desc: Test5
+  _panelList: []
 --- !u!1 &7053570934142110363
 GameObject:
   m_ObjectHideFlags: 0
