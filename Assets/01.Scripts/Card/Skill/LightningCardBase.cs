@@ -22,7 +22,10 @@ public abstract class LightningCardBase : CardBase
                     Vector2 dir = e.transform.position - me.transform.position;
                     float zRot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                     shockedFX.transform.rotation = Quaternion.Euler(0, 0, zRot);
-                    //Destroy(shockedFX, 2f);
+                    float distance = Vector2.Distance(e.transform.position, me.transform.position);
+                    _mainModule = shockedFX.main;
+                    _mainModule.startSizeX = distance;
+                    Destroy(shockedFX, 2f);
                 }
             }
             catch (Exception ex)
