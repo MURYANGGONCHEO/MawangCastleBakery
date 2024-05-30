@@ -11,4 +11,5 @@ public static class DataKeyList
     public const string saveDeckDataKey = "SaveDeckDataKey";
     public const string playerDeckDataKey = "PlayersDeck";
     public const string playerInfoDataKey = "PlayerDataKey";
+    public const string tutorialDataKey = "TUTODataKey";
 }
