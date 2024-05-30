@@ -4127,10 +4127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8724537186fb349abe1057d4e64a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryList:
-  - {fileID: 11400000, guid: 95dfa7db78c99034ba2a9decfc8e3539, type: 2}
-  - {fileID: 11400000, guid: fc41c1c9390f49646a642dbd6805ff33, type: 2}
-  - {fileID: 11400000, guid: 2bcf6dbc6e0ffe14ca94acf4ca806df5, type: 2}
 --- !u!4 &7663057329350200401
 Transform:
   m_ObjectHideFlags: 0
@@ -4410,6 +4406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1834468672611067206}
   - component: {fileID: 7628170884922846440}
+  - component: {fileID: 7989252545072406992}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -4417,6 +4414,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7989252545072406992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7989252545072406991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b8e49548a056b45be013ea58e25aff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemDataArr: []
 --- !u!4 &8075597554576919893
 Transform:
   m_ObjectHideFlags: 0

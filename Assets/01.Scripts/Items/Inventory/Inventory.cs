@@ -8,12 +8,33 @@ using UnityEngine.SceneManagement;
 
 public class Inventory : MonoSingleton<Inventory>
 {
-    [SerializeField] private List<ItemDataSO> _inventoryList = new List<ItemDataSO>();
+    private List<ItemDataSO> _inventoryList = new List<ItemDataSO>();
 
     public ExpansionList<ItemDataIngredientSO> GetIngredientInThisBattle { get; set; } = 
        new ExpansionList<ItemDataIngredientSO>();
 
-    private void HandleClearGetIngList(Scene arg0, Scene arg1)
+    private ItemContainer _itemContainer;
+
+    private void Awake()
+    {
+        _itemContainer = GetComponent<ItemContainer>();
+
+        SceneManager.sceneLoaded += HandleClearGetIngList;
+        SceneManager.sceneLoaded += HandleSaveItems;
+    }
+
+    private void HandleSaveItems(Scene arg0, LoadSceneMode mode)
+    {
+        SavingItemData data = new SavingItemData();
+        if(DataManager.Instance.IsHaveData(DataKeyList.itemDataKey))
+        {
+            data = DataManager.Instance.LoadData<SavingItemData>(DataKeyList.itemDataKey);
+        }
+
+        
+    }
+
+    private void HandleClearGetIngList(Scene arg0, LoadSceneMode mode)
     {
         GetIngredientInThisBattle.Clear();
     }

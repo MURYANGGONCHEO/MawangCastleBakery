@@ -14,4 +14,5 @@ public static class DataKeyList
     public const string tutorialDataKey = "TUTODataKey";
     public const string volumeDataKey = "VolumeDataKey";
     public const string ingameDataKey = "IngameDataKey";
+    public const string itemDataKey = "ItemDataKey";
 }
