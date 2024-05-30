@@ -44,6 +44,8 @@ public class TeaTimeCreamStand : MonoBehaviour
             {
                 data.CakeDataList.Remove(cd);
             }
+
+            DataManager.Instance.SaveData(data, DataKeyList.bakeryRecipeDataKey);
         }
     }
 

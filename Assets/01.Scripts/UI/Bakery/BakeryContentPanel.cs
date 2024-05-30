@@ -31,7 +31,7 @@ public class BakeryContentPanel : MonoBehaviour
     private Dictionary<RecipeSortType, Action> _recipeSortActionDic = new();
 
     [SerializeField] private UnityEvent<RecipeSortType> _recipeSortEvent;
-    private BakeryData _bakeryData => UIManager.Instance.GetSceneUI<BakeryUI>().BakeryData;
+    private BakeryData _bakeryData = new BakeryData();
 
     private void Awake()
     {
@@ -103,6 +103,8 @@ public class BakeryContentPanel : MonoBehaviour
 
     public void InvokeRecipeAction(RecipeSortType rSortType)
     {
+        _bakeryData = DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
+
         FilterTabSelectionGenerate(rSortType);
 
         _recipeElementTrm.Clear();

@@ -11,6 +11,11 @@ public class GenerateCanEditDeck : DeckGenerator
         base.Start();
     }
 
+    private void OnEnable()
+    {
+        UIManager.Instance.GetSceneUI<DeckBuildingUI>().IsEditing = false;
+    }
+
     protected override void SetSelectDeck(DeckElement deckElement)
     {
         _editDeckPanel.gameObject.SetActive(true);

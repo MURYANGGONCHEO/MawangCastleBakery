@@ -707,7 +707,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 1
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -2952,7 +2952,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0.2533058, y: 0.376627, z: 0}
+  m_DefaultVelocity: {x: -0.2238544, y: -0.01055294, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4128,6 +4128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8724537186fb349abe1057d4e64a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inventoryList:
+  - {fileID: 11400000, guid: 95dfa7db78c99034ba2a9decfc8e3539, type: 2}
+  - {fileID: 11400000, guid: fc41c1c9390f49646a642dbd6805ff33, type: 2}
+  - {fileID: 11400000, guid: 2bcf6dbc6e0ffe14ca94acf4ca806df5, type: 2}
 --- !u!4 &7663057329350200401
 Transform:
   m_ObjectHideFlags: 0

@@ -56,6 +56,8 @@ public class EditDeckPanel : MonoBehaviour
 
     public void EditDeck()
     {
+        UIManager.Instance.GetSceneUI<DeckBuildingUI>().IsEditing = true;
+
         if (DataManager.Instance.IsHaveData(DataKeyList.saveDeckDataKey))
         {
             _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);

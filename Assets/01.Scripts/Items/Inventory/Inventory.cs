@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Inventory : MonoSingleton<Inventory>
 {
-    private List<ItemDataSO> _inventoryList = new List<ItemDataSO>();
+    [SerializeField] private List<ItemDataSO> _inventoryList = new List<ItemDataSO>();
 
     public ExpansionList<ItemDataIngredientSO> GetIngredientInThisBattle { get; set; } = 
        new ExpansionList<ItemDataIngredientSO>();

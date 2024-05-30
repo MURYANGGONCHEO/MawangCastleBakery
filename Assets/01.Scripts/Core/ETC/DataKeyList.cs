@@ -12,4 +12,6 @@ public static class DataKeyList
     public const string playerDeckDataKey = "PlayersDeck";
     public const string playerInfoDataKey = "PlayerDataKey";
     public const string tutorialDataKey = "TUTODataKey";
+    public const string volumeDataKey = "VolumeDataKey";
+    public const string ingameDataKey = "IngameDataKey";
 }

@@ -27,27 +27,11 @@ public class BakeryUI : SceneUI
     [SerializeField] private GameObject _previewPanelObj;
     private PreviewPanel[] _previewPanels;
 
-    public BakeryData BakeryData
-    {
-        get
-        {
-            BakeryData data = DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
-            if(data == null)
-            {
-                data = new BakeryData();
-            }
-            return data;
-        }
-    }
-
     public override void SceneUIStart()
     {
         _previewPanels = _previewPanelObj.GetComponentsInChildren<PreviewPanel>();
     }
-    public void SaveData()
-    {
-        DataManager.Instance.SaveData(BakeryData, DataKeyList.bakeryRecipeDataKey);
-    }
+    
     public void FilteringPreviewContent(RecipeSortType type)
     {
         foreach (var panel in _previewPanels)

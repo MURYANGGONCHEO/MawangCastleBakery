@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeckBuildingUI : SceneUI
 {
     private DeckBuilder _deckBuilder;
+    public bool IsEditing { get; set; } = false;
 
     public override void SceneUIStart()
     {
@@ -13,7 +14,8 @@ public class DeckBuildingUI : SceneUI
 
     public void OnDestroy()
     {
-        DataGenerate();
+        if(IsEditing)
+            DataGenerate();
     }
 
     public void DataGenerate()
