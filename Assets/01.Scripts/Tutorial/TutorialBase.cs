@@ -9,25 +9,27 @@ using UnityEngine.Video;
 [Serializable]
 public struct TutorialPanel
 {
-    public Sprite img;
-    public string desc;
+    public Sprite img;                          // Panel's image
+    public string desc;                         // Panel's description
 }
 
 public abstract class TutorialBase : MonoBehaviour
 {
     [SerializeField]
-    protected List<TutorialPanel> _panelList;
+    protected Image _curPanelImg;               // Currently displayed image
+    [SerializeField]
+    protected TextMeshProUGUI _curPanelDesc;    // Currently displayed description
 
     [SerializeField]
-    protected Image _curPanelImg;
-    [SerializeField]
-    protected TextMeshProUGUI _curPanelDesc;
+    protected List<TutorialPanel> _panelList;   // All images & descriptions of tutorial
 
-    protected int _panelIdx = 0;
+    protected int _panelIdx = 0;                // Index of currently displayed image & description
 
+    // Increase/Decrease index
     public void FlipPageNext() => _panelIdx = Mathf.Clamp(_panelIdx + 1, 0, _panelList.Count - 1);
     public void FlipPageBefore() => _panelIdx = Mathf.Clamp(_panelIdx - 1, 0, _panelList.Count - 1);
 
+    // Change displayed image & description
     public void UpdatePanel()
     {
         _curPanelImg.sprite = _panelList[_panelIdx % _panelList.Count].img;
