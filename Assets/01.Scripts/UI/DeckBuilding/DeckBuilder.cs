@@ -39,13 +39,12 @@ public class DeckBuilder : MonoBehaviour
 
         CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);
 
-        if (cf.isFirstOnDeckBuilding)
+        if (!cf.isFirstOnDeckBuilding)
         {
             _tutorialPanel.SetActive(true);
-
+            cf.isFirstOnDeckBuilding = true;
             DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
         }
-
     }
 
     public void AddDeck(CardBase cardBase, out bool canSelect)

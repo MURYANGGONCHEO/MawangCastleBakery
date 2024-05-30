@@ -1,12 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class DeckBuildingTutorialPanel : MonoBehaviour
+public class DeckBuildingTutorialPanel : TutorialBase
 {
-    [SerializeField]
-    private List<GameObject> _tutorialPanelList;
-    private int _panelIdx = 0;
-
     
 }
