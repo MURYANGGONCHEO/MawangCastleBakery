@@ -11,6 +11,9 @@ public class DeckBuilder : MonoBehaviour
     public ExpansionList<CardBase> selectCardList = new ExpansionList<CardBase>();
     [SerializeField] private SelectCard[] _selectCardElementArr = new SelectCard[5];
 
+    [SerializeField]
+    private GameObject _tutorialPanel;
+
     private bool _isDeckSaving;
     public bool IsDeckSaving
     {
@@ -29,22 +32,32 @@ public class DeckBuilder : MonoBehaviour
 
     private void Start()
     {
-        if(DataManager.Instance.IsHaveData(DataKeyList.saveDeckDataKey))
+        if (DataManager.Instance.IsHaveData(DataKeyList.saveDeckDataKey))
         {
             _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
         }
+
+        CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);
+
+        if (cf.isFirstOnDeckBuilding)
+        {
+            _tutorialPanel.SetActive(true);
+
+            DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
+        }
+
     }
 
     public void AddDeck(CardBase cardBase, out bool canSelect)
     {
-        if(selectCardList.Count >= 5)
+        if (selectCardList.Count >= 5)
         {
             _errorEvent?.Invoke(ErrorTextBase.deckCountError);
             canSelect = false;
             return;
         }
 
-        for(int i = 0; i <  selectCardList.Count; i++)
+        for (int i = 0; i < selectCardList.Count; i++)
         {
             if (selectCardList[i].CardInfo.CardName == cardBase.CardInfo.CardName)
             {
@@ -56,9 +69,9 @@ public class DeckBuilder : MonoBehaviour
 
         canSelect = true;
         selectCardList.Add(cardBase);
-        foreach(SelectCard sc in _selectCardElementArr)
+        foreach (SelectCard sc in _selectCardElementArr)
         {
-            if(!sc.IsAssignedCard)
+            if (!sc.IsAssignedCard)
             {
                 sc.SetCard(cardBase.CardInfo, (int)cardBase.CombineLevel);
                 break;

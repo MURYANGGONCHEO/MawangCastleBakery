@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class CheckOnFirst : CanSaveData
 {
-    public bool isFirstOnGame;
-    public bool isFirstOnStage;
+    public bool isFirstOnDeckBuilding;
+    public bool isFirstOnCardUpgrade;
     public bool isFirstOnBaking;
     public bool isFirstOnTeaTime;
-    public bool isFirstOnPhotoZone;
-    public bool isFirstPickUpitem;
-    public bool isFirstOpenInventory;
+    public bool isFirstOnEnterDungeon;
+    public bool isFirstOnEnterMaze;
+    public bool isFirstOnAdventure;
+    public bool isFirstOnBattle;
 
     public override void SetInitialValue()
     {

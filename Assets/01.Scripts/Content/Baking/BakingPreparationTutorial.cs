@@ -27,12 +27,12 @@ public class BakingPreparationTutorial : MonoBehaviour
 
     public void TraverseInventoryHandle()
     {
-        if (DataManager.Instance.CheckOnFirstData.isFirstPickUpitem)
-        {
-            // 인벤 여는 버튼 알려주는 혼잣말 출력
-            Debug.Log("인벤 열어라");
-            DataManager.Instance.CheckOnFirstData.isFirstPickUpitem = false;
-        }
+        //if (DataManager.Instance.CheckOnFirstData.isFirstPickUpitem)
+        //{
+        //    // 인벤 여는 버튼 알려주는 혼잣말 출력
+        //    Debug.Log("인벤 열어라");
+        //    DataManager.Instance.CheckOnFirstData.isFirstPickUpitem = false;
+        //}
 
         // 필요한 재료 목록만큼 반복
         for (int i = 0; i < _necessaryIngredList.Count; ++i)
