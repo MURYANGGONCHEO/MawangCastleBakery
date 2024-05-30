@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DeckBuildingTutorialPanel : TutorialBase
+public class DefaultTutorial : TutorialBase
 {
     
 }

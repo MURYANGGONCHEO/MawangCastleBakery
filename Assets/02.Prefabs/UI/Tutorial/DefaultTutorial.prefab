@@ -499,12 +499,12 @@ GameObject:
   - component: {fileID: 8767396427360345701}
   - component: {fileID: 3154464125544194574}
   m_Layer: 5
-  m_Name: DeckBuildingTutorial
+  m_Name: DefaultTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5227593064061578911
 RectTransform:
   m_ObjectHideFlags: 0
@@ -579,6 +579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ba75475431e104690ba9ab5232374a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _curPanelImg: {fileID: 8502421927703269474}
+  _curPanelDesc: {fileID: 1409775694299775651}
   _panelList:
   - img: {fileID: -939635858, guid: 9570b04025ec3f24fb0d77666039700b, type: 3}
     desc: Test1
@@ -590,8 +592,6 @@ MonoBehaviour:
     desc: Test4
   - img: {fileID: 322342691, guid: 9570b04025ec3f24fb0d77666039700b, type: 3}
     desc: Test5
-  _curPanelImg: {fileID: 8502421927703269474}
-  _curPanelDesc: {fileID: 1409775694299775651}
 --- !u!1 &7053570934142110363
 GameObject:
   m_ObjectHideFlags: 0
