@@ -92,7 +92,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-    - _aura_ins: 1.54
+    - _aura_ins: 3.11
     - _aura_length: 0.18
     - _aura_mask_intencity: 1
     - _aura_mask_power: 6.25

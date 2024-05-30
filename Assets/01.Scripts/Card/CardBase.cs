@@ -9,7 +9,7 @@ using TMPro;
 using System.Linq;
 using System;
 
-public abstract class CardBase : MonoBehaviour, IPointerClickHandler, 
+public abstract class CardBase : MonoBehaviour,
                                  IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private float _toMovePosInSec;
@@ -84,7 +84,10 @@ public abstract class CardBase : MonoBehaviour, IPointerClickHandler,
     public Action<Transform> OnPointerInitCardAction { get; set; }
 
     public float CardIdlingAddValue { get; set; }
-    public bool OnPointerInCard { get; set; }   
+    public bool OnPointerInCard { get; set; }
+
+    private CardInfoBattlePanel _cardInfoBattlePanel;
+    public bool Paneling { get; private set; }
 
     private void Awake()
     {
@@ -201,26 +204,39 @@ public abstract class CardBase : MonoBehaviour, IPointerClickHandler,
         CardManagingHelper.GetCardShame(CardInfo.cardShameData, CardShameType.Damage,(int)level);
         return damageArr.list[(int)level].list.ToArray();
     }
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (!IsOnActivationZone) return;
-
-        CardReader.AbilityTargetSystem.ActivationCardSelect(this);
-    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (IsOnActivationZone) return;
+        if (IsOnActivationZone || CardReader.OnBinding) return;
 
         OnPointerSetCardAction?.Invoke(transform);
         OnPointerInCard = true;
+
+        _cardInfoBattlePanel = PoolManager.Instance.Pop(PoolingType.CardBattlePanel) as CardInfoBattlePanel;
+        RectTransform trm = _cardInfoBattlePanel.transform as RectTransform;
+        trm.SetAsFirstSibling();
+
+        trm.SetAsFirstSibling();
+        trm.SetParent(transform);
+        trm.transform.localPosition = Vector2.zero;
+
+        Paneling = true;
+        _cardInfoBattlePanel.SetUp(CardInfo.CardName, CardInfo.AbillityInfo);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (IsOnActivationZone) return;
+        if (IsOnActivationZone || CardReader.OnBinding) return;
 
         OnPointerInitCardAction?.Invoke(transform);
         OnPointerInCard = false;
+
+        BattlePanelDown();
+    }
+
+    public void BattlePanelDown()
+    {
+        Paneling = false;
+        _cardInfoBattlePanel.SetDown();
     }
 }
