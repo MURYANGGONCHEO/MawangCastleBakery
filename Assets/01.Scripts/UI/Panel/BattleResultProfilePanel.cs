@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class BattleResultProfilePanel : MonoBehaviour
 {
     [SerializeField] private Image _profileImg;
-    
     public void SetProfile(Sprite visual)
     {
         _profileImg.sprite = visual;

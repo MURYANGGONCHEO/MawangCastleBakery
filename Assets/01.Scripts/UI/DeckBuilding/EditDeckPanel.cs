@@ -10,7 +10,7 @@ public class EditDeckPanel : MonoBehaviour
 {
     private DeckElement _editDeckElement;
 
-    [Header("ÂüÁ¶")]
+    [Header("ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private TextMeshProUGUI _deckNameText;
     [SerializeField] private Image[] _inDeckCardArr = new Image[5];
 
@@ -22,6 +22,7 @@ public class EditDeckPanel : MonoBehaviour
     private Sequence _toRiseCardSeq = null;
 
     private SaveDeckData _saveDeckData = new SaveDeckData();
+    private const string _saveDeckDataKey = "SaveDeckDataKey";
 
     public void SetPanelInfo(DeckElement deckElement)
     {
@@ -43,11 +44,15 @@ public class EditDeckPanel : MonoBehaviour
         if(DataManager.Instance.IsHaveData(DataKeyList.saveDeckDataKey))
         {
             _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
+        if(DataManager.Instance.IsHaveData(_saveDeckDataKey))
+        {
+            _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(_saveDeckDataKey);
         }
 
         DeckElement de = _saveDeckData.SaveDeckList.Find(x => x.deckName == _editDeckElement.deckName);
         _saveDeckData.SaveDeckList.Remove(de);
         DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
+        DataManager.Instance.SaveData(_saveDeckData, _saveDeckDataKey);
         _deckRemoveEvent?.Invoke();
         _reloadEvent?.Invoke(_saveDeckData.SaveDeckList);
 
@@ -67,6 +72,16 @@ public class EditDeckPanel : MonoBehaviour
         _saveDeckData.SaveDeckList.Remove(de);
 
         DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
+        if (DataManager.Instance.IsHaveData(_saveDeckDataKey))
+        {
+            _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(_saveDeckDataKey);
+        }
+
+        DeckElement de = _saveDeckData.SaveDeckList.Find(x => x.deckName == _editDeckElement.deckName);
+        Debug.Log($"{de.deckName} ?= {_editDeckElement.deckName}");
+        _saveDeckData.SaveDeckList.Remove(de);
+        
+        DataManager.Instance.SaveData(_saveDeckData, _saveDeckDataKey);
         _deckEditEvent?.Invoke(_editDeckElement);
     }
 

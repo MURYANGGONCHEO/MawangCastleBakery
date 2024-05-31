@@ -68,6 +68,7 @@ public class LookBakingPreviewPanel : PreviewPanel
                 cakeData.Count++;
             }
 
+            bui.BakeryData.CakeDataList.Add(new CakeData(cake.itemName, false));
             bui.SaveData();
 
             bui.GetCakePanel.SetUp(cake);

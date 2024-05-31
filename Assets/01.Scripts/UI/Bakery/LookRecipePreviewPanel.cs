@@ -12,7 +12,7 @@ public class LookRecipePreviewPanel : PreviewPanel
     [SerializeField] private GameObject _plzSelectText;
     [SerializeField] private GameObject _recipeElementObj;
 
-    [Header("ÂüÁ¶")]
+    [Header("ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private Vector2 _crookedAngleRange;
     [SerializeField] private Image _cakeImage;
     [SerializeField] private TextMeshProUGUI _cakeNameText;
@@ -73,6 +73,7 @@ public class LookRecipePreviewPanel : PreviewPanel
             cakeData.Count++;
         }
 
+        bui.BakeryData.CakeDataList.Add(new CakeData(cake.itemName, false));
         bui.SaveData();
 
         bui.GetCakePanel.SetUp(cake);

@@ -15,6 +15,8 @@ public class LoadMap : MonoBehaviour
     {
         _loadMapTrm.transform.localScale = new Vector3(0, 1, 1);
 
+    private void Start()
+    {
         AdventureData adData = UIManager.Instance.GetSceneUI<SelectMapUI>().GetAdventureData();
 
         int myChapterIdx = (int)MapManager.Instanace.SelectMapData.myChapterType;

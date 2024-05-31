@@ -22,6 +22,7 @@ public class GetBreadController : MonoBehaviour
         foreach(var production in _productionGraphicsObjArr)
         {
             production.OnProduction();
+            Debug.Log(production);
         }
     }
 

@@ -11,6 +11,13 @@ public class GetCard : MonoBehaviour
         if(DataManager.Instance.IsHaveData(DataKeyList.canUseCardDataKey))
         {
             _canUseCardData = DataManager.Instance.LoadData<CanUseCardData>(DataKeyList.canUseCardDataKey);
+    private const string CardDataKey = "CanUseCardsDataKey";
+
+    public void GetCakeInfo(CardInfo cardInfo)
+    {
+        if(DataManager.Instance.IsHaveData(CardDataKey))
+        {
+            _canUseCardData = DataManager.Instance.LoadData<CanUseCardData>(CardDataKey);
         }
 
         if(!_canUseCardData.CanUseCardsList.Contains(cardInfo.CardName))
@@ -21,5 +28,6 @@ public class GetCard : MonoBehaviour
         Debug.Log("CardAddComplete");
         
         DataManager.Instance.SaveData(_canUseCardData, DataKeyList.canUseCardDataKey);
+        DataManager.Instance.SaveData(_canUseCardData, CardDataKey);
     }
 }

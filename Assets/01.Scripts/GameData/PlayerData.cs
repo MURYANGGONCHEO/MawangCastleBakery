@@ -6,7 +6,10 @@ public class PlayerData : CanSaveData
 {
     public int level = 1;
     public int exp = 0;
-    public string nickName = "ÇÃ·¹ÀÌ¾î";
+    public string nickName = "ï¿½Ã·ï¿½ï¿½Ì¾ï¿½";
+    public int level = 4;
+    public int exp = 0;
+    public string nickName = "ï¿½ï¿½ï¿½ï¿½È£";
 
     public int attak = 5;
     public int defination = 3;

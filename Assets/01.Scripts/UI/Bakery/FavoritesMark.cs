@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class FavoritesMark : MonoBehaviour, IPointerClickHandler
+public class FavoritesMark : MonoBehaviour,IPointerClickHandler
 {
-    [Header("ÂüÁ¶")]
+    [Header("ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private Sprite _onFacoriteSprite;
     [SerializeField] private Sprite _notFacoriteSprite;
 

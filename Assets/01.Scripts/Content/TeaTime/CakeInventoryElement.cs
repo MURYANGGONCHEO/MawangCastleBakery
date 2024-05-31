@@ -7,14 +7,14 @@ using UnityEngine.EventSystems;
 
 public class CakeInventoryElement : MonoBehaviour, IPointerClickHandler
 {
-    [Header("ÄÉÀÌÅ© ÂüÁ¶")]
+    [Header("ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private Image _backgroundImg;
     [SerializeField] private Image _cakeImg;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _countText;
     private CakeCollocation _cakeCollocation;
 
-    [Header("¸¶½ºÅ©")]
+    [Header("ï¿½ï¿½ï¿½ï¿½Å©")]
     [SerializeField] private GameObject _usingMask;
 
     private bool _isSelectThisCake;

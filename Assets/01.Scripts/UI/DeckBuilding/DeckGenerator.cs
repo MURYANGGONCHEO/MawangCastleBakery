@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class DeckGenerator : MonoBehaviour
 {
@@ -15,6 +18,8 @@ public class DeckGenerator : MonoBehaviour
     [SerializeField] private int _startPage = 1;
     [SerializeField] private TextMeshProUGUI _pageText;
     private int _currentPage;
+    [SerializeField] private CanUseDeckElement _canUseDeckPrefab;
+    [SerializeField] private SelectedDeck _selectDeckObj;
 
     private DeckElement _selectDeck;
     public DeckElement SelectDeck
@@ -32,6 +37,7 @@ public class DeckGenerator : MonoBehaviour
 
     private SaveDeckData _saveDeckData = new SaveDeckData();
     private Tween _scalingTween;
+    private const string _saveDeckDataKey = "SaveDeckDataKey";
 
     public List<DeckElement> CurrentDeckList { get; private set; } = new List<DeckElement>();
 
@@ -40,14 +46,14 @@ public class DeckGenerator : MonoBehaviour
         _currentPage = _startPage;
 
         GenerateDeckList();
-        ResetDeckList();
+        ResetDeckList(_saveDeckData.SaveDeckList);
     }
 
     public void GenerateDeckList()
     {
-        if (DataManager.Instance.IsHaveData(DataKeyList.saveDeckDataKey))
+        if (DataManager.Instance.IsHaveData(_saveDeckDataKey))
         {
-            _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
+            _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(_saveDeckDataKey);
         }
 
         foreach(DeckElement de in _saveDeckData.SaveDeckList)
@@ -58,7 +64,7 @@ public class DeckGenerator : MonoBehaviour
 
     private void SetPageText()
     {
-        _pageText.text = $"{_currentPage} ÆäÀÌÁö";
+        _pageText.text = $"{_currentPage} ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
     }
 
     public void GoAfterPage()
@@ -133,6 +139,25 @@ public class DeckGenerator : MonoBehaviour
                         x => _gridLayoutGroup.cellSize = x, new Vector2(330, 330), 0.2f).
        OnComplete(() => DOTween.To(() => new Vector2(330, 330),
                         x => _gridLayoutGroup.cellSize = x, new Vector2(320, 320), 0.2f));
+    }
+    public void ResetDeckList(List<DeckElement> deList)
+    {
+        foreach(Transform t in _deckElemetTrm)
+        {
+            Destroy(t.gameObject);
+        }
+
+        for (int i = 0; i < deList.Count; i++)
+        {
+            if (i % 3 == 0)
+            {
+                _deckElemetTrm.sizeDelta += new Vector2(0, 550);
+            }
+
+            CanUseDeckElement cude = Instantiate(_canUseDeckPrefab, _deckElemetTrm);
+            cude.SetDeckInfo(deList[i], this);
+            Debug.Log(cude);
+        }
     }
 
     protected virtual void SetSelectDeck(DeckElement deckElement)

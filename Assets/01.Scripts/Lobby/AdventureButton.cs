@@ -30,5 +30,6 @@ public class AdventureButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void PressButton()
     {
         _contentPanelEvent?.Invoke(_selectAdventureType);
+        _selectAdventureType.SetActive(true);
     }
 }
