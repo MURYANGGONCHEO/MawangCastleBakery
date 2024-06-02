@@ -52,6 +52,7 @@ public class SkillCardManagement : CardManagement
         {
             float x = _lastCardPos.x - (_activationTurmValue * (maxCount - i - 1));
             Vector2 targetPos = new Vector2(x, _lastCardPos.y);
+            Debug.Log(targetPos.y);
             Transform selectTrm = InCardZoneCatalogue[i].transform;
 
             selectTrm.SetParent(_activationCardZone);
@@ -104,7 +105,6 @@ public class SkillCardManagement : CardManagement
         InCardZoneCatalogue.Remove(selectCard);
 
         selectCard.ActiveInfo();
-        selectCard.battleController.BattleCutSlider.Reverting();
         UseAbility(selectCard);
     }
 
@@ -112,8 +112,6 @@ public class SkillCardManagement : CardManagement
     {
         selectCard.battleController.CameraController.
         StartCameraSequnce(selectCard.CardInfo.cameraSequenceData);
-
-        selectCard.battleController.BattleCutSlider.Cutting();
 
         selectCard.Abillity();
     }

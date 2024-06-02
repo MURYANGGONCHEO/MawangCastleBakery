@@ -23,11 +23,15 @@ public class TargettingMaskCreater : MonoBehaviour
 
     public void MaskDown(Enemy enemy)
     {
-        GetTargetMaskDic[enemy].gameObject.SetActive(false);
+        if(enemy == null) return;
+
+        GetTargetMaskDic[enemy].enabled = false;
     }
 
     public void MaskUp(Enemy enemy)
     {
-        GetTargetMaskDic[enemy].gameObject.SetActive(true);
+        if (enemy == null) return;
+
+        GetTargetMaskDic[enemy].enabled = true;
     }
 }

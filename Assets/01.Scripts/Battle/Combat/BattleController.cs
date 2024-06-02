@@ -13,9 +13,6 @@ public class SEList<T>
 
 public class BattleController : MonoSingleton<BattleController>
 {
-    [SerializeField] private BattleCutSlider _battleCutter;
-    public BattleCutSlider BattleCutSlider => _battleCutter;
-
     [SerializeField] private SEList<SEList<bool>> isStuck;
 
     public Enemy[] onFieldMonsterList;
@@ -210,9 +207,6 @@ public class BattleController : MonoSingleton<BattleController>
 
             onFieldMonsterList[idx] = selectEnemy;
             selectEnemy.target = Player;
-
-            selectEnemy.OnAttackStart += _battleCutter.Cutting;
-            selectEnemy.OnAttackEnd += _battleCutter.Reverting;
 
             SpawnEnemyList.Add(selectEnemy);
             _hpBarMaker.SetupHpBar(selectEnemy);

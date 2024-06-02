@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class ItemContainer : MonoBehaviour
 {
-    public Dictionary<string, ItemDataSO> ItemDataDic { get; private set; } = new();
+    private Dictionary<string, ItemDataSO> _itemDataDic = new();
     [SerializeField] private ItemDataSO[] _itemDataArr;
 
     private void Awake()
     {
         foreach (var itemData in _itemDataArr)
         {
-            ItemDataDic.Add(itemData.itemName, itemData);
+            _itemDataDic.Add(itemData.itemName, itemData);
         }
+    }
+
+    public ItemDataSO GetItemDataByName(string name)
+    {
+        return _itemDataDic[name];
     }
 }

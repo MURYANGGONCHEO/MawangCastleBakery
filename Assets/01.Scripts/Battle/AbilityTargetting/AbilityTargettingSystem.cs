@@ -66,7 +66,6 @@ public class AbilityTargettingSystem : MonoBehaviour
     }
     public void ActivationCardSelect(CardBase selectCard)
     {
-        Debug.Log("FF");
         List<CardBase> onActiveZoneList = CardReader.SkillCardManagement.InCardZoneList;
 
         foreach (CardBase cb in onActiveZoneList)
@@ -154,7 +153,9 @@ public class AbilityTargettingSystem : MonoBehaviour
         ata.transform.position = selectCard.transform.position;
 
         Vector2 screenPoint = MaestrOffice.GetScreenPosToWorldPos(_battleController.Player.transform.position);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.Instance.CanvasTrm, screenPoint, UIManager.Instance.Canvas.worldCamera, out Vector2 anchoredPosition);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle
+        (UIManager.Instance.CanvasTrm, screenPoint, UIManager.Instance.Canvas.worldCamera, 
+        out Vector2 anchoredPosition);
 
         int idx = _getTargetArrowDic[_selectCard].Count - 1;
         _getTargetArrowDic[_selectCard][idx].ArrowBinding(_selectCard.transform, anchoredPosition);
@@ -257,6 +258,7 @@ public class AbilityTargettingSystem : MonoBehaviour
         {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.Instance.CanvasTrm,
                                                                 Input.mousePosition, Camera.main, out mousePos);
+            Debug.Log(mousePos);
         }
 
         int idx = _getTargetArrowDic[_selectCard].Count - 1;
