@@ -12,6 +12,7 @@ using System;
 public abstract class CardBase : MonoBehaviour,
                                  IPointerEnterHandler, IPointerExitHandler
 {
+    public int CardID { get; set; }
     [SerializeField] private float _toMovePosInSec;
     public RectTransform VisualRectTrm { get; private set; }
     public CardInfo CardInfo => _myCardInfo;

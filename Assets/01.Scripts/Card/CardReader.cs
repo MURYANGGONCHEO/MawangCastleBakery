@@ -7,7 +7,7 @@ public static class CardReader
 {
     public static List<CardBase> _inHandCardList = new List<CardBase>();
     private static List<CardBase> _inDeckCardList = new List<CardBase>();
-    public static List<CardBase> captureHandList = new List<CardBase>();
+    public static List<(int, CardBase)> captureHandList = new ();
 
     private static CardDrawer _cardDrawer;
     public static CardDrawer CardDrawer
@@ -100,7 +100,7 @@ public static class CardReader
 
         foreach(CardBase cb in _inHandCardList)
         {
-            captureHandList.Add(cb);
+            captureHandList.Add((cb.CardID, cb));
         }
     }
 
@@ -110,7 +110,7 @@ public static class CardReader
 
         for(int i = 0; i < captureHandList.Count; i++)
         {
-            if (captureHandList[i].CardInfo != _inHandCardList[i].CardInfo) return false;
+            if (captureHandList[i].Item1 != _inHandCardList[i].CardID) return false;
         }
         return true;
     }
@@ -126,9 +126,9 @@ public static class CardReader
     {
         _inHandCardList.Clear();
 
-        foreach(CardBase cb in captureHandList)
+        foreach(var cb in captureHandList)
         {
-            _inHandCardList.Add(cb);
+            _inHandCardList.Add(cb.Item2);
         }
     }
 
