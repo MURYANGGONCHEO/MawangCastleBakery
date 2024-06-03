@@ -25,12 +25,12 @@ public class Stove : MonoBehaviour, IBakingProductionObject
     public void ExitProduction()
     {
         transform.SmartScale(_normalScale, EasingTime);
+        transform.DOLocalMoveY(1.7f, EasingTime);
     }
 
     public void DoughInStove(int grade)
     {
         Debug.Log(grade);
-        float shakeTime = 1, shakePower = 1, shakeSize = 1, scaleTime = 1;
 
         SpriteRenderer qMarkRenderer = _qMark.GetComponent<SpriteRenderer>();
 

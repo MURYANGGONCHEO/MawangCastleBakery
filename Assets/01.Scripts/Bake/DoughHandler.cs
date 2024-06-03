@@ -110,4 +110,11 @@ public class DoughHandler : MonoBehaviour
             transform.position = _doughNormalPos;
         }
     }
+
+    public void ResetDoughTrm()
+    {
+        _isStartShake = false;
+        transform.position = _doughNormalPos;
+        transform.DOScale(0.7f, 0.5f);
+    }
 }
