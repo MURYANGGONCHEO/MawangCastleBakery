@@ -135,7 +135,6 @@ public class SkillCardManagement : CardManagement
             
             selectCard.CardRecordList.Add( record );
         }
-        Debug.Log($"SetUp : {CardReader.InHandCardList.IndexOf(selectCard)}, {CardReader.InHandCardList.Count}");
 
         CardReader.RemoveCardInHand(CardReader.OnPointerCard);
         InCardZoneCatalogue.Add(selectCard);
@@ -160,7 +159,6 @@ public class SkillCardManagement : CardManagement
         Sequence seq = DOTween.Sequence();
 
         int maxIdx = InCardZoneCatalogue.Count - 1;
-        Debug.Log(maxIdx);
         if (!(maxIdx <= 0))
         {
             seq.Append(selectCard.transform.

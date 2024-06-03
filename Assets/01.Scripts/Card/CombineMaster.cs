@@ -25,6 +25,7 @@ public class CombineMaster : MonoBehaviour
         {
             CardBase selectC = CardReader.GetCardinfoInHand(i);
             selectC.SetUpCard(CardReader.GetHandPos(selectC), false);
+            selectC.SaveHandIDX = CardReader.InHandCardList.IndexOf(selectC);
         }
 
         CardReader.CardDrawer.CanDraw = true;

@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public record CardRecord
+public class CardRecord
 {
-    public int HandIdx { get; }
     public int CardID { get; }
     public string CardName { get; }
     public CombineLevel CombineLevel { get; }
 
     public CardRecord(int handIdx, int cardIdx, string info, CombineLevel combineLv)
-    => (HandIdx, CardID, CardName, CombineLevel) = (handIdx, cardIdx, info, combineLv);
+    => (CardID, CardName, CombineLevel) = (cardIdx, info, combineLv);
 }
 
 public class HandRecover : MonoBehaviour
@@ -27,14 +26,16 @@ public class HandRecover : MonoBehaviour
     {
         if (card.CardID != _inWaitZoneCardList[_inWaitZoneCardList.Count - 1].CardID) return;
 
+        CostCalculator.GetCost(card.AbilityCost);
+
         CardRecord myRec = card.CardRecordList.FirstOrDefault(x => x.CardID == card.CardID);
-        CardReader.InHandCardList.Insert(myRec.HandIdx, card);
-        Debug.Log($"Init : {myRec.HandIdx}");
+        CardReader.InHandCardList.Insert(card.SaveHandIDX, card);
         card.transform.SetParent(_cardHandZone);
 
         _inWaitZoneCardList.Remove(card);
         RestoreNotExistCard(card.CardRecordList);
 
+        card.IsOnActivationZone = false;
         _skillCardManagement.SetSkillCardInHandZone();
     }
 
@@ -47,7 +48,7 @@ public class HandRecover : MonoBehaviour
         foreach(var card in _inWaitZoneCardList)
         {
             CardRecord myRec = oldCard.CardRecordList.FirstOrDefault(x => x.CardID == card.CardID);
-            CardReader.InHandCardList.Insert(myRec.HandIdx, card);
+            CardReader.InHandCardList.Insert(card.SaveHandIDX, card);
             card.transform.SetParent(_cardHandZone);
         }
 
@@ -66,12 +67,11 @@ public class HandRecover : MonoBehaviour
 
             if (recordCard == null)
             {
-                CardBase cb = Instantiate(DeckManager.Instance.GetCard(recordCard.CardInfo.CardName), _cardHandZone);
-                cb.SetInfo(rc.CardID, rc.CombineLevel);
+                CardBase cb = Instantiate(DeckManager.Instance.GetCard(rc.CardName), _cardHandZone);
+                cb.SetInfo(rc.CardID, 0, rc.CombineLevel);
                 cb.transform.position = _resotreCardZone.position;
 
-                Debug.Log($"Init : {rc.HandIdx}");
-                CardReader.InHandCardList.Insert(rc.HandIdx, cb);
+                CardReader.InHandCardList.Insert(recordCard.SaveHandIDX, cb);
             }
             else
             {
