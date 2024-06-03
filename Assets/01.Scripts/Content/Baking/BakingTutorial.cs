@@ -57,7 +57,6 @@ public class BakingTutorial : MonoBehaviour
 
         DataManager.Instance.CheckOnFirstData.isFirstOnBaking = false;
         DataManager.Instance.SaveData(DataManager.Instance.CheckOnFirstData, 
-                                      DataKeyList.checkIsFirstPlayGameDataKey);
                                       DataManager.checkFirstDataKey);
     }
 }

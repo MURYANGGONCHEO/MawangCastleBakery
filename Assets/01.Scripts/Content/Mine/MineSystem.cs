@@ -18,35 +18,35 @@ public class MineSystem : MonoBehaviour
 
     private void Start()
     {
-        if(DataManager.Instance.IsHaveData(DataKeyList.adventureDataKey))  
+        if (DataManager.Instance.IsHaveData(DataKeyList.adventureDataKey))
         {
             _addData = DataManager.Instance.LoadData<AdventureData>(DataKeyList.adventureDataKey);
-        if(DataManager.Instance.IsHaveData(_adventureKey))  
-        {
-            _addData = DataManager.Instance.LoadData<AdventureData>(_adventureKey);
-        }
+            if (DataManager.Instance.IsHaveData(_adventureKey))
+            {
+                _addData = DataManager.Instance.LoadData<AdventureData>(_adventureKey);
+            }
 
-        CurrentMineInfo = _mineContainer.GetInfoByFloor(Convert.ToInt16(_addData.ChallingingMineFloor));
-        Debug.Log(CurrentMineInfo);
-        MapManager.Instanace.SelectStageData = CurrentMineInfo.stageData;
-        MineUI mineUI = UIManager.Instance.GetSceneUI<MineUI>();
+            CurrentMineInfo = _mineContainer.GetInfoByFloor(Convert.ToInt16(_addData.ChallingingMineFloor));
+            Debug.Log(CurrentMineInfo);
+            MapManager.Instanace.SelectStageData = CurrentMineInfo.stageData;
+            MineUI mineUI = UIManager.Instance.GetSceneUI<MineUI>();
 
-        if(!CurrentMineInfo.IsClearThisStage)
-        {
-            mineUI.SetFloor(CurrentMineInfo.Floor.ToString(),
-                        CurrentMineInfo.stageData.stageName,
-                        CurrentMineInfo.ClearGem,
-                        CurrentMineInfo.IsClearThisStage);
-            mineUI.SetUpFloor();
+            if (!CurrentMineInfo.IsClearThisStage)
+            {
+                mineUI.SetFloor(CurrentMineInfo.Floor.ToString(),
+                            CurrentMineInfo.stageData.stageName,
+                            CurrentMineInfo.ClearGem,
+                            CurrentMineInfo.IsClearThisStage);
+                mineUI.SetUpFloor();
 
-            mineUI.StagePanelAnimator.enabled = true;
-        }
-        else
-        {
-            ClearStage();
+                mineUI.StagePanelAnimator.enabled = true;
+            }
+            else
+            {
+                ClearStage();
+            }
         }
     }
-
     public void ClearStage()
     {
         CurrentMineInfo.IsClearThisStage = true;

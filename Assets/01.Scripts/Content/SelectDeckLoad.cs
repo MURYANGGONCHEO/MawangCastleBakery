@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class SelectDeckLoad : MonoBehaviour
 {
-    private void Start()
-    {
-        if(DataManager.Instance.IsHaveData(DataKeyList.playerDeckDataKey))
-        {
-            List<string> deckData =
-            DataManager.Instance.LoadData<PlayerSelectDeckInfoData>(DataKeyList.playerDeckDataKey).
     private const string _saveDeckKey = "PlayersDeck";
 
     private void Start()

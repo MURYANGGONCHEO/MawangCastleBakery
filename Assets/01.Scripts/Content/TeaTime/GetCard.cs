@@ -6,11 +6,6 @@ public class GetCard : MonoBehaviour
 {
     private CanUseCardData _canUseCardData = new CanUseCardData();
 
-    public void GetCakeInfo(CardInfo cardInfo)
-    {
-        if(DataManager.Instance.IsHaveData(DataKeyList.canUseCardDataKey))
-        {
-            _canUseCardData = DataManager.Instance.LoadData<CanUseCardData>(DataKeyList.canUseCardDataKey);
     private const string CardDataKey = "CanUseCardsDataKey";
 
     public void GetCakeInfo(CardInfo cardInfo)

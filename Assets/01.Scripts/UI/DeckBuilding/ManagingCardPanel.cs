@@ -29,6 +29,4 @@ public class ManagingCardPanel : MonoBehaviour
         gameObject.SetActive(false);
         _unMarkingEvent?.Invoke();
     }
-        }
-    }
 }

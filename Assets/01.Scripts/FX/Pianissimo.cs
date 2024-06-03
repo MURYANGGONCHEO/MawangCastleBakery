@@ -21,9 +21,6 @@ public class Pianissimo : MonoBehaviour
 
     private void Ready()
     {
-        Vector3 dir = (transform.position - target.position).normalized;
-    private void Ready()
-    {
         Vector3 dir = (transform.position - _target.position).normalized;
         Quaternion quat = Quaternion.LookRotation(dir);
 

@@ -41,40 +41,29 @@ public class EditDeckPanel : MonoBehaviour
 
     public void RemoveDeck()
     {
-        if(DataManager.Instance.IsHaveData(DataKeyList.saveDeckDataKey))
+        if (DataManager.Instance.IsHaveData(DataKeyList.saveDeckDataKey))
         {
             _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
-        if(DataManager.Instance.IsHaveData(_saveDeckDataKey))
-        {
-            _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(_saveDeckDataKey);
+            if (DataManager.Instance.IsHaveData(_saveDeckDataKey))
+            {
+                _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(_saveDeckDataKey);
+            }
+
+            DeckElement de = _saveDeckData.SaveDeckList.Find(x => x.deckName == _editDeckElement.deckName);
+            _saveDeckData.SaveDeckList.Remove(de);
+            DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
+            DataManager.Instance.SaveData(_saveDeckData, _saveDeckDataKey);
+            _deckRemoveEvent?.Invoke();
+            _reloadEvent?.Invoke(_saveDeckData.SaveDeckList);
+
+            gameObject.SetActive(false);
         }
-
-        DeckElement de = _saveDeckData.SaveDeckList.Find(x => x.deckName == _editDeckElement.deckName);
-        _saveDeckData.SaveDeckList.Remove(de);
-        DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
-        DataManager.Instance.SaveData(_saveDeckData, _saveDeckDataKey);
-        _deckRemoveEvent?.Invoke();
-        _reloadEvent?.Invoke(_saveDeckData.SaveDeckList);
-
-        gameObject.SetActive(false);
     }
-
     public void EditDeck()
     {
         if (DataManager.Instance.IsHaveData(DataKeyList.saveDeckDataKey))
         {
             _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
-        }
-
-        DeckElement de = _saveDeckData.SaveDeckList.Find(x => x.deckName == _editDeckElement.deckName);
-        int idx = _saveDeckData.SaveDeckList.IndexOf(de);
-        DeckManager.Instance.SaveDummyDeck = (de, idx);
-        _saveDeckData.SaveDeckList.Remove(de);
-
-        DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
-        if (DataManager.Instance.IsHaveData(_saveDeckDataKey))
-        {
-            _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(_saveDeckDataKey);
         }
 
         DeckElement de = _saveDeckData.SaveDeckList.Find(x => x.deckName == _editDeckElement.deckName);

@@ -144,7 +144,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Main_Ins: 6.6
+    - _Main_Ins: 5.77
     - _Main_Pow: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
@@ -189,6 +189,6 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _edge_color: {r: 0, g: 0, b: 0, a: 0}
-    - _main_color_a: {r: 1, g: 1, b: 1, a: 0}
+    - _main_color_a: {r: 11.181763, g: 11.181763, b: 11.181763, a: 0}
     - _main_color_b: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
