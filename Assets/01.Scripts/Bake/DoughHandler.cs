@@ -97,7 +97,7 @@ public class DoughHandler : MonoBehaviour
     {
         if (_IsInRange)
         {
-            _isStartShake = true;
+            _isStartShake = true; 
             transform.DOScale(Vector2.zero, 0.3f)
                 .OnComplete(() =>
                 {
