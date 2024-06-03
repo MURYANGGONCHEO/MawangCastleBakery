@@ -29,6 +29,9 @@ public class TeaTimeUI : SceneUI
     [SerializeField]
     private TextMeshProUGUI cardName;
 
+    [SerializeField]
+    private GameObject _tutorialPanel;
+
     public void SetCard(CardInfo cardInfo)
     {
         cardImage.sprite = cardInfo.CardVisual;
@@ -42,4 +45,16 @@ public class TeaTimeUI : SceneUI
         director.Play();
     }
 
+    public override void SceneUIStart()
+    {
+        base.SceneUIStart();
+
+        CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);
+        if (!cf.isFirstOnTeaTime)
+        {
+            _tutorialPanel.SetActive(true);
+            cf.isFirstOnTeaTime = true;
+            DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
+        }
+    }
 }

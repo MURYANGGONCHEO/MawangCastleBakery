@@ -14,6 +14,9 @@ public class CardManagingUI : SceneUI
     [SerializeField] private UnityEvent<float> _onPressLevelUpEvent;
     [SerializeField] private UnityEvent<CardInfo> _onSelectToManagingCardEvent;
 
+    [SerializeField]
+    private GameObject _tutorialPanel;
+
     public void PressLevelUpButton()
     {
         if (CurrentCardShameElementInfo.cardLevel >= 5)
@@ -48,5 +51,18 @@ public class CardManagingUI : SceneUI
     public bool CanUseGoods(int toUseGoods)
     {
         return LoadStoneCount >= toUseGoods;
+    }
+
+    public override void SceneUIStart()
+    {
+        base.SceneUIStart();
+
+        CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);
+        if (!cf.isFirstOnCardUpgrade)
+        {
+            _tutorialPanel.SetActive(true);
+            cf.isFirstOnCardUpgrade = true;
+            DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
+        }
     }
 }
