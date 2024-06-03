@@ -28,9 +28,16 @@ public abstract class TutorialBase : MonoBehaviour
     public void FlipPageNext() => _panelIdx = Mathf.Clamp(_panelIdx + 1, 0, _panelList.Count - 1);
     public void FlipPageBefore() => _panelIdx = Mathf.Clamp(_panelIdx - 1, 0, _panelList.Count - 1);
 
+    public void OnEnable()
+    {
+        _panelIdx = 0;
+        UpdatePanel();
+    }
+
     // Change displayed image & description
     public void UpdatePanel()
     {
+        Debug.Log($"PanelIdx is {_panelIdx}");
         _curPanelImg.sprite = _panelList[_panelIdx % _panelList.Count].img;
         _curPanelDesc.text = _panelList[_panelIdx % _panelList.Count].desc;
     }
