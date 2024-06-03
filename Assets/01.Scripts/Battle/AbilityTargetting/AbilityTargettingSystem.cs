@@ -258,7 +258,6 @@ public class AbilityTargettingSystem : MonoBehaviour
         {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.Instance.CanvasTrm,
                                                                 Input.mousePosition, Camera.main, out mousePos);
-            Debug.Log(mousePos);
         }
 
         int idx = _getTargetArrowDic[_selectCard].Count - 1;

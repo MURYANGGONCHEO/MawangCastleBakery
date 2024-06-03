@@ -8,11 +8,16 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using System;
+using UnityEngine.Events;
 
 public abstract class CardBase : MonoBehaviour,
-                                 IPointerEnterHandler, IPointerExitHandler
+                                 IPointerClickHandler,
+                                 IPointerEnterHandler, 
+                                 IPointerExitHandler
 {
     public int CardID { get; set; }
+    public List<CardRecord> CardRecordList { get; set; } = new ();
+    public Action<CardBase> RecoverEvent { get; set; }
     [SerializeField] private float _toMovePosInSec;
     public RectTransform VisualRectTrm { get; private set; }
     public CardInfo CardInfo => _myCardInfo;
@@ -90,6 +95,12 @@ public abstract class CardBase : MonoBehaviour,
     private CardInfoBattlePanel _cardInfoBattlePanel;
     public bool Paneling { get; private set; }
 
+    public void SetInfo(int cID, CombineLevel cLv)
+    {
+        CardID = cID;
+        CombineLevel = cLv;
+    }
+
     private void Awake()
     {
         VisualRectTrm = VisualTrm.GetComponent<RectTransform>();
@@ -139,6 +150,7 @@ public abstract class CardBase : MonoBehaviour,
         Sequence seq = DOTween.Sequence();
         seq.Append(transform.DOLocalMove(movePos, _toMovePosInSec).SetEase(Ease.OutBack));
         seq.Join(transform.DOLocalRotateQuaternion(Quaternion.identity, _toMovePosInSec).SetEase(Ease.OutBack));
+        seq.Join(transform.DOScale(1, _toMovePosInSec).SetEase(Ease.OutBack));
         seq.AppendCallback(() =>
         {
             if(generateCallback)
@@ -239,5 +251,20 @@ public abstract class CardBase : MonoBehaviour,
     {
         Paneling = false;
         _cardInfoBattlePanel.SetDown();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!IsOnActivationZone) return;
+
+        var initList = CardReader.SkillCardManagement.InCardZoneList;
+
+        if (initList[initList.Count - 1] != this)
+        {
+            // Something;
+            return;
+        }
+
+        RecoverEvent?.Invoke(this);
     }
 }

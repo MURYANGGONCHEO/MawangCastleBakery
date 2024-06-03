@@ -121,6 +121,22 @@ public class SkillCardManagement : CardManagement
         selectCard.CanUseThisCard = false;
 
         selectCard.transform.SetParent(_cardWaitZone);
+
+        selectCard.CardRecordList.Clear();
+        foreach(var c in CardReader.InHandCardList)
+        {
+            CardRecord record = new CardRecord
+            (
+                CardReader.InHandCardList.IndexOf(c),
+                c.CardID,
+                c.CardInfo.CardName,
+                c.CombineLevel
+            );
+            
+            selectCard.CardRecordList.Add( record );
+        }
+        Debug.Log($"SetUp : {CardReader.InHandCardList.IndexOf(selectCard)}, {CardReader.InHandCardList.Count}");
+
         CardReader.RemoveCardInHand(CardReader.OnPointerCard);
         InCardZoneCatalogue.Add(selectCard);
         selectCard.IsOnActivationZone = true;
@@ -131,20 +147,27 @@ public class SkillCardManagement : CardManagement
         CardReader.CombineMaster.CombineGenerate();
         CardReader.CaptureHand();
     }
+
+    public void SetSkillCardInHandZone()
+    {
+        CardReader.CombineMaster.CombineGenerate();
+        CardReader.CaptureHand();
+    }
+
     private void GenerateCardPosition(CardBase selectCard)
     {
         CardReader.AbilityTargetSystem.AllGenerateChainPos(true);
         Sequence seq = DOTween.Sequence();
 
         int maxIdx = InCardZoneCatalogue.Count - 1;
-
-        if (maxIdx != 0)
+        Debug.Log(maxIdx);
+        if (!(maxIdx <= 0))
         {
             seq.Append(selectCard.transform.
             DOLocalMove(new Vector2(InCardZoneCatalogue[maxIdx - 1].transform.localPosition.x
                                     + 100, 150), 0.3f));
         }
-        else
+        else if(maxIdx >= 0)
         {
             seq.Append(selectCard.transform.DOLocalMove(new Vector3(0, 150, 0), 0.3f));
         }
