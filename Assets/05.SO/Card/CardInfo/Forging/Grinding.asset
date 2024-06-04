@@ -15,8 +15,10 @@ MonoBehaviour:
   CardName: "\uC22B\uB3CC\uC9C8"
   CardType: 0
   CardVisual: {fileID: 21300000, guid: d0e3c887fba56db4b9618e7e87ba3909, type: 3}
+  skillPersonalColor: {r: 1, g: 1, b: 1, a: 1}
   abilityAnimation: {fileID: 7400000, guid: fa0da448e6c6a9845abf8b8b082d79f8, type: 2}
   cardShameData: {fileID: 11400000, guid: 36264808fa0052c43ac50af97fa422c3, type: 2}
+  cameraSequenceData: {fileID: 11400000, guid: d0e1f4e53e27af5498c0b6b93001bb07, type: 2}
   hitEffect: {fileID: 0}
   targetEffect: {fileID: 0}
   AbillityInfo: "\uD14C\uC2A4\uD2B8: \uACF5\uC99D-\uC2A4\uD0DD \uCD94\uAC00"
