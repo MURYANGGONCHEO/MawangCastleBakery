@@ -10,7 +10,7 @@ public class DeckChangingObserver : MonoBehaviour
     [SerializeField] private DeckBuilder _deckBuilder;
     [SerializeField] private TMP_InputField _deckName;
 
-    private void Awake()
+    private void Start()
     {
         _deckBuilder.selectCardList.ListChanged += HandleDeckChange;
         _deckName.onValueChanged.AddListener(HandleDeckNameChange);

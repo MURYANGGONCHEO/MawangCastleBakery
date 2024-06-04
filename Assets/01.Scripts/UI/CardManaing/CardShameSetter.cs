@@ -22,9 +22,7 @@ public class CardShameSetter : CardSetter
         int shameType = (int)(Mathf.Log((int)shameData.cardShameType) / Mathf.Log(2));
 
         return (_shameIconSprite[shameType], _shameTypeName[shameType],
-                 CardManagingHelper.GetAfterLevelShame(data, shameData.cardShameType, combineLevel), 
-                 CardManagingHelper.GetCardShame(data, shameData.cardShameType, combineLevel), 
-                 shameData.info);
+                 CardManagingHelper.GetAfterLevelShame(data, shameData.cardShameType, combineLevel), shameData.currentShame, shameData.info);
     }
 
     private (float, float) GetGookBapShame(CardShameElementSO data, int combineLevel)

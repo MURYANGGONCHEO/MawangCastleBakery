@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _USE_CUSTOMDATA_ON
+  - _USE_MAINTEXALPHA_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -41,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: 5738d7f1aae2de745ad27bd4afbaa1c3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 81e224360178f24459f7711b39b861c4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -49,6 +50,22 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _diss_normal_tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _grad_tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _normal_tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -67,6 +84,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
+    - _CULLMODE: 0
     - _Dissolve: 1
     - _Dissolve1: 1
     - _EnableExternalAlpha: 0
@@ -80,10 +98,28 @@ Material:
     - _QueueOffset: 0
     - _Use_Customdata: 1
     - _Use_Customdata1: 0
+    - _Use_ToonDissolve: 0
+    - _Use_grad: 0
+    - _diss_normal_power: 0
+    - _diss_normal_upanner: 0
+    - _diss_normal_vpanner: 0
+    - _edge_width: 0.06
+    - _grad_intencity: 0
+    - _main_upanner: 0
+    - _main_vpanner: 0
+    - _normal_radial: 0
+    - _normal_str: 0
+    - _normal_upanner: 1
+    - _normal_vpanner: 1
+    - _use_mainTexAlpha: 1
+    - _use_other_diss: 0
+    - _use_polar: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _Main_Color: {r: 1, g: 1, b: 1, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _edge_color: {r: 0, g: 0, b: 0, a: 0}
+    - _main_color_a: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

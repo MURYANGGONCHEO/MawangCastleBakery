@@ -20751,7 +20751,7 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 415344019042470622, guid: c7d336668f4f3764895f1525a59b2264, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1620137420787588280}
   - key: {fileID: -6706168756617508198, guid: c7d336668f4f3764895f1525a59b2264, type: 2}
     value: {fileID: 3253568800380318909}
   - key: {fileID: 662265817019942415, guid: c7d336668f4f3764895f1525a59b2264, type: 2}
@@ -20951,18 +20951,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ActiveSelectCakePanel, Assembly-CSharp
         m_MethodName: ActiveCakeInventoryPanel
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 5428855754138009248}
-        m_TargetAssemblyTypeName: CakeInventory, Assembly-CSharp
-        m_MethodName: CreateCakeElement
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -62578,6 +62566,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 757d355be62adc141a6b27ad922bf713, type: 3}
+--- !u!95 &1620137420787588280 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2526886170648321473, guid: 757d355be62adc141a6b27ad922bf713, type: 3}
+  m_PrefabInstance: {fileID: 3849082293780709753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2938129233164091467 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2138359950154678578, guid: 757d355be62adc141a6b27ad922bf713, type: 3}

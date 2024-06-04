@@ -9,11 +9,12 @@ public class CakeData
     public bool IsFavorites;
     public int Count = 1;
 
-    public CakeData(string _cakeName,  bool _isFavorites)
+    public CakeData(string _cakeName, bool _isFavorites)
     {
         CakeName = _cakeName;
         IsFavorites = _isFavorites;
     }
+
 }
 
 public class BakeryData : CanSaveData

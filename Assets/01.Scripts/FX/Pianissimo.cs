@@ -7,6 +7,7 @@ public class Pianissimo : MonoBehaviour
 {
     public Transform target;
     private float _speed = 0.0f;
+    private Transform _target;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class Pianissimo : MonoBehaviour
 
     private void Ready()
     {
-        Vector3 dir = (transform.position - target.position).normalized;
+        Vector3 dir = (transform.position - _target.position).normalized;
         Quaternion quat = Quaternion.LookRotation(dir);
 
         Sequence seq = DOTween.Sequence();

@@ -23,6 +23,7 @@ public class MouseUIPicker : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerEventData, results);
 
+        Debug.Log(results.Count);
         foreach (RaycastResult result in results)
         {
             Debug.Log($"{result.gameObject.name}, Parent : {result.gameObject.transform.parent.gameObject.name}" );

@@ -85,5 +85,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyHealthBarParent: {fileID: 4205190174743504771}
-  _buffingPanerlTrm: {fileID: 0}
-  _hpBarPrefab: {fileID: 4156190892487424242, guid: 29ae17c425a2ab34b9f75773525f22dd, type: 3}
+  _hpBarPrefab: {fileID: 741867976710962064, guid: 29ae17c425a2ab34b9f75773525f22dd, type: 3}

@@ -13,8 +13,8 @@ public class CanUseDeckElement : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     [SerializeField] private Image[] _cardGroupArr = new Image[5];
     [SerializeField] private TextMeshProUGUI _deckNameText;
-    [SerializeField] private float _onPointerEnterMoveY; 
-    [SerializeField] private float _onPointerExitMoveY; 
+    [SerializeField] private float _onPointerEnterMoveY;
+    [SerializeField] private float _onPointerExitMoveY;
     private DeckElement _deckInfo;
 
     [SerializeField] private CanvasGroup _deckSelectBubble;
@@ -58,7 +58,7 @@ public class CanUseDeckElement : MonoBehaviour, IPointerEnterHandler, IPointerEx
         DeckInfo = deckInfo;
         _deckGenerator = deckGenerator;
 
-        for(int i = 0; i < _cardGroupArr.Length; i++)
+        for (int i = 0; i < _cardGroupArr.Length; i++)
         {
             CardBase card = DeckManager.Instance.GetCard(deckInfo.deck[i]);
             _cardGroupArr[i].sprite = card.CardInfo.CardVisual;
@@ -68,9 +68,9 @@ public class CanUseDeckElement : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         _deckName = deckInfo.deckName;
 
-        if(_deckName.Length > 6)
+        if (_deckName.Length > 6)
         {
-            _deckName = $"{_deckName.Substring(0, 6)}.."; 
+            _deckName = $"{_deckName.Substring(0, 6)}..";
         }
 
         _deckNameText.text = _deckName;
