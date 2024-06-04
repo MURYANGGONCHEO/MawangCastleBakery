@@ -111,7 +111,7 @@ Material:
     - _multiplier: 100
     - _noise_size: 64.8
     - _noise_str: 1.5
-    - _outline_thick: 288.47
+    - _outline_thick: 286.08
     - _rot: 28.31
     - _use_aura: 0
     - _use_aura_mask: 0
@@ -125,6 +125,6 @@ Material:
     - _dissolve_color: {r: 0, g: 0, b: 0, a: 0}
     - _line_color: {r: 3.4415905, g: 2.6461287, b: 2.6461287, a: 0}
     - _main_color: {r: 1, g: 1, b: 1, a: 1}
-    - _outline_color: {r: 1, g: 0, b: 0, a: 1}
-    - _sub_color: {r: 1.9999999, g: 1.9999999, b: 1.9999999, a: 0}
+    - _outline_color: {r: 1, g: 0.5424528, b: 0.5424528, a: 1}
+    - _sub_color: {r: 3.5648696, g: 3.5648696, b: 3.5648696, a: 0}
   m_BuildTextureStacks: []
