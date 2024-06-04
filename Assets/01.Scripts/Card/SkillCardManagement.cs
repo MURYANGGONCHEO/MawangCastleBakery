@@ -122,20 +122,6 @@ public class SkillCardManagement : CardManagement
 
         selectCard.transform.SetParent(_cardWaitZone);
 
-        selectCard.CardRecordList.Clear();
-        foreach(var c in CardReader.InHandCardList)
-        {
-            CardRecord record = new CardRecord
-            (
-                CardReader.InHandCardList.IndexOf(c),
-                c.CardID,
-                c.CardInfo.CardName,
-                c.CombineLevel
-            );
-            
-            selectCard.CardRecordList.Add( record );
-        }
-
         CardReader.RemoveCardInHand(CardReader.OnPointerCard);
         InCardZoneCatalogue.Add(selectCard);
         selectCard.IsOnActivationZone = true;

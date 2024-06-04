@@ -6,12 +6,18 @@ using UnityEngine;
 
 public class CardRecord
 {
-    public int CardID { get; }
-    public string CardName { get; }
-    public CombineLevel CombineLevel { get; }
+    public int HandIdx { get; private set; }
+    public int CardID { get; private set; }
+    public string CardName { get; private set; }
+    public CombineLevel CombineLevel { get; private set; }
 
-    public CardRecord(int handIdx, int cardIdx, string info, CombineLevel combineLv)
-    => (CardID, CardName, CombineLevel) = (cardIdx, info, combineLv);
+    public CardRecord(int handIdx, int cardIdx, string cName, CombineLevel combineLv)
+    {
+        HandIdx = handIdx;  
+        CardID = cardIdx;
+        CardName = cName;
+        CombineLevel = combineLv;
+    }
 }
 
 public class HandRecover : MonoBehaviour
@@ -29,7 +35,8 @@ public class HandRecover : MonoBehaviour
         CostCalculator.GetCost(card.AbilityCost);
 
         CardRecord myRec = card.CardRecordList.FirstOrDefault(x => x.CardID == card.CardID);
-        CardReader.InHandCardList.Insert(card.SaveHandIDX, card);
+        Debug.Log($"{myRec.HandIdx}");
+        CardReader.InHandCardList.Insert(myRec.HandIdx, card);
         card.transform.SetParent(_cardHandZone);
 
         _inWaitZoneCardList.Remove(card);
@@ -48,7 +55,7 @@ public class HandRecover : MonoBehaviour
         foreach(var card in _inWaitZoneCardList)
         {
             CardRecord myRec = oldCard.CardRecordList.FirstOrDefault(x => x.CardID == card.CardID);
-            CardReader.InHandCardList.Insert(card.SaveHandIDX, card);
+            CardReader.InHandCardList.Insert(myRec.HandIdx, card);
             card.transform.SetParent(_cardHandZone);
         }
 
@@ -68,10 +75,10 @@ public class HandRecover : MonoBehaviour
             if (recordCard == null)
             {
                 CardBase cb = Instantiate(DeckManager.Instance.GetCard(rc.CardName), _cardHandZone);
-                cb.SetInfo(rc.CardID, 0, rc.CombineLevel);
+                cb.SetInfo(rc.CardID, rc.CombineLevel);
                 cb.transform.position = _resotreCardZone.position;
 
-                CardReader.InHandCardList.Insert(recordCard.SaveHandIDX, cb);
+                CardReader.InHandCardList.Insert(rc.HandIdx, cb);
             }
             else
             {

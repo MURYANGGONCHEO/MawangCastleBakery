@@ -16,7 +16,6 @@ public abstract class CardBase : MonoBehaviour,
                                  IPointerExitHandler
 {
     public int CardID { get; set; }
-    public int SaveHandIDX { get; set; }
     public List<CardRecord> CardRecordList { get; set; } = new ();
     public Action<CardBase> RecoverEvent { get; set; }
     [SerializeField] private float _toMovePosInSec;
@@ -36,7 +35,10 @@ public abstract class CardBase : MonoBehaviour,
         set
         {
             _combineLevel = value;
-            _objArr[(int)_combineLevel].SetActive(true);
+            for(int i = 0; i < _objArr.Length; i++)
+            {
+                _objArr[i].SetActive(i <= (int)_combineLevel);
+            }
         }
     }
     [SerializeField] private Transform visualTrm;
@@ -96,9 +98,8 @@ public abstract class CardBase : MonoBehaviour,
     private CardInfoBattlePanel _cardInfoBattlePanel;
     public bool Paneling { get; private set; }
 
-    public void SetInfo(int cID, int hIdx, CombineLevel cLv)
+    public void SetInfo(int cID, CombineLevel cLv)
     {
-        SaveHandIDX = hIdx;
         CardID = cID;
         CombineLevel = cLv;
     }
@@ -146,8 +147,6 @@ public abstract class CardBase : MonoBehaviour,
     }
     public void SetUpCard(float moveToXPos, bool generateCallback)
     {
-        SaveHandIDX = CardReader.InHandCardList.IndexOf(this);
-
         CanUseThisCard = false;
         Vector2 movePos = new Vector2(moveToXPos, -60);
 

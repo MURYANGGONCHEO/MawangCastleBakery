@@ -82,6 +82,20 @@ public class ActivationChecker : MonoBehaviour
             _selectIDX = CardReader.GetIdx(CardReader.OnPointerCard);
             CardReader.CaptureHand();
 
+            CardReader.OnPointerCard.CardRecordList.Clear();
+            foreach (var c in CardReader.InHandCardList)
+            {
+                CardRecord record = new CardRecord
+                (
+                    CardReader.InHandCardList.IndexOf(c),
+                    c.CardID,
+                    c.CardInfo.CardName,
+                    c.CombineLevel
+                );
+
+                CardReader.OnPointerCard.CardRecordList.Add(record);
+            }
+
             CardReader.OnBinding = true;
         }
 
