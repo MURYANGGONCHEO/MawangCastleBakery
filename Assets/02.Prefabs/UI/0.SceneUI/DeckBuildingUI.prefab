@@ -9004,17 +9004,17 @@ PrefabInstance:
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[2].desc
       value: "\uB371 \uC704\uC5D0 \uB9C8\uC6B0\uC2A4\uB97C \uC62C\uB9AC\uBA74 \uD574\uB2F9
-        \uB371\uC758 \uAD6C\uC131\uC744 \uBCF4\uAC70\uB098 \uC120\uD0DD\uD574\uC11C
+        \uB371\uC758 \uAD6C\uC131\uC744 \uBCF4\uAC70\uB098 \n\uC120\uD0DD\uD574\uC11C
         \uC804\uD22C\uC5D0 \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[3].desc
       value: "\uB371 \uC218\uC815 \uD654\uBA74\uC73C\uB85C \uB118\uC5B4\uAC00\uAC70\uB098
-        \uB371\uC744 \uC0AD\uC81C\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+        \n\uB371\uC744 \uC0AD\uC81C\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[4].desc
-      value: "\uB371\uC758 \uC774\uB984\uC744 \uC815\uD558\uAC70\uB098 \uAD6C\uC131\uC744
+      value: "\uB371\uC758 \uC774\uB984\uC744 \uC815\uD558\uAC70\uB098 \n\uAD6C\uC131\uC744
         \uBCC0\uACBD\uD558\uACE0 \uC800\uC7A5\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 5227593064061578911, guid: 055ac38499681bc41a1d113e22e01302, type: 3}

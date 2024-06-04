@@ -5823,7 +5823,7 @@ PrefabInstance:
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[1].desc
       value: "\uD604\uC7AC \uBCF4\uC720 \uC911\uC778 \uCE74\uB4DC \uC911 \uAC15\uD654\uD560
-        \uCE74\uB4DC\uB97C \uC120\uD0DD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+        \uCE74\uB4DC\uB97C \n\uC120\uD0DD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[2].desc

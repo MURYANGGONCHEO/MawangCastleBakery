@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public struct TutorialPanel
 {
     public Sprite img;                          // Panel's image
+    [TextArea]
     public string desc;                         // Panel's description
 }
 
