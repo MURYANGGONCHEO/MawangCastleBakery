@@ -15,6 +15,8 @@ public class Stove : MonoBehaviour, IBakingProductionObject
     [SerializeField] private float _normalShkTime = 2f;
     [SerializeField] private float _epicShkTime = 2.5f;
     [SerializeField] private float _legendShkTime = 3.5f;
+
+    [SerializeField] private ParticleSystem _screenEffect;
     public float EasingTime { get; set; } = 0.3f;
 
     public void OnProduction()
@@ -30,7 +32,6 @@ public class Stove : MonoBehaviour, IBakingProductionObject
     public void DoughInStove(int grade)
     {
         Debug.Log(grade);
-        float shakeTime = 1, shakePower = 1, shakeSize = 1, scaleTime = 1;
 
         SpriteRenderer qMarkRenderer = _qMark.GetComponent<SpriteRenderer>();
 
@@ -87,6 +88,11 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.Append(transform.DOShakeRotation(_normalShkTime, new Vector3(0, 0, 12f), 10, 10, false, ShakeRandomnessMode.Harmonic));
         seq.Join(transform.DOScale(_normalScale * 0.7f, 2f).SetEase(Ease.OutQuad));
         seq.Join(transform.DOLocalMoveY(0, 2f).SetEase(Ease.OutQuad));
+        seq.AppendInterval(0.5f);
+        seq.AppendCallback(() =>
+        {
+            _screenEffect.Play();
+        });
 
         seq.OnComplete(() =>
         {

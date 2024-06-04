@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3264635109210897487
+--- !u!114 &-7006228379262004755
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,12 +20,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_sale_smoke
-  m_Shader: {fileID: 4800000, guid: 4b7c34181f4d74244be6861121c94efa, type: 3}
+  m_Name: M_Glow_Stove
+  m_Shader: {fileID: 4800000, guid: a3232d5876149174287fafc1452a2e17, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _USE_MAINTEXALPHA_ON
+  - _USE_CUSTOM_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: c8910adb70dbf3242905c939364226f9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97ebf45aa5fef4241a022d60daaa2214, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -93,16 +93,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _diss_tex:
-        m_Texture: {fileID: 2800000, guid: 145143eb93006454baed654b5669d0c3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _grad_tex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _main_tex:
-        m_Texture: {fileID: 2800000, guid: 1512ad39b58f8724da323985239f3d32, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97ebf45aa5fef4241a022d60daaa2214, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _normal_tex:
@@ -145,15 +141,14 @@ Material:
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _Fade_Ditance: 0
-    - _Float0: 0.8
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Main_Ins: 1
+    - _Main_Ins: 5.77
     - _Main_Pow: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Opacity: 2.26
+    - _Opacity: 0.81
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -174,16 +169,21 @@ Material:
     - _diss_normal_power: 0
     - _diss_normal_upanner: 0
     - _diss_normal_vpanner: 0
-    - _dissolve: 2
-    - _dissolve_all: 1
     - _edge_width: 0.06
     - _grad_intencity: 0
-    - _main_upanner: 0
+    - _length: 3
+    - _length_scale: 2
+    - _main_ins: 3.84
+    - _main_pow: 5.42
+    - _main_upanner: 0.28
     - _main_vpanner: 0
     - _normal_radial: 0
     - _normal_str: 0
     - _normal_upanner: 1
     - _normal_vpanner: 1
+    - _rad: 0.04
+    - _radial_scale: 0.03
+    - _step: 0.65
     - _use_custom: 1
     - _use_mainTexAlpha: 1
     - _use_other_diss: 0
@@ -194,7 +194,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _edge_color: {r: 0, g: 0, b: 0, a: 0}
-    - _main_color: {r: 0.43093652, g: 0.8869761, b: 0.7503989, a: 0}
-    - _main_color_a: {r: 1, g: 1, b: 1, a: 0}
+    - _main_color: {r: 1, g: 0.07778104, b: 0, a: 0}
+    - _main_color_a: {r: 11.181763, g: 11.181763, b: 11.181763, a: 0}
     - _main_color_b: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
