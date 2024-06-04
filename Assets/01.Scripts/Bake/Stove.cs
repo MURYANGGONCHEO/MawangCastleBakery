@@ -27,6 +27,7 @@ public class Stove : MonoBehaviour, IBakingProductionObject
     public void ExitProduction()
     {
         transform.SmartScale(_normalScale, EasingTime);
+        transform.DOLocalMoveY(1.7f, EasingTime);
     }
 
     public void DoughInStove(int grade)
