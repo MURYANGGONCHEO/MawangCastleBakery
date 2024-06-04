@@ -28,6 +28,8 @@ public class AbilityTargetArrow : MonoBehaviour
 
     public void SetFade(float fadeValue)
     {
+        if (_chainVisual[0].color.a == fadeValue) return;
+
         foreach (var chain in _chainVisual)
         {
             chain.color = new Color(chain.color.r, chain.color.g, chain.color.b, _inChaingingValue);

@@ -42,7 +42,6 @@ public class CameraController : MonoBehaviour
 
     private void HandleCamraTargettingPlayer(float value, float duration, Ease easing)
     {
-        Debug.Log("HELLO");
         _toPlayerSeq.Append(_target.DOLocalMoveX(value, duration).SetEase(easing));
         _toPlayerSeq.Join(_poolVCam.transform.DORotate(new Vector3(0, 0, 0.5f), duration).SetEase(easing));
         _toPlayerSeq.Join(DOTween.To(() => 5, o => _vCam.m_Lens.OrthographicSize = o, 5, duration).SetEase(easing));

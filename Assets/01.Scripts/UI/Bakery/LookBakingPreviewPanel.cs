@@ -56,19 +56,25 @@ public class LookBakingPreviewPanel : PreviewPanel
             Inventory.Instance.AddItem(cake);
 
             BakeryUI bui = UIManager.Instance.GetSceneUI<BakeryUI>();
+            BakeryData bd = new BakeryData();
 
-            CakeData cakeData = bui.BakeryData.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
+            if(DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
+            {
+                DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
+            }
 
+            CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
+            Debug.Log($"CakeData : {cakeData}, {cakeData == null}");
             if (cakeData == null)
             {
-                bui.BakeryData.CakeDataList.Add(cakeData);
+                bd.CakeDataList.Add(new CakeData(cake.itemName, false));
             }
             else
             {
                 cakeData.Count++;
             }
 
-            bui.SaveData();
+            DataManager.Instance.SaveData(bd, DataKeyList.bakeryRecipeDataKey);
 
             bui.GetCakePanel.SetUp(cake);
             bui.FilteringPreviewContent(MySortType);

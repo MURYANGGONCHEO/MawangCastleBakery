@@ -5,18 +5,18 @@ using UnityEngine;
 
 public static class CardReader
 {
-    public static List<CardBase> _inHandCardList = new List<CardBase>();
-    private static List<CardBase> _inDeckCardList = new List<CardBase>();
-    public static List<CardBase> captureHandList = new List<CardBase>();
+    public static List<CardBase> InHandCardList = new List<CardBase>();
+    public static List<CardBase> InDeckCardList = new List<CardBase>();
+    public static List<(int, CardBase)> captureHandList = new ();
 
-    private static CardDrawer _cardDrawer;
-    public static CardDrawer CardDrawer
+    private static CardFactory _cardDrawer;
+    public static CardFactory CardDrawer
     {
         get
         {
             if(_cardDrawer != null) return _cardDrawer;
 
-            _cardDrawer = GameObject.FindObjectOfType<CardDrawer>();
+            _cardDrawer = GameObject.FindObjectOfType<CardFactory>();
             return _cardDrawer;
         }
     }
@@ -98,19 +98,19 @@ public static class CardReader
     {
         captureHandList.Clear();
 
-        foreach(CardBase cb in _inHandCardList)
+        foreach(CardBase cb in InHandCardList)
         {
-            captureHandList.Add(cb);
+            captureHandList.Add((cb.CardID, cb));
         }
     }
 
     public static bool IsSameCaptureHand()
     {
-        if(captureHandList.Count != _inHandCardList.Count) return false;
+        if(captureHandList.Count != InHandCardList.Count) return false;
 
         for(int i = 0; i < captureHandList.Count; i++)
         {
-            if (captureHandList[i].CardInfo != _inHandCardList[i].CardInfo) return false;
+            if (captureHandList[i].Item1 != InHandCardList[i].CardID) return false;
         }
         return true;
     }
@@ -118,88 +118,88 @@ public static class CardReader
     public static void SetDeck(List<CardBase> deck)
     {
         _deckIdx = 0;
-        _inHandCardList.Clear();
-        _inDeckCardList = deck;
+        InHandCardList.Clear();
+        InDeckCardList = deck;
     }
 
     public static void ResetByCaptureHand()
     {
-        _inHandCardList.Clear();
+        InHandCardList.Clear();
 
-        foreach(CardBase cb in captureHandList)
+        foreach(var cb in captureHandList)
         {
-            _inHandCardList.Add(cb);
+            InHandCardList.Add(cb.Item2);
         }
     }
 
     public static List<CardBase> GetHandCards()
     {
-        return _inHandCardList;
+        return InHandCardList;
     }
 
     public static void AddCardInHand(CardBase addingCardInfo)
     {
-        _inHandCardList.Add(addingCardInfo);
+        InHandCardList.Add(addingCardInfo);
     }
 
     public static void RemoveCardInHand(CardBase removingCardInfo)
     {
-        _inHandCardList.Remove(removingCardInfo);
+        InHandCardList.Remove(removingCardInfo);
     }
 
     public static int CountOfCardInHand()
     {
-        return _inHandCardList.Count;
+        return InHandCardList.Count;
     }
 
     public static CardBase GetCardinfoInHand(int index)
     {
         if(index < 0 || index > CountOfCardInHand()) return null;
 
-        return _inHandCardList[index];
+        return InHandCardList[index];
     }
 
     public static void AddCardInDeck(CardBase addingCardInfo)
     {
-        _inDeckCardList.Add(addingCardInfo);
+        InDeckCardList.Add(addingCardInfo);
     }
 
     public static void RemoveCardInDeck(CardBase removingCardInfo)
     {
-        _inDeckCardList.Remove(removingCardInfo);
+        InDeckCardList.Remove(removingCardInfo);
     }
 
     public static int CountOfCardInDeck()
     {
-        return _inDeckCardList.Count;
+        return InDeckCardList.Count;
     }
 
     
     public static CardBase GetCardInDeck()
     {
-        _deckIdx %= _inDeckCardList.Count;
-        return _inDeckCardList[_deckIdx++];
+        _deckIdx %= InDeckCardList.Count;
+        return InDeckCardList[_deckIdx++];
     }
 
     public static CardBase GetRandomCardInDeck()
     {
-        return _inDeckCardList[Random.Range(0, _inDeckCardList.Count)];
+        return InDeckCardList[Random.Range(0, InDeckCardList.Count)];
     }
 
     public static int GetIdx(CardBase handCard)
     {
-        return _inHandCardList.IndexOf(handCard);
+        return InHandCardList.IndexOf(handCard);
     }
 
     public static void ShuffleInHandCard(CardBase pointerCard, CardBase shufflingCard)
     {
         ShufflingCard = shufflingCard;
 
-        int idx1 = _inHandCardList.IndexOf(pointerCard);
-        int idx2 = _inHandCardList.IndexOf(shufflingCard);
+        int idx1 = InHandCardList.IndexOf(pointerCard);
+        int idx2 = InHandCardList.IndexOf(shufflingCard);
 
-        (_inHandCardList[idx1], _inHandCardList[idx2]) =
-        (_inHandCardList[idx2], _inHandCardList[idx1]);
+        (InHandCardList[idx1], InHandCardList[idx2]) =
+        (InHandCardList[idx2], InHandCardList[idx1]);
     }
 
     public static int GetPosOnTopDrawCard()
@@ -209,13 +209,13 @@ public static class CardReader
 
     public static int GetHandPos(CardBase cardBase)
     {
-        int idx = _inHandCardList.IndexOf(cardBase);
+        int idx = InHandCardList.IndexOf(cardBase);
         return 860 - (idx * 170);
     }
 
     public static void LockHandCard(bool isLock)
     {
-        foreach(CardBase card in _inHandCardList)
+        foreach(CardBase card in InHandCardList)
         {
             card.CanUseThisCard = !isLock;
         }

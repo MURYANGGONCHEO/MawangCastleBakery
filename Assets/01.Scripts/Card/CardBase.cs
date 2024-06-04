@@ -8,10 +8,16 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using System;
+using UnityEngine.Events;
 
-public abstract class CardBase : MonoBehaviour, IPointerClickHandler, 
-                                 IPointerEnterHandler, IPointerExitHandler
+public abstract class CardBase : MonoBehaviour,
+                                 IPointerClickHandler,
+                                 IPointerEnterHandler, 
+                                 IPointerExitHandler
 {
+    public int CardID { get; set; }
+    public List<CardRecord> CardRecordList { get; set; } = new ();
+    public Action<CardBase> RecoverEvent { get; set; }
     [SerializeField] private float _toMovePosInSec;
     public RectTransform VisualRectTrm { get; private set; }
     public CardInfo CardInfo => _myCardInfo;
@@ -29,7 +35,10 @@ public abstract class CardBase : MonoBehaviour, IPointerClickHandler,
         set
         {
             _combineLevel = value;
-            _objArr[(int)_combineLevel].SetActive(true);
+            for(int i = 0; i < _objArr.Length; i++)
+            {
+                _objArr[i].SetActive(i <= (int)_combineLevel);
+            }
         }
     }
     [SerializeField] private Transform visualTrm;
@@ -91,6 +100,14 @@ public abstract class CardBase : MonoBehaviour, IPointerClickHandler,
 
     [SerializeField]
     protected List<float> _skillDurations;
+    private CardInfoBattlePanel _cardInfoBattlePanel;
+    public bool Paneling { get; private set; }
+
+    public void SetInfo(int cID, CombineLevel cLv)
+    {
+        CardID = cID;
+        CombineLevel = cLv;
+    }
 
     private void Awake()
     {
@@ -142,6 +159,7 @@ public abstract class CardBase : MonoBehaviour, IPointerClickHandler,
         Sequence seq = DOTween.Sequence();
         seq.Append(transform.DOLocalMove(movePos, _toMovePosInSec).SetEase(Ease.OutBack));
         seq.Join(transform.DOLocalRotateQuaternion(Quaternion.identity, _toMovePosInSec).SetEase(Ease.OutBack));
+        seq.Join(transform.DOScale(1, _toMovePosInSec).SetEase(Ease.OutBack));
         seq.AppendCallback(() =>
         {
             if(generateCallback)
@@ -208,26 +226,54 @@ public abstract class CardBase : MonoBehaviour, IPointerClickHandler,
         CardManagingHelper.GetCardShame(CardInfo.cardShameData, CardShameType.Damage,(int)level);
         return damageArr.list[(int)level].list.ToArray();
     }
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (!IsOnActivationZone) return;
-
-        CardReader.AbilityTargetSystem.ActivationCardSelect(this);
-    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (IsOnActivationZone) return;
+        if (IsOnActivationZone || CardReader.OnBinding) return;
 
         OnPointerSetCardAction?.Invoke(transform);
         OnPointerInCard = true;
+
+        _cardInfoBattlePanel = PoolManager.Instance.Pop(PoolingType.CardBattlePanel) as CardInfoBattlePanel;
+        RectTransform trm = _cardInfoBattlePanel.transform as RectTransform;
+        trm.SetAsFirstSibling();
+
+        trm.SetAsFirstSibling();
+        trm.SetParent(transform);
+        trm.transform.localPosition = Vector2.zero;
+
+        Paneling = true;
+        _cardInfoBattlePanel.SetUp(CardInfo.CardName, CardInfo.AbillityInfo);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (IsOnActivationZone) return;
+        if (IsOnActivationZone || CardReader.OnBinding) return;
 
         OnPointerInitCardAction?.Invoke(transform);
         OnPointerInCard = false;
+
+        BattlePanelDown();
+    }
+
+    public void BattlePanelDown()
+    {
+        Paneling = false;
+        _cardInfoBattlePanel.SetDown();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!IsOnActivationZone) return;
+
+        var initList = CardReader.SkillCardManagement.InCardZoneList;
+
+        if (initList[initList.Count - 1] != this)
+        {
+            // Something;
+            return;
+        }
+
+        RecoverEvent?.Invoke(this);
     }
 }

@@ -16,7 +16,8 @@ public enum BuffingType
     Lightning,
     Faint,
     AtkDown,
-    DefDown
+    DefDown,
+    Smelting
 }
 
 public class CombatMarkingData

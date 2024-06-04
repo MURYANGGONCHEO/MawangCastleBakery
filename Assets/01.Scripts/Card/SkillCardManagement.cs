@@ -10,19 +10,19 @@ public class SkillCardManagement : CardManagement
     private ExpansionList<CardBase> InCardZoneCatalogue = new ExpansionList<CardBase>();
     public List<CardBase> InCardZoneList => InCardZoneCatalogue;
 
-    [Header("´ë±âÁ¸ ¼ÂÆÃ°ª")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½")]
     [SerializeField] private Transform _cardWaitZone;
     [SerializeField] private Vector2 _normalZonePos;
     [SerializeField] private float _waitTurmValue = 85f;
     [SerializeField] private Transform _cardInfoTrm;
     private CardInfoPanel _cardInfoPanel;
 
-    [Header("¹ßµ¿Á¸ ¼ÂÆÃ°ª")]
+    [Header("ï¿½ßµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½")]
     [SerializeField] private Transform _activationCardZone;
     [SerializeField] private Vector2 _lastCardPos;
     [SerializeField] private float _activationTurmValue = 155f;
 
-    [Header("ÀÌº¥Æ®")]
+    [Header("ï¿½Ìºï¿½Æ®")]
     private bool _isInChaining;
     public UnityEvent useCardEndEvnet;
     public UnityEvent beforeChainingEvent;
@@ -52,6 +52,7 @@ public class SkillCardManagement : CardManagement
         {
             float x = _lastCardPos.x - (_activationTurmValue * (maxCount - i - 1));
             Vector2 targetPos = new Vector2(x, _lastCardPos.y);
+            Debug.Log(targetPos.y);
             Transform selectTrm = InCardZoneCatalogue[i].transform;
 
             selectTrm.SetParent(_activationCardZone);
@@ -108,6 +109,9 @@ public class SkillCardManagement : CardManagement
 
     public override void UseAbility(CardBase selectCard)
     {
+        selectCard.battleController.CameraController.
+        StartCameraSequnce(selectCard.CardInfo.cameraSequenceData);
+
         selectCard.Abillity();
     }
 
@@ -116,6 +120,7 @@ public class SkillCardManagement : CardManagement
         selectCard.CanUseThisCard = false;
 
         selectCard.transform.SetParent(_cardWaitZone);
+
         CardReader.RemoveCardInHand(CardReader.OnPointerCard);
         InCardZoneCatalogue.Add(selectCard);
         selectCard.IsOnActivationZone = true;
@@ -126,20 +131,26 @@ public class SkillCardManagement : CardManagement
         CardReader.CombineMaster.CombineGenerate();
         CardReader.CaptureHand();
     }
+
+    public void SetSkillCardInHandZone()
+    {
+        CardReader.CombineMaster.CombineGenerate();
+        CardReader.CaptureHand();
+    }
+
     private void GenerateCardPosition(CardBase selectCard)
     {
         CardReader.AbilityTargetSystem.AllGenerateChainPos(true);
         Sequence seq = DOTween.Sequence();
 
         int maxIdx = InCardZoneCatalogue.Count - 1;
-
-        if (maxIdx != 0)
+        if (!(maxIdx <= 0))
         {
             seq.Append(selectCard.transform.
             DOLocalMove(new Vector2(InCardZoneCatalogue[maxIdx - 1].transform.localPosition.x
                                     + 100, 150), 0.3f));
         }
-        else
+        else if(maxIdx >= 0)
         {
             seq.Append(selectCard.transform.DOLocalMove(new Vector3(0, 150, 0), 0.3f));
         }

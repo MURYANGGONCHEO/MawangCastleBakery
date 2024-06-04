@@ -13,7 +13,6 @@ public class VolumeBlock : FuncBlock
     [SerializeField] private Slider _sfxSlider;
 
     private SoundData _soundData = new SoundData();
-    private const string VolumeSettingKey = "VolumeDataKey";
 
     private float _savingMasterVolume;
     private float _savingBGMVolume;
@@ -28,9 +27,9 @@ public class VolumeBlock : FuncBlock
 
     private void OnEnable()
     {
-        if(DataManager.Instance.IsHaveData(VolumeSettingKey))
+        if(DataManager.Instance.IsHaveData(DataKeyList.volumeDataKey))
         {
-            _soundData = DataManager.Instance.LoadData<SoundData>(VolumeSettingKey);
+            _soundData = DataManager.Instance.LoadData<SoundData>(DataKeyList.volumeDataKey);
         }
 
         _masterSlider.value = _soundData.MasterVoume;
@@ -48,25 +47,28 @@ public class VolumeBlock : FuncBlock
     private void SetMasterVolumeValue(float value)
     {
         _soundData.MasterVoume = value;
+        SoundManager.Instance.SetMasterVolume(value);
         IsHasChanges = true;
     }
 
     private void SetBgmVolumeValue(float value)
     {
         _soundData.BgmVolume = value;
+        SoundManager.Instance.SetBGMVolume(value);
         IsHasChanges = true;
     }
 
     private void SetSfxVolumeValue(float value)
     {
         _soundData.SfxVolume = value;
+        SoundManager.Instance.SetSFXVolume(value);
         IsHasChanges = true;
     }
     #endregion
 
     public override void SaveData()
     {
-        _optionGroup.saveBtn.SaveData(_soundData, VolumeSettingKey, out _isHasChanges);
+        _optionGroup.saveBtn.SaveData(_soundData, DataKeyList.volumeDataKey, out _isHasChanges);
         _notifyIsChangeText.enabled = _isHasChanges;
     }
 

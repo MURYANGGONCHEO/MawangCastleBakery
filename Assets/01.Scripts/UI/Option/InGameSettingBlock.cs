@@ -9,15 +9,12 @@ using System.Text.RegularExpressions;
 public class InGameSettingBlock : FuncBlock
 {
     [Header("ÂüÁ¶")]
-    
     [SerializeField] private TMP_InputField _vibrationValueField;
     [SerializeField] private Dropdown _screenModeDropDown;
     [SerializeField] private CheckBox _verticalSyncCheckBox;
 
     private InGameSettingData _inGameSettingData = new InGameSettingData();
     private Regex _numberFilter = new Regex(@"^[0-9]+$");
-
-    private const string InGameSettingDatakey = "InGameDataKey";
 
     private void Awake()
     {
@@ -28,15 +25,14 @@ public class InGameSettingBlock : FuncBlock
 
     public void Start()
     {
-        if(DataManager.Instance.IsHaveData(InGameSettingDatakey))
+        if(DataManager.Instance.IsHaveData(DataKeyList.ingameDataKey))
         {
-            _inGameSettingData = DataManager.Instance.LoadData<InGameSettingData>(InGameSettingDatakey);
+            _inGameSettingData = DataManager.Instance.LoadData<InGameSettingData>(DataKeyList.ingameDataKey);
         }
 
         _vibrationValueField.text = _inGameSettingData.vibrationValue.ToString();
         _screenModeDropDown.SetItem(_inGameSettingData.modeNum);
         _verticalSyncCheckBox.IsActive = _inGameSettingData.isVerticalSync;
-
     }
 
     private void ChangeVibrationValue(string sentencec)
@@ -85,7 +81,7 @@ public class InGameSettingBlock : FuncBlock
 
     public override void SaveData()
     {
-        _optionGroup.saveBtn.SaveData(_inGameSettingData, InGameSettingDatakey, out _isHasChanges);
+        _optionGroup.saveBtn.SaveData(_inGameSettingData, DataKeyList.ingameDataKey, out _isHasChanges);
         _notifyIsChangeText.enabled = _isHasChanges;
     }
 

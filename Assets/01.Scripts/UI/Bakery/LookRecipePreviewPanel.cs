@@ -62,18 +62,25 @@ public class LookRecipePreviewPanel : PreviewPanel
 
         BakeryUI bui = UIManager.Instance.GetSceneUI<BakeryUI>();
 
-        CakeData cakeData = bui.BakeryData.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
+        BakeryData bd = new BakeryData();
+
+        if (DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
+        {
+            DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
+        }
+
+        CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
 
         if (cakeData == null)
         {
-            bui.BakeryData.CakeDataList.Add(cakeData);
+            bd.CakeDataList.Add(cakeData);
         }
         else
         {
             cakeData.Count++;
         }
 
-        bui.SaveData();
+        DataManager.Instance.SaveData(bd, DataKeyList.bakeryRecipeDataKey);
 
         bui.GetCakePanel.SetUp(cake);
         bui.FilteringPreviewContent(MySortType);

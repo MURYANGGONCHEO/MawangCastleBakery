@@ -55,10 +55,7 @@ public class BakeryUI : SceneUI
             DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
         }
     }
-    public void SaveData()
-    {
-        DataManager.Instance.SaveData(BakeryData, DataKeyList.bakeryRecipeDataKey);
-    }
+    
     public void FilteringPreviewContent(RecipeSortType type)
     {
         foreach (var panel in _previewPanels)

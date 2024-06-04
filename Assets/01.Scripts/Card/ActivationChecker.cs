@@ -30,11 +30,16 @@ public class ActivationChecker : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && CardReader.OnBinding && CardReader.OnPointerCard.CanUseThisCard)
         {
+            if(CardReader.OnPointerCard.Paneling)
+            {
+                CardReader.OnPointerCard.BattlePanelDown();
+            }
+
             Transform cardTrm = CardReader.OnPointerCard.transform;
             Vector3  mousePos = MaestrOffice.GetWorldPosToScreenPos(Input.mousePosition);
 
             float distance = (mousePos - cardTrm.position).x;
-            float rotation = Mathf.Clamp(distance * 50, -30, 30);
+            float rotation = Mathf.Clamp(distance * 50, -20, 20);
 
             Vector3 euler = cardTrm.eulerAngles;
             euler.z = rotation;
@@ -77,6 +82,20 @@ public class ActivationChecker : MonoBehaviour
             _selectIDX = CardReader.GetIdx(CardReader.OnPointerCard);
             CardReader.CaptureHand();
 
+            CardReader.OnPointerCard.CardRecordList.Clear();
+            foreach (var c in CardReader.InHandCardList)
+            {
+                CardRecord record = new CardRecord
+                (
+                    CardReader.InHandCardList.IndexOf(c),
+                    c.CardID,
+                    c.CardInfo.CardName,
+                    c.CombineLevel
+                );
+
+                CardReader.OnPointerCard.CardRecordList.Add(record);
+            }
+
             CardReader.OnBinding = true;
         }
 
@@ -97,10 +116,6 @@ public class ActivationChecker : MonoBehaviour
             {
                 CardReader.InGameError.ErrorSituation("코스트가 부족합니다!");
 
-                foreach(CardBase cb in CardReader.captureHandList)
-                {
-                    Debug.Log(cb.CardInfo.CardName);
-                }
                 CardReader.ResetByCaptureHand();
                 CardReader.OnPointerCard.SetUpCard(CardReader.GetHandPos(CardReader.OnPointerCard), true);
                 return;

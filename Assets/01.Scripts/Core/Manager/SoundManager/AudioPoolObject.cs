@@ -6,6 +6,17 @@ using UnityEngine;
 public class AudioPoolObject : PoolableMono
 {
     [SerializeField] private AudioSource source;
+    public bool IsSFX { get; set; }
+
+    public void SetVolume(float vlaue)
+    {
+        source.volume = vlaue;
+    }
+
+    public void SetMasterVolume(float vlaue)
+    {
+        source.volume *= vlaue;
+    }
 
     public override void Init()
     {
@@ -16,6 +27,7 @@ public class AudioPoolObject : PoolableMono
     {
         source.Stop();
         source.loop = false;
+        SoundManager.Instance.RemoveAuidoObject(this);
     }
     /// <summary>
     /// 사운드 플레이 함수
@@ -27,13 +39,13 @@ public class AudioPoolObject : PoolableMono
     {
         if (isLoop)
         {
-            if (SoundManager.Instance.currentBgmObject != null)
+            if (SoundManager.Instance.CurrentBgmObject != null)
             {
-                SoundManager.Instance.currentBgmObject.Push();
-                PoolManager.Instance.Push(SoundManager.Instance.currentBgmObject);
+                SoundManager.Instance.CurrentBgmObject.Push();
+                PoolManager.Instance.Push(SoundManager.Instance.CurrentBgmObject);
             }
 
-            SoundManager.Instance.currentBgmObject = this;
+            SoundManager.Instance.CurrentBgmObject = this;
             source.loop = true;
         }
 

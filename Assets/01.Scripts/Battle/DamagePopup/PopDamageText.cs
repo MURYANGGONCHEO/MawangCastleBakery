@@ -41,7 +41,6 @@ public class PopDamageText : PoolableMono
     }
     public void ShowReactionText(Vector3 position, string word, float fontSize, Color color)
     {
-        Debug.Log(9);
         _damageText.color = color;
         _damageText.fontSize = fontSize;
         _damageText.text = word;

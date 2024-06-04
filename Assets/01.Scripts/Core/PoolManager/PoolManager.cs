@@ -32,7 +32,8 @@ public enum PoolingType
     Pumpkin,
     Boomerang,
     Tornado,
-    Boss
+    Boss,
+    CardBattlePanel
 }
 public enum ParticleEnum
 {

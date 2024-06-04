@@ -326,7 +326,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8966460997435388187}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5.25}
+  m_LocalEulerAnglesHint: {x: 0, y: -6.581, z: 0}
 --- !u!1 &395186095970973426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,7 +2952,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0.2533058, y: 0.376627, z: 0}
+  m_DefaultVelocity: {x: -0.3103689, y: 0.4858646, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3774,7 +3774,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eddb95fab4699943baeb30baaa46f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentBgmObject: {fileID: 0}
 --- !u!222 &6642427054838497612
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4412,6 +4411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1834468672611067206}
   - component: {fileID: 7628170884922846440}
+  - component: {fileID: 7989252545072406992}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -4419,6 +4419,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7989252545072406992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7989252545072406991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b8e49548a056b45be013ea58e25aff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemDataArr: []
 --- !u!4 &8075597554576919893
 Transform:
   m_ObjectHideFlags: 0

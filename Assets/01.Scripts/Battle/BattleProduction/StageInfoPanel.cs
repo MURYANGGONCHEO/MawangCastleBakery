@@ -46,6 +46,9 @@ public class StageInfoPanel : PanelUI
         seq.AppendInterval(1);
         seq.AppendCallback(() => FadePanel(false));
         seq.AppendInterval(0.4f);
+        seq.Append(_stageIcon.DOFade(0, 0.2f));
+        seq.Join(_clearConditionLabel.DOFade(0, 0.2f));
+        seq.Join(_stageNameLabel.DOFade(0, 0.2f));
         seq.AppendCallback(() => 
         {
             gameObject.SetActive(false);
