@@ -17,6 +17,9 @@ public class Stove : MonoBehaviour, IBakingProductionObject
     [SerializeField] private float _legendShkTime = 3.5f;
 
     [SerializeField] private ParticleSystem _screenEffect;
+    [SerializeField] private ParticleSystem _epicEffect;
+    [SerializeField] private ParticleSystem _legendEffect;
+
     public float EasingTime { get; set; } = 0.3f;
 
     public void OnProduction()
@@ -111,9 +114,18 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.Join(transform.DOLocalMoveY(0, 2f).SetEase(Ease.OutQuad));
 
         seq.Append(transform.DOScale(_normalScale * 1f, 0.7f).SetEase(Ease.OutQuart));
+        seq.AppendCallback(() =>
+        {
+            _epicEffect.Play();
+        });
 
         seq.Append(transform.DOShakeRotation(_epicShkTime, new Vector3(0, 0, 14f), 10, 10, false, ShakeRandomnessMode.Harmonic));
         seq.Join(transform.DOScale(_normalScale * 0.65f, 2f).SetEase(Ease.OutQuart));
+        seq.AppendInterval(0.5f);
+        seq.AppendCallback(() =>
+        {
+            _screenEffect.Play();
+        });
 
         seq.OnComplete(() =>
         {
@@ -142,6 +154,11 @@ public class Stove : MonoBehaviour, IBakingProductionObject
 
         seq.Append(transform.DOShakeRotation(_legendShkTime, new Vector3(0, 0, 17f), 10, 10, false, ShakeRandomnessMode.Harmonic));
         seq.Join(transform.DOScale(_normalScale * 0.6f, 2f).SetEase(Ease.OutQuad));
+        seq.AppendInterval(0.5f);
+        seq.AppendCallback(() =>
+        {
+            _screenEffect.Play();
+        });
 
         seq.OnComplete(() =>
         {
