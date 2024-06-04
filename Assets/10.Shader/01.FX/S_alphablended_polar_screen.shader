@@ -12,6 +12,7 @@ Shader "1_fx/alphablended_polar_screen"
 		_radial_scale("radial_scale", Float) = 0.01
 		_length_scale("length_scale", Float) = 2
 		_main_pow("main_pow", Range( 1 , 10)) = 1
+		_twirl_strength("twirl_strength", Float) = 5.54
 		_main_ins("main_ins", Range( 1 , 10)) = 1
 		[HDR]_main_color("main_color", Color) = (0.258544,0.4248967,0.6603774,0)
 		[ASEEnd][Toggle(_USE_CUSTOM_ON)] _use_custom("use_custom", Float) = 0
@@ -241,6 +242,7 @@ Shader "1_fx/alphablended_polar_screen"
 			float4 _main_tex_ST;
 			float _main_upanner;
 			float _main_vpanner;
+			float _twirl_strength;
 			float _radial_scale;
 			float _length_scale;
 			float _main_pow;
@@ -419,7 +421,7 @@ Shader "1_fx/alphablended_polar_screen"
 				float2 uv_main_tex = IN.ase_texcoord3.xy * _main_tex_ST.xy + _main_tex_ST.zw;
 				float2 center45_g2 = float2( 0.5,0.5 );
 				float2 delta6_g2 = ( uv_main_tex - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * 5.54 );
+				float angle10_g2 = ( length( delta6_g2 ) * _twirl_strength );
 				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
 				float2 break40_g2 = center45_g2;
 				float2 break41_g2 = float2( 0,0 );
@@ -526,6 +528,7 @@ Shader "1_fx/alphablended_polar_screen"
 			float4 _main_tex_ST;
 			float _main_upanner;
 			float _main_vpanner;
+			float _twirl_strength;
 			float _radial_scale;
 			float _length_scale;
 			float _main_pow;
@@ -694,7 +697,7 @@ Shader "1_fx/alphablended_polar_screen"
 				float2 uv_main_tex = IN.ase_texcoord2.xy * _main_tex_ST.xy + _main_tex_ST.zw;
 				float2 center45_g2 = float2( 0.5,0.5 );
 				float2 delta6_g2 = ( uv_main_tex - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * 5.54 );
+				float angle10_g2 = ( length( delta6_g2 ) * _twirl_strength );
 				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
 				float2 break40_g2 = center45_g2;
 				float2 break41_g2 = float2( 0,0 );
@@ -778,6 +781,7 @@ Shader "1_fx/alphablended_polar_screen"
 			float4 _main_tex_ST;
 			float _main_upanner;
 			float _main_vpanner;
+			float _twirl_strength;
 			float _radial_scale;
 			float _length_scale;
 			float _main_pow;
@@ -931,7 +935,7 @@ Shader "1_fx/alphablended_polar_screen"
 				float2 uv_main_tex = IN.ase_texcoord.xy * _main_tex_ST.xy + _main_tex_ST.zw;
 				float2 center45_g2 = float2( 0.5,0.5 );
 				float2 delta6_g2 = ( uv_main_tex - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * 5.54 );
+				float angle10_g2 = ( length( delta6_g2 ) * _twirl_strength );
 				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
 				float2 break40_g2 = center45_g2;
 				float2 break41_g2 = float2( 0,0 );
@@ -1015,6 +1019,7 @@ Shader "1_fx/alphablended_polar_screen"
 			float4 _main_tex_ST;
 			float _main_upanner;
 			float _main_vpanner;
+			float _twirl_strength;
 			float _radial_scale;
 			float _length_scale;
 			float _main_pow;
@@ -1163,7 +1168,7 @@ Shader "1_fx/alphablended_polar_screen"
 				float2 uv_main_tex = IN.ase_texcoord.xy * _main_tex_ST.xy + _main_tex_ST.zw;
 				float2 center45_g2 = float2( 0.5,0.5 );
 				float2 delta6_g2 = ( uv_main_tex - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * 5.54 );
+				float angle10_g2 = ( length( delta6_g2 ) * _twirl_strength );
 				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
 				float2 break40_g2 = center45_g2;
 				float2 break41_g2 = float2( 0,0 );
@@ -1261,6 +1266,7 @@ Shader "1_fx/alphablended_polar_screen"
 			float4 _main_tex_ST;
 			float _main_upanner;
 			float _main_vpanner;
+			float _twirl_strength;
 			float _radial_scale;
 			float _length_scale;
 			float _main_pow;
@@ -1418,7 +1424,7 @@ Shader "1_fx/alphablended_polar_screen"
 				float2 uv_main_tex = IN.ase_texcoord1.xy * _main_tex_ST.xy + _main_tex_ST.zw;
 				float2 center45_g2 = float2( 0.5,0.5 );
 				float2 delta6_g2 = ( uv_main_tex - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * 5.54 );
+				float angle10_g2 = ( length( delta6_g2 ) * _twirl_strength );
 				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
 				float2 break40_g2 = center45_g2;
 				float2 break41_g2 = float2( 0,0 );
@@ -1493,17 +1499,17 @@ Node;AmplifyShaderEditor.StepOpNode;19;-1029.623,24.64993;Inherit;True;2;0;FLOAT
 Node;AmplifyShaderEditor.SamplerNode;10;-1404.623,20.64993;Inherit;True;Property;_main_tex;main_tex;0;0;Create;True;0;0;0;False;0;False;-1;97ebf45aa5fef4241a022d60daaa2214;97ebf45aa5fef4241a022d60daaa2214;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.FunctionNode;21;-2218.623,-325.3501;Inherit;True;Twirl;-1;;2;90936742ac32db8449cd21ab6dd337c8;0;4;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT;0;False;4;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.FunctionNode;16;-1849.623,-324.3501;Inherit;False;Polar Coordinates;-1;;3;7dab8e02884cf104ebefaa2e788e4162;0;4;1;FLOAT2;0,0;False;2;FLOAT2;0.5,0.5;False;3;FLOAT;1;False;4;FLOAT;1;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.TextureCoordinatesNode;11;-2587.623,-326.3501;Inherit;False;0;10;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;22;-2498.623,-204.3501;Inherit;False;Constant;_Float1;Float 1;5;0;Create;True;0;0;0;False;0;False;5.54;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.PowerNode;24;-765.5795,23.1459;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SaturateNode;26;-630.5795,21.1459;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;29;-1091.579,232.1459;Inherit;False;Property;_main_pow;main_pow;5;0;Create;True;0;0;0;False;0;False;1;5.42;1;10;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;23;-1091.837,304.0227;Inherit;False;Property;_main_ins;main_ins;6;0;Create;True;0;0;0;False;0;False;1;3.84;1;10;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;23;-1091.837,304.0227;Inherit;False;Property;_main_ins;main_ins;7;0;Create;True;0;0;0;False;0;False;1;3.84;1;10;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;25;-446.5797,285.1459;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;28;-446.5797,114.1459;Inherit;False;Property;_main_color;main_color;7;1;[HDR];Create;True;0;0;0;False;0;False;0.258544,0.4248967,0.6603774,0;0.1517859,0,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;28;-446.5797,114.1459;Inherit;False;Property;_main_color;main_color;8;1;[HDR];Create;True;0;0;0;False;0;False;0.258544,0.4248967,0.6603774,0;1,0.07778104,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;20;-1540.623,-220.3501;Inherit;False;Constant;_Float0;Float 0;5;0;Create;True;0;0;0;False;0;False;0.67;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TexCoordVertexDataNode;31;-1576.632,-151.8116;Inherit;False;0;4;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.StaticSwitch;30;-1320.632,-109.8116;Inherit;False;Property;_use_custom;use_custom;8;0;Create;True;0;0;0;False;0;False;0;0;0;True;;Toggle;2;Key0;Key1;Create;True;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.StaticSwitch;30;-1320.632,-109.8116;Inherit;False;Property;_use_custom;use_custom;9;0;Create;True;0;0;0;False;0;False;0;0;1;True;;Toggle;2;Key0;Key1;Create;True;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.TextureCoordinatesNode;11;-2479.623,-332.3501;Inherit;False;0;10;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;22;-2423.623,-213.3501;Inherit;False;Property;_twirl_strength;twirl_strength;6;0;Create;True;0;0;0;False;0;False;5.54;5.54;0;0;0;1;FLOAT;0
 WireConnection;1;2;27;0
 WireConnection;1;3;26;0
 WireConnection;27;0;28;0
@@ -1528,4 +1534,4 @@ WireConnection;25;1;23;0
 WireConnection;30;1;20;0
 WireConnection;30;0;31;3
 ASEEND*/
-//CHKSM=B912C4568603FD3301CDF1CFF14EF425DB6B6E8F
+//CHKSM=AF673B4B5EC4CAC110F3FC0FE7A3DE0C125ECA3E
