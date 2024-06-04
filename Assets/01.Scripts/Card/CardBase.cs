@@ -24,7 +24,6 @@ public abstract class CardBase : MonoBehaviour,
     [SerializeField] private CardInfo _myCardInfo;
     public bool CanUseThisCard { get; set; } = false;
     public bool IsOnActivationZone { get; set; }
-    [SerializeField] private GameObject[] _objArr = new GameObject[3];
     [SerializeField] private CombineLevel _combineLevel;
     public CombineLevel CombineLevel
     {
@@ -35,10 +34,6 @@ public abstract class CardBase : MonoBehaviour,
         set
         {
             _combineLevel = value;
-            for(int i = 0; i < _objArr.Length; i++)
-            {
-                _objArr[i].SetActive(i <= (int)_combineLevel);
-            }
         }
     }
     [SerializeField] private Transform visualTrm;

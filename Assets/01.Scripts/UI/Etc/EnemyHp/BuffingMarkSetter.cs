@@ -87,6 +87,8 @@ public class BuffingMarkSetter : MonoBehaviour
     public void RemoveBuffingMark(CombatMarkingData markingData)
     {
         BuffingMark target = _buffingMarkList.Find(x => x.CombatMarkingData.Equals(markingData));
+        if (target == null) return;
+
         int idx = _buffingMarkList.IndexOf(target);
         _buffingMarkList.Remove(target);
 

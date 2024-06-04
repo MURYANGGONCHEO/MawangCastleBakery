@@ -135,6 +135,12 @@ public class SkillCardManagement : CardManagement
 
     public void SetSkillCardInHandZone()
     {
+        for (int i = 0; i < InCardZoneCatalogue.Count - 1; i++)
+        {
+            Transform selectTrm = InCardZoneCatalogue[i].transform;
+            selectTrm.DOLocalMove(new Vector2(selectTrm.localPosition.x - 100f, 150), 0.3f);
+        }
+
         CardReader.CombineMaster.CombineGenerate();
         CardReader.CaptureHand();
     }

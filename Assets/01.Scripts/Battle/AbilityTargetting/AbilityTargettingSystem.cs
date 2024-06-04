@@ -38,6 +38,7 @@ public class AbilityTargettingSystem : MonoBehaviour
     private List<ChainSelectTarget> _chainTargetList = new();
 
     public bool OnTargetting { get; private set; }
+    private Dictionary<int, List<CombatMarkingData>> _buffingDataDic = new();
 
     public void AllChainClear()
     {
@@ -226,6 +227,12 @@ public class AbilityTargettingSystem : MonoBehaviour
                 $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.", 1);
 
             e.BuffSetter.AddBuffingMark(data);
+
+            if(!_buffingDataDic.ContainsKey(selectCard.CardID))
+            {
+                _buffingDataDic.Add(selectCard.CardID, new List<CombatMarkingData>());
+            }
+            _buffingDataDic[selectCard.CardID].Add(data);
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -235,6 +242,18 @@ public class AbilityTargettingSystem : MonoBehaviour
         }
         _battleController.Player.VFXManager.SetBackgroundColor(Color.white);
         OnTargetting = false;
+    }
+
+    public void TargettingCancle(int cardID)
+    {
+        foreach(Enemy e in _battleController.onFieldMonsterList)
+        {
+            foreach (var data in _buffingDataDic[cardID])
+            {
+                if(e is null) continue;
+                e.BuffSetter.RemoveBuffingMark(data);
+            }
+        }
     }
 
     private void EnemyTargetting(CardBase selectCard)
@@ -283,6 +302,11 @@ public class AbilityTargettingSystem : MonoBehaviour
                 $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.", 1);
 
                 e.BuffSetter.AddBuffingMark(data);
+                if (!_buffingDataDic.ContainsKey(selectCard.CardID))
+                {
+                    _buffingDataDic.Add(selectCard.CardID, new List<CombatMarkingData>());
+                }
+                _buffingDataDic[selectCard.CardID].Add(data);
             }
         }
     }

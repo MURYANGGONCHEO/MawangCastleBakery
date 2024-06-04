@@ -44,6 +44,7 @@ public class HandRecover : MonoBehaviour
 
         card.IsOnActivationZone = false;
         _skillCardManagement.SetSkillCardInHandZone();
+        CardReader.AbilityTargetSystem.TargettingCancle(card.CardID);
     }
 
     public void RevertAllHand()
