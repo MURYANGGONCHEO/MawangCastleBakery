@@ -302,11 +302,11 @@ public class AbilityTargettingSystem : MonoBehaviour
                 $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.", 1);
 
                 e.BuffSetter.AddBuffingMark(data);
-                if (!_buffingDataDic.ContainsKey(selectCard.CardID))
+                if (!_buffingDataDic.ContainsKey(_selectCard.CardID))
                 {
-                    _buffingDataDic.Add(selectCard.CardID, new List<CombatMarkingData>());
+                    _buffingDataDic.Add(_selectCard.CardID, new List<CombatMarkingData>());
                 }
-                _buffingDataDic[selectCard.CardID].Add(data);
+                _buffingDataDic[_selectCard.CardID].Add(data);
             }
         }
     }

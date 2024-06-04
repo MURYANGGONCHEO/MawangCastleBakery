@@ -61,7 +61,6 @@ public class TurnCounting : MonoBehaviour
 
     public void ToPlayerTurnChanging(bool isTurnChange)
     {
-        Debug.Log(UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd);
         if (UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd) return;
 
         _selectTrm = _toPTChangingText.transform;

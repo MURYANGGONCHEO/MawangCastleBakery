@@ -176,7 +176,6 @@ public class BattleController : MonoSingleton<BattleController>
     }
     public void SetStage()
     {
-        Debug.Log(MapManager.Instanace.SelectStageData.enemyGroup);
         _enemyGroup = MapManager.Instanace.SelectStageData.enemyGroup;
 
         foreach (var e in _enemyGroup.enemies)
@@ -194,7 +193,6 @@ public class BattleController : MonoSingleton<BattleController>
         if (_enemyQue.Count > 0)
         {
             Vector3 pos = enemySpawnPos[idx];
-            print(pos);
             Enemy selectEnemy = PoolManager.Instance.Pop(_enemyQue.Dequeue()) as Enemy;
             selectEnemy.transform.position = pos;
             selectEnemy.BattleController = this;
