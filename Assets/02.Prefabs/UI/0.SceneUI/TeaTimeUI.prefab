@@ -63413,16 +63413,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[0].img
       value: 
       objectReference: {fileID: 21300000, guid: 14644dd391a6767499105e43178b7256, type: 3}
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[1].img
+      value: 
+      objectReference: {fileID: 21300000, guid: 3457496c25492ce4d98ed6cdd1b7b6ce, type: 3}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[2].img
+      value: 
+      objectReference: {fileID: 21300000, guid: 46ed671ec2b6ea44aaccccebe010730c, type: 3}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[0].desc
-      value: "\uBCF4\uC720 \uC911\uC778 \uCF00\uC774\uD06C\uB97C \uC120\uD0DD\uD558\uC5EC
-        \uD06C\uB9BC\uC5D0\uAC8C \uB300\uC811\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+      value: "\uD604\uC7AC \uC18C\uC9C0\uD558\uACE0 \uC788\uB294 \uBE75 \uBAA9\uB85D\uC744
+        \uD655\uC778\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[1].desc
+      value: "\uC18C\uC9C0 \uC911\uC778 \uBE75 \uC911\uC5D0\uC11C \uD06C\uB9BC\uC5D0\uAC8C
+        \uB300\uC811\uD560 \uBE75\uC744 \uC120\uD0DD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[2].desc
+      value: "\uC120\uD0DD\uD55C \uBE75\uC744 \uD06C\uB9BC\uC758 \uC785\uC73C\uB85C
+        \uB4DC\uB798\uADF8\uD558\uC5EC \uBA39\uC5EC\uC8FC\uBA74 \uD06C\uB9BC\uC774
+        \uB808\uC2DC\uD53C\uC5D0 \uB9DE\uB294 \uC2A4\uD0AC\uC744 \uC0DD\uC131\uD569\uB2C8\uB2E4 "
       objectReference: {fileID: 0}
     - target: {fileID: 5227593064061578911, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: m_Pivot.x
