@@ -6,7 +6,6 @@ using UnityEngine;
 public class SelectMapUI : SceneUI
 {
     [SerializeField] private MapSelectPanelLock[] _panelLockArr;
-    private readonly string _dataKey = "AdventureKEY";
     private AdventureData _adventureData = new AdventureData();
 
     public override void SceneUIStart()
@@ -18,14 +17,14 @@ public class SelectMapUI : SceneUI
 
     public AdventureData GetAdventureData()
     {
-        return DataManager.Instance.LoadData<AdventureData>(_dataKey);
+        return DataManager.Instance.LoadData<AdventureData>(DataKeyList.adventureDataKey);
     }
 
     private void GenerateUnLockPanel()
     {
-        if (DataManager.Instance.IsHaveData(_dataKey))
+        if (DataManager.Instance.IsHaveData(DataKeyList.adventureDataKey))
         {
-            _adventureData = DataManager.Instance.LoadData<AdventureData>(_dataKey);
+            _adventureData = DataManager.Instance.LoadData<AdventureData>(DataKeyList.adventureDataKey);
         }
 
         int chapterIdx = Convert.ToInt16(_adventureData.InChallingingStageCount.Split('-')[0]);
@@ -42,6 +41,6 @@ public class SelectMapUI : SceneUI
             }
         }
 
-        DataManager.Instance.SaveData(_adventureData, _dataKey);
+        DataManager.Instance.SaveData(_adventureData, DataKeyList.adventureDataKey);
     }
 }

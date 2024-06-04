@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class PlayerInfoPanel : MonoBehaviour
 {
     private PlayerData _playerData = new PlayerData();
-    private const string _dataKey = "PlayerDataKey";
 
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private TextMeshProUGUI _nickNameText;
@@ -20,9 +19,9 @@ public class PlayerInfoPanel : MonoBehaviour
 
     private void Start()
     {
-        if(DataManager.Instance.IsHaveData(_dataKey))
+        if(DataManager.Instance.IsHaveData(DataKeyList.playerInfoDataKey))
         {
-            _playerData = DataManager.Instance.LoadData<PlayerData>(_dataKey);
+            _playerData = DataManager.Instance.LoadData<PlayerData>(DataKeyList.playerInfoDataKey);
         }
 
         _levelText.text = $"<size=30><color=#4F2620>LV.</color></size> \r\n{_playerData.level}";

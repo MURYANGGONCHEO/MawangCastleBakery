@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
 
 public class DoughHandler : MonoBehaviour
 {
@@ -17,7 +16,6 @@ public class DoughHandler : MonoBehaviour
 
     private Vector2 _doughNormalPos;
     [SerializeField] private bool _isInnerDough;
-    private bool _isStartShake = false;
     private bool _isInRange;
     private bool _IsInRange
     {
@@ -29,7 +27,7 @@ public class DoughHandler : MonoBehaviour
         {
             if (_isInRange == value) return;
 
-            if (value)
+            if(value)
             {
                 _doughEnterRangeEvent?.Invoke();
             }
@@ -64,7 +62,6 @@ public class DoughHandler : MonoBehaviour
     }
     void Update()
     {
-        if (_isStartShake) return;
         ActiveCheck();
     }
     private void ActiveCheck()
@@ -95,26 +92,15 @@ public class DoughHandler : MonoBehaviour
     }
     private void ActiveInnerStoveRange()
     {
-        if (_IsInRange)
+        if(_IsInRange)
         {
-            _isStartShake = true; 
-            transform.DOScale(Vector2.zero, 0.3f)
-                .OnComplete(() =>
-                {
-                    _doughToInnerEndEvent?.Invoke();
-                });
+            _doughToInnerEndEvent?.Invoke();
+            transform.SmartScale(Vector2.one * 0.5f, 0.1f);
         }
         else
         {
             _isInnerDough = false;
             transform.position = _doughNormalPos;
         }
-    }
-
-    public void ResetDoughTrm()
-    {
-        _isStartShake = false;
-        transform.position = _doughNormalPos;
-        transform.DOScale(0.7f, 0.5f);
-    }
+    }    
 }

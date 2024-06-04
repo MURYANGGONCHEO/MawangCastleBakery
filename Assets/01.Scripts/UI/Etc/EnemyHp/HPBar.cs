@@ -25,8 +25,6 @@ public class HPBar : MonoBehaviour
     [SerializeField] private Image _fillImg;
     [SerializeField] private Sprite _enemySprite;
     [SerializeField] private Sprite _freindSprite;
-    [SerializeField] private Color enemyColor;
-    [SerializeField] private Color friendColor;
 
     public BuffingMarkSetter BuffMarkSetter { get; private set; }
 
@@ -38,7 +36,6 @@ public class HPBar : MonoBehaviour
         transform.position = _ownerOfThisHpBar.position;
 
         _fillImg.sprite = isEnemy ? _enemySprite : _freindSprite;
-        _fillImg.color = isEnemy ? enemyColor : friendColor;
     }
     private void Update()
     {

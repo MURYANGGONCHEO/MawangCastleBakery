@@ -50,7 +50,7 @@ public class DeckGenerator : MonoBehaviour
             _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
         }
 
-        foreach (DeckElement de in _saveDeckData.SaveDeckList)
+        foreach(DeckElement de in _saveDeckData.SaveDeckList)
         {
             CurrentDeckList.Add(de);
         }
@@ -58,12 +58,12 @@ public class DeckGenerator : MonoBehaviour
 
     private void SetPageText()
     {
-        _pageText.text = $"{_currentPage} íŽ˜ì´ì§€";
+        _pageText.text = $"{_currentPage} ÆäÀÌÁö";
     }
 
     public void GoAfterPage()
     {
-        if (_currentPage > Mathf.CeilToInt(_saveDeckData.SaveDeckList.Count / 4))
+        if(_currentPage > Mathf.CeilToInt(_saveDeckData.SaveDeckList.Count / 4))
         {
             Debug.Log(_saveDeckData.SaveDeckList.Count);
             return;
@@ -137,14 +137,14 @@ public class DeckGenerator : MonoBehaviour
 
     protected virtual void SetSelectDeck(DeckElement deckElement)
     {
-        if (deckElement.deck == null)
+        if(deckElement.deck == null)
         {
             _selectDeckObj.gameObject.SetActive(false);
             return;
         }
         print(deckElement.deck);
         _selectDeckObj.gameObject.SetActive(true);
-        _selectDeckObj.SetDeckInfo(deckElement.deckName,
+        _selectDeckObj.SetDeckInfo(deckElement.deckName, 
                                    DeckManager.Instance.GetDeck(deckElement.deck));
     }
 }

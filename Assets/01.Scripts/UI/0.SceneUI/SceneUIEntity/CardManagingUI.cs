@@ -10,7 +10,6 @@ public class CardManagingUI : SceneUI
 
     public CardShameElementSO CurrentCardShameElementInfo { get; private set; }
     public SelectToManagingCardElement SelectCardElement { get; private set; }
-    private SelectToManagingCardElement _selectCardElement;
 
     [SerializeField] private UnityEvent<float> _onPressLevelUpEvent;
     [SerializeField] private UnityEvent<CardInfo> _onSelectToManagingCardEvent;
@@ -20,7 +19,7 @@ public class CardManagingUI : SceneUI
         if (CurrentCardShameElementInfo.cardLevel >= 5)
         {
             ErrorText et = PoolManager.Instance.Pop(PoolingType.ErrorText) as ErrorText;
-            et.Erroring("Ä«ï¿½å°¡ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½");
+            et.Erroring("Ä«µå°¡ ÃÖ´ë ·¹º§ÀÔ´Ï´Ù");
             return;
         }
 
@@ -35,12 +34,12 @@ public class CardManagingUI : SceneUI
 
     public void OnSelectToManagingCard(SelectToManagingCardElement selectCardElement)
     {
-        if(_selectCardElement != null)
+        if(SelectCardElement != null)
         {
-            _selectCardElement.UnSelectCard();
+            SelectCardElement.UnSelectCard();
         }
 
-        _selectCardElement = selectCardElement;
+        SelectCardElement = selectCardElement;
 
         CurrentCardShameElementInfo = selectCardElement.CardInfo.cardShameData;
         _onSelectToManagingCardEvent?.Invoke(selectCardElement.CardInfo);

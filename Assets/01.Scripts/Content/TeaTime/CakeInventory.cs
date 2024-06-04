@@ -16,15 +16,15 @@ public class CakeInventory : MonoBehaviour
     {
         _content.Clear();
 
-        if (DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
+        if(DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
         {
-            List<CakeData> cakeDataList =
+            List<CakeData> cakeDataList = 
             DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey).
             CakeDataList;
 
-            List<(ItemDataSO, int)> cakeList = new();
+            List<(ItemDataSO, int)> cakeList = new ();
 
-            foreach (var cake in cakeDataList)
+            foreach(var cake in cakeDataList) 
             {
                 Debug.Log($"Name : {cake.CakeName}");
                 cakeList.Add((BakingManager.Instance.GetCakeDataByName(cake.CakeName), cake.Count));
@@ -42,24 +42,6 @@ public class CakeInventory : MonoBehaviour
 
                 cie.SetInfo(cakeList[i].Item1, cakeList[i].Item2, _cakeCollocation, _cakeInvenPanel);
             }
-        }
-    }
-
-    private void Start()
-    {
-        List<ItemDataSO> cakeList = Inventory.Instance.GetSpecificTypeItemList(ItemType.Bread);
-
-        for(int i = 0; i < cakeList.Count; i++)
-        {
-            if(i % 5 == 0)
-            {
-                _content.sizeDelta = 
-                new Vector2(_content.sizeDelta.x, _content.sizeDelta.y + _contentStretchValue);
-            }
-
-            CakeInventoryElement cie =Instantiate(_cakeElementPrefab, _content);
-
-            cie.SetInfo(cakeList[i], i, _cakeCollocation, _cakeInvenPanel);
         }
     }
 }

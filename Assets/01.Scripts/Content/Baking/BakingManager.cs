@@ -8,9 +8,9 @@ using UnityEngine.InputSystem;
 
 public enum IngredientType
 {
-    Core,       // ï¿½ï¿½ï¿½Ì½ï¿½
-    Trace,     // ï¿½ï¿½ï¿½ï¿½
-    Subjectivity,     // ï¿½Ö°ï¿½
+    Core,       // º£ÀÌ½º
+    Trace,     // ÈçÀû
+    Subjectivity,     // ÁÖ°ü
 }
 
 public struct CakeGroup
@@ -104,6 +104,7 @@ public class BakingManager : MonoSingleton<BakingManager>
 
         return returnBread;
     }
+
     public ItemDataBreadSO GetCakeDataByName(string cakeName)
     {
         if(!_cakeDictionary.ContainsKey(cakeName))
