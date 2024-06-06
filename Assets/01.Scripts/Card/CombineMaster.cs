@@ -9,10 +9,10 @@ public class CombineMaster : MonoBehaviour
 
     public void CombineGenerate()
     {
-        for(int i = 0; i < CardReader.CountOfCardInHand(); i++)
+        for(int i = 0; i < BattleReader.CountOfCardInHand(); i++)
         {
             CardBase frontC;
-            CardBase currentC = CardReader.GetCardinfoInHand(i);
+            CardBase currentC = BattleReader.GetCardinfoInHand(i);
 
             if (currentC.CheckCanCombine(out frontC) && frontC != currentC)
             {
@@ -21,13 +21,13 @@ public class CombineMaster : MonoBehaviour
             }
         }
 
-        for(int i = 0; i < CardReader.CountOfCardInHand(); i++)
+        for(int i = 0; i < BattleReader.CountOfCardInHand(); i++)
         {
-            CardBase selectC = CardReader.GetCardinfoInHand(i);
-            selectC.SetUpCard(CardReader.GetHandPos(selectC), false);
+            CardBase selectC = BattleReader.GetCardinfoInHand(i);
+            selectC.SetUpCard(BattleReader.GetHandPos(selectC), false);
         }
 
-        CardReader.CardDrawer.CanDraw = true;
+        BattleReader.CardDrawer.CanDraw = true;
     }
 
     public void CombineCard(CardBase cb_1, CardBase cb_2)
@@ -48,7 +48,7 @@ public class CombineMaster : MonoBehaviour
         });
         seq.AppendCallback(() =>
         {
-            CardReader.RemoveCardInHand(cb_1);
+            BattleReader.RemoveCardInHand(cb_1);
             Destroy(cb_1.gameObject);
 
             cb_2.CombineLevel = (cb_2.CombineLevel + 1);

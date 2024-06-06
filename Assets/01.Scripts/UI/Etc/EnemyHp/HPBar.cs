@@ -37,12 +37,6 @@ public class HPBar : MonoBehaviour
 
         _fillImg.sprite = isEnemy ? _enemySprite : _freindSprite;
     }
-    private void Update()
-    {
-        if (!_canStartFollowOwner) return;
-
-        transform.position = _ownerOfThisHpBar.position;
-    }
 
     public void HandleHealthChanged(float generatedHealth)
     {

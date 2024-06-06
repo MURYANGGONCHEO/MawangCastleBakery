@@ -72,7 +72,7 @@ public class BuffStat
                 break;
             case IOnEndSkill i:
                 {
-                    CardReader.SkillCardManagement.useCardEndEvnet.AddListener(i.EndSkill);
+                    BattleReader.SkillCardManagement.useCardEndEvnet.AddListener(i.EndSkill);
                 }
                 break;
             case IOnHitDamageAfter i:
@@ -99,7 +99,7 @@ public class BuffStat
                 break;
             case IOnEndSkill i:
                 {
-                    CardReader.SkillCardManagement.useCardEndEvnet.RemoveListener(i.EndSkill);
+                    BattleReader.SkillCardManagement.useCardEndEvnet.RemoveListener(i.EndSkill);
                 }
                 break;
             case IOnHitDamageAfter i:

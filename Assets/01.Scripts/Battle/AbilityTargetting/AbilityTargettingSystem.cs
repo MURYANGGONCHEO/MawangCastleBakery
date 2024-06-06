@@ -32,6 +32,7 @@ public class AbilityTargettingSystem : MonoBehaviour
     private bool _isBindingMouseAndCard;
 
     [Header("적 확인")]
+    [SerializeField] private TargettingMaskCreater _maskCreater;
     [SerializeField] private LayerMask _whatIsEnemy;
     [SerializeField] private Transform _chainImPact;
     [SerializeField] private Color _reactionColor;
@@ -52,7 +53,7 @@ public class AbilityTargettingSystem : MonoBehaviour
     }
     public void AllGenerateChainPos(bool isGenerate)
     {
-        List<CardBase> onActiveZoneList = CardReader.SkillCardManagement.InCardZoneList;
+        List<CardBase> onActiveZoneList = BattleReader.SkillCardManagement.InCardZoneList;
 
         foreach (CardBase cb in onActiveZoneList)
         {
@@ -67,7 +68,7 @@ public class AbilityTargettingSystem : MonoBehaviour
     }
     public void ActivationCardSelect(CardBase selectCard)
     {
-        List<CardBase> onActiveZoneList = CardReader.SkillCardManagement.InCardZoneList;
+        List<CardBase> onActiveZoneList = BattleReader.SkillCardManagement.InCardZoneList;
 
         foreach (CardBase cb in onActiveZoneList)
         {
@@ -91,7 +92,7 @@ public class AbilityTargettingSystem : MonoBehaviour
     }
     public void ChainFadeControl(float fadeValue)
     {
-        List<CardBase> onActiveZoneList = CardReader.SkillCardManagement.InCardZoneList;
+        List<CardBase> onActiveZoneList = BattleReader.SkillCardManagement.InCardZoneList;
 
         foreach (CardBase cb in onActiveZoneList)
         {
@@ -174,6 +175,7 @@ public class AbilityTargettingSystem : MonoBehaviour
         {
             _selectCard = selectCard;
             AbilityTargetArrow ata = Instantiate(_targetArrowPrefab, transform);
+
             if (!_getTargetArrowDic.ContainsKey(selectCard))
             {
                 List<AbilityTargetArrow> atlist = new();
@@ -181,7 +183,6 @@ public class AbilityTargettingSystem : MonoBehaviour
             }
 
             _getTargetArrowDic[selectCard].Add(ata);
-            ata.transform.position = selectCard.transform.position;
             _isBindingMouseAndCard = true;
 
             yield return new WaitUntil(() => ata.IsBindSucess);
@@ -211,20 +212,17 @@ public class AbilityTargettingSystem : MonoBehaviour
             }
 
             _getTargetArrowDic[selectCard].Add(ata);
-            ata.transform.position = selectCard.transform.position;
 
-            Vector2 screenPoint = MaestrOffice.GetScreenPosToWorldPos(e.transform.position);
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.Instance.CanvasTrm, screenPoint, UIManager.Instance.Canvas.worldCamera, out Vector2 anchoredPosition);
-
+            Vector3 pos = _maskCreater.GetTargetMaskDic[e].transform.localPosition;
             int idx = _getTargetArrowDic[_selectCard].Count - 1;
-            _getTargetArrowDic[_selectCard][idx].ArrowBinding(_selectCard.transform, anchoredPosition);
+            _getTargetArrowDic[_selectCard][idx].ArrowBinding(_selectCard.transform, pos);
             _getTargetArrowDic[_selectCard][idx].SetFade(0.5f);
 
             EnemyMarking(e);
 
             CombatMarkingData data =
-                new CombatMarkingData(BuffingType.Targetting,
-                $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.", 1);
+            new CombatMarkingData(BuffingType.Targetting,
+            $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.", 1);
 
             e.BuffSetter.AddBuffingMark(data);
 
@@ -275,8 +273,8 @@ public class AbilityTargettingSystem : MonoBehaviour
     {
         if(CanBinding)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.Instance.CanvasTrm,
-                                                                Input.mousePosition, Camera.main, out mousePos);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle
+            (UIManager.Instance.CanvasTrm, Input.mousePosition, Camera.main, out mousePos);
         }
 
         int idx = _getTargetArrowDic[_selectCard].Count - 1;
@@ -287,21 +285,16 @@ public class AbilityTargettingSystem : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Vector2 pos = MaestrOffice.GetWorldPosToScreenPos(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0, _whatIsEnemy);
-
-            if (hit.transform == null) return;
-
-            if (hit.transform.TryGetComponent<Enemy>(out Enemy e))
+            if (BattleReader.SelectEnemy != null)
             {
-                EnemyMarking(e);
+                EnemyMarking(BattleReader.SelectEnemy);
                 ActivationCardSelect(_selectCard);
 
                 CombatMarkingData data =
                 new CombatMarkingData(BuffingType.Targetting,
                 $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.", 1);
 
-                e.BuffSetter.AddBuffingMark(data);
+                BattleReader.SelectEnemy.BuffSetter.AddBuffingMark(data);
                 if (!_buffingDataDic.ContainsKey(_selectCard.CardID))
                 {
                     _buffingDataDic.Add(_selectCard.CardID, new List<CombatMarkingData>());

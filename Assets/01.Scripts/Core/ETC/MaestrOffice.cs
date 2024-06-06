@@ -58,7 +58,7 @@ public static class MaestrOffice
     public static Vector2 GetScreenPosToWorldPos(Vector2 worldPos)
     {
         Vector3 screenPos = Camera.WorldToScreenPoint(worldPos);
-        
+        screenPos.z = 0;
         return screenPos;
     }
 

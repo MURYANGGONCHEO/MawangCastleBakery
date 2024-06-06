@@ -8,15 +8,17 @@ public class TargettingMaskCreater : MonoBehaviour
     public Dictionary<Enemy, TargetMask> GetTargetMaskDic => _getTargetMaskDic;
     [SerializeField] private TargetMask _targetMaskRect;
 
-    public void CreateMask(Enemy enemy, Vector2 maskPos)
+    public void CreateMask(Enemy enemy, Vector2 enemyPos)
     {
-        Vector2 screenPoint = MaestrOffice.GetScreenPosToWorldPos(maskPos);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.Instance.CanvasTrm,
-            screenPoint, UIManager.Instance.Canvas.worldCamera, out Vector2 anchoredPosition);
-
         TargetMask tm = Instantiate(_targetMaskRect, transform);
+        tm.MarkingEnemy = enemy;
         RectTransform rt = tm.transform as RectTransform;
-        rt.anchoredPosition = anchoredPosition;
+        
+        Vector3 pos = enemyPos;
+        pos.z = 0;
+        rt.position = pos;
+
+        rt.localPosition = new Vector3(rt.localPosition.x, rt.localPosition.y, 0);
 
         _getTargetMaskDic.Add(enemy, tm);
     }

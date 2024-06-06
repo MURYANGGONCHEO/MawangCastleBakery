@@ -282,7 +282,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.956323, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 194789760340883695}
@@ -313,10 +313,10 @@ MonoBehaviour:
   target: {fileID: 0}
   lastMovePos: {x: 0, y: 0, z: 0}
   moveDuration: 0.1
+  turnStatus: 0
   attackParticle:
     attack: {fileID: 0}
   _cameraMoveInfo: {fileID: 11400000, guid: 936a0e891b9c1904a8512f55b0ce6431, type: 2}
-  turnStatus: 0
 --- !u!114 &4237488455597836665
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -52,7 +52,7 @@ public class CardFactory : MonoBehaviour
         {
             for (int i = 0; i < count; i++)
             {
-                CardBase selectInfo = CardReader.GetRandomCardInDeck();
+                CardBase selectInfo = BattleReader.GetRandomCardInDeck();
 
                 _toDrawCatalog.Enqueue(selectInfo);
             }
@@ -61,7 +61,7 @@ public class CardFactory : MonoBehaviour
         {
             for (int i = 0; i < count; i++)
             {
-                CardBase selectInfo = CardReader.GetCardInDeck();
+                CardBase selectInfo = BattleReader.GetCardInDeck();
 
                 _toDrawCatalog.Enqueue(selectInfo);
             }
@@ -73,16 +73,16 @@ public class CardFactory : MonoBehaviour
     {
         CardBase spawnCard = Instantiate(selectInfo, _cardParent);
         spawnCard.CardID = _factoryID;
-        CardReader.CardProductionMaster.OnCardIdling(spawnCard);
+        BattleReader.CardProductionMaster.OnCardIdling(spawnCard);
 
-        spawnCard.OnPointerSetCardAction += CardReader.CardProductionMaster.OnSelectCard;
-        spawnCard.OnPointerInitCardAction += CardReader.CardProductionMaster.QuitSelectCard;
+        spawnCard.OnPointerSetCardAction += BattleReader.CardProductionMaster.OnSelectCard;
+        spawnCard.OnPointerInitCardAction += BattleReader.CardProductionMaster.QuitSelectCard;
 
         spawnCard.battleController = this.BattleController;
         spawnCard.RecoverEvent += HandRecover.RevertHand;
-        CardReader.AddCardInHand(spawnCard);
+        BattleReader.AddCardInHand(spawnCard);
         spawnCard.transform.position = _cardSpawnTrm.position;
-        spawnCard.SetUpCard(CardReader.GetPosOnTopDrawCard(), true);
+        spawnCard.SetUpCard(BattleReader.GetPosOnTopDrawCard(), true);
 
         _factoryID++;
     }

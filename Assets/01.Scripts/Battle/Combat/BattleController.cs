@@ -96,7 +96,7 @@ public class BattleController : MonoSingleton<BattleController>
 
         onFieldMonsterList = new Enemy[enemySpawnPos.Count];
 
-        CardReader.SkillCardManagement.useCardEndEvnet.AddListener(HandleEndSkill);
+        BattleReader.SkillCardManagement.useCardEndEvnet.AddListener(HandleEndSkill);
 
         TurnCounter.PlayerTurnStartEvent += HandleCardDraw;
         TurnCounter.EnemyTurnStartEvent += OnEnemyTurnStart;
@@ -108,7 +108,7 @@ public class BattleController : MonoSingleton<BattleController>
     }
     private void HandleCardDraw(bool obj)
     {
-        CardReader.CardDrawer.DrawCard(3, false);
+        BattleReader.CardDrawer.DrawCard(3, false);
     }
     private void HandleEndSkill()
     {
@@ -133,7 +133,7 @@ public class BattleController : MonoSingleton<BattleController>
     }
     private void OnDestroy()
     {
-        CardReader.SkillCardManagement.useCardEndEvnet.RemoveListener(HandleEndSkill);
+        BattleReader.SkillCardManagement.useCardEndEvnet.RemoveListener(HandleEndSkill);
         TurnCounter.EnemyTurnStartEvent -= OnEnemyTurnStart;
         TurnCounter.EnemyTurnEndEvent -= OnEnemyTurnEnd;
         TurnCounter.PlayerTurnStartEvent -= HandleCardDraw;

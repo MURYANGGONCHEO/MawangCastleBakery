@@ -36,7 +36,7 @@ public class HandRecover : MonoBehaviour
 
         CardRecord myRec = card.CardRecordList.FirstOrDefault(x => x.CardID == card.CardID);
         Debug.Log($"{myRec.HandIdx}");
-        CardReader.InHandCardList.Insert(myRec.HandIdx, card);
+        BattleReader.InHandCardList.Insert(myRec.HandIdx, card);
         card.transform.SetParent(_cardHandZone);
 
         _inWaitZoneCardList.Remove(card);
@@ -44,7 +44,7 @@ public class HandRecover : MonoBehaviour
 
         card.IsOnActivationZone = false;
         _skillCardManagement.SetSkillCardInHandZone();
-        CardReader.AbilityTargetSystem.TargettingCancle(card.CardID);
+        BattleReader.AbilityTargetSystem.TargettingCancle(card.CardID);
     }
 
     public void RevertAllHand()
@@ -56,7 +56,7 @@ public class HandRecover : MonoBehaviour
         foreach(var card in _inWaitZoneCardList)
         {
             CardRecord myRec = oldCard.CardRecordList.FirstOrDefault(x => x.CardID == card.CardID);
-            CardReader.InHandCardList.Insert(myRec.HandIdx, card);
+            BattleReader.InHandCardList.Insert(myRec.HandIdx, card);
             card.transform.SetParent(_cardHandZone);
         }
 
@@ -70,7 +70,7 @@ public class HandRecover : MonoBehaviour
     {
         foreach(var rc in recordList)
         {
-            CardBase recordCard = CardReader.InHandCardList.
+            CardBase recordCard = BattleReader.InHandCardList.
             FirstOrDefault(c => c.CardID == rc.CardID);
 
             if (recordCard == null)
@@ -79,7 +79,7 @@ public class HandRecover : MonoBehaviour
                 cb.SetInfo(rc.CardID, rc.CombineLevel);
                 cb.transform.position = _resotreCardZone.position;
 
-                CardReader.InHandCardList.Insert(rc.HandIdx, cb);
+                BattleReader.InHandCardList.Insert(rc.HandIdx, cb);
             }
             else
             {
