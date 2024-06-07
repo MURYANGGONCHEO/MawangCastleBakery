@@ -63,11 +63,11 @@ public class CameraController : MonoBehaviour
 
     public void StartCameraSequnce(CameraMoveTypeSO moveType)
     {
-        _poolVCam = PoolManager.Instance.Pop(PoolingType.VCamPool) as PoolVCam;
-        _vCam = _poolVCam.VCam;
-        _vCam.Follow = _target;
+        //_poolVCam = PoolManager.Instance.Pop(PoolingType.VCamPool) as PoolVCam;
+        //_vCam = _poolVCam.VCam;
+        //_vCam.Follow = _target;
 
-        StartCoroutine(CameraSequenceCo(moveType.camMoveSequenceList));
+        //StartCoroutine(CameraSequenceCo(moveType.camMoveSequenceList));
     }
 
     private IEnumerator CameraSequenceCo(List<CameraMoveSequence> sequenceList)

@@ -20,12 +20,12 @@ public class BattleProduction : MonoBehaviour
 
     protected IEnumerator ProductionCo()
     {
-        _panelSetEvent?.Invoke(MapManager.Instanace.SelectStageData);
+        _panelSetEvent?.Invoke(StageManager.Instanace.SelectStageData);
 
         _stageInfoPanel.PanelSetUp();
         yield return new WaitForSeconds(1.7f);
         _battleStartEvent?.Invoke();
-        _clearChekcerSetEvent?.Invoke(MapManager.Instanace.SelectStageData.clearCondition);
+        _clearChekcerSetEvent?.Invoke(StageManager.Instanace.SelectStageData.clearCondition);
         _playerAppear.Action();
     }
 }

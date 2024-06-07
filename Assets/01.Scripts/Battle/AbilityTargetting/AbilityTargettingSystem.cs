@@ -115,7 +115,7 @@ public class AbilityTargettingSystem : MonoBehaviour
     public void SetMouseAndCardArrowBind(CardBase selectCard)
     {
         selectCard.CanUseThisCard = false;
-        _battleController.Player.VFXManager.SetBackgroundColor(Color.gray);
+        _battleController.Player.VFXManager.SetBackgroundFadeOut(0.5f);
 
         EnemyTargetting(selectCard);
     }
@@ -164,7 +164,7 @@ public class AbilityTargettingSystem : MonoBehaviour
         _getTargetArrowDic[_selectCard][idx].SetFade(0.5f);
 
         yield return new WaitForSeconds(0.5f);
-        _battleController.Player.VFXManager.SetBackgroundColor(Color.white);
+        _battleController.Player.VFXManager.SetBackgroundFadeIn(0.5f);
         OnTargetting = false;
 
         
@@ -188,17 +188,17 @@ public class AbilityTargettingSystem : MonoBehaviour
             yield return new WaitUntil(() => ata.IsBindSucess);
         }
 
-        foreach (var e in _battleController.onFieldMonsterList)
+        foreach (var e in _battleController.OnFieldMonsterArr)
         {
             _battleController.maskDisableEvent?.Invoke(e);
         }
 
-        _battleController.Player.VFXManager.SetBackgroundColor(Color.white);
+        _battleController.Player.VFXManager.SetBackgroundFadeIn(0.5f);
         OnTargetting = false;
     }
     private IEnumerator HandleALLEnemyTargetting(CardBase selectCard, int count)
     {
-        foreach (Enemy e in _battleController.onFieldMonsterList)
+        foreach (Enemy e in _battleController.OnFieldMonsterArr)
         {
             if (e is null) continue;
 
@@ -234,17 +234,17 @@ public class AbilityTargettingSystem : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.5f);
-        foreach (var e in _battleController.onFieldMonsterList)
+        foreach (var e in _battleController.OnFieldMonsterArr)
         {
             _battleController.maskDisableEvent?.Invoke(e);
         }
-        _battleController.Player.VFXManager.SetBackgroundColor(Color.white);
+        _battleController.Player.VFXManager.SetBackgroundFadeIn(0.5f);
         OnTargetting = false;
     }
 
     public void TargettingCancle(int cardID)
     {
-        foreach(Enemy e in _battleController.onFieldMonsterList)
+        foreach(Enemy e in _battleController.OnFieldMonsterArr)
         {
             foreach (var data in _buffingDataDic[cardID])
             {
@@ -263,7 +263,7 @@ public class AbilityTargettingSystem : MonoBehaviour
         StartCoroutine(_targetCountingActionDic[tec].Invoke(selectCard, (int)tec));
         OnTargetting = true;
 
-        foreach (var e in _battleController.onFieldMonsterList)
+        foreach (var e in _battleController.OnFieldMonsterArr)
         {
             _battleController.maskEnableEvent?.Invoke(e);
         }

@@ -18,7 +18,7 @@ public class TripleStepSkill : CardBase, ISkillEffectAnim
         Player.OnAnimationCall += HandleAnimationCall;
         Player.VFXManager.OnEndEffectEvent += HandleEffectEnd;
 
-        foreach (var m in battleController.onFieldMonsterList)
+        foreach (var m in battleController.OnFieldMonsterArr)
         {
             if (target.Contains(m)) continue;
             m.SpriteRendererCompo.DOColor(minimumAlphaColor, 0.5f);
@@ -41,7 +41,7 @@ public class TripleStepSkill : CardBase, ISkillEffectAnim
         IsActivingAbillity = false;
         Player.VFXManager.OnEndEffectEvent -= HandleEffectEnd;
 
-        foreach (var m in battleController.onFieldMonsterList)
+        foreach (var m in battleController.OnFieldMonsterArr)
         {
             if (target.Contains(m)) continue;
             m.SpriteRendererCompo.DOColor(maximumAlphaColor, 0.5f);

@@ -34,6 +34,7 @@ public class StageDataSO : ScriptableObject
     public StageType stageType;
     public StageBackGround stageBackGround;
     public EnemyGroupSO enemyGroup;
+    public EnemyFormationSO enemyFormation;
     public TsumegoInfo clearCondition;
     public Compensation compensation;
     public bool isClearThisStage;

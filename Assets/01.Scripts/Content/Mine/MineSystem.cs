@@ -24,7 +24,7 @@ public class MineSystem : MonoBehaviour
 
         CurrentMineInfo = _mineContainer.GetInfoByFloor(Convert.ToInt16(_addData.ChallingingMineFloor));
         Debug.Log(CurrentMineInfo);
-        MapManager.Instanace.SelectStageData = CurrentMineInfo.stageData;
+        StageManager.Instanace.SelectStageData = CurrentMineInfo.stageData;
         MineUI mineUI = UIManager.Instance.GetSceneUI<MineUI>();
 
         if(!CurrentMineInfo.IsClearThisStage)

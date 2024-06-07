@@ -11,6 +11,6 @@ public class DeckSelectBtn : MonoBehaviour
     {
         _deckInfoData.PlayerSelectDeck = DeckManager.Instance.GetDeckData(_deck.SelectDeck);
         DataManager.Instance.SaveData(_deckInfoData, DataKeyList.playerDeckDataKey);
-        MapManager.Instanace.SelectDeck = _deck.SelectDeck;
+        StageManager.Instanace.SelectDeck = _deck.SelectDeck;
     }
 }

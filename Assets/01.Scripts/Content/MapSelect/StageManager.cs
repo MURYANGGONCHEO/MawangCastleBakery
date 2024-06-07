@@ -6,15 +6,15 @@ using DG.Tweening;
 using System.Linq;
 using System;
 
-public class MapManager : MonoBehaviour
+public class StageManager : MonoBehaviour
 {
-    private static MapManager _instance;
-    public static MapManager Instanace
+    private static StageManager _instance;
+    public static StageManager Instanace
     {
         get
         {
             if (_instance != null) return _instance;
-            _instance = FindObjectOfType<MapManager>();
+            _instance = FindObjectOfType<StageManager>();
             if (_instance == null)
             {
                 Debug.LogError("Not Exist MapManager");

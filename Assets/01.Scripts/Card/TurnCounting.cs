@@ -23,7 +23,7 @@ public class TurnCounting : MonoBehaviour
 
     private void Start()
     {
-        BattleReader.SetDeck(MapManager.Instanace.SelectDeck);
+        BattleReader.SetDeck(StageManager.Instanace.SelectDeck);
         TurnCounter.PlayerTurnStartEvent += ToPlayerTurnChanging;
     }
 

@@ -12,7 +12,6 @@ public class SkillCardManagement : CardManagement
 
     [Header("대기존 셋팅값")]
     [SerializeField] private Transform _cardWaitZone;
-    [SerializeField] private Vector2 _normalZonePos;
     [SerializeField] private float _waitTurmValue = 85f;
     [SerializeField] private Transform _cardInfoTrm;
     private CardInfoPanel _cardInfoPanel;
@@ -52,7 +51,6 @@ public class SkillCardManagement : CardManagement
         {
             float x = _lastCardPos.x - (_activationTurmValue * (maxCount - i - 1));
             Vector2 targetPos = new Vector2(x, _lastCardPos.y);
-            Debug.Log(targetPos.y);
             Transform selectTrm = InCardZoneCatalogue[i].transform;
 
             selectTrm.SetParent(_activationCardZone);

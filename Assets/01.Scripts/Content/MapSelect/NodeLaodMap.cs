@@ -12,7 +12,7 @@ public class NodeLaodMap : MonoBehaviour
 
     public void ActiveLoadMap(MapDataSO mapData)
     {
-        MapManager.Instanace.LoadMapObject = this.gameObject;
+        StageManager.Instanace.LoadMapObject = this.gameObject;
         gameObject.SetActive(true);
 
         if(_currentLoadMap != null)
