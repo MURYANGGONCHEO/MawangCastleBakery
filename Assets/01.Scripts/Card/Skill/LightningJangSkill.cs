@@ -43,7 +43,7 @@ public class LightningJangSkill : LightningCardBase, ISkillEffectAnim
         else
         {
             Player.VFXManager.
-            PlayParticle(CardInfo, battleController.EnemyGroupPos[0], (int)CombineLevel);
+            PlayParticle(CardInfo, battleController.EnemyGroupPosList[0], (int)CombineLevel);
         }
             
         Player.OnAnimationCall -= HandleAnimationCall;

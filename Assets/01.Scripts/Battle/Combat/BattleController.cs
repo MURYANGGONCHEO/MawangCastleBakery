@@ -25,7 +25,7 @@ public class BattleController : MonoSingleton<BattleController>
 
     private EnemyGroupSO _enemyGroup;
 
-    public List<Vector3> EnemyGroupPos { get; set; }
+    public List<Vector3> EnemyGroupPosList { get; set; }
 
     private Vector3 _formationCenterPos = Vector3.zero;
     public Vector3 FormationCenterPos
@@ -36,12 +36,12 @@ public class BattleController : MonoSingleton<BattleController>
 
             Vector3 centerPos = Vector3.zero;
 
-            foreach(Vector3 pos in EnemyGroupPos)
+            foreach(Vector3 pos in EnemyGroupPosList)
             {
                 centerPos += pos;
             }
 
-            return centerPos / EnemyGroupPos.Count;
+            return centerPos / EnemyGroupPosList.Count;
         }
     }
     private Queue<PoolingType> _enemyQue = new Queue<PoolingType>();
@@ -94,14 +94,14 @@ public class BattleController : MonoSingleton<BattleController>
 
     private void Start()
     {
-        EnemyGroupPos = StageManager.Instanace.SelectStageData.enemyFormation.positionList;
+        EnemyGroupPosList = StageManager.Instanace.SelectStageData.enemyFormation.positionList;
 
         _hpBarMaker = FindObjectOfType<HpBarMaker>();
 
         CameraController = FindObjectOfType<CameraController>();
         CameraController.BattleController = this;
 
-        OnFieldMonsterArr = new Enemy[EnemyGroupPos.Count];
+        OnFieldMonsterArr = new Enemy[EnemyGroupPosList.Count];
 
         BattleReader.SkillCardManagement.useCardEndEvnet.AddListener(HandleEndSkill);
 
@@ -198,7 +198,7 @@ public class BattleController : MonoSingleton<BattleController>
             _enemyQue.Enqueue(e.poolingType);
         }
 
-        for (int i = 0; i < EnemyGroupPos.Count; i++)
+        for (int i = 0; i < EnemyGroupPosList.Count; i++)
         {
             SpawnMonster(i);
         }
@@ -208,7 +208,7 @@ public class BattleController : MonoSingleton<BattleController>
     {
         if (_enemyQue.Count > 0)
         {
-            Vector3 selectPos = EnemyGroupPos[idx];
+            Vector3 selectPos = EnemyGroupPosList[idx];
             Enemy selectEnemy = PoolManager.Instance.Pop(_enemyQue.Dequeue()) as Enemy;
 
             selectEnemy.transform.position = selectPos;

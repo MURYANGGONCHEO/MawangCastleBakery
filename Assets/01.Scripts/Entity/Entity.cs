@@ -40,7 +40,7 @@ public abstract class Entity : PoolableMono
     public List<IOnTakeDamage> OnAttack = new();
 
     [Header("셋팅값들")]
-    public Transform hpBarPos;
+    public Transform hpBarTrm;
     public Transform forwardTrm;
 
     public Entity target;

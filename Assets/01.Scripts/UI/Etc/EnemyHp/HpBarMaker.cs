@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HpBarMaker : MonoBehaviour
@@ -57,31 +58,31 @@ public class HpBarMaker : MonoBehaviour
         friendHPBars.Remove(e);
         Destroy(e.gameObject);
     }
-    private void SpawnHPBar(Entity e)
+
+    public void SpawnHPBar(Entity e)
     {
-        HPBar hpBar = Instantiate(_hpBarPrefab, _enemyHealthBarParent);
+        HPBar hpBar = Instantiate(_hpBarPrefab, MaestrOffice.Canvas.GetComponent<RectTransform>());
         e.OnHealthBarChanged.AddListener(hpBar.HandleHealthChanged);
         e.HealthCompo.OnBeforeHit += () => FeedbackManager.Instance.FreezeTime(0.8f, 0.2f);
-        hpBar.OwnerOfThisHpBar = e.hpBarPos;
-        bool isEnemy = e is Enemy;
 
-        hpBar.transform.position = MaestrOffice.GetScreenPosToWorldPos(e.hpBarPos.position);
+        hpBar.OwnerOfThisHpBar = e.hpBarTrm;
+        bool isEnemy = e is Enemy;
+        hpBar.Init(isEnemy);
 
         if (isEnemy)
         {
-            hpBar.Init(isEnemy);
             e.HealthCompo.OnDeathEvent.AddListener(() => DeleteEnemyHPBar(hpBar));
             enemyHPBars.Add(hpBar);
         }
         else
         {
-            hpBar.Init(isEnemy);
-            hpBar.transform.localPosition = new Vector3(540, 70, 0);
             e.HealthCompo.OnDeathEvent.AddListener(() => DeleteFriendHPBar(hpBar));
             friendHPBars.Add(hpBar);
         }
 
         hpBar.BuffMarkSetter.BuffingPanelTrm = _buffingPanerlTrm;
         e.BuffSetter = hpBar.BuffMarkSetter;
+
+        hpBar.ThisTrm.localPosition = MaestrOffice.GetScreenPosToWorldPos(e.hpBarTrm.position);
     }
 }

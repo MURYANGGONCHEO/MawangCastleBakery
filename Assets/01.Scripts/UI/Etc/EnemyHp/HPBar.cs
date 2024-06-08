@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class HPBar : MonoBehaviour
 {
+    [SerializeField] private RectTransform _thisTrm;
+    public RectTransform ThisTrm => _thisTrm;
+
     private bool _canStartFollowOwner;
     private Transform _ownerOfThisHpBar;
     public Transform OwnerOfThisHpBar
