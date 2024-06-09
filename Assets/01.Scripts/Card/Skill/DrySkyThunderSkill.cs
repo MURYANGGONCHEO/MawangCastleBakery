@@ -47,7 +47,7 @@ public class DrySkyThunderSkill : LightningCardBase, ISkillEffectAnim
 
         foreach (var e in targetList)
         {
-            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
             if(e != null)
             {
                 GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, targetList[0].transform.position, Quaternion.identity);

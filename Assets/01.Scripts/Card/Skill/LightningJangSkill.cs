@@ -65,7 +65,7 @@ public class LightningJangSkill : LightningCardBase, ISkillEffectAnim
 
         foreach (var e in targets)
         {
-            e.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+            e.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
             if (Random.value * 100 >= 30f)
             {
                 e.HealthCompo.AilmentStat.ApplyAilments(AilmentEnum.Shocked);

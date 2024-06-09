@@ -37,7 +37,7 @@ public class TornadoSkill : CardBase
             yield return new WaitForSeconds(0.26f);
             foreach (var e in Player.GetSkillTargetEnemyList[this])
             {
-                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
 
                 if (e != null)
                 {

@@ -39,7 +39,7 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
             Player.VFXManager.PlayParticle(this, e.transform.position);
             for(int i = 0; i < 2; ++i)
             {
-                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
                 if(e != null)
                 {
                     GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, e.transform.position, Quaternion.identity);
@@ -53,7 +53,7 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
             Player.VFXManager.PlayParticle(this);
             foreach (var e in Player.GetSkillTargetEnemyList[this])
             {
-                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
                 if (e != null)
                 {
                     GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, e.transform.position, Quaternion.identity);

@@ -33,14 +33,14 @@ public class BuriBumerangSkill : CardBase, ISkillEffectAnim
 
         foreach (var e in Player.GetSkillTargetEnemyList[this])
         {
-            e.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+            e.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
         }
 
         yield return new WaitForSeconds(1.2f);
 
         foreach (var e in Player.GetSkillTargetEnemyList[this])
         {
-            e.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+            e.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
         }
     }
 }

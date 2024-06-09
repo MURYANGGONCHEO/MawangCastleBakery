@@ -87,7 +87,7 @@ public class PlayerVFXManager : MonoBehaviour
         ParticlePoolObject obj = PoolManager.Instance.Pop(_cardByEffects2[card.CardInfo].poolingType) as ParticlePoolObject;
         obj.transform.position = pos;
         obj[level].owner = p;
-        obj[level].damages = card.GetDamage(card.CombineLevel);
+        obj[level].damages = card.GetDamages();
         foreach (var t in p.GetSkillTargetEnemyList[card])
         {
             obj[level].AddTriggerTarget(t);
@@ -108,7 +108,7 @@ public class PlayerVFXManager : MonoBehaviour
         ParticlePoolObject obj = PoolManager.Instance.Pop(_cardByEffects2[card.CardInfo].poolingType) as ParticlePoolObject;
         obj.transform.position = pos;
         obj[level].owner = p;
-        obj[level].damages = card.GetDamage(card.CombineLevel);
+        obj[level].damages = card.GetDamages();
         foreach (var t in p.GetSkillTargetEnemyList[card])
         {
             obj[level].AddTriggerTarget(t);
@@ -123,7 +123,7 @@ public class PlayerVFXManager : MonoBehaviour
         ParticlePoolObject obj = PoolManager.Instance.Pop(_cardByEffects2[card.CardInfo].poolingType) as ParticlePoolObject;
         obj.transform.right = Vector2.left;
         obj[level].owner = p;
-        obj[level].damages = card.GetDamage(card.CombineLevel);
+        obj[level].damages = card.GetDamages();
         foreach (var t in p.GetSkillTargetEnemyList[card])
         {
             //obj[level].SetTriggerTarget(t);

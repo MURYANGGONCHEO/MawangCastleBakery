@@ -63,7 +63,7 @@ MonoBehaviour:
   buffSO: {fileID: 0}
   damageArr:
     list:
-    - list: 0f000000
+    - list: 64000000
     - list: 14000000
     - list: 19000000
   _soundEffect: {fileID: 8300000, guid: 181d30a94ff0a184a85cbcc5c6808802, type: 3}

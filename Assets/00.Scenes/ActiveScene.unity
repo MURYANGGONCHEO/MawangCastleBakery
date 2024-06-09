@@ -3307,7 +3307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _totalCardArr:
   - {fileID: 868903452428967223, guid: 80971460a6836114497b6b3b20d495a4, type: 3}
-  - {fileID: 8235069028188768195, guid: 3838898af45b4a1408d42f7dc34ef776, type: 3}
+  - {fileID: 8235069028188768195, guid: 3d1fec93658d5eb45addf8e805c7ad19, type: 3}
   - {fileID: 2383768414708929900, guid: 4396fe6d1f624d6489684cee948a03d0, type: 3}
   - {fileID: 8498255046003907940, guid: 42fbc8c3032416c47820f81a2971125b, type: 3}
   - {fileID: 998925086053489827, guid: 393ac4fca8342834aad50502dee33f19, type: 3}
