@@ -52,14 +52,25 @@ public static class MaestrOffice
 
     public static Vector2 GetWorldPosToScreenPos(Vector3 screenPos)
     {
-        return Camera.ScreenToWorldPoint(screenPos);
+        RectTransformUtility.WorldToScreenPoint(Camera.main, screenPos);
+        Vector3 pos = Vector3.zero;
+
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(UIManager.Instance.CanvasTrm, screenPos, Camera.main, out pos);
+
+        return pos;
     }
 
-    public static Vector2 GetScreenPosToWorldPos(Vector2 worldPos)
+    public static Vector3 GetScreenPosToWorldPos(Vector3 worldPos)
     {
-        Vector3 screenPos = Camera.WorldToScreenPoint(worldPos);
-        
-        return screenPos;
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
+        Vector2 localPos = Vector2.zero;
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle
+        (UIManager.Instance.CanvasTrm, screenPos, Camera.main, out localPos);
+
+        Vector3 returnPos = new Vector3(localPos.x, localPos.y, 0);
+
+        return returnPos;
     }
 
     public static int BoolToInt(bool value)

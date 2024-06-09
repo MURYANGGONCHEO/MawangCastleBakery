@@ -12,7 +12,7 @@ public class SelectDeckLoad : MonoBehaviour
             DataManager.Instance.LoadData<PlayerSelectDeckInfoData>(DataKeyList.playerDeckDataKey).
             PlayerSelectDeck;
 
-            MapManager.Instanace.SelectDeck = DeckManager.Instance.GetDeck(deckData);
+            StageManager.Instanace.SelectDeck = DeckManager.Instance.GetDeck(deckData);
         }
     }
 }

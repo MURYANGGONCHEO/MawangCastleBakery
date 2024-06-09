@@ -19,7 +19,7 @@ public class MapNode : MonoBehaviour, IPointerClickHandler
         set
         {
             _stageNumber = value;
-            MapManager.Instanace.SelectStageNumber = value;
+            StageManager.Instanace.SelectStageNumber = value;
         }
     }
 
@@ -34,10 +34,10 @@ public class MapNode : MonoBehaviour, IPointerClickHandler
 
     public void ClickThisNode()
     {
-        MapManager.Instanace.CreateStageInfoBubble(_stageData.stageName, 
+        StageManager.Instanace.CreateStageInfoBubble(_stageData.stageName, 
                                                    transform.localPosition, 
                                                    _isStageBubbleReverse);
-        MapManager.Instanace.SelectStageData = _stageData;
+        StageManager.Instanace.SelectStageData = _stageData;
     }
 
     public void OnPointerClick(PointerEventData eventData)

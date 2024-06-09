@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public static class CardReader
+public static class BattleReader
 {
     public static List<CardBase> InHandCardList = new List<CardBase>();
     public static List<CardBase> InDeckCardList = new List<CardBase>();
     public static List<(int, CardBase)> captureHandList = new ();
+
+    public static Enemy SelectEnemy { get; set; }
 
     private static CardFactory _cardDrawer;
     public static CardFactory CardDrawer

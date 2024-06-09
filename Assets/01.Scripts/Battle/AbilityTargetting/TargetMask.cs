@@ -7,10 +7,11 @@ using UnityEngine.UI;
 
 public class TargetMask : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public Enemy MarkingEnemy { get; set; }
     [SerializeField] private Image _targetMarkImg;
     private Tween _fadeTween;
 
-    private void ActiveTargetMark(bool isActive)
+    public void ActiveTargetMark(bool isActive)
     {
         _fadeTween.Kill();
         _fadeTween = _targetMarkImg.DOFade(MaestrOffice.BoolToInt(isActive), 0.2f);
@@ -18,18 +19,20 @@ public class TargetMask : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!CardReader.AbilityTargetSystem.OnTargetting) return;
+        if (!BattleReader.AbilityTargetSystem.OnTargetting) return;
 
-        CardReader.AbilityTargetSystem.CanBinding = false;
-        CardReader.AbilityTargetSystem.mousePos = transform.localPosition;
+        BattleReader.SelectEnemy = MarkingEnemy;
+        BattleReader.AbilityTargetSystem.CanBinding = false;
+        BattleReader.AbilityTargetSystem.mousePos = transform.localPosition;
         ActiveTargetMark(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (!CardReader.AbilityTargetSystem.OnTargetting) return;
+        if (!BattleReader.AbilityTargetSystem.OnTargetting) return;
 
-        CardReader.AbilityTargetSystem.CanBinding = true;
+        BattleReader.SelectEnemy = null;
+        BattleReader.AbilityTargetSystem.CanBinding = true;
         ActiveTargetMark(false);
     }
 }

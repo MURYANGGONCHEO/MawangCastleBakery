@@ -24,7 +24,6 @@ public abstract class CardBase : MonoBehaviour,
     [SerializeField] private CardInfo _myCardInfo;
     public bool CanUseThisCard { get; set; } = false;
     public bool IsOnActivationZone { get; set; }
-    [SerializeField] private GameObject[] _objArr = new GameObject[3];
     [SerializeField] private CombineLevel _combineLevel;
     public CombineLevel CombineLevel
     {
@@ -35,10 +34,6 @@ public abstract class CardBase : MonoBehaviour,
         set
         {
             _combineLevel = value;
-            for(int i = 0; i < _objArr.Length; i++)
-            {
-                _objArr[i].SetActive(i <= (int)_combineLevel);
-            }
         }
     }
     [SerializeField] private Transform visualTrm;
@@ -63,7 +58,7 @@ public abstract class CardBase : MonoBehaviour,
 
             if(_isActivingAbillity)
             {
-                CardReader.LockHandCard(true);
+                BattleReader.LockHandCard(true);
             }
             else
             {
@@ -121,14 +116,14 @@ public abstract class CardBase : MonoBehaviour,
     private void OnDestroy()
     {
         OnPointerSetCardAction = null;
-        CardReader.CardProductionMaster.QuitCardling(this);
+        BattleReader.CardProductionMaster.QuitCardling(this);
     }
 
     public abstract void Abillity();
 
     public void ActiveInfo()
     {
-        CardReader.SkillCardManagement.SetCardInfo(CardInfo, true);
+        BattleReader.SkillCardManagement.SetCardInfo(CardInfo, true);
         VisualRectTrm.DOScale(1.3f, 0.2f);
 
         Vector2 pos = transform.localPosition;
@@ -144,9 +139,9 @@ public abstract class CardBase : MonoBehaviour,
         seq.Append(DOTween.To(() => mat.GetFloat("_dissolve_amount"), d => mat.SetFloat("_dissolve_amount", d), -0.1f, 2f));
         seq.InsertCallback(1, () =>
         {
-            CardReader.SkillCardManagement.SetCardInfo(CardInfo, false);
-            CardReader.SkillCardManagement.ChainingSkill();
-            CardReader.LockHandCard(false);
+            BattleReader.SkillCardManagement.SetCardInfo(CardInfo, false);
+            BattleReader.SkillCardManagement.ChainingSkill();
+            BattleReader.LockHandCard(false);
 
             Destroy(gameObject);
         });
@@ -154,7 +149,7 @@ public abstract class CardBase : MonoBehaviour,
     public void SetUpCard(float moveToXPos, bool generateCallback)
     {
         CanUseThisCard = false;
-        Vector2 movePos = new Vector2(moveToXPos, -60);
+        Vector2 movePos = new Vector2(moveToXPos, -400);
 
         Sequence seq = DOTween.Sequence();
         seq.Append(transform.DOLocalMove(movePos, _toMovePosInSec).SetEase(Ease.OutBack));
@@ -164,17 +159,17 @@ public abstract class CardBase : MonoBehaviour,
         {
             if(generateCallback)
             {
-                CardReader.CombineMaster.CombineGenerate();
-                CardReader.OnPointerCard = null;
+                BattleReader.CombineMaster.CombineGenerate();
+                BattleReader.OnPointerCard = null;
             }
             CanUseThisCard = true;
         });
     }
     public bool CheckCanCombine(out CardBase frontCard)
     {
-        if (CardReader.GetIdx(this) != 0)
+        if (BattleReader.GetIdx(this) != 0)
         {
-            CardBase frontOfThisCard = CardReader.GetCardinfoInHand(CardReader.GetIdx(this) - 1);
+            CardBase frontOfThisCard = BattleReader.GetCardinfoInHand(BattleReader.GetIdx(this) - 1);
             if (frontOfThisCard.CardInfo.CardName == _myCardInfo.CardName &&
                 frontOfThisCard.CombineLevel == CombineLevel &&
                 frontOfThisCard.CombineLevel != CombineLevel.III)
@@ -196,26 +191,26 @@ public abstract class CardBase : MonoBehaviour,
     }
     private void Shuffling()
     {
-        CardReader.ShuffleInHandCard(CardReader.OnPointerCard, this);
-        SetUpCard(CardReader.GetHandPos(this), false);
+        BattleReader.ShuffleInHandCard(BattleReader.OnPointerCard, this);
+        SetUpCard(BattleReader.GetHandPos(this), false);
     }
     private void Update()
     {
         if (!CanUseThisCard) return;
 
-        if (CardReader.OnPointerCard == null ||
-            CardReader.OnPointerCard == this ||
-            CardReader.OnBinding   == false) return;
+        if (BattleReader.OnPointerCard == null ||
+            BattleReader.OnPointerCard == this ||
+            BattleReader.OnBinding   == false) return;
 
-        if (UIFunction.IsImagesOverlapping(CardReader.OnPointerCard.VisualRectTrm, VisualRectTrm))
+        if (UIFunction.IsImagesOverlapping(BattleReader.OnPointerCard.VisualRectTrm, VisualRectTrm))
         {
-            if(CardReader.OnPointerCard.transform.position.x > transform.position.x
-            && CardReader.GetIdx(CardReader.OnPointerCard) > CardReader.GetIdx(this))
+            if(BattleReader.OnPointerCard.transform.position.x > transform.position.x
+            && BattleReader.GetIdx(BattleReader.OnPointerCard) > BattleReader.GetIdx(this))
             {
                 Shuffling();
             }
-            else if(CardReader.OnPointerCard.transform.position.x < transform.position.x
-                 && CardReader.GetIdx(CardReader.OnPointerCard) < CardReader.GetIdx(this))
+            else if(BattleReader.OnPointerCard.transform.position.x < transform.position.x
+                 && BattleReader.GetIdx(BattleReader.OnPointerCard) < BattleReader.GetIdx(this))
             {
                 Shuffling();
             }
@@ -228,7 +223,7 @@ public abstract class CardBase : MonoBehaviour,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (IsOnActivationZone || CardReader.OnBinding) return;
+        if (IsOnActivationZone || BattleReader.OnBinding) return;
 
         OnPointerSetCardAction?.Invoke(transform);
         OnPointerInCard = true;
@@ -247,7 +242,7 @@ public abstract class CardBase : MonoBehaviour,
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (IsOnActivationZone || CardReader.OnBinding) return;
+        if (IsOnActivationZone || BattleReader.OnBinding) return;
 
         OnPointerInitCardAction?.Invoke(transform);
         OnPointerInCard = false;
@@ -265,7 +260,7 @@ public abstract class CardBase : MonoBehaviour,
     {
         if (!IsOnActivationZone) return;
 
-        var initList = CardReader.SkillCardManagement.InCardZoneList;
+        var initList = BattleReader.SkillCardManagement.InCardZoneList;
 
         if (initList[initList.Count - 1] != this)
         {

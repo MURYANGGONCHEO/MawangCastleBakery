@@ -17,7 +17,7 @@ public class LoadMap : MonoBehaviour
 
         AdventureData adData = UIManager.Instance.GetSceneUI<SelectMapUI>().GetAdventureData();
 
-        int myChapterIdx = (int)MapManager.Instanace.SelectMapData.myChapterType;
+        int myChapterIdx = (int)StageManager.Instanace.SelectMapData.myChapterType;
 
         int chapterIdx = Convert.ToInt16(adData.InChallingingStageCount.Split('-')[0]) - 1;
         

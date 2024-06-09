@@ -10,7 +10,7 @@ public class BattleResultAccept : MonoBehaviour
 
     private void OnEnable()
     {
-        if(MapManager.Instanace.SelectStageData.stageType != StageType.Mine)
+        if(StageManager.Instanace.SelectStageData.stageType != StageType.Mine)
         {
             _myButton.onClick.AddListener(StageAccept);
         }

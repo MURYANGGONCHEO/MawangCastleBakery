@@ -20,8 +20,19 @@ public class CardInfoBattlePanel : PoolableMono
         Sequence seq = DOTween.Sequence();
         _seqTween = seq;
 
+        float inX = 0;
+
+        if(transform.position.x > 90)
+        {
+            inX = -74;
+        }
+        else if(transform.position.x < -90)
+        {
+            inX = 74;
+        }
+
         seq.Append(transform.DOScale(1, 0.15f)).SetEase(Ease.OutBack);
-        seq.Join(transform.DOLocalMoveY(240, 0.15f).SetEase(Ease.OutBack));
+        seq.Join(transform.DOLocalMove(new Vector3(inX, 240, 0), 0.15f).SetEase(Ease.OutBack));
     }
 
     public void SetDown()

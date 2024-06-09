@@ -32,12 +32,14 @@ public class AbilityTargettingSystem : MonoBehaviour
     private bool _isBindingMouseAndCard;
 
     [Header("적 확인")]
+    [SerializeField] private TargettingMaskCreater _maskCreater;
     [SerializeField] private LayerMask _whatIsEnemy;
     [SerializeField] private Transform _chainImPact;
     [SerializeField] private Color _reactionColor;
     private List<ChainSelectTarget> _chainTargetList = new();
 
     public bool OnTargetting { get; private set; }
+    private Dictionary<int, List<CombatMarkingData>> _buffingDataDic = new();
 
     public void AllChainClear()
     {
@@ -51,7 +53,7 @@ public class AbilityTargettingSystem : MonoBehaviour
     }
     public void AllGenerateChainPos(bool isGenerate)
     {
-        List<CardBase> onActiveZoneList = CardReader.SkillCardManagement.InCardZoneList;
+        List<CardBase> onActiveZoneList = BattleReader.SkillCardManagement.InCardZoneList;
 
         foreach (CardBase cb in onActiveZoneList)
         {
@@ -64,33 +66,10 @@ public class AbilityTargettingSystem : MonoBehaviour
             }
         }
     }
-    public void ActivationCardSelect(CardBase selectCard)
-    {
-        List<CardBase> onActiveZoneList = CardReader.SkillCardManagement.InCardZoneList;
-
-        foreach (CardBase cb in onActiveZoneList)
-        {
-            if (_getTargetArrowDic.ContainsKey(cb))
-            {
-                foreach (AbilityTargetArrow ata in _getTargetArrowDic[cb])
-                {
-                    if (ata.MarkingEntity.ChainningCardList.Contains(selectCard))
-                    {
-                        ata.MarkingEntity.SelectChainningCharacter(selectCard.CardInfo.skillPersonalColor, 1);
-                        continue;
-                    }
-                    else
-                    {
-                        Color unSelectedColor = new Color(0, 0, 0, 0);
-                        ata.MarkingEntity.SelectChainningCharacter(unSelectedColor, 0);
-                    }
-                }
-            }
-        }
-    }
+    
     public void ChainFadeControl(float fadeValue)
     {
-        List<CardBase> onActiveZoneList = CardReader.SkillCardManagement.InCardZoneList;
+        List<CardBase> onActiveZoneList = BattleReader.SkillCardManagement.InCardZoneList;
 
         foreach (CardBase cb in onActiveZoneList)
         {
@@ -113,7 +92,7 @@ public class AbilityTargettingSystem : MonoBehaviour
     public void SetMouseAndCardArrowBind(CardBase selectCard)
     {
         selectCard.CanUseThisCard = false;
-        _battleController.Player.VFXManager.SetBackgroundColor(Color.gray);
+        _battleController.BackGroundFadeOut();
 
         EnemyTargetting(selectCard);
     }
@@ -162,7 +141,7 @@ public class AbilityTargettingSystem : MonoBehaviour
         _getTargetArrowDic[_selectCard][idx].SetFade(0.5f);
 
         yield return new WaitForSeconds(0.5f);
-        _battleController.Player.VFXManager.SetBackgroundColor(Color.white);
+        _battleController.BackGroundFadeIn();
         OnTargetting = false;
 
         
@@ -173,6 +152,7 @@ public class AbilityTargettingSystem : MonoBehaviour
         {
             _selectCard = selectCard;
             AbilityTargetArrow ata = Instantiate(_targetArrowPrefab, transform);
+
             if (!_getTargetArrowDic.ContainsKey(selectCard))
             {
                 List<AbilityTargetArrow> atlist = new();
@@ -180,23 +160,22 @@ public class AbilityTargettingSystem : MonoBehaviour
             }
 
             _getTargetArrowDic[selectCard].Add(ata);
-            ata.transform.position = selectCard.transform.position;
             _isBindingMouseAndCard = true;
 
             yield return new WaitUntil(() => ata.IsBindSucess);
         }
 
-        foreach (var e in _battleController.onFieldMonsterList)
+        foreach (var e in _battleController.OnFieldMonsterArr)
         {
             _battleController.maskDisableEvent?.Invoke(e);
         }
 
-        _battleController.Player.VFXManager.SetBackgroundColor(Color.white);
+        _battleController.BackGroundFadeIn();
         OnTargetting = false;
     }
     private IEnumerator HandleALLEnemyTargetting(CardBase selectCard, int count)
     {
-        foreach (Enemy e in _battleController.onFieldMonsterList)
+        foreach (Enemy e in _battleController.OnFieldMonsterArr)
         {
             if (e is null) continue;
 
@@ -210,31 +189,46 @@ public class AbilityTargettingSystem : MonoBehaviour
             }
 
             _getTargetArrowDic[selectCard].Add(ata);
-            ata.transform.position = selectCard.transform.position;
 
-            Vector2 screenPoint = MaestrOffice.GetScreenPosToWorldPos(e.transform.position);
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.Instance.CanvasTrm, screenPoint, UIManager.Instance.Canvas.worldCamera, out Vector2 anchoredPosition);
-
+            Vector3 pos = _maskCreater.GetTargetMaskDic[e].transform.localPosition;
             int idx = _getTargetArrowDic[_selectCard].Count - 1;
-            _getTargetArrowDic[_selectCard][idx].ArrowBinding(_selectCard.transform, anchoredPosition);
+            _getTargetArrowDic[_selectCard][idx].ArrowBinding(_selectCard.transform, pos);
             _getTargetArrowDic[_selectCard][idx].SetFade(0.5f);
 
             EnemyMarking(e);
 
             CombatMarkingData data =
-                new CombatMarkingData(BuffingType.Targetting,
-                $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.", 1);
+            new CombatMarkingData(BuffingType.Targetting,
+            $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.", 1);
 
             e.BuffSetter.AddBuffingMark(data);
+
+            if(!_buffingDataDic.ContainsKey(selectCard.CardID))
+            {
+                _buffingDataDic.Add(selectCard.CardID, new List<CombatMarkingData>());
+            }
+            _buffingDataDic[selectCard.CardID].Add(data);
         }
 
         yield return new WaitForSeconds(0.5f);
-        foreach (var e in _battleController.onFieldMonsterList)
+        foreach (var e in _battleController.OnFieldMonsterArr)
         {
             _battleController.maskDisableEvent?.Invoke(e);
         }
-        _battleController.Player.VFXManager.SetBackgroundColor(Color.white);
+        _battleController.BackGroundFadeIn();
         OnTargetting = false;
+    }
+
+    public void TargettingCancle(int cardID)
+    {
+        foreach(Enemy e in _battleController.OnFieldMonsterArr)
+        {
+            foreach (var data in _buffingDataDic[cardID])
+            {
+                if(e is null) continue;
+                e.BuffSetter.RemoveBuffingMark(data);
+            }
+        }
     }
 
     private void EnemyTargetting(CardBase selectCard)
@@ -246,7 +240,7 @@ public class AbilityTargettingSystem : MonoBehaviour
         StartCoroutine(_targetCountingActionDic[tec].Invoke(selectCard, (int)tec));
         OnTargetting = true;
 
-        foreach (var e in _battleController.onFieldMonsterList)
+        foreach (var e in _battleController.OnFieldMonsterArr)
         {
             _battleController.maskEnableEvent?.Invoke(e);
         }
@@ -256,8 +250,8 @@ public class AbilityTargettingSystem : MonoBehaviour
     {
         if(CanBinding)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.Instance.CanvasTrm,
-                                                                Input.mousePosition, Camera.main, out mousePos);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle
+            (UIManager.Instance.CanvasTrm, Input.mousePosition, Camera.main, out mousePos);
         }
 
         int idx = _getTargetArrowDic[_selectCard].Count - 1;
@@ -268,21 +262,20 @@ public class AbilityTargettingSystem : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Vector2 pos = MaestrOffice.GetWorldPosToScreenPos(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0, _whatIsEnemy);
-
-            if (hit.transform == null) return;
-
-            if (hit.transform.TryGetComponent<Enemy>(out Enemy e))
+            if (BattleReader.SelectEnemy != null)
             {
-                EnemyMarking(e);
-                ActivationCardSelect(_selectCard);
+                EnemyMarking(BattleReader.SelectEnemy);
 
                 CombatMarkingData data =
                 new CombatMarkingData(BuffingType.Targetting,
                 $"[{_selectCard.CardInfo.CardName}] 스킬에 \r\n선택되었습니다.", 1);
 
-                e.BuffSetter.AddBuffingMark(data);
+                BattleReader.SelectEnemy.BuffSetter.AddBuffingMark(data);
+                if (!_buffingDataDic.ContainsKey(_selectCard.CardID))
+                {
+                    _buffingDataDic.Add(_selectCard.CardID, new List<CombatMarkingData>());
+                }
+                _buffingDataDic[_selectCard.CardID].Add(data);
             }
         }
     }

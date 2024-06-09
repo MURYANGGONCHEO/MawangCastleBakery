@@ -25,7 +25,7 @@ public class ChapterElement : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     public void SelectThisChapter()
     {
-        MapManager.Instanace.SelectMapData = _chapterData;
+        StageManager.Instanace.SelectMapData = _chapterData;
         _loadMapActiveEvent?.Invoke(_chapterData);
     }
 

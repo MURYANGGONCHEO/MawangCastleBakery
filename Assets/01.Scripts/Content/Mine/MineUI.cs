@@ -33,6 +33,12 @@ public class MineUI : BattleUI
     public override void SceneUIStart()
     {
         SceneObserver.BeforeSceneType = SceneType.Lobby;
+        
+    }
+
+    public override void SceneUIEnd()
+    {
+        Camera.main.orthographic = true;
     }
 
     public void SetFloor(string floor, string stageName, string clearGem, bool isClear)

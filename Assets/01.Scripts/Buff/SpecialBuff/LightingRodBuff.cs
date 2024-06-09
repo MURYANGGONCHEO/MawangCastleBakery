@@ -29,7 +29,7 @@ public class LightingRodBuff : SpecialBuff, IOnEndSkill
     }
     public void EndSkill()
     {
-        foreach (var e in BattleController.Instance.onFieldMonsterList)
+        foreach (var e in BattleController.Instance.OnFieldMonsterArr)
         {
             if(e != null)
             {

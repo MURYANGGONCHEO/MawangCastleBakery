@@ -11,7 +11,7 @@ public abstract class LightningCardBase : CardBase
 
     protected void ExtraAttack(Entity me)
     {
-        foreach (var e in battleController.onFieldMonsterList)
+        foreach (var e in battleController.OnFieldMonsterArr)
         {
             try
             {

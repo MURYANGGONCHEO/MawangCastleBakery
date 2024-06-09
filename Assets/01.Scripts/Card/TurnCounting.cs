@@ -23,7 +23,7 @@ public class TurnCounting : MonoBehaviour
 
     private void Start()
     {
-        CardReader.SetDeck(MapManager.Instanace.SelectDeck);
+        BattleReader.SetDeck(StageManager.Instanace.SelectDeck);
         TurnCounter.PlayerTurnStartEvent += ToPlayerTurnChanging;
     }
 
@@ -39,7 +39,7 @@ public class TurnCounting : MonoBehaviour
 
         Sequence seq = DOTween.Sequence();
         seq.AppendCallback(() => ToPlayerTurnChanging(false));
-        seq.AppendCallback(() => CardReader.CardDrawer.DrawCard(5));
+        seq.AppendCallback(() => BattleReader.CardDrawer.DrawCard(5));
     }
 
     public Sequence BattleEndSequence(bool isVictory)
@@ -61,7 +61,6 @@ public class TurnCounting : MonoBehaviour
 
     public void ToPlayerTurnChanging(bool isTurnChange)
     {
-        Debug.Log(UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd);
         if (UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd) return;
 
         _selectTrm = _toPTChangingText.transform;

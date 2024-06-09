@@ -47,7 +47,7 @@ public class BattleUI : SceneUI
         seq.AppendCallback(() =>
         {
             _battleResultPanel.gameObject.SetActive(true);
-            StageDataSO currentStage = MapManager.Instanace.SelectStageData;
+            StageDataSO currentStage = StageManager.Instanace.SelectStageData;
             _battleResultPanel.LookResult(isClear,
                                           currentStage.stageType,
                                           currentStage.stageName,

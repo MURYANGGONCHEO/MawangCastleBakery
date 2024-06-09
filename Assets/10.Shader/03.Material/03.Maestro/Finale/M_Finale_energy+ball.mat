@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _USE_GRAD_ON
+  - _USE_MAINTEXALPHA_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -159,7 +160,7 @@ Material:
     - _normal_str: 0.157
     - _normal_upanner: 1
     - _normal_vpanner: 1
-    - _use_mainTexAlpha: 0
+    - _use_mainTexAlpha: 1
     - _use_other_diss: 0
     - _use_polar: 0
     m_Colors:

@@ -40,7 +40,7 @@ public abstract class Entity : PoolableMono
     public List<IOnTakeDamage> OnAttack = new();
 
     [Header("셋팅값들")]
-    public Transform hpBarPos;
+    public Transform hpBarTrm;
     public Transform forwardTrm;
 
     public Entity target;
@@ -50,7 +50,7 @@ public abstract class Entity : PoolableMono
 
     public TurnStatus turnStatus;
 
-    public UnityEvent BeforeChainingEvent => CardReader.SkillCardManagement.beforeChainingEvent;
+    public UnityEvent BeforeChainingEvent => BattleReader.SkillCardManagement.beforeChainingEvent;
 
     public List<CardBase> ChainningCardList { get; set; } = new List<CardBase>();
 
@@ -214,7 +214,7 @@ public abstract class Entity : PoolableMono
 
     public void DeadSequence()
     {
-        CardReader.SkillCardManagement.useCardEndEvnet.RemoveListener(DeadSequence);
+        BattleReader.SkillCardManagement.useCardEndEvnet.RemoveListener(DeadSequence);
         HealthCompo.OnDeathEvent?.Invoke();
         GotoPool();
     }

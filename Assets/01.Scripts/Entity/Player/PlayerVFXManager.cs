@@ -20,14 +20,12 @@ public class PlayerVFXManager : MonoBehaviour
     [SerializeField] private List<PlayerVFXData> cardAndEffects = new();
     private Dictionary<CardInfo, ParticleSystem[]> _cardByEffects = new();
     private Dictionary<CardInfo, ParticlePoolObject> _cardByEffects2 = new();
-    //���ݽ� ����Ʈ ������ ����
 
     public Action OnEffectEvent;
     public Action OnEndEffectEvent;
-    //public Action OnEffectEvent;
-    [SerializeField] private Player p;
-    [SerializeField] private SpriteRenderer[] backgrounds;
-    private SpriteRenderer currentBackground;
+
+    [SerializeField] private Player _player;
+    [SerializeField] private SpriteRenderer _fadePanel;
 
     private void Awake()
     {
@@ -40,21 +38,10 @@ public class PlayerVFXManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("�ߺ��� �־��");
+                Debug.LogError("?!");
             }
         }
 
-    }
-
-    private void Start()
-    {
-        foreach (var b in backgrounds)
-        {
-            if (b.gameObject.activeSelf == true)
-            {
-                currentBackground = b;
-            }
-        }
     }
 
     internal void EndParticle(CardInfo cardInfo, int combineLevel)
@@ -76,7 +63,7 @@ public class PlayerVFXManager : MonoBehaviour
         }
         _cardByEffects[card][combineLevel].transform.position = pos;
         _cardByEffects[card][combineLevel].gameObject.SetActive(true);
-        currentBackground.DOColor(Color.gray, 1.0f);
+        SetBackgroundFadeOut(1);
         ParticleSystem.MainModule mainModule = _cardByEffects[card][combineLevel].main;
         StartCoroutine(EndEffectCo(duration));
         _cardByEffects[card][combineLevel].Play();
@@ -86,9 +73,9 @@ public class PlayerVFXManager : MonoBehaviour
         int level = (int)card.CombineLevel;
         ParticlePoolObject obj = PoolManager.Instance.Pop(_cardByEffects2[card.CardInfo].poolingType) as ParticlePoolObject;
         obj.transform.position = pos;
-        obj[level].owner = p;
+        obj[level].owner = _player;
         obj[level].damages = card.GetDamages();
-        foreach (var t in p.GetSkillTargetEnemyList[card])
+        foreach (var t in _player.GetSkillTargetEnemyList[card])
         {
             obj[level].AddTriggerTarget(t);
         }
@@ -107,9 +94,9 @@ public class PlayerVFXManager : MonoBehaviour
         int level = (int)card.CombineLevel;
         ParticlePoolObject obj = PoolManager.Instance.Pop(_cardByEffects2[card.CardInfo].poolingType) as ParticlePoolObject;
         obj.transform.position = pos;
-        obj[level].owner = p;
+        obj[level].owner = _player;
         obj[level].damages = card.GetDamages();
-        foreach (var t in p.GetSkillTargetEnemyList[card])
+        foreach (var t in _player.GetSkillTargetEnemyList[card])
         {
             obj[level].AddTriggerTarget(t);
         }
@@ -140,7 +127,7 @@ public class PlayerVFXManager : MonoBehaviour
         }
 
         _cardByEffects[card][combineLevel].gameObject.SetActive(true);
-        currentBackground.DOColor(Color.gray, 1.0f);
+        SetBackgroundFadeOut(1);
         ParticleSystem.MainModule mainModule = _cardByEffects[card][combineLevel].main;
         StartCoroutine(EndEffectCo(duration));
         _cardByEffects[card][combineLevel].Play();
@@ -149,13 +136,17 @@ public class PlayerVFXManager : MonoBehaviour
     private IEnumerator EndEffectCo(float f)
     {
         yield return new WaitForSeconds(f);
-        currentBackground.DOColor(Color.white, 1.0f);
+        SetBackgroundFadeIn(1);
         OnEndEffectEvent?.Invoke();
     }
 
-    public void SetBackgroundColor(Color color)
+    public void SetBackgroundFadeOut(float time)
     {
-        Debug.Log(color);
-        currentBackground.DOColor(color, 0.5f);
+        _fadePanel.DOFade(0.7f, time);
+    }
+
+    public void SetBackgroundFadeIn(float time)
+    {
+        _fadePanel.DOFade(0f, time);
     }
 }

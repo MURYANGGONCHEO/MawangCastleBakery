@@ -22,7 +22,7 @@ public class FrostSkill : ChilledCardBase ,ISkillEffectAnim
     {
         yield return new WaitForSeconds(0.3f);
 
-        foreach (var i in battleController.onFieldMonsterList)
+        foreach (var i in battleController.OnFieldMonsterArr)
         {
             i?.HealthCompo.AilmentStat.ApplyAilments(AilmentEnum.Chilled);
         }

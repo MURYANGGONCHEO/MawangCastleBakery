@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 4156190892487424242}
   - component: {fileID: 2185096795923336214}
   m_Layer: 5
-  m_Name: HPBar
+  m_Name: HpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccc805cdfc0d8e44bc804060f659eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _thisTrm: {fileID: 3738300530607988116}
   _hpBar: {fileID: 4096810653431046256}
   _hpBarTurm: {fileID: 1103523632820508184}
   _easingTime: 0.3
