@@ -8,17 +8,13 @@ public class TargettingMaskCreater : MonoBehaviour
     public Dictionary<Enemy, TargetMask> GetTargetMaskDic => _getTargetMaskDic;
     [SerializeField] private TargetMask _targetMaskRect;
 
-    public void CreateMask(Enemy enemy, Vector2 enemyPos)
+    public void CreateMask(Enemy enemy, Vector3 enemyPos)
     {
         TargetMask tm = Instantiate(_targetMaskRect, transform);
         tm.MarkingEnemy = enemy;
         RectTransform rt = tm.transform as RectTransform;
         
-        Vector3 pos = enemyPos;
-        pos.z = 0;
-        rt.position = pos;
-
-        rt.localPosition = new Vector3(rt.localPosition.x, rt.localPosition.y, 0);
+        rt.localPosition = MaestrOffice.GetScreenPosToWorldPos(enemyPos);
 
         _getTargetMaskDic.Add(enemy, tm);
     }
@@ -27,6 +23,7 @@ public class TargettingMaskCreater : MonoBehaviour
     {
         if(enemy == null) return;
 
+        GetTargetMaskDic[enemy].ActiveTargetMark(false);
         GetTargetMaskDic[enemy].enabled = false;
     }
 

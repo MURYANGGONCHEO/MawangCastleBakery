@@ -87,10 +87,12 @@ public class BattleController : MonoSingleton<BattleController>
         }
     }
 
-    [SerializeField] private UnityEvent<Enemy, Vector2> _maskCreateEvent;
+    [SerializeField] private UnityEvent<Enemy, Vector3> _maskCreateEvent;
     public UnityEvent<Enemy> maskEnableEvent;
     public UnityEvent<Enemy> maskDisableEvent;
     public CameraController CameraController { get; private set; }
+
+    private Action _spawnCallBack;
 
     private void Start()
     {
@@ -172,12 +174,12 @@ public class BattleController : MonoSingleton<BattleController>
         foreach (var e in OnFieldMonsterArr)
         {
             if (e is null) continue;
-            Player.VFXManager.SetBackgroundFadeOut(0.5f);
+            BackGroundFadeOut();
 
             e.TurnAction();
             yield return new WaitUntil(() => e.turnStatus == TurnStatus.End);
 
-            Player.VFXManager.SetBackgroundFadeIn(0.5f);
+            BackGroundFadeIn();
 
             if (_isGameEnd) break;
             yield return new WaitForSeconds(1.5f);
@@ -215,9 +217,13 @@ public class BattleController : MonoSingleton<BattleController>
             selectEnemy.BattleController = this;
 
             int posChecker = ((idx + 2) % 2) * 2;
-            selectEnemy.Spawn(selectPos);
 
-            _maskCreateEvent?.Invoke(selectEnemy, selectPos);
+            _spawnCallBack = null;
+            _spawnCallBack += ()=> _maskCreateEvent?.Invoke(selectEnemy, selectPos);
+            _spawnCallBack += ()=> _hpBarMaker.SetupHpBar(selectEnemy);
+
+            selectEnemy.Spawn(selectPos, _spawnCallBack);
+
             selectEnemy.SpriteRendererCompo.sortingOrder = posChecker;
 
             selectEnemy.HealthCompo.OnDeathEvent.AddListener(() => DeadMonster(selectEnemy));
@@ -226,7 +232,6 @@ public class BattleController : MonoSingleton<BattleController>
             selectEnemy.target = Player;
 
             SpawnEnemyList.Add(selectEnemy);
-            _hpBarMaker.SetupHpBar(selectEnemy);
         }
     }
 
@@ -258,5 +263,15 @@ public class BattleController : MonoSingleton<BattleController>
     public void SelectPlayerTarget(CardBase cardBase, Entity entity)
     {
         Player.SaveSkillToEnemy(cardBase, entity);
+    }
+
+    public void BackGroundFadeIn()
+    {
+        Player.VFXManager.SetBackgroundFadeIn(0.5f);
+    }
+
+    public void BackGroundFadeOut()
+    {
+        Player.VFXManager.SetBackgroundFadeOut(0.5f);
     }
 }

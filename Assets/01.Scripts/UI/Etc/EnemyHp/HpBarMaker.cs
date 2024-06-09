@@ -61,7 +61,7 @@ public class HpBarMaker : MonoBehaviour
 
     public void SpawnHPBar(Entity e)
     {
-        HPBar hpBar = Instantiate(_hpBarPrefab, MaestrOffice.Canvas.GetComponent<RectTransform>());
+        HPBar hpBar = Instantiate(_hpBarPrefab, _enemyHealthBarParent);
         e.OnHealthBarChanged.AddListener(hpBar.HandleHealthChanged);
         e.HealthCompo.OnBeforeHit += () => FeedbackManager.Instance.FreezeTime(0.8f, 0.2f);
 

@@ -54,7 +54,7 @@ public class KingButterDog : Enemy
         OnAttackEnd?.Invoke();
     }
 
-    public override void Spawn(Vector3 spawnPos)
+    public override void Spawn(Vector3 spawnPos, Action callBack)
     {
         SpriteRendererCompo.material.SetFloat("_dissolve_amount", 0);
 

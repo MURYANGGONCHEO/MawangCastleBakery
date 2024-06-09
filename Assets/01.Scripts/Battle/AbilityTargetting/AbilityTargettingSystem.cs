@@ -66,30 +66,7 @@ public class AbilityTargettingSystem : MonoBehaviour
             }
         }
     }
-    public void ActivationCardSelect(CardBase selectCard)
-    {
-        List<CardBase> onActiveZoneList = BattleReader.SkillCardManagement.InCardZoneList;
-
-        foreach (CardBase cb in onActiveZoneList)
-        {
-            if (_getTargetArrowDic.ContainsKey(cb))
-            {
-                foreach (AbilityTargetArrow ata in _getTargetArrowDic[cb])
-                {
-                    if (ata.MarkingEntity.ChainningCardList.Contains(selectCard))
-                    {
-                        ata.MarkingEntity.SelectChainningCharacter(selectCard.CardInfo.skillPersonalColor, 1);
-                        continue;
-                    }
-                    else
-                    {
-                        Color unSelectedColor = new Color(0, 0, 0, 0);
-                        ata.MarkingEntity.SelectChainningCharacter(unSelectedColor, 0);
-                    }
-                }
-            }
-        }
-    }
+    
     public void ChainFadeControl(float fadeValue)
     {
         List<CardBase> onActiveZoneList = BattleReader.SkillCardManagement.InCardZoneList;
@@ -115,7 +92,7 @@ public class AbilityTargettingSystem : MonoBehaviour
     public void SetMouseAndCardArrowBind(CardBase selectCard)
     {
         selectCard.CanUseThisCard = false;
-        _battleController.Player.VFXManager.SetBackgroundFadeOut(0.5f);
+        _battleController.BackGroundFadeOut();
 
         EnemyTargetting(selectCard);
     }
@@ -164,7 +141,7 @@ public class AbilityTargettingSystem : MonoBehaviour
         _getTargetArrowDic[_selectCard][idx].SetFade(0.5f);
 
         yield return new WaitForSeconds(0.5f);
-        _battleController.Player.VFXManager.SetBackgroundFadeIn(0.5f);
+        _battleController.BackGroundFadeIn();
         OnTargetting = false;
 
         
@@ -193,7 +170,7 @@ public class AbilityTargettingSystem : MonoBehaviour
             _battleController.maskDisableEvent?.Invoke(e);
         }
 
-        _battleController.Player.VFXManager.SetBackgroundFadeIn(0.5f);
+        _battleController.BackGroundFadeIn();
         OnTargetting = false;
     }
     private IEnumerator HandleALLEnemyTargetting(CardBase selectCard, int count)
@@ -238,7 +215,7 @@ public class AbilityTargettingSystem : MonoBehaviour
         {
             _battleController.maskDisableEvent?.Invoke(e);
         }
-        _battleController.Player.VFXManager.SetBackgroundFadeIn(0.5f);
+        _battleController.BackGroundFadeIn();
         OnTargetting = false;
     }
 
@@ -288,7 +265,6 @@ public class AbilityTargettingSystem : MonoBehaviour
             if (BattleReader.SelectEnemy != null)
             {
                 EnemyMarking(BattleReader.SelectEnemy);
-                ActivationCardSelect(_selectCard);
 
                 CombatMarkingData data =
                 new CombatMarkingData(BuffingType.Targetting,

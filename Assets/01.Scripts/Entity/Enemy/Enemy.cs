@@ -95,7 +95,7 @@ public abstract class Enemy : Entity
     }
 
     // 연출 수정 강력하게 요청
-    public virtual void Spawn(Vector3 spawnPos)
+    public virtual void Spawn(Vector3 spawnPos, Action callBack)
     {
         SpriteRendererCompo.material.SetFloat("_dissolve_amount", 0);
 
@@ -107,6 +107,7 @@ public abstract class Enemy : Entity
         {
             AnimatorCompo.SetBool(spawnAnimationHash, false);
             turnStatus = TurnStatus.Ready;
+            callBack?.Invoke();
         });
     }
     public void MoveFormation(Vector3 pos)

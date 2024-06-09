@@ -11,7 +11,7 @@ public class TargetMask : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private Image _targetMarkImg;
     private Tween _fadeTween;
 
-    private void ActiveTargetMark(bool isActive)
+    public void ActiveTargetMark(bool isActive)
     {
         _fadeTween.Kill();
         _fadeTween = _targetMarkImg.DOFade(MaestrOffice.BoolToInt(isActive), 0.2f);

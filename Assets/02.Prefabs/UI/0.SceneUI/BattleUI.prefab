@@ -746,41 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7848dd47acf38147ad36e52e764f538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStuck:
-    list: []
-  onFieldMonsterList: []
   _spawnTurm: 0.0597
-  _enemyGroup: {fileID: 0}
-  enemySpawnTrm:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  enemySpawnPos:
-  - {x: 124717120, y: 6.67e-43, z: 1e-45}
-  - {x: 0, y: 4.6173296e+19, z: 6.67e-43}
-  - {x: 4.6e-44, y: 0, z: 124717120}
-  - {x: 6.67e-43, y: 124717380, z: 6.67e-43}
-  - {x: 4.6173437e+19, y: 6.67e-43, z: 6.9e-44}
-  enemyGroupCenter: {fileID: 0}
-  enemyGroupPos: {x: 0, y: 0, z: 0}
-  _player: {fileID: 0}
-  OnGameEndEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _maskCreateEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2036,8 +2002,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handTrm: {fileID: 2969053369833980398}
-  _normalHandYPos: -400
-  _downHandYPos: -900
+  _normalHandYPos: 0
+  _downHandYPos: -400
 --- !u!1 &2881795642741018195
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,7 +3529,19 @@ MonoBehaviour:
       m_Calls: []
   beforeChainingEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2494791636583702813}
+        m_TargetAssemblyTypeName: BattleController, Assembly-CSharp
+        m_MethodName: BackGroundFadeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _afterChanningEvent:
     m_PersistentCalls:
       m_Calls:
@@ -3571,6 +3549,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Handling, Assembly-CSharp
         m_MethodName: MoveHand
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2494791636583702813}
+        m_TargetAssemblyTypeName: BattleController, Assembly-CSharp
+        m_MethodName: BackGroundFadeIn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

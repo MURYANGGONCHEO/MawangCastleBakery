@@ -169,7 +169,6 @@ public class SkillCardManagement : CardManagement
         }
         seq.AppendCallback(() => 
         {
-            BattleReader.AbilityTargetSystem.ActivationCardSelect(BattleReader.OnPointerCard);
             BattleReader.AbilityTargetSystem.SetMouseAndCardArrowBind(BattleReader.OnPointerCard);
             BattleReader.AbilityTargetSystem.AllGenerateChainPos(false);
         });

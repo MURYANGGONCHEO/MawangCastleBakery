@@ -21,7 +21,7 @@ public class PopDamageText : PoolableMono
         _damageText.fontSize = fontSize;
         _damageText.text = damage.ToString();
 
-        position.z = -5;
+        position.z = 0;
         transform.position = position;
         Sequence seq = DOTween.Sequence();
         Vector3 endPos = Vector2.zero;

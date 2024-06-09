@@ -33,7 +33,7 @@ public class CombineMaster : MonoBehaviour
     public void CombineCard(CardBase cb_1, CardBase cb_2)
     {
         float combineXPos = (cb_1.transform.localPosition.x + cb_2.transform.localPosition.x) * 0.5f;
-        Vector2 fxSpawnPos = (cb_1.transform.position + cb_2.transform.position) * 0.5f;
+        Vector3 fxSpawnPos = (cb_1.transform.position + cb_2.transform.position) * 0.5f;
         float targeXtPos = cb_2.transform.localPosition.x;
         Vector2 visualNormalPos = cb_1.VisualTrm.transform.localPosition;
 
