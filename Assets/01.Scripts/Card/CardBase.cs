@@ -223,9 +223,7 @@ public abstract class CardBase : MonoBehaviour,
     }
     public int GetDamage(CombineLevel level)
     {
-        Debug.Log($"Total Damage is {(int)((Player.CharStat.GetDamage() / 100f) * CardManagingHelper.GetCardShame(CardInfo.cardShameData, CardShameType.Damage, (int)level))}");
         return (int)((Player.CharStat.GetDamage() / 100f) * CardManagingHelper.GetCardShame(CardInfo.cardShameData, CardShameType.Damage, (int)level));
-        //return damageArr.list[(int)level].list.ToArray();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
