@@ -12,7 +12,6 @@ public class CostCheck : MonoBehaviour
     private Tween _numberingTween;
     private int _targetCost;
     [SerializeField] private TextMeshProUGUI _costText;
-    [SerializeField] private Image[] _extramanaArr;
 
     private void Start()
     {
@@ -69,14 +68,6 @@ public class CostCheck : MonoBehaviour
 
     private void HandleCheckExMana(int currentMana)
     {
-        for (int i = 0; i < _extramanaArr.Length; i++)
-        {
-            //_extramanaArr[i].enabled = false;
-        }
-
-        for (int i = 0; i < currentMana; i++)
-        {
-            //_extramanaArr[i].enabled = true;
-        }
+        
     }
 }

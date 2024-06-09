@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 5169689424753808325}
   - component: {fileID: 7393953499952131687}
   - component: {fileID: 4468878433766263868}
+  - component: {fileID: 135981266584076588}
   m_Layer: 5
   m_Name: Basket
   m_TagString: Untagged
@@ -431,7 +432,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7235676829986142340}
   m_Father: {fileID: 3484779793645749806}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -477,6 +479,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &135981266584076588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226449429642816656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9852262b0b5b85b4fb77a4dd996dd594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &419562203146728641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,7 +1154,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5169689424753808325}
-  - {fileID: 7235676829986142340}
   m_Father: {fileID: 8731799001952309575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1160,12 +1173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd856395285cc14695226f48034063f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _costObject: {fileID: 7098137015855709522}
+  _costObject: {fileID: 226449429642816656}
   _costText: {fileID: 8113116798454300524}
-  _extramanaArr:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1779028958185464880
 GameObject:
   m_ObjectHideFlags: 0
@@ -3522,7 +3531,7 @@ MonoBehaviour:
   _waitTurmValue: 85
   _cardInfoTrm: {fileID: 5031768536774034714}
   _activationCardZone: {fileID: 3246555405114084305}
-  _lastCardPos: {x: 860, y: -400}
+  _lastCardPos: {x: 860, y: -600}
   _activationTurmValue: 155
   useCardEndEvnet:
     m_PersistentCalls:
@@ -4743,11 +4752,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3484779793645749806}
+  m_Father: {fileID: 5169689424753808325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -31, y: 0}
+  m_AnchoredPosition: {x: -2, y: -20}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8030913555446333734

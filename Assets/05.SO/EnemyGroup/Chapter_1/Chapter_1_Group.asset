@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Chapter_1_Group
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 6031277862075063376, guid: 225dc7440c681d14f9225bc8d544bfb9, type: 3}
+  - {fileID: 3374196801977967140, guid: adde4b0c04a65a94c8c241544289524b, type: 3}

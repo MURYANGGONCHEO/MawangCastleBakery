@@ -75,10 +75,12 @@ public class AbilityTargetArrow : MonoBehaviour
 
         IsBindSucess = true;
         return re;
-    }
+    } 
 
     public void ArrowBinding(Transform startTrm, Vector2 endPos)
     {
+        _arrowMask.transform.position = startTrm.position;
+
         Vector3 pos = new Vector3(endPos.x, endPos.y, 0);
         _chainArrowVisual.transform.localPosition = pos;
 
