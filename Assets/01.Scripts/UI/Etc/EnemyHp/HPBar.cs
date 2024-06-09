@@ -31,7 +31,9 @@ public class HPBar : MonoBehaviour
 
     public BuffingMarkSetter BuffMarkSetter { get; private set; }
 
-    public void Init(bool isEnemy)
+    private Transform _targetTrm;
+
+    public void Init(bool isEnemy, Transform myTrm)
     {
         BuffMarkSetter = GetComponent<BuffingMarkSetter>();
 
@@ -39,6 +41,16 @@ public class HPBar : MonoBehaviour
         transform.position = _ownerOfThisHpBar.position;
 
         _fillImg.sprite = isEnemy ? _enemySprite : _freindSprite;
+
+        _targetTrm = myTrm;
+    }
+
+    private void Update()
+    {
+        if(_targetTrm != null)
+        {
+            ThisTrm.localPosition = MaestrOffice.GetScreenPosToWorldPos(_targetTrm.position);
+        }
     }
 
     public void HandleHealthChanged(float generatedHealth)

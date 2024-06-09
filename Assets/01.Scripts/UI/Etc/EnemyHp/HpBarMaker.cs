@@ -67,7 +67,8 @@ public class HpBarMaker : MonoBehaviour
 
         hpBar.OwnerOfThisHpBar = e.hpBarTrm;
         bool isEnemy = e is Enemy;
-        hpBar.Init(isEnemy);
+
+        hpBar.Init(isEnemy, e.hpBarTrm);
 
         if (isEnemy)
         {
@@ -82,7 +83,5 @@ public class HpBarMaker : MonoBehaviour
 
         hpBar.BuffMarkSetter.BuffingPanelTrm = _buffingPanerlTrm;
         e.BuffSetter = hpBar.BuffMarkSetter;
-
-        hpBar.ThisTrm.localPosition = MaestrOffice.GetScreenPosToWorldPos(e.hpBarTrm.position);
     }
 }
