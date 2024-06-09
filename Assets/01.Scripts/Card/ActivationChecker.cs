@@ -118,7 +118,7 @@ public class ActivationChecker : MonoBehaviour
     {
         if (!IsPointerOnCard() || !BattleReader.OnPointerCard.CanUseThisCard) return;
 
-        if (BattleReader.OnPointerCard.transform.localPosition.y > 150)
+        if (BattleReader.OnPointerCard.transform.localPosition.y > 130)
         {
             if(!CostCalculator.CanUseCost(BattleReader.OnPointerCard.AbilityCost, BattleReader.OnPointerCard.CardInfo.CardType == CardType.SKILL))
             {
