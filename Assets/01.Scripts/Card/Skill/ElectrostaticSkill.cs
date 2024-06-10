@@ -15,9 +15,6 @@ public class ElectrostaticSkill : LightningCardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Debug.Log($"Info is null = {CardInfo == null}");
-        Debug.Log($"cl is null = {(int)CombineLevel == null}");
-        Debug.Log($"sd is null = {_skillDurations[(int)CombineLevel] == null}");
         Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         SoundManager.PlayAudio(_soundEffect, true);
         StartCoroutine(AddAilmentCor());

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,18 @@ public class DrySkyThunderSkill : LightningCardBase, ISkillEffectAnim
     {
         IsActivingAbillity = true;
 
-        
-        StartCoroutine(AttackCor());
+        try
+        {
+            StartCoroutine(AttackCor());
+        }
+        catch(Exception e)
+        {
+            Debug.LogError(e);
+        }
 
         // 0.2 sec wait
 
-        
+
         Player.OnAnimationCall += HandleAnimationCall;
         Player.VFXManager.OnEndEffectEvent += HandleEffectEnd;
     }
@@ -48,7 +55,7 @@ public class DrySkyThunderSkill : LightningCardBase, ISkillEffectAnim
         foreach (var e in targetList)
         {
             e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
-            if(e != null)
+            if (e != null)
             {
                 GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, targetList[0].transform.position, Quaternion.identity);
                 Destroy(obj, 1.0f);
@@ -56,7 +63,7 @@ public class DrySkyThunderSkill : LightningCardBase, ISkillEffectAnim
             }
         }
 
-        if(targetList.Count > 0)
+        if (targetList.Count > 0)
         {
             ExtraAttack(targetList[targetList.Count - 1]);
         }
