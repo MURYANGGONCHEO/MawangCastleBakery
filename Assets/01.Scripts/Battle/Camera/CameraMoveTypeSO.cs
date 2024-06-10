@@ -11,15 +11,23 @@ public enum CameraTargetType
 }
 
 [Serializable]
+public struct ShakeDefination
+{
+    public bool isShaking;
+    public float seconds;
+}
+
+[Serializable]
 public struct CameraMoveSequence
 {
     public CameraTargetType cameraTarget;
     public Ease easingType;
-    public float movingValue;
+    public Vector2 movingValue;
     public float rotationValue;
     public float zoonInValue;
     public float duration;
     public float cameraTransitionTime;
+    public ShakeDefination shakeDefination;
 }
 
 [CreateAssetMenu(menuName = "SO/Camera/Sequence")]
