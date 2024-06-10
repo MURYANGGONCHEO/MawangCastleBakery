@@ -94,20 +94,19 @@ public class Stove : MonoBehaviour, IBakingProductionObject
     {
         Sequence seq = DOTween.Sequence();
 
+
+        _commonEffect.Play();
+
         seq.Append(transform.DOShakeRotation(_normalShkTime, new Vector3(0, 0, 12f), 10, 10, false, ShakeRandomnessMode.Harmonic));
         seq.Join(transform.DOScale(_normalScale * 0.7f, 2f).SetEase(Ease.OutQuad));
         seq.Join(transform.DOLocalMoveY(0, 2f).SetEase(Ease.OutQuad));
-        seq.AppendInterval(0.5f);
-        seq.AppendCallback(() =>
-        {
-            _commonEffect.Play();
-        });
 
         seq.OnComplete(() =>
         {
             _screenEffect.Play();
             transform.DOScale(_normalScale, 0.5f).SetEase(Ease.InOutBack);
             OnEndShaking.Invoke();
+            seq.Kill();
         });
     }
 
@@ -165,11 +164,6 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         });
         seq.Append(transform.DOShakeRotation(_epicShkTime, new Vector3(0, 0, 14f), 10, 10, false, ShakeRandomnessMode.Harmonic));
         seq.Join(transform.DOScale(_normalScale * 0.65f, 2f).SetEase(Ease.OutQuad));
-        seq.AppendCallback(() =>
-        {
-            _commonEffect.Play();
-            _epicEffect.Play();
-        });
         seq.Append(transform.DOScale(_normalScale * 1.1f, 0.7f).SetEase(Ease.OutQuart));
         seq.AppendCallback(() =>
         {

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Glow
+  m_Name: M_Glow_additive
   m_Shader: {fileID: 4800000, guid: 4b7c34181f4d74244be6861121c94efa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -90,9 +90,9 @@ Material:
     - _FadeIstance: 0
     - _Fade_Ditance: 0
     - _Keyword0: 0
-    - _Main_Ins: 7.75
-    - _Main_Pow: 1
-    - _Opacity: 0.55
+    - _Main_Ins: 6.9
+    - _Main_Pow: 2.59
+    - _Opacity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Use_Customdata: 0
@@ -120,5 +120,5 @@ Material:
     - _Main_Color: {r: 1, g: 1, b: 1, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _edge_color: {r: 0, g: 0, b: 0, a: 0}
-    - _main_color_a: {r: 1, g: 1, b: 1, a: 0}
+    - _main_color_a: {r: 3.482202, g: 3.482202, b: 3.482202, a: 0}
   m_BuildTextureStacks: []
