@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e478ccb36b6eb84c96c61e9753a4b3d, type: 3}
-  m_Name: Floor_2
+  m_Name: Floor_20
   m_EditorClassIdentifier: 
   stageNumber: 
-  stageName: "\uB5A8\uC5B4\uC9C0\uB294 \uC885\uC720\uC11D"
+  stageName: "\uAE08\uC9C0\uB41C \uC785\uAD6C"
   stageType: 1
   stageBackGround: 1
-  enemyGroup: {fileID: 11400000, guid: 2be54a42ba1b20e41903808fe9a4622c, type: 2}
-  enemyFormation: {fileID: 11400000, guid: c66d88d76b6813149a77c46fdac6ae5e, type: 2}
+  enemyGroup: {fileID: 11400000, guid: 26a9cc31cb655324e93b4ec850fa6e37, type: 2}
+  enemyFormation: {fileID: 0}
   clearCondition: {fileID: 11400000, guid: cff655815dbe9ec4b8bdaeb341b876f9, type: 2}
   compensation:
-    Item: {fileID: 0}
-    count: 0
+    Item: {fileID: 11400000, guid: 276281a078b479d4ab21c22376c0f927, type: 2}
+    count: 50
   isClearThisStage: 0
