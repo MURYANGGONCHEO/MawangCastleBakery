@@ -24,7 +24,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: a3232d5876149174287fafc1452a2e17, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _USE_CUSTOM_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -184,7 +185,7 @@ Material:
     - _radial_scale: 0.2
     - _step: 0.65
     - _twirl_strength: 1.99
-    - _use_custom: 0
+    - _use_custom: 1
     - _use_mainTexAlpha: 1
     - _use_other_diss: 0
     - _use_polar: 0

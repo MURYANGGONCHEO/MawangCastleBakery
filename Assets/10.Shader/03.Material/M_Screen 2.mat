@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Screen
+  m_Name: M_Screen 2
   m_Shader: {fileID: 4800000, guid: 34acf7cdbfbbaf940b431d14ffedb4e5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -153,12 +153,12 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _length: 2
-    - _main_upanner: -0.19
-    - _main_vpanner: 0.2
+    - _length: 0.17
+    - _main_upanner: 0
+    - _main_vpanner: 0
     - _mask_pow: 20
     - _rad: 0
-    - _step: 0.82
+    - _step: 0.9
     - _tex_value: 1
     - _use_custom: 1
     - _use_mask: 1
@@ -167,5 +167,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _main_color: {r: 1.5157168, g: 1.5157168, b: 1.5157168, a: 0}
+    - _main_color: {r: 2.9960783, g: 2.9960783, b: 2.9960783, a: 0}
   m_BuildTextureStacks: []

@@ -16,7 +16,10 @@ public class Stove : MonoBehaviour, IBakingProductionObject
     [SerializeField] private float _epicShkTime = 2.5f;
     [SerializeField] private float _legendShkTime = 3.5f;
 
+    [Header("Effect")]
     [SerializeField] private ParticleSystem _screenEffect;
+
+    [SerializeField] private ParticleSystem _commonEffect;
     [SerializeField] private ParticleSystem _epicEffect;
     [SerializeField] private ParticleSystem _legendEffect;
 
@@ -95,11 +98,12 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.AppendInterval(0.5f);
         seq.AppendCallback(() =>
         {
-            _screenEffect.Play();
+            _commonEffect.Play();
         });
 
         seq.OnComplete(() =>
         {
+            _screenEffect.Play();
             transform.DOScale(_normalScale, 0.5f).SetEase(Ease.InOutBack);
             OnEndShaking.Invoke();
         });
@@ -109,13 +113,14 @@ public class Stove : MonoBehaviour, IBakingProductionObject
     {
         Sequence seq = DOTween.Sequence();
 
+        _commonEffect.Play();
         seq.Append(transform.DOShakeRotation(_normalShkTime, new Vector3(0, 0, 12f), 10, 10, false, ShakeRandomnessMode.Harmonic));
         seq.Join(transform.DOScale(_normalScale * 0.7f, 2f).SetEase(Ease.OutQuad));
         seq.Join(transform.DOLocalMoveY(0, 2f).SetEase(Ease.OutQuad));
-
         seq.Append(transform.DOScale(_normalScale * 1f, 0.7f).SetEase(Ease.OutQuart));
         seq.AppendCallback(() =>
         {
+            _commonEffect.Play();
             _epicEffect.Play();
         });
 
@@ -125,12 +130,19 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.AppendCallback(() =>
         {
             _screenEffect.Play();
-        });
-
-        seq.OnComplete(() =>
-        {
             transform.DOScale(_normalScale, 0.5f).SetEase(Ease.InOutBack);
             OnEndShaking.Invoke();
+            
+        });
+
+        seq.AppendInterval(1.07f);
+        seq.AppendCallback(() =>
+        {
+            FeedbackManager.Instance.ShakeScreen(3.0f);
+        });
+        seq.OnComplete(() =>
+        {
+            seq.Kill();
         });
     }
 
@@ -139,18 +151,33 @@ public class Stove : MonoBehaviour, IBakingProductionObject
 
         Sequence seq = DOTween.Sequence();
 
+        _commonEffect.Play();
         seq.Append(transform.DOShakeRotation(_normalShkTime, new Vector3(0, 0, 12f), 10, 10, false, ShakeRandomnessMode.Harmonic));
         seq.Join(transform.DOScale(_normalScale * 0.7f, 2f).SetEase(Ease.OutQuad));
         seq.Join(transform.DOLocalMoveY(0, 2f).SetEase(Ease.OutQuad));
-
         seq.Append(transform.DOScale(_normalScale * 1f, 0.7f).SetEase(Ease.OutQuart));
-
+        seq.AppendCallback(() =>
+        {
+            _commonEffect.Play();
+            _epicEffect.Play();
+        });
         seq.Append(transform.DOShakeRotation(_epicShkTime, new Vector3(0, 0, 14f), 10, 10, false, ShakeRandomnessMode.Harmonic));
         seq.Join(transform.DOScale(_normalScale * 0.65f, 2f).SetEase(Ease.OutQuad));
-
+        seq.AppendCallback(() =>
+        {
+            _commonEffect.Play();
+            _epicEffect.Play();
+        });
         seq.Append(transform.DOScale(_normalScale * 1.1f, 0.7f).SetEase(Ease.OutQuart));
         seq.Join(transform.DORotate(new Vector3(0, 720, 0), 1.5f, RotateMode.FastBeyond360).SetEase(Ease.OutQuart));
         
+        seq.AppendInterval(0.5f);
+        seq.AppendCallback(() =>
+        {
+            _commonEffect.Play();
+            _epicEffect.Play();
+            _legendEffect.Play();
+        });
 
         seq.Append(transform.DOShakeRotation(_legendShkTime, new Vector3(0, 0, 17f), 10, 10, false, ShakeRandomnessMode.Harmonic));
         seq.Join(transform.DOScale(_normalScale * 0.6f, 2f).SetEase(Ease.OutQuad));
@@ -158,12 +185,18 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.AppendCallback(() =>
         {
             _screenEffect.Play();
-        });
-
-        seq.OnComplete(() =>
-        {
             transform.DOScale(_normalScale, 0.5f).SetEase(Ease.InOutBack);
             OnEndShaking.Invoke();
+        });
+
+        seq.AppendInterval(1.07f);
+        seq.AppendCallback(() =>
+        {
+            FeedbackManager.Instance.ShakeScreen(3.0f);
+        });
+        seq.OnComplete(() =>
+        {
+            seq.Kill();
         });
     }
 }
