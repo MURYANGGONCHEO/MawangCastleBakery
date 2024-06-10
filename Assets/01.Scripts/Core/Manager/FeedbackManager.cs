@@ -55,9 +55,10 @@ public class FeedbackManager : MonoSingleton<FeedbackManager>
         DontDestroyOnLoad(volumeObj);
     }
 
-    public void ShakeScreen(Vector3 dir)
+    public void ShakeScreen(Vector3 dir, float seconds = 0.2f)
     {
         _impulseSource.m_DefaultVelocity = dir;
+        _impulseSource.m_ImpulseDefinition.m_ImpulseDuration = seconds;
         _impulseSource.GenerateImpulse();
     }
 
