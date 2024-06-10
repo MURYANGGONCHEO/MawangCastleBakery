@@ -37,11 +37,9 @@ public class DrySkyThunderSkill : LightningCardBase, ISkillEffectAnim
         Player.VFXManager.PlayParticle(CardInfo, Player.transform.position, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         SoundManager.PlayAudio(_soundEffect, false);
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.9f);
 
-        Player.UseAbility(this, true, false, true);
-
-        yield return new WaitForSeconds(0.8f);
+        Player.UseAbility(this, true, false, true, 0.1f);
 
         var targetList = Player.GetSkillTargetEnemyList[this];
 

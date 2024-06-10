@@ -107,7 +107,7 @@ public class Player : Entity
     {
     }
 
-    public void UseAbility(CardBase card, bool isMove = false, bool isCream = false, bool isAllAttack = false)
+    public void UseAbility(CardBase card, bool isMove = false, bool isCream = false, bool isAllAttack = false, float duration = 0.6f)
     {
         clipOverrides["UseAbility"] = card.CardInfo.abilityAnimation;
         animatorOverrideController.ApplyOverrides(clipOverrides);
@@ -119,7 +119,7 @@ public class Player : Entity
             if (isMove)
             {
                 if (isAllAttack)
-                    MoveToEnemiesCenter();
+                    MoveToEnemiesCenter(duration);
                 else
                     MoveToTargetForward(GetSkillTargetEnemyList[card][0].forwardTrm.position);
                 if (_isFront) lastMovePos = cream.transform.position;
