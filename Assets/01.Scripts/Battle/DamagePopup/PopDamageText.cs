@@ -39,13 +39,13 @@ public class PopDamageText : PoolableMono
         seq.Append(_damageText.DOFade(0, 0.5f));
         seq.OnComplete(() => PoolManager.Instance.Push(this));
     }
+
     public void ShowReactionText(Vector3 position, string word, float fontSize, Color color)
     {
         _damageText.color = color;
         _damageText.fontSize = fontSize;
         _damageText.text = word;
 
-        position.z = -5;
         transform.position = position;
 
         Sequence seq = DOTween.Sequence();
