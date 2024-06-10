@@ -137,7 +137,13 @@ MonoBehaviour:
     - list: 0f000000
     - list: 14000000
     - list: 19000000
+  _soundEffect: {fileID: 8300000, guid: c4cda8e08572c0f45a7146b496b75f1f, type: 3}
+  _skillDurations:
+  - 3.5
+  - 3.5
+  - 3.5
   _shockedEffect: {fileID: 4328475238343711852, guid: b6ae50348cfae0a4faeb538a76a5c759, type: 3}
+  _staticEffect: {fileID: 0}
 --- !u!1 &5095892556922366697
 GameObject:
   m_ObjectHideFlags: 0

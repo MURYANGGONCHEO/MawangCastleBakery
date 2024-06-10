@@ -134,7 +134,7 @@ MonoBehaviour:
   buffSO: {fileID: 0}
   damageArr:
     list: []
-  _soundEffect: {fileID: 0}
+  _soundEffect: {fileID: 8300000, guid: aab29982ec6c39845889d3ee439a6b63, type: 3}
   _skillDurations:
   - 2.5
   - 2.5

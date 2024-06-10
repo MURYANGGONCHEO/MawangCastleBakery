@@ -9,14 +9,7 @@ public class DrySkyThunderSkill : LightningCardBase, ISkillEffectAnim
     {
         IsActivingAbillity = true;
 
-        try
-        {
-            StartCoroutine(AttackCor());
-        }
-        catch(Exception e)
-        {
-            Debug.LogError(e);
-        }
+        StartCoroutine(AttackCor());
 
         // 0.2 sec wait
 
