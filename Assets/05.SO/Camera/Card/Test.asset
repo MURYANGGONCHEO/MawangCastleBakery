@@ -14,26 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camMoveSequenceList:
   - cameraTarget: 1
-    easingType: 18
+    easingType: 1
     movingValue: 0
     rotationValue: 0
     duration: 0.8
     cameraTransitionTime: 0.1
-  - cameraTarget: 1
-    easingType: 0
+  - cameraTarget: -1
+    easingType: 1
     movingValue: 0
     rotationValue: 0
     duration: 0.1
-    cameraTransitionTime: 0.1
-  - cameraTarget: -1
-    easingType: 0
-    movingValue: 8
-    rotationValue: 0
-    duration: 0.2
-    cameraTransitionTime: 0.1
-  - cameraTarget: -1
-    easingType: 36
-    movingValue: 0
-    rotationValue: 0
-    duration: 2
     cameraTransitionTime: 0.1
