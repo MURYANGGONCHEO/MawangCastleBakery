@@ -212,6 +212,7 @@ public class BattleController : MonoSingleton<BattleController>
         {
             Vector3 selectPos = EnemyGroupPosList[idx];
             Enemy selectEnemy = PoolManager.Instance.Pop(_enemyQue.Dequeue()) as Enemy;
+            Debug.Log(selectEnemy);
 
             selectEnemy.transform.position = selectPos;
             selectEnemy.BattleController = this;
