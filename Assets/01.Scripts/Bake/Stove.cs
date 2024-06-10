@@ -23,6 +23,8 @@ public class Stove : MonoBehaviour, IBakingProductionObject
     [SerializeField] private ParticleSystem _epicEffect;
     [SerializeField] private ParticleSystem _legendEffect;
 
+    [SerializeField] private ParticleSystem _rotateEffect;
+
     public float EasingTime { get; set; } = 0.3f;
 
     public void OnProduction()
@@ -169,7 +171,12 @@ public class Stove : MonoBehaviour, IBakingProductionObject
             _epicEffect.Play();
         });
         seq.Append(transform.DOScale(_normalScale * 1.1f, 0.7f).SetEase(Ease.OutQuart));
+        seq.AppendCallback(() =>
+        {
+            _rotateEffect.Play();
+        });
         seq.Join(transform.DORotate(new Vector3(0, 720, 0), 1.5f, RotateMode.FastBeyond360).SetEase(Ease.OutQuart));
+        
         
         seq.AppendInterval(0.5f);
         seq.AppendCallback(() =>

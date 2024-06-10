@@ -139,7 +139,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Dissolve: -0.45
+    - _Dissolve: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _Emi_Tex_Val: 0
@@ -151,8 +151,8 @@ Material:
     - _GlossyReflections: 0
     - _Main_Ins: 5.77
     - _Main_Pow: 1
-    - _Main_UPanner: 2.34
-    - _Main_VPanner: 0.43
+    - _Main_UPanner: 0
+    - _Main_VPanner: 1.6
     - _Mask1x: 0
     - _Mask_Mirror: 1
     - _Metallic: 0
@@ -162,7 +162,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Rot: 1.18
+    - _Rot: -1.23
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -197,8 +197,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color_Back: {r: 4.8671436, g: 4.8671436, b: 4.8671436, a: 0}
-    - _Color_Front: {r: 6.422235, g: 6.422235, b: 6.422235, a: 0}
+    - _Color_Back: {r: 0.9883373, g: 0.9883373, b: 0.9883373, a: 0}
+    - _Color_Front: {r: 0.8603977, g: 0.8603977, b: 0.8603977, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _edge_color: {r: 0, g: 0, b: 0, a: 0}
