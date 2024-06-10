@@ -38,8 +38,20 @@ public abstract class TutorialBase : MonoBehaviour
     // Change displayed image & description
     public void UpdatePanel()
     {
-        Debug.Log($"PanelIdx is {_panelIdx}");
-        _curPanelImg.sprite = _panelList[_panelIdx % _panelList.Count].img;
-        _curPanelDesc.text = _panelList[_panelIdx % _panelList.Count].desc;
+        try
+        {
+            int idx = _panelIdx % _panelList.Count;
+
+            if (!(_panelList[idx].img == null
+              || _panelList[idx].desc == null))
+            {
+                _curPanelImg.sprite = _panelList[idx].img;
+                _curPanelDesc.text = _panelList[idx].desc;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
     }
 }

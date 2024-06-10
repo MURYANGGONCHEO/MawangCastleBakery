@@ -17,7 +17,7 @@ public abstract class MusicCardBase : CardBase
 
     protected void ApplyDebuffToAllEnemy()
     {
-        foreach(var e in battleController.onFieldMonsterList)
+        foreach(var e in battleController.OnFieldMonsterArr)
         {
             e?.BuffStatCompo.AddBuff(buffSO, (int)CombineLevel + 2, (int)CombineLevel);
         }

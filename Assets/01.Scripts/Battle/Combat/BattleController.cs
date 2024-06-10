@@ -155,7 +155,7 @@ public class BattleController : MonoSingleton<BattleController>
 
     private void OnEnemyTurnStart(bool value)
     {
-        foreach (var e in onFieldMonsterList)
+        foreach (var e in OnFieldMonsterArr)
         {
             if (e is null) continue;
 
@@ -182,7 +182,7 @@ public class BattleController : MonoSingleton<BattleController>
         {
             float betweenTime = 1.5f;
             if (e is null) continue;
-            Player.VFXManager.SetBackgroundColor(Color.gray);
+            //Player.VFXManager.SetBackgroundColor(Color.gray);
 
 
             if (!e.HealthCompo.AilmentStat.HasAilment(AilmentEnum.Faint))
