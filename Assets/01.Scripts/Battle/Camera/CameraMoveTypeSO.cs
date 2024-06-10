@@ -17,6 +17,7 @@ public struct CameraMoveSequence
     public Ease easingType;
     public float movingValue;
     public float rotationValue;
+    public float zoonInValue;
     public float duration;
     public float cameraTransitionTime;
 }

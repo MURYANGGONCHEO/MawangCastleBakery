@@ -28,22 +28,10 @@ public class KingButterDog : Enemy
 
     public override void MoveToTargetForward(Vector3 p)
     {
-        lastMovePos = transform.position;
-
-        //seq.Append(transform.DOMove(target.forwardTrm.position, moveDuration));
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
-        Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width + 30, transform.position.y));
-        pos.y = transform.position.y;
-
-        Vector3 jumpPos = Vector3.zero;
-        jumpPos.y = transform.position.y;
-        jumpPos.x = transform.position.x + 3;
-
         StartCoroutine(AttackCor());
 
         Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOJump(jumpPos, 1f, 1, 0.5f));
-        seq.Append(transform.DOMove(pos, 0.5f)).SetEase(Ease.Linear);
+
         seq.OnComplete(OnMoveTarget.Invoke);
     }
 
