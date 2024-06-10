@@ -65,6 +65,7 @@ public class KingButterDog : Enemy
         {
             AnimatorCompo.SetBool(spawnAnimationHash, false);
             turnStatus = TurnStatus.Ready;
+            callBack?.Invoke();
         });
     }
     public override void MoveToOriginPos()
