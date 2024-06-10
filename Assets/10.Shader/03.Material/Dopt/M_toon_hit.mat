@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _USE_CUSTOMDATA_ON
+  - _USE_MAINTEXALPHA_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -84,6 +85,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _grad_tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _normal_tex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -112,6 +117,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
+    - _CULLMODE: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -143,6 +149,7 @@ Material:
     - _Surface: 0
     - _Use_Customdata: 1
     - _Use_ToonDissolve: 0
+    - _Use_grad: 0
     - _Use_lerp: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -152,7 +159,9 @@ Material:
     - _diss_normal_vpanner: 0
     - _dot_alpha_mul: 0.38
     - _dot_alpha_power: 0.22
+    - _edge_width: 0.06
     - _fade_distance: 0.18
+    - _grad_intencity: 0
     - _main_intencity: 1.72
     - _main_upanner: 0
     - _main_vpanner: 0
@@ -162,6 +171,7 @@ Material:
     - _normal_vpanner: 1
     - _softness: 0.04
     - _use_custom: 1
+    - _use_mainTexAlpha: 1
     - _use_other_diss: 0
     - _use_polar: 0
     - _use_screen_space: 1
@@ -171,6 +181,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _edge_color: {r: 0, g: 0, b: 0, a: 0}
     - _main_color_a: {r: 2.2143142, g: 2.297397, b: 0.4226344, a: 0}
     - _main_color_b: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
