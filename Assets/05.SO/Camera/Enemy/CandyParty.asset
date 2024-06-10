@@ -17,11 +17,13 @@ MonoBehaviour:
     easingType: 1
     movingValue: 1.5
     rotationValue: 5
+    zoonInValue: 10
     duration: 1.5
     cameraTransitionTime: 0.5
   - cameraTarget: 1
     easingType: 1
     movingValue: 1.5
     rotationValue: 5
+    zoonInValue: 5
     duration: 4
     cameraTransitionTime: 0.5

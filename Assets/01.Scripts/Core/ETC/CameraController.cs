@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 
     public PoolVCam CaomObj { get; private set; }
     public BattleController BattleController { get; set; }
-    private Dictionary<CameraTargetType, Action<float, float, float, Ease>> _targetActionDic = new ();
+    private Dictionary<CameraTargetType, Action<float, float, float, float, Ease>> _targetActionDic = new ();
     private bool _camOnMoving = false;
 
     private Sequence _toPlayerSeq;
@@ -40,19 +40,19 @@ public class CameraController : MonoBehaviour
         _toEnemySeq = DOTween.Sequence();
     }
 
-    private void HandleCamraTargettingPlayer(float mValue, float rValue, float duration, Ease easing)
+    private void HandleCamraTargettingPlayer(float mValue, float rValue, float zValue, float duration, Ease easing)
     {
         _toPlayerSeq.Append(_target.DOLocalMoveX(mValue, duration).SetEase(easing));
         _toPlayerSeq.Join(_poolVCam.transform.DORotate(new Vector3(0, 0, rValue), duration).SetEase(easing));
-        _toPlayerSeq.Join(DOTween.To(() => 5, o => _vCam.m_Lens.OrthographicSize = o, 5, duration).SetEase(easing));
+        _toPlayerSeq.Join(DOTween.To(() => 60, o => _vCam.m_Lens.FieldOfView = o, 60 + zValue, duration).SetEase(easing));
         _toPlayerSeq.OnComplete(() => _camOnMoving = true);
     }
 
-    private void HandleCamraTargettingEmeny(float value, float rValue, float duration, Ease easing)
+    private void HandleCamraTargettingEmeny(float value, float rValue, float zValue, float duration, Ease easing)
     {
         _toEnemySeq.Append(_target.DOLocalMoveX(value, duration).SetEase(easing));
         _toEnemySeq.Join(_poolVCam.transform.DORotate(new Vector3(0, 0, rValue), duration).SetEase(easing));
-        _toEnemySeq.Join(DOTween.To(() => 5, o => _vCam.m_Lens.OrthographicSize = o, 5, duration).SetEase(easing));
+        _toEnemySeq.Join(DOTween.To(() => 60, o => _vCam.m_Lens.FieldOfView = o, 60 + zValue, duration).SetEase(easing));
         _toEnemySeq.OnComplete(() => _camOnMoving = true);
     }
 
@@ -81,6 +81,7 @@ public class CameraController : MonoBehaviour
             _targetActionDic[seq.cameraTarget].
             Invoke(seq.movingValue * (int)seq.cameraTarget, 
                    seq.rotationValue * (int)seq.cameraTarget,
+                   seq.zoonInValue,
                    seq.duration, seq.easingType);
 
             yield return new WaitUntil(() => _camOnMoving);
