@@ -15,43 +15,61 @@ MonoBehaviour:
   camMoveSequenceList:
   - cameraTarget: 1
     easingType: 18
-    movingValue: 8
+    movingValue: {x: 8, y: 0}
     rotationValue: 0
     zoonInValue: -5
     duration: 0
     cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 0
+      seconds: 0
   - cameraTarget: 1
     easingType: 0
-    movingValue: 8
+    movingValue: {x: 8, y: 0}
     rotationValue: 0
     zoonInValue: -5
     duration: 1.25
     cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 1
+      seconds: 0.1
   - cameraTarget: -1
     easingType: 1
-    movingValue: 6
+    movingValue: {x: 5, y: 0}
     rotationValue: 0
     zoonInValue: 0
     duration: 0.1
     cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 0
+      seconds: 0
   - cameraTarget: -1
     easingType: 36
-    movingValue: 6
+    movingValue: {x: 5, y: 0}
     rotationValue: 0
     zoonInValue: 0
     duration: 0.65
     cameraTransitionTime: 0.1
+    shakeDefination:
+      isShaking: 0
+      seconds: 0
   - cameraTarget: -1
     easingType: 36
-    movingValue: 6
+    movingValue: {x: 6, y: 0}
     rotationValue: 0
-    zoonInValue: 10
-    duration: 0.3
+    zoonInValue: 9
+    duration: 0.4
     cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 1
+      seconds: 0.3
   - cameraTarget: -1
     easingType: 36
-    movingValue: 6
+    movingValue: {x: 6, y: 0}
     rotationValue: 0
-    zoonInValue: 10
-    duration: 10
+    zoonInValue: 9
+    duration: 1
     cameraTransitionTime: 0.1
+    shakeDefination:
+      isShaking: 0
+      seconds: 0

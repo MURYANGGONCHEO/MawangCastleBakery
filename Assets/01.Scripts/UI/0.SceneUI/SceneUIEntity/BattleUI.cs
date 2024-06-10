@@ -16,7 +16,7 @@ public class BattleUI : SceneUI
     public Action<bool> SystemActive { get; private set; }
 
     [SerializeField]
-    private GameObject _tutorialPanel;
+    protected GameObject _tutorialPanel;
 
     public override void SceneUIStart()
     {

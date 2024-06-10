@@ -33,7 +33,14 @@ public class MineUI : BattleUI
     public override void SceneUIStart()
     {
         SceneObserver.BeforeSceneType = SceneType.Lobby;
-        
+
+        CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);
+        if (!cf.isFirstOnEnterDungeon)
+        {
+            _tutorialPanel.SetActive(true);
+            cf.isFirstOnEnterDungeon = true;
+            DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
+        }
     }
 
     public override void SceneUIEnd()

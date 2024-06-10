@@ -6,6 +6,22 @@ public class MyosuUI : SceneUI
 {
     [SerializeField] private CrossRoadsAppearText _appearText;
 
+    [SerializeField]
+    private GameObject _tutorialPanel;
+
+    public override void SceneUIStart()
+    {
+        base.SceneUIStart();
+
+        CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);
+        if (!cf.isFirstOnEnterMaze)
+        {
+            _tutorialPanel.SetActive(true);
+            cf.isFirstOnEnterMaze = true;
+            DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
+        }
+    }
+
     public void ApearText()
     {
         _appearText.Show();
