@@ -135,18 +135,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BakeryContent
       objectReference: {fileID: 0}
-    - target: {fileID: 3034005262988079055, guid: 15cabcab9d8d9e945b40871b2882854c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357492768857775972, guid: 15cabcab9d8d9e945b40871b2882854c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ce52f517f965f554b860fe3ca9a46181, type: 3}
-    - target: {fileID: 6357492768857775972, guid: 15cabcab9d8d9e945b40871b2882854c, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7369573233738917822, guid: 15cabcab9d8d9e945b40871b2882854c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -186,22 +174,6 @@ PrefabInstance:
     - target: {fileID: 7369573233738917822, guid: 15cabcab9d8d9e945b40871b2882854c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7962909987953051129, guid: 15cabcab9d8d9e945b40871b2882854c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8524864628710406330, guid: 15cabcab9d8d9e945b40871b2882854c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598665427445765240, guid: 15cabcab9d8d9e945b40871b2882854c, type: 3}
-      propertyPath: _normalPos.x
-      value: 2.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598665427445765240, guid: 15cabcab9d8d9e945b40871b2882854c, type: 3}
-      propertyPath: _disAppearPos.x
-      value: 2.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
