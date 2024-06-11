@@ -28,6 +28,8 @@ public struct CameraMoveSequence
     public float duration;
     public float cameraTransitionTime;
     public ShakeDefination shakeDefination;
+    public float delayTime;
+
 }
 
 [CreateAssetMenu(menuName = "SO/Camera/Sequence")]

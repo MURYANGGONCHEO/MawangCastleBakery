@@ -21,4 +21,6 @@ MonoBehaviour:
   cameraSequenceData: {fileID: 11400000, guid: 592bd6eceeb8f5d41ad65fd020581998, type: 2}
   hitEffect: {fileID: 7993180798688134084, guid: d1b4ff7625bef694c9ddc8c4f34e375a, type: 3}
   targetEffect: {fileID: 7991482987039085331, guid: 988a17af331576c4cb9bc6e9be72644d, type: 3}
-  AbillityInfo: 'Test: Attack * 2'
+  AbillityInfo: "\uD559\uC0DD\uD68C\uC7A5 \uC8FC\uC624 \uC138\uB098\uAC00 \uB208\uC5EC\uACA8
+    \uBCF8 \n\uD1B1 \uC544\uC774\uB3CC\uC758 \uC6D0\uC11D \uD6C4\uC9C0\uD0C0 \uCF54\uD1A0\uB124\uC758
+    \uC2E0\uC758\uC0C1\n\uD604\uC7AC \uD53D\uC5C5 \uC911!!"

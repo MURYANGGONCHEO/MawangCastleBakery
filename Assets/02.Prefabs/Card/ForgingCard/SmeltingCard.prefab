@@ -52,10 +52,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toMovePosInSec: 0.5
   _myCardInfo: {fileID: 11400000, guid: 736ebf39906f4304b906e63fd00329d3, type: 2}
-  _objArr:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _combineLevel: 0
   visualTrm: {fileID: 4765647492564359230}
   _cardMat: {fileID: 2100000, guid: 7215dc6c25e09bd4da589c4bef8f3be2, type: 2}
@@ -63,6 +59,11 @@ MonoBehaviour:
   buffSO: {fileID: 11400000, guid: b9bf75c501d71d84e833518ea47f7b5b, type: 2}
   damageArr:
     list: []
+  _soundEffect: {fileID: 8300000, guid: 2e51b96ae657c534ebf6001d5f384de6, type: 3}
+  _skillDurations:
+  - 6.5
+  - 6.5
+  - 6.5
 --- !u!1 &4510029413196098872
 GameObject:
   m_ObjectHideFlags: 0
