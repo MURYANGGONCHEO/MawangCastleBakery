@@ -126,5 +126,5 @@ Material:
     - _line_color: {r: 3.4415905, g: 2.6461287, b: 2.6461287, a: 0}
     - _main_color: {r: 1, g: 1, b: 1, a: 1}
     - _outline_color: {r: 1, g: 0.50377357, b: 0.50377357, a: 1}
-    - _sub_color: {r: 2.3796902, g: 2.3796902, b: 2.3796902, a: 0}
+    - _sub_color: {r: 1.8880861, g: 1.8880861, b: 1.8880861, a: 0}
   m_BuildTextureStacks: []
