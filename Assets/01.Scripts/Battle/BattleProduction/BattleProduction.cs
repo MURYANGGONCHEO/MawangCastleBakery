@@ -19,8 +19,11 @@ public class BattleProduction : MonoBehaviour
         _content = GameManager.Instance.GetContent<BattleContent>();
         _playerAppear = FindObjectOfType<PlayerAppear>();
         FindObjectOfType<BattleBackground>()?.SetBG();
-        _content.cutScene.endCutScene += OnEndCutScnen;
-        if (MapManager.Instanace.SelectStageData.stageCutScene is null)
+        if (MapManager.Instanace.SelectStageData.stageCutScene is not null)
+        {
+            _content.cutScene.endCutScene += OnEndCutScnen;
+        }
+        else
         {
             StartCoroutine(ProductionCo(false));
         }

@@ -44,12 +44,12 @@ public abstract class Enemy : Entity
     }
     private int[] SetDamage(EnemyStat stat)
     {
-        List<int> list = new();
+        int[] list = new int[stat.attackCnt];
         for (int i = 0; i < stat.attackCnt; i++)
         {
-            list.Add(stat.damage.GetValue() / stat.attackCnt);
+            list[i] = stat.damage.GetValue();
         }
-        return list.ToArray();
+        return list;
     }
     protected virtual void HandleAttackStart()
     {
@@ -61,7 +61,7 @@ public abstract class Enemy : Entity
         BattleController.Player.VFXManager.SetBackgroundColor(Color.white);
         AnimatorCompo.SetBool(attackAnimationHash, false);
     }
-    public void HandleCameraAction()
+    public virtual void HandleCameraAction()
     {
         BattleController.CameraController.StartCameraSequnce(_cameraMoveInfo);
     }

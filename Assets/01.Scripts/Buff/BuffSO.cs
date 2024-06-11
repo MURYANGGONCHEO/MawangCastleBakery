@@ -21,8 +21,6 @@ public struct StackBuff
 [CreateAssetMenu(menuName = "SO/Buff")]
 public class BuffSO : ScriptableObject
 {
-    public BuffType type;
-
     private Entity _owner;
     private CharacterStat _stat;
 

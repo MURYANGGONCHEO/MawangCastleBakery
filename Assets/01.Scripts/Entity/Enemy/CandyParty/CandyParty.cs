@@ -40,18 +40,6 @@ public class CandyParty : Enemy
         turnStatus = TurnStatus.Running;
         Attack();
     }
-
-    public override void TurnEnd()
-    {
-        base.TurnEnd();
-    }
-
-    public override void TurnStart()
-    {
-        base.TurnStart();
-        turnStatus = TurnStatus.Ready;
-    }
-
     protected override void HandleEndMoveToOriginPos()
     {
     }

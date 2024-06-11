@@ -74,7 +74,10 @@ public class SkillCardManagement : CardManagement
     public void ChainingSkill()
     {
         if (_isInChaining)
+        {
             useCardEndEvnet?.Invoke();
+            DamageTextManager.Instance.PushAllText();
+        }
 
         if (!_isInChaining && InCardZoneCatalogue.Count != 0)
         {

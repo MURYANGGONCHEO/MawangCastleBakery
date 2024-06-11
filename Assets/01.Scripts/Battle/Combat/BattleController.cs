@@ -74,6 +74,7 @@ public class BattleController : MonoSingleton<BattleController>
         }
     }
 
+    public Action OnChangeTurnEnemy;
     [SerializeField] private UnityEvent OnGameEndEvent;
     [SerializeField] private UnityEvent<Enemy, Vector2> _maskCreateEvent;
     public UnityEvent<Enemy> maskEnableEvent;
@@ -155,11 +156,14 @@ public class BattleController : MonoSingleton<BattleController>
             e.TurnAction();
 
             yield return new WaitUntil(() => e.turnStatus == TurnStatus.End);
+            DamageTextManager.Instance.PushAllText();
+
+            OnChangeTurnEnemy?.Invoke();
+
             CalculateDeathEntity();
             Player.VFXManager.SetBackgroundColor(Color.white);
             if (_isGameEnd)
                 break;
-
             yield return new WaitForSeconds(1.5f);
         }
 

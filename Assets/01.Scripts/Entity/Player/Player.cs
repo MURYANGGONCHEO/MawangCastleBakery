@@ -25,6 +25,7 @@ public class Player : Entity
     private readonly int _moveHash = Animator.StringToHash("Move");
     private readonly int _abilityHash = Animator.StringToHash("Ability");
 
+    [field: SerializeField] public PlayerDead PlayerDead { get; private set; }
     public PlayerStat PlayerStat { get; private set; }
     public PlayerVFXManager VFXManager { get; private set; }
     private PlayerHPUI _hpUI;
@@ -78,7 +79,7 @@ public class Player : Entity
         clipOverrides = new AnimationClipOverrides(animatorOverrideController.overridesCount);
         animatorOverrideController.GetOverrides(clipOverrides);
 
-        HealthCompo.OnDeathEvent.AddListener(() => UIManager.Instance.GetSceneUI<BattleUI>().SetResult(false));
+        HealthCompo.OnDeathEvent.AddListener(() => PlayerDead.DeadSeq());
 
         cream.OnAnimationCall = () => OnAnimationCall?.Invoke();
         cream.OnAnimationEnd = () => OnAnimationEnd?.Invoke();

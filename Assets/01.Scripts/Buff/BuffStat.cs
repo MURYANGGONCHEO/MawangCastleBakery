@@ -7,11 +7,6 @@ using UnityEngine;
 public delegate void OnHitDamage<T1, T2>(T1 t1, ref T2 t2);
 public delegate void OnHitDamageAfter<T1, T2, T3>(T1 dealer, T2 health, ref T3 damage);
 
-public enum BuffType
-{
-    a, b, c, d
-}
-
 public class BuffStat
 {
     private Entity _owner;
@@ -20,7 +15,7 @@ public class BuffStat
     public OnHitDamageAfter<Entity, Health, int> OnHitDamageAfterEvent;
 
     public Dictionary<Type, SpecialBuff> specialBuffDic = new();
-    private Dictionary<BuffType, BuffSO> _buffDic = new();
+    private List<BuffSO> _buffDic = new();
     private Dictionary<StackEnum, int> _stackDic = new();
 
 
@@ -39,9 +34,9 @@ public class BuffStat
     public void AddBuff(BuffSO so, int durationTurn, int combineLevel = 0)
     {
         BuffSO buff;
-        if (_buffDic.ContainsKey(so.type))
+        if (_buffDic.Contains(so))
         {
-            buff = _buffDic[so.type];
+            buff = _buffDic[_buffDic.IndexOf(so)];
             buff.PrependBuff();
             buff.RefreshBuff(combineLevel);
             //_buffDic[so] = durationTurn;
@@ -51,7 +46,7 @@ public class BuffStat
             buff = so.Clone();
             buff.SetOwner(_owner, combineLevel);
             buff.AppendBuff();
-            _buffDic.Add(buff.type, buff);
+            _buffDic.Add(buff);
         }
     }
     //public void AddBuff(CardBase card,BuffSO so)
@@ -115,7 +110,7 @@ public class BuffStat
     {
         if (!specialBuffDic.ContainsKey(special.GetType())) return;
 
-        switch (special.GetType())
+        switch (special)
         {
             case IOnTakeDamage i:
                 {
@@ -144,14 +139,14 @@ public class BuffStat
 
     public void UpdateBuff()
     {
-        foreach (var d in _buffDic.Values)
+        foreach (var d in _buffDic)
         {
             d.Update();
         }
     }
     public void ClearStat()
     {
-        foreach (var d in _buffDic.Values)
+        foreach (var d in _buffDic)
         {
             d.PrependBuff();
         }
@@ -162,5 +157,9 @@ public class BuffStat
         }
         specialBuffDic.Clear();
         TurnCounter.RoundStartEvent -= UpdateBuff;
+    }
+    public bool ContainBuff(Type specialBuff)
+    {
+        return specialBuffDic.ContainsKey(specialBuff);
     }
 }

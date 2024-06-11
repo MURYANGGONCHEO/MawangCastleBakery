@@ -29,7 +29,7 @@ public class Health : MonoBehaviour, IDamageable
 
     public Action OnBeforeHit;
     public UnityEvent OnDeathEvent;
-    public UnityEvent OnHitEvent;
+    public UnityEvent<int> OnHitEvent;
     public UnityEvent<AilmentEnum> OnAilmentChanged;
 
     private Entity _owner;
@@ -49,11 +49,13 @@ public class Health : MonoBehaviour, IDamageable
     public bool isLastHitCritical = false; //마지막 공격이 크리티컬로 적중했냐?
 
     public bool IsFreeze;
+    private KnockBackSystem _knockBack;
 
+    public int totalDmg = 0;
     protected void Awake()
     {
         _ailmentStat = new AilmentStat(this);
-
+        _knockBack = GetComponent<KnockBackSystem>();
 
     }
     private void OnEnable()
@@ -81,9 +83,8 @@ public class Health : MonoBehaviour, IDamageable
     {
         //종류에 맞춰 글자가 뜨도록 해야한다.
         Debug.Log($"{ailment.ToString()} dot damaged : {damage}");
-        OnHitEvent?.Invoke();
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
-        AfterHitFeedbacks();
+        AfterHitFeedbacks(damage);
     }
 
     protected void UpdateHealth()
@@ -115,7 +116,7 @@ public class Health : MonoBehaviour, IDamageable
         if (_isDead || _isInvincible) return; //사망하거나 무적상태면 더이상 데미지 없음.
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
     }
-    public void ApplyDamage(int damage, Entity dealer, Action action = null)
+    public void ApplyDamage(int damage, Entity dealer, KnockBackType type = KnockBackType.KnockBack)
     {
         if (_isInvincible) return; //사망하거나 무적상태면 더이상 데미지 없음.
 
@@ -133,7 +134,8 @@ public class Health : MonoBehaviour, IDamageable
             _owner.BuffStatCompo.OnHitDamageEvent?.Invoke(dealer, ref damage);
 
         damage = _owner.CharStat.ArmoredDamage(damage, IsFreeze);
-        DamageTextManager.Instance.PopupDamageText(_owner.transform.position, damage, isLastHitCritical ? DamageCategory.Critical : DamageCategory.Noraml);
+        totalDmg += damage;
+        DamageTextManager.Instance.PopupDamageText(this, _owner.transform.position, totalDmg, isLastHitCritical ? DamageCategory.Critical : DamageCategory.Noraml);
         if (!_isDead)
             foreach (var b in dealer.OnAttack)
             {
@@ -154,16 +156,15 @@ public class Health : MonoBehaviour, IDamageable
 
         //여기서 데미지 띄워주기
         //DamageTextManager.Instance.PopupReactionText(_owner.transform.position, isLastHitCritical ? DamageCategory.Critical : DamageCategory.Noraml);
+        _knockBack.KnockBack(damage,type);
 
+        AfterHitFeedbacks(damage);
 
-        AfterHitFeedbacks();
-
-        action?.Invoke();
     }
 
-    private void AfterHitFeedbacks()
+    private void AfterHitFeedbacks(int damage)
     {
-        OnHitEvent?.Invoke();
+        OnHitEvent?.Invoke(damage);
         if (_currentHealth <= 0)
         {
             _isDead = true;
@@ -183,7 +184,7 @@ public class Health : MonoBehaviour, IDamageable
     {
         //쇼크데미지 추가 부분.
         //디버프용 데미지 텍스트 추가
-        DamageTextManager.Instance.PopupDamageText(_owner.transform.position, damage, DamageCategory.Debuff);
+        DamageTextManager.Instance.PopupDamageText(this, _owner.transform.position, damage, DamageCategory.Debuff);
         OnDamageEvent?.Invoke(_currentHealth, maxHealth);
         //Debug.Log($"{gameObject.name} : shocked damage added = {shockDamage}");
     }
@@ -192,10 +193,5 @@ public class Health : MonoBehaviour, IDamageable
     public void MakeInvincible(bool value)
     {
         _isInvincible = value;
-    }
-    [ContextMenu("TestHitFeedback")]
-    private void TestDead()
-    {
-        AfterHitFeedbacks();
     }
 }

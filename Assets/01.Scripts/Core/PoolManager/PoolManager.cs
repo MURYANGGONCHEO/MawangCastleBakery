@@ -34,6 +34,13 @@ public enum PoolingType
     Tornado,
     Boss,
     GroundCrack,
+    DduckProg,
+    MeringueSora,
+    GhostBird,
+    KiwiBird,
+    ThrowKiwi,
+    Chameleon,
+    ThrowMelon
 }
 public enum ParticleEnum
 {

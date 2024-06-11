@@ -142,9 +142,10 @@ public abstract class Entity : PoolableMono
         }
     }
 
-    protected virtual void HandleHit()
+    protected virtual void HandleHit(int dmg)
     {
         //UI����
+        FeedbackManager.Instance.Blink(SpriteRendererCompo.material,0.1f);
         float currentHealth = HealthCompo.GetNormalizedHealth();
         if (currentHealth > 0)
         {
