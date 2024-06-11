@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a28dd8bf23f97c4798b8885594700fd, type: 3}
   m_Name: MineInfo_13
   m_EditorClassIdentifier: 
-  Floor: 10
+  Floor: 13
   ClearGem: 100
   IsClearThisStage: 0
   stageData: {fileID: 11400000, guid: a21ced6014087f4468df0394c60114cd, type: 2}
