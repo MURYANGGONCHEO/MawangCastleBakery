@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &942491965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8506927898712649092, guid: fdaa07104a9ccbe46b719d8b0b693de4, type: 3}
+  m_PrefabInstance: {fileID: 8670810738564175930}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &993475158
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +210,18 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8526693723465169152, guid: fdaa07104a9ccbe46b719d8b0b693de4, type: 3}
   m_PrefabInstance: {fileID: 8670810738564175930}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1662063451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942491965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b5fcc0cdebd5145849505296b9c25a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2052388992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3162,7 +3179,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: -0.3960366, y: -0.08744818, z: 0}
+  m_DefaultVelocity: {x: -0.3158004, y: -0.3670009, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0
@@ -5224,6 +5241,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mouse_trail
       objectReference: {fileID: 0}
+    - target: {fileID: 8506927898712649092, guid: fdaa07104a9ccbe46b719d8b0b693de4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8526693723465169152, guid: fdaa07104a9ccbe46b719d8b0b693de4, type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 0.39685372
+      objectReference: {fileID: 0}
     - target: {fileID: 8692280890089797074, guid: fdaa07104a9ccbe46b719d8b0b693de4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.49
@@ -5267,7 +5292,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8506927898712649092, guid: fdaa07104a9ccbe46b719d8b0b693de4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1662063451}
   m_SourcePrefab: {fileID: 100100000, guid: fdaa07104a9ccbe46b719d8b0b693de4, type: 3}
 --- !u!114 &8697907802489521862
 MonoBehaviour:
