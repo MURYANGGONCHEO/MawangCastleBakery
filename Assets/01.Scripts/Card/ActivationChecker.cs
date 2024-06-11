@@ -4,10 +4,11 @@ using UnityEngine;
 using CardDefine;
 using UnityEngine.EventSystems;
 using System;
+using DG.Tweening;
 
 public class ActivationChecker : MonoBehaviour
 {
-    [SerializeField] private RectTransform _waitZone;
+    [SerializeField] private CanvasGroup _dragFilter;
 
     private int _selectIDX;
     
@@ -105,10 +106,16 @@ public class ActivationChecker : MonoBehaviour
             }
 
             BattleReader.OnBinding = true;
+
+            _dragFilter.DOKill();
+            _dragFilter.DOFade(0.5f, 0.1f);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
+            _dragFilter.DOKill();
+            _dragFilter.DOFade(0f, 0.1f);
+
             BattleReader.OnBinding = false;
             Activation();
         }
@@ -118,7 +125,7 @@ public class ActivationChecker : MonoBehaviour
     {
         if (!IsPointerOnCard() || !BattleReader.OnPointerCard.CanUseThisCard) return;
 
-        if (BattleReader.OnPointerCard.transform.localPosition.y > 130)
+        if (BattleReader.OnPointerCard.transform.localPosition.y > 20)
         {
             if(!CostCalculator.CanUseCost(BattleReader.OnPointerCard.AbilityCost, BattleReader.OnPointerCard.CardInfo.CardType == CardType.SKILL))
             {
