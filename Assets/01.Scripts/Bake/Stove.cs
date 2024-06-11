@@ -121,7 +121,6 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.Append(transform.DOScale(_normalScale * 1f, 0.7f).SetEase(Ease.OutQuart));
         seq.AppendCallback(() =>
         {
-            _commonEffect.Play();
             _epicEffect.Play();
         });
 
@@ -159,7 +158,6 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.Append(transform.DOScale(_normalScale * 1f, 0.7f).SetEase(Ease.OutQuart));
         seq.AppendCallback(() =>
         {
-            _commonEffect.Play();
             _epicEffect.Play();
         });
         seq.Append(transform.DOShakeRotation(_epicShkTime, new Vector3(0, 0, 14f), 10, 10, false, ShakeRandomnessMode.Harmonic));
@@ -175,7 +173,6 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.AppendInterval(0.5f);
         seq.AppendCallback(() =>
         {
-            _commonEffect.Play();
             _epicEffect.Play();
             _legendEffect.Play();
         });
