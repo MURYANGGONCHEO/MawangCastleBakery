@@ -136,9 +136,9 @@ MonoBehaviour:
     list: []
   _soundEffect: {fileID: 8300000, guid: aab29982ec6c39845889d3ee439a6b63, type: 3}
   _skillDurations:
-  - 2.5
-  - 2.5
-  - 2.5
+  - 1.5
+  - 1.5
+  - 1.5
   _shockedEffect: {fileID: 7993180798688134084, guid: d1b4ff7625bef694c9ddc8c4f34e375a, type: 3}
   _staticEffect: {fileID: 0}
 --- !u!1 &5095892556922366697

@@ -31,11 +31,11 @@ public class LightningRainSkill : LightningCardBase, ISkillEffectAnim
 
     private IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
 
         var targetList = Player.GetSkillTargetEnemyList[this];
 
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < 5; ++i)
         {
             foreach (var e in targetList)
             {
@@ -46,7 +46,7 @@ public class LightningRainSkill : LightningCardBase, ISkillEffectAnim
                     Destroy(obj, 1.0f);
                 }
             }
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.13f);
         }
 
         if(targetList.Count > 0)

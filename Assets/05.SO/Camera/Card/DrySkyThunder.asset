@@ -35,7 +35,7 @@ MonoBehaviour:
       seconds: 0.1
   - cameraTarget: -1
     easingType: 1
-    movingValue: {x: 5, y: 0}
+    movingValue: {x: 10, y: 0}
     rotationValue: 0
     zoonInValue: 0
     duration: 0.1
@@ -45,7 +45,7 @@ MonoBehaviour:
       seconds: 0
   - cameraTarget: -1
     easingType: 36
-    movingValue: {x: 5, y: 0}
+    movingValue: {x: 2, y: 0}
     rotationValue: 0
     zoonInValue: 0
     duration: 0.65
@@ -55,7 +55,7 @@ MonoBehaviour:
       seconds: 0
   - cameraTarget: -1
     easingType: 36
-    movingValue: {x: 6, y: 0}
+    movingValue: {x: 2, y: 0}
     rotationValue: 0
     zoonInValue: 9
     duration: 0.4
@@ -65,7 +65,7 @@ MonoBehaviour:
       seconds: 0.3
   - cameraTarget: -1
     easingType: 36
-    movingValue: {x: 6, y: 0}
+    movingValue: {x: 2, y: 0}
     rotationValue: 0
     zoonInValue: 9
     duration: 1

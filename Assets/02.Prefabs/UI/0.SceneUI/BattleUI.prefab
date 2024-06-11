@@ -5389,15 +5389,59 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.size
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[0].img
       value: 
-      objectReference: {fileID: 21300000, guid: 17bd29b9a177be646a286c64f65b375f, type: 3}
+      objectReference: {fileID: 21300000, guid: 0071b033d5eeb7c43abf3e98201b06fd, type: 3}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[1].img
+      value: 
+      objectReference: {fileID: 21300000, guid: 8f705ec5a1aa6c141b4cd294335a2e2e, type: 3}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[2].img
+      value: 
+      objectReference: {fileID: 21300000, guid: 830a451137c15014182bea88429a7d21, type: 3}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[3].img
+      value: 
+      objectReference: {fileID: 21300000, guid: 1bcacd75d0c896846bb536f6d9033904, type: 3}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[4].img
+      value: 
+      objectReference: {fileID: 21300000, guid: ca44dd64b59ab2840a7a68502ea23f14, type: 3}
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[0].desc
-      value: 
+      value: "\uC2A4\uD0AC \uCE74\uB4DC\uB294 \uB9E4\uD134 \uB79C\uB364\uC73C\uB85C
+        \uCD94\uAC00\uB418\uBA70 \n\uD45C\uC2DC\uB41C \uC218\uB9CC\uD07C \uCF54\uC2A4\uD2B8\uB97C
+        \uC18C\uBE44\uD569\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[1].desc
+      value: "\uB3D9\uC77C\uD55C \uC885\uB958, \uB2E8\uACC4\uC758 \uCE74\uB4DC\uAC00
+        \uC5F0\uC18D\uC801\uC73C\uB85C\n\uBC30\uCE58\uB418\uC5B4 \uC788\uC744 \uACBD\uC6B0
+        \uCE74\uB4DC\uAC00 \uD569\uCCD0\uC9C0\uBA70\n\uD6A8\uACFC\uAC00 \uAC15\uD654\uB418\uACE0
+        \uCF64\uBC14\uC778 \uB808\uBCA8\uC774 \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[2].desc
+      value: "\uD654\uBA74\uC758 \uC0C1\uB2E8\uC73C\uB85C \uCE74\uB4DC\uB97C \uD074\uB9AD,
+        \uD640\uB4DC, \uB4DC\uB798\uADF8\uD558\uBA74\n\uC0AC\uC6A9\uD560 \uC2A4\uD0AC
+        \uBAA9\uB85D\uC5D0 \uBC30\uCE58\uB418\uBA70 \uCDE8\uC18C\uB97C \uC6D0\uD560
+        \uACBD\uC6B0\n\uCE74\uB4DC\uB97C \uB2E4\uC2DC \uD074\uB9AD\uD558\uBA74 \uCDE8\uC18C\uB429\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[3].desc
+      value: "\uD0C0\uAC9F\uC744 \uC9C0\uC815\uD574\uC57C\uD558\uB294 \uC2A4\uD0AC\uC758
+        \uACBD\uC6B0\n\uB9C8\uC6B0\uC2A4\uB85C \uC0AC\uC6A9\uD560 \uB300\uC0C1\uC744
+        \uD074\uB9AD\uD558\uBA74\n\uB300\uC0C1\uC73C\uB85C \uC9C0\uC815\uB429\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[4].desc
+      value: "\uC0AC\uC6A9\uD560 \uC2A4\uD0AC\uC744 \uBAA8\uB450 \uC815\uD558\uACE0
+        \uACB0\uC815\uC744 \uB204\uB974\uBA74\n\uC21C\uC11C\uB300\uB85C \uC2A4\uD0AC\uC774
+        \uC0AC\uC6A9\uB41C \uD6C4\n\uC801\uB4E4\uC758 \uD134\uC73C\uB85C \uB118\uC5B4\uAC11\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 5227593064061578911, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: m_Pivot.x

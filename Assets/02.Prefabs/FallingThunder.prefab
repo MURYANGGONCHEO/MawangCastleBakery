@@ -98,9 +98,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2801088434177195019, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801088434177195019, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 734509181
+      objectReference: {fileID: 0}
+    - target: {fileID: 3554413604391087000, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3554413604391087000, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 734509181
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126290043249059714, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4253568073702410760, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
       propertyPath: m_Name
       value: P_DropThunder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336727812467715919, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336727812467715919, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 734509181
+      objectReference: {fileID: 0}
+    - target: {fileID: 4564087582970787861, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067310491371963386, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359680922261388188, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617226229572337427, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617226229572337427, guid: 713748b193376ad4089d9f5fc3be95c7, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 734509181
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
