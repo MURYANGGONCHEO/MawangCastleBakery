@@ -74,13 +74,11 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public void ChangeScene(SceneType toChangingScene)
     {
+        if (toChangingScene == CurrentSceneType) return;
+
         SceneObserver.BeforeSceneType = CurrentSceneType;
 
         StartCoroutine(Fade(toChangingScene));
-
-        //SceneObserver.CurrentSceneType = SceneType.loading;
-        //SceneManager.LoadScene("LoadingScene");
-        //StartCoroutine(LoadingProcessCo(toChangingScene));
     }
     
 /*    private IEnumerator LoadingProcessCo(SceneType toChangingSceneType)
