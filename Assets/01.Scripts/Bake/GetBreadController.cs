@@ -14,7 +14,6 @@ public class GetBreadController : MonoBehaviour
     {
         _productionGraphicsObjArr =
         _grapicsElementParentObj.GetComponentsInChildren<IBakingProductionObject>();
-
     }
 
     public void OnProduction()
@@ -37,7 +36,7 @@ public class GetBreadController : MonoBehaviour
     {
         int grade = -1;
         float r = Random.value * 100;
-        Debug.Log(r);
+        //Debug.Log(r);
         float cumulative = 0f;
         for (int i = 0; i < _perc.Length; i++)
         {

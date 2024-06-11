@@ -54,15 +54,15 @@ public class Stove : MonoBehaviour, IBakingProductionObject
             seq.Append(qMarkRenderer.DOFade(0, 0));
 
             seq.Append(transform.DORotate(new Vector3(0, 0, dir * 20), EasingTime).SetEase(Ease.OutBack));
-            seq.Join(transform.DOMoveX(-dir, EasingTime).SetEase(Ease.OutBack));
+            seq.Join(transform.DOLocalMoveX(-dir, EasingTime).SetEase(Ease.OutBack));
             seq.Join(_qMark.DOLocalMove(new Vector2(dir * 5f, 2f), EasingTime + 0.6f).SetEase(Ease.OutCubic));
             seq.Join(_qMark.DORotate(new Vector3(0,0,-dir * 20), EasingTime + 0.4f).SetEase(Ease.InOutBack));
-            seq.Join(qMarkRenderer.DOFade(1, EasingTime).SetEase(Ease.OutQuad));
+            seq.Join(qMarkRenderer.DOFade(1, EasingTime + 1).SetEase(Ease.OutQuad));
 
-            seq.Append(transform.DORotate(Vector3.zero, EasingTime));
-            seq.Join(transform.DOMoveX(0, EasingTime));
-            seq.Join(qMarkRenderer.DOFade(0, EasingTime));
         }
+            seq.Append(transform.DORotate(Vector3.zero, EasingTime));
+            seq.Join(transform.DOLocalMoveX(0, EasingTime));
+            seq.Join(qMarkRenderer.DOFade(0, EasingTime));
 
         seq.OnComplete(() =>
         {
