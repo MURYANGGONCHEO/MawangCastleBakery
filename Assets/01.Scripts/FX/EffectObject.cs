@@ -16,7 +16,7 @@ public class EffectObject : PoolableMono
     private void OnEnable()
     {
         if (hitSound == null) return;
-        SoundManager.PlayAudioRandPitch(hitSound);
+        SoundManager.PlayAudioRandPitch(hitSound, true);
     }
 
     public override void Init()

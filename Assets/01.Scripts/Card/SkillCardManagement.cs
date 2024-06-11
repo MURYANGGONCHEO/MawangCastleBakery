@@ -12,7 +12,6 @@ public class SkillCardManagement : CardManagement
 
     [Header("대기존 셋팅값")]
     [SerializeField] private Transform _cardWaitZone;
-    [SerializeField] private Vector2 _normalZonePos;
     [SerializeField] private float _waitTurmValue = 85f;
     [SerializeField] private Transform _cardInfoTrm;
     private CardInfoPanel _cardInfoPanel;
@@ -41,8 +40,8 @@ public class SkillCardManagement : CardManagement
     }
     public void SetupCardsInActivationZone()
     {
-        CardReader.AbilityTargetSystem.ChainFadeControl(0);
-        CardReader.AbilityTargetSystem.FadingAllChainTarget(0);
+        BattleReader.AbilityTargetSystem.ChainFadeControl(0);
+        BattleReader.AbilityTargetSystem.FadingAllChainTarget(0);
 
         _setupHandCardEvent?.Invoke(false);
         _acceptBtnSwitchEvent?.Invoke(false);
@@ -95,7 +94,7 @@ public class SkillCardManagement : CardManagement
             _setupHandCardEvent?.Invoke(true);
             _checkStageClearEvent?.Invoke();
 
-            CardReader.AbilityTargetSystem.AllChainClear();
+            BattleReader.AbilityTargetSystem.AllChainClear();
             
             return;
         }
@@ -104,7 +103,6 @@ public class SkillCardManagement : CardManagement
         InCardZoneCatalogue.Remove(selectCard);
 
         selectCard.ActiveInfo();
-        selectCard.battleController.BattleCutSlider.Reverting();
         UseAbility(selectCard);
     }
 
@@ -112,8 +110,6 @@ public class SkillCardManagement : CardManagement
     {
         selectCard.battleController.CameraController.
         StartCameraSequnce(selectCard.CardInfo.cameraSequenceData);
-
-        selectCard.battleController.BattleCutSlider.Cutting();
 
         selectCard.Abillity();
     }
@@ -123,32 +119,45 @@ public class SkillCardManagement : CardManagement
         selectCard.CanUseThisCard = false;
 
         selectCard.transform.SetParent(_cardWaitZone);
-        CardReader.RemoveCardInHand(CardReader.OnPointerCard);
+
+        BattleReader.RemoveCardInHand(BattleReader.OnPointerCard);
         InCardZoneCatalogue.Add(selectCard);
         selectCard.IsOnActivationZone = true;
 
         selectCard.transform.DOScale(1.1f, 0.3f);
         
         GenerateCardPosition(selectCard);
-        CardReader.CombineMaster.CombineGenerate();
-        CardReader.CaptureHand();
+        BattleReader.CombineMaster.CombineGenerate();
+        BattleReader.CaptureHand();
     }
+
+    public void SetSkillCardInHandZone()
+    {
+        for (int i = 0; i < InCardZoneCatalogue.Count - 1; i++)
+        {
+            Transform selectTrm = InCardZoneCatalogue[i].transform;
+            selectTrm.DOLocalMove(new Vector2(selectTrm.localPosition.x - 100f, 150), 0.3f);
+        }
+
+        BattleReader.CombineMaster.CombineGenerate();
+        BattleReader.CaptureHand();
+    }
+
     private void GenerateCardPosition(CardBase selectCard)
     {
-        CardReader.AbilityTargetSystem.AllGenerateChainPos(true);
+        BattleReader.AbilityTargetSystem.AllGenerateChainPos(true);
         Sequence seq = DOTween.Sequence();
 
         int maxIdx = InCardZoneCatalogue.Count - 1;
-
-        if (maxIdx != 0)
+        if (!(maxIdx <= 0))
         {
             seq.Append(selectCard.transform.
             DOLocalMove(new Vector2(InCardZoneCatalogue[maxIdx - 1].transform.localPosition.x
-                                    + 100, 150), 0.3f));
+                                    + 100, 320), 0.3f));
         }
-        else
+        else if(maxIdx >= 0)
         {
-            seq.Append(selectCard.transform.DOLocalMove(new Vector3(0, 150, 0), 0.3f));
+            seq.Append(selectCard.transform.DOLocalMove(new Vector3(0, 320, 0), 0.3f));
         }
 
         seq.Join(selectCard.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.3f));
@@ -156,13 +165,12 @@ public class SkillCardManagement : CardManagement
         for (int i = 0; i < maxIdx; i++)
         {
             Transform selectTrm = InCardZoneCatalogue[i].transform;
-            seq.Join(selectTrm.DOLocalMove(new Vector2(selectTrm.localPosition.x - 100f, 150), 0.3f));
+            seq.Join(selectTrm.DOLocalMove(new Vector2(selectTrm.localPosition.x - 100f, 320), 0.3f));
         }
         seq.AppendCallback(() => 
         {
-            CardReader.AbilityTargetSystem.ActivationCardSelect(CardReader.OnPointerCard);
-            CardReader.AbilityTargetSystem.SetMouseAndCardArrowBind(CardReader.OnPointerCard);
-            CardReader.AbilityTargetSystem.AllGenerateChainPos(false);
+            BattleReader.AbilityTargetSystem.SetMouseAndCardArrowBind(BattleReader.OnPointerCard);
+            BattleReader.AbilityTargetSystem.AllGenerateChainPos(false);
         });
     }
 

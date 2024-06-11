@@ -17,7 +17,7 @@ public class SeedGunSkill : CardBase, ISkillEffectAnim
         Player.OnAnimationCall += HandleAnimationCall;
         Player.VFXManager.OnEndEffectEvent += HandleEffectEnd;
 
-        foreach (var e in battleController.onFieldMonsterList)
+        foreach (var e in battleController.OnFieldMonsterArr)
         {
             if (Player.GetSkillTargetEnemyList[this].Contains(e)) continue;
             e.SpriteRendererCompo.DOColor(minimumColor, 0.5f);
@@ -40,7 +40,7 @@ public class SeedGunSkill : CardBase, ISkillEffectAnim
         });
         Player.VFXManager.OnEndEffectEvent -= HandleEffectEnd;
 
-        foreach (var e in battleController.onFieldMonsterList)
+        foreach (var e in battleController.OnFieldMonsterArr)
         {
             if (e == null) continue;
             e.SpriteRendererCompo.DOColor(maxtimumColor, 0.5f);

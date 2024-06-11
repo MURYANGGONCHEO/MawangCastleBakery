@@ -12,7 +12,7 @@ public class LookRecipePreviewPanel : PreviewPanel
     [SerializeField] private GameObject _plzSelectText;
     [SerializeField] private GameObject _recipeElementObj;
 
-    [Header("ï¿½ï¿½ï¿½ï¿½")]
+    [Header("ÂüÁ¶")]
     [SerializeField] private Vector2 _crookedAngleRange;
     [SerializeField] private Image _cakeImage;
     [SerializeField] private TextMeshProUGUI _cakeNameText;
@@ -62,19 +62,25 @@ public class LookRecipePreviewPanel : PreviewPanel
 
         BakeryUI bui = UIManager.Instance.GetSceneUI<BakeryUI>();
 
-        CakeData cakeData = bui.BakeryData.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
+        BakeryData bd = new BakeryData();
+
+        if (DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
+        {
+            DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
+        }
+
+        CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
 
         if (cakeData == null)
         {
-            bui.BakeryData.CakeDataList.Add(cakeData);
+            bd.CakeDataList.Add(cakeData);
         }
         else
         {
             cakeData.Count++;
         }
 
-        bui.BakeryData.CakeDataList.Add(new CakeData(cake.itemName, false));
-        bui.SaveData();
+        DataManager.Instance.SaveData(bd, DataKeyList.bakeryRecipeDataKey);
 
         bui.GetCakePanel.SetUp(cake);
         bui.FilteringPreviewContent(MySortType);

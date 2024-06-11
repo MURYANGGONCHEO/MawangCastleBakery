@@ -43,7 +43,6 @@ public class CharacterStand : MonoBehaviour, IPointerClickHandler
         Vector2 jumpValue = normalValue + new Vector2(0, 30);
         transform.DOLocalJump(jumpValue, 10, 1, 0.5f).
                   OnComplete(()=> _canClick = true);
-        transform.DOLocalJump(jumpValue, 10, 1, 0.5f);
     }
 
     public void OnPointerClick(PointerEventData eventData)

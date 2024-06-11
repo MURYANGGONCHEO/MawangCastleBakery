@@ -1,4 +1,3 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +5,6 @@ using UnityEngine;
 public class GetBreadController : MonoBehaviour
 {
     [SerializeField] private GameObject _grapicsElementParentObj;
-    [SerializeField] private DoughHandler _dough;
     private IBakingProductionObject[] _productionGraphicsObjArr;
 
     [SerializeField] private int[] _perc = { 5, 25, 70 };
@@ -24,7 +22,6 @@ public class GetBreadController : MonoBehaviour
         foreach(var production in _productionGraphicsObjArr)
         {
             production.OnProduction();
-            Debug.Log(production);
         }
     }
 
@@ -56,17 +53,5 @@ public class GetBreadController : MonoBehaviour
         {
             production.DoughInStove(/*grade*/_testidx);
         }
-    }
-
-    public void ReturnOriginalStove(float waitSecond)
-    {
-        StartCoroutine(WaitExitProduction(waitSecond));
-    }
-
-    private IEnumerator WaitExitProduction(float waitSecond)
-    {
-        yield return new WaitForSeconds(waitSecond);
-        ExitProduction();
-        _dough.ResetDoughTrm();
     }
 }

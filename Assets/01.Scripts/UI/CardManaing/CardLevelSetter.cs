@@ -49,12 +49,6 @@ public class CardLevelSetter : CardSetter
             afterLvText = (shameData.cardLevel + 1).ToString();
         }
         _cardAfterLevelText.text = afterLvText;
-        _isInCalculating = true;
-
-        _selectShameData = shameData;
-
-        _cardCurrentLevelText.text = shameData.cardLevel.ToString();
-        _cardAfterLevelText.text = Mathf.Clamp(shameData.cardLevel + 1, 1, 5).ToString();
         _maxEXP = shameData.cardLevel * _magnificationOfLevelArr[shameData.cardLevel - 1];
 
         SetEXP(shameData.cardExp);

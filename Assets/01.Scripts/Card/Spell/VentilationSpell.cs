@@ -31,6 +31,6 @@ public class VentilationSpell : CardBase, ISkillEffectAnim
     {
         yield return new WaitForSeconds(0.7f);
 
-        CardReader.CardDrawer.DrawCard(2);
+        BattleReader.CardDrawer.DrawCard(2);
     }
 }

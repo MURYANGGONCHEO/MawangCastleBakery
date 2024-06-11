@@ -1,5 +1,4 @@
 using DG.Tweening;
-using FunkyCode.Buffers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,7 +36,7 @@ public class BattleUI : SceneUI
         seq.AppendCallback(() =>
         {
             _battleResultPanel.gameObject.SetActive(true);
-            StageDataSO currentStage = MapManager.Instanace.SelectStageData;
+            StageDataSO currentStage = StageManager.Instanace.SelectStageData;
             _battleResultPanel.LookResult(isClear,
                                           currentStage.stageType,
                                           currentStage.stageName,

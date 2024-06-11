@@ -7,13 +7,12 @@ public class NodeLaodMap : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _chapterNameText;
     [SerializeField] private Transform _loadMapParent;
-    [SerializeField] private Transform _deckSelectParent;
 
     private GameObject _currentLoadMap;
 
     public void ActiveLoadMap(MapDataSO mapData)
     {
-        MapManager.Instanace.LoadMapObject = this.gameObject;
+        StageManager.Instanace.LoadMapObject = this.gameObject;
         gameObject.SetActive(true);
 
         if(_currentLoadMap != null)

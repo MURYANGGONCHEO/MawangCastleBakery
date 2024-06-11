@@ -13,7 +13,7 @@ public class ChildAttackBuff : SpecialBuff, IOnTakeDamage
 
         if (appliedEnemy.Contains(health)) return;
         appliedEnemy.Add(health);
-        if (!active) CardReader.SkillCardManagement.useCardEndEvnet.AddListener(EndAttack);
+        if (!active) BattleReader.SkillCardManagement.useCardEndEvnet.AddListener(EndAttack);
 
         health.AilmentStat.ApplyAilments(AilmentEnum.Chilled);
     }
@@ -27,6 +27,6 @@ public class ChildAttackBuff : SpecialBuff, IOnTakeDamage
     {
         base.SetIsComplete(value);
         if(value)
-            CardReader.SkillCardManagement.useCardEndEvnet.RemoveListener(EndAttack);
+            BattleReader.SkillCardManagement.useCardEndEvnet.RemoveListener(EndAttack);
     }
 }

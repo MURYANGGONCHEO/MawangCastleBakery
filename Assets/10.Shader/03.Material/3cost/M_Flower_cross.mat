@@ -169,7 +169,7 @@ Material:
     - _Main_Color: {r: 2, g: 2, b: 2, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _edge_color: {r: 0, g: 0, b: 0, a: 0}
-    - _main_color_a: {r: 7.4642644, g: 7.4642644, b: 7.4642644, a: 0}
+    - _main_color_a: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7490983995257869519
 MonoBehaviour:

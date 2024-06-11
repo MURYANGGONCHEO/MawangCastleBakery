@@ -8,26 +8,29 @@ public class TargettingMaskCreater : MonoBehaviour
     public Dictionary<Enemy, TargetMask> GetTargetMaskDic => _getTargetMaskDic;
     [SerializeField] private TargetMask _targetMaskRect;
 
-    public void CreateMask(Enemy enemy, Vector2 maskPos)
+    public void CreateMask(Enemy enemy, Vector3 enemyPos)
     {
-        Vector2 screenPoint = MaestrOffice.GetScreenPosToWorldPos(maskPos);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(UIManager.Instance.CanvasTrm,
-            screenPoint, UIManager.Instance.Canvas.worldCamera, out Vector2 anchoredPosition);
-
         TargetMask tm = Instantiate(_targetMaskRect, transform);
+        tm.MarkingEnemy = enemy;
         RectTransform rt = tm.transform as RectTransform;
-        rt.anchoredPosition = anchoredPosition;
+        
+        rt.localPosition = MaestrOffice.GetScreenPosToWorldPos(enemyPos);
 
         _getTargetMaskDic.Add(enemy, tm);
     }
 
     public void MaskDown(Enemy enemy)
     {
-        GetTargetMaskDic[enemy].gameObject.SetActive(false);
+        if(enemy == null) return;
+
+        GetTargetMaskDic[enemy].ActiveTargetMark(false);
+        GetTargetMaskDic[enemy].enabled = false;
     }
 
     public void MaskUp(Enemy enemy)
     {
-        GetTargetMaskDic[enemy].gameObject.SetActive(true);
+        if (enemy == null) return;
+
+        GetTargetMaskDic[enemy].enabled = true;
     }
 }

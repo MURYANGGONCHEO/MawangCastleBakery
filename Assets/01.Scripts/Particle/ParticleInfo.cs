@@ -71,7 +71,7 @@ namespace Particle
             ps.Play();
             OnStartParticleEvent?.Invoke();
             if(soundEffect != null)
-                SoundManager.PlayAudio(soundEffect);
+                SoundManager.PlayAudio(soundEffect, true);
             StartCoroutine(WaitEndParticle(OnEndParticleEvent));
         }
         public void EndParticle(Action OnEndParticleEvent)

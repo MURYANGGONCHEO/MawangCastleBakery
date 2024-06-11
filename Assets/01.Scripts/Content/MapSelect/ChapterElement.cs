@@ -12,7 +12,7 @@ public class ChapterElement : MonoBehaviour, IPointerClickHandler, IPointerEnter
     [SerializeField] private MapDataSO _chapterData;
     [SerializeField] private UnityEvent<MapDataSO> _loadMapActiveEvent;
 
-    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [Header("ÂüÁ¶°ª")]
     [SerializeField] private TextMeshProUGUI _chapterNameTxt;
     [SerializeField] private TextMeshProUGUI _chapterInfoTxt;
     [SerializeField] private GameObject _lockPanel;
@@ -25,7 +25,7 @@ public class ChapterElement : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     public void SelectThisChapter()
     {
-        MapManager.Instanace.SelectMapData = _chapterData;
+        StageManager.Instanace.SelectMapData = _chapterData;
         _loadMapActiveEvent?.Invoke(_chapterData);
     }
 

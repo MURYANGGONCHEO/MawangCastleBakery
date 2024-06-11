@@ -17,6 +17,7 @@ MonoBehaviour:
   stageType: 2
   stageBackGround: 2
   enemyGroup: {fileID: 11400000, guid: 26a9cc31cb655324e93b4ec850fa6e37, type: 2}
+  enemyFormation: {fileID: 11400000, guid: c66d88d76b6813149a77c46fdac6ae5e, type: 2}
   clearCondition: {fileID: 11400000, guid: 369be31d7d4293b49bfe10bb466ff2f1, type: 2}
   compensation:
     Item: {fileID: 11400000, guid: 276281a078b479d4ab21c22376c0f927, type: 2}

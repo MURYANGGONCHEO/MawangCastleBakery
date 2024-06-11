@@ -12,25 +12,21 @@ public class DeckEditor : MonoBehaviour
     [SerializeField] private UnityEvent<string> _autoSetDeckNameEvent;
 
     private SaveDeckData _saveDeckData = new SaveDeckData();
-    private const string _saveDeckDataKey = "SaveDeckDataKey";
 
     private void OnDisable()
     {
         if( _saveChecker.activeSelf)
         {
-            if(DataManager.Instance.IsHaveData(_saveDeckDataKey))
+            if(DataManager.Instance.IsHaveData(DataKeyList.saveDeckDataKey))
             {
-                _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(_saveDeckDataKey);
+                _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
             }
-            _saveDeckData.SaveDeckList.Add(_deckElement);
-            DataManager.Instance.SaveData(_saveDeckData, _saveDeckDataKey);
+            DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
         }
     }
 
     public void SetEditDeckInfo(DeckElement deckElement)
     {
-        _deckElement = deckElement;
-
         _autoSetDeckNameEvent?.Invoke(deckElement.deckName);
         StartCoroutine(AutoSelectCardCo(DeckManager.Instance.GetDeck(deckElement.deck)));
     }

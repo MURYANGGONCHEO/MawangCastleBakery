@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class BakingTutorial : MonoBehaviour
 {
-    // Ã³ï¿½ï¿½ ï¿½Ñ´ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    // Ã³À½ ÄÑ´Â °Å¸é ¼³¸íÇØÁÖ´Â ÆÐ³ÎÀÌ ¶°¾ßÇÔ
 
     [SerializeField]
     private List<GameObject> _tutorialPanelList = new List<GameObject>();
@@ -25,7 +25,7 @@ public class BakingTutorial : MonoBehaviour
 
     private void EntryIntoBaking()
     {
-        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å© Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+        // ´ëÃæ ÀÌÁ¦ ÄÉÀÌÅ© Ã³¸¸µé¾î ¶ó°í ¸»ÇÏ´Â ³»¿ë Ãâ·Â
     }
 
     private void TurnOnThePanel(int currentIdx, int nextIdx)
@@ -57,6 +57,6 @@ public class BakingTutorial : MonoBehaviour
 
         DataManager.Instance.CheckOnFirstData.isFirstOnBaking = false;
         DataManager.Instance.SaveData(DataManager.Instance.CheckOnFirstData, 
-                                      DataManager.checkFirstDataKey);
+                                      DataKeyList.checkIsFirstPlayGameDataKey);
     }
 }

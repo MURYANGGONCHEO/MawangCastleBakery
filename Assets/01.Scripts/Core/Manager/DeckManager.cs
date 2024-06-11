@@ -39,7 +39,6 @@ public class DeckManager : MonoSingleton<DeckManager>
 
         foreach(string cardName in deckData)
         {
-            print(cardName);
             _deck.Add(_getCardDic[cardName]);
         }
 

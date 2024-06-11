@@ -16,10 +16,12 @@ MonoBehaviour:
   - cameraTarget: 1
     easingType: 1
     movingValue: 1.5
+    rotationValue: 5
     duration: 0.5
     cameraTransitionTime: 1
   - cameraTarget: -1
     easingType: 9
     movingValue: 2
+    rotationValue: 5
     duration: 0.5
     cameraTransitionTime: 1

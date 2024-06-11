@@ -34,7 +34,7 @@ public class BuffingMark : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (CardReader.AbilityTargetSystem.OnTargetting) return;
+        if (BattleReader.AbilityTargetSystem.OnTargetting) return;
         _infoPanelTween.Kill();
 
         if(_currentInfoPanel != null)
@@ -43,7 +43,6 @@ public class BuffingMark : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
 
         _currentInfoPanel = Instantiate(_infoPanelPrefab, _infoPanelParent);
-        Debug.Log(_currentInfoPanel.transform.parent);
         _currentInfoPanel.SetInfo(_buffName, _buffInfo);
         _currentInfoPanel.transform.position = _infoPanelTrm.position;
         
@@ -52,9 +51,7 @@ public class BuffingMark : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (CardReader.AbilityTargetSystem.OnTargetting) return;
-
-        Debug.Log(_currentInfoPanel);
+        if (BattleReader.AbilityTargetSystem.OnTargetting) return;    
         _infoPanelTween.Kill();
         _infoPanelTween = _currentInfoPanel.transform.DOScaleX(0, 0.1f).SetEase(Ease.InBounce).
                           OnComplete(() => Destroy(_currentInfoPanel.gameObject));

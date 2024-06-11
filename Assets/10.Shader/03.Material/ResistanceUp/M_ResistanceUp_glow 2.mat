@@ -113,5 +113,5 @@ Material:
     - _Main_Color: {r: 37.287586, g: 29.603674, b: 11.784284, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _edge_color: {r: 0, g: 0, b: 0, a: 0}
-    - _main_color_a: {r: 39.396626, g: 39.396626, b: 39.396626, a: 0}
+    - _main_color_a: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

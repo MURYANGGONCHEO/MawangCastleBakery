@@ -17,6 +17,9 @@ MonoBehaviour:
   stageType: 1
   stageBackGround: 1
   enemyGroup: {fileID: 11400000, guid: 2be54a42ba1b20e41903808fe9a4622c, type: 2}
+  enemyFormation: {fileID: 11400000, guid: c66d88d76b6813149a77c46fdac6ae5e, type: 2}
   clearCondition: {fileID: 11400000, guid: cff655815dbe9ec4b8bdaeb341b876f9, type: 2}
-  missionDeck: []
+  compensation:
+    Item: {fileID: 0}
+    count: 0
   isClearThisStage: 0

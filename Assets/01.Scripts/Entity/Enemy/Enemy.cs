@@ -53,12 +53,12 @@ public abstract class Enemy : Entity
     }
     protected virtual void HandleAttackStart()
     {
-        BattleController.Player.VFXManager.SetBackgroundColor(Color.gray);
+        BattleController.Player.VFXManager.SetBackgroundFadeOut(0.5f);
         AnimatorCompo.SetBool(attackAnimationHash, true);
     }
     protected virtual void HandleAttackEnd()
     {
-        BattleController.Player.VFXManager.SetBackgroundColor(Color.white);
+        BattleController.Player.VFXManager.SetBackgroundFadeIn(0.5f);
         AnimatorCompo.SetBool(attackAnimationHash, false);
     }
     public void HandleCameraAction()
@@ -93,7 +93,9 @@ public abstract class Enemy : Entity
         Collider.enabled = true;
         ChainningCardList.Clear();
     }
-    public virtual void Spawn(Vector3 spawnPos)
+
+    // 연출 수정 강력하게 요청
+    public virtual void Spawn(Vector3 spawnPos, Action callBack)
     {
         SpriteRendererCompo.material.SetFloat("_dissolve_amount", 0);
 
@@ -105,6 +107,7 @@ public abstract class Enemy : Entity
         {
             AnimatorCompo.SetBool(spawnAnimationHash, false);
             turnStatus = TurnStatus.Ready;
+            callBack?.Invoke();
         });
     }
     public void MoveFormation(Vector3 pos)

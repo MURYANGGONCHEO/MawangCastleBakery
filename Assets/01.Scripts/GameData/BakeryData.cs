@@ -5,16 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class CakeData
 {
-    public string CakeName { get; private set; }
-    public bool IsFavorites { get; set; }
-    public int Count { get; set; } = 1;
+    public string CakeName;
+    public bool IsFavorites;
+    public int Count = 1;
 
-    public CakeData(string _cakeName, bool _isFavorites)
+    public CakeData(string _cakeName,  bool _isFavorites)
     {
         CakeName = _cakeName;
         IsFavorites = _isFavorites;
     }
-
 }
 
 public class BakeryData : CanSaveData

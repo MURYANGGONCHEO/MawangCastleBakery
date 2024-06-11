@@ -85,6 +85,5 @@ public static class TurnCounter
         {
             ChangeRound();
         }
-        Debug.Log($"{TurnCount}{CurrentTurnType}");
     }
 }
