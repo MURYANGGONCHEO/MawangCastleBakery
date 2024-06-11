@@ -12,20 +12,19 @@ public class MineSystem : MonoBehaviour
     [SerializeField] private Vector3 _downPos;
 
     [SerializeField] private MineInfoContainer _mineContainer;
-    private const string _adventureKey = "AdventureKEY";
     public MineInfo CurrentMineInfo { get; private set; }
     private AdventureData _addData = new AdventureData();
 
     private void Start()
     {
-        if(DataManager.Instance.IsHaveData(_adventureKey))  
+        if(DataManager.Instance.IsHaveData(DataKeyList.adventureDataKey))  
         {
-            _addData = DataManager.Instance.LoadData<AdventureData>(_adventureKey);
+            _addData = DataManager.Instance.LoadData<AdventureData>(DataKeyList.adventureDataKey);
         }
 
         CurrentMineInfo = _mineContainer.GetInfoByFloor(Convert.ToInt16(_addData.ChallingingMineFloor));
         Debug.Log(CurrentMineInfo);
-        MapManager.Instanace.SelectStageData = CurrentMineInfo.stageData;
+        StageManager.Instanace.SelectStageData = CurrentMineInfo.stageData;
         MineUI mineUI = UIManager.Instance.GetSceneUI<MineUI>();
 
         if(!CurrentMineInfo.IsClearThisStage)
@@ -52,7 +51,7 @@ public class MineSystem : MonoBehaviour
         CurrentMineInfo = _mineContainer.GetInfoByFloor(uf);
 
         _addData.ChallingingMineFloor = CurrentMineInfo.Floor.ToString();
-        DataManager.Instance.SaveData(_addData, _adventureKey);
+        DataManager.Instance.SaveData(_addData, DataKeyList.adventureDataKey);
 
         MineUI mineUI = UIManager.Instance.GetSceneUI<MineUI>();
         Debug.Log(CurrentMineInfo);

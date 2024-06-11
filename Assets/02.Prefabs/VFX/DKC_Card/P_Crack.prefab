@@ -24698,7 +24698,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 1
-      minScalar: 2
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -28969,8 +28969,8 @@ ParticleSystem:
     vectorLabel0_0: X
     vector0_1:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.08
+      minMaxState: 1
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -34382,8 +34382,6 @@ GameObject:
   - component: {fileID: 2812740100379830374}
   - component: {fileID: 4998368753545970945}
   - component: {fileID: 8794953195567433130}
-  - component: {fileID: 5161059831991248471}
-  - component: {fileID: 6820981684341749316}
   m_Layer: 11
   m_Name: P_Crack
   m_TagString: Untagged
@@ -39296,36 +39294,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5161059831991248471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8450458807405006482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcef8551a237a0d4a9bd043d7c6b8ea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundEffect: {fileID: 0}
-  triggerInfos: []
-  duration: 0
---- !u!114 &6820981684341749316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8450458807405006482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8af67599a9dfe944b402181d07a292c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolingType: 28
-  particleSystems:
-  - {fileID: 5161059831991248471}
 --- !u!1 &8550153036030303018
 GameObject:
   m_ObjectHideFlags: 0

@@ -120,13 +120,13 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _length: 6.14
-    - _mask_pow: 176.12
-    - _rad: 0.01
-    - _smooth_base: 0.06
-    - _smoothness: 0.34
+    - _length: 6.03
+    - _mask_pow: 198.2
+    - _rad: 0
+    - _smooth_base: 0.28
+    - _smoothness: 0.04
     - _step: 0.1
-    - _upanner: -0.72
+    - _upanner: -0.18
     - _use_one_minus: 1
     - _vpanner: 0
     m_Colors:

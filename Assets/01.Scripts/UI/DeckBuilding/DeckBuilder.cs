@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class DeckBuilder : MonoBehaviour
 {
     private SaveDeckData _saveDeckData = new SaveDeckData();
-    private const string _saveDeckDataKey = "SaveDeckDataKey";
 
     [SerializeField] private GameObject _doNotSaving;
     public ExpansionList<CardBase> selectCardList = new ExpansionList<CardBase>();
@@ -30,9 +29,9 @@ public class DeckBuilder : MonoBehaviour
 
     private void Start()
     {
-        if(DataManager.Instance.IsHaveData(_saveDeckDataKey))
+        if(DataManager.Instance.IsHaveData(DataKeyList.saveDeckDataKey))
         {
-            _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(_saveDeckDataKey);
+            _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
         }
     }
 
@@ -104,6 +103,6 @@ public class DeckBuilder : MonoBehaviour
 
         DeckElement de = new DeckElement(deckName, convertDataDeck);
         _saveDeckData.SaveDeckList.Add(de);
-        DataManager.Instance.SaveData(_saveDeckData, _saveDeckDataKey);
+        DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
     }
 }

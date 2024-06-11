@@ -39,6 +39,7 @@ public class BattleProduction : MonoBehaviour
     {
         _panelSetEvent?.Invoke(MapManager.Instanace.SelectStageData);
 
+
         _stageInfoPanel.PanelSetUp();
         yield return new WaitForSeconds(1.7f);
         _battleStartEvent?.Invoke();
@@ -46,5 +47,6 @@ public class BattleProduction : MonoBehaviour
 
         if (spawnP != true)
             _playerAppear.Action();
+
     }
 }

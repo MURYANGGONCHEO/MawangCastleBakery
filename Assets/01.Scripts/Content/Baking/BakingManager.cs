@@ -104,6 +104,7 @@ public class BakingManager : MonoSingleton<BakingManager>
 
         return returnBread;
     }
+
     public ItemDataBreadSO GetCakeDataByName(string cakeName)
     {
         if(!_cakeDictionary.ContainsKey(cakeName))

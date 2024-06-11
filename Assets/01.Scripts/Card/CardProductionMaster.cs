@@ -26,7 +26,7 @@ public class CardProductionMaster : MonoBehaviour
 
     [Header("카드 아이들")]
     private List<CardBase> _onHandCardList = new List<CardBase>();
-    private float _onPointerInCardValue;
+    private float _onPointerInCardValue = 1;
 
     private void Start()
     {
@@ -80,42 +80,38 @@ public class CardProductionMaster : MonoBehaviour
     }
     #endregion
 
-    #region CardIdle
     public void OnCardIdling(CardBase cardBase)
     {
+        // 모든 카드가 똑같은 주기로 움직임이 일어나면 안되기 때문에 
+        // 임의의 랜덤 값을 설정해 움직임을 줄 카드에 입력해 준다.
         cardBase.CardIdlingAddValue = UnityEngine.Random.Range(-4, 4);
+
+        // 움직임을 줄 카드를 리스트에 삽입하여 관리한다.
         _onHandCardList.Add(cardBase);
     }
+
     public void QuitCardling(CardBase cardBase)
     {
+        // 움직임을 주지 않을 카드는 리스트에서 제거한다.
         _onHandCardList.Remove(cardBase);
     }
-    #endregion
 
     private void Update()
     {
+        // 움직임을 관리할 카드들이 들어있는 리스트를 순회
         foreach(var card in _onHandCardList)
         {
-            if (CardReader.OnPointerCard == card || !card.CanUseThisCard) continue;
+            // 카드가 선택 되었을 때, 카드를 사용할 수 없을 때는 움직임을 주지 않는다.
+            if (BattleReader.OnPointerCard == card || !card.CanUseThisCard) continue;
 
-            if(!card.OnPointerInCard)
-            {
-                float sineX = Mathf.Sin(Time.time + card.CardIdlingAddValue);
-                float cosineY = Mathf.Cos(Time.time + card.CardIdlingAddValue);
+            // 싸인과 코싸인 값을 이용하여 부드러운 움직임을 구현
+            float sineX = Mathf.Sin((Time.time + card.CardIdlingAddValue));
+            float cosineY = Mathf.Cos((Time.time + card.CardIdlingAddValue));
 
-                card.VisualTrm.eulerAngles = new Vector3(sineX, cosineY, 0) * 10;
-            }
-            else
-            {
-                Debug.Log($"OnHoverSomeCard : {card}");
-                Vector3 mouse = MaestrOffice.GetWorldPosToScreenPos(Input.mousePosition);
-                Vector3 offset = card.transform.transform.localPosition - mouse;
-
-                float tiltX = offset.y * -1;
-                float tiltY = offset.x;
-
-                card.VisualTrm.localRotation = Quaternion.Euler(new Vector3(tiltX, tiltY, 0) * _onPointerInCardValue);
-            }
+            // 구현한 움직임을 localEulerAngles에 넣어 적용해준다.
+            // local에 넣는 이유는 카드 Combine이 일어날 때 카드 자체의 eulerAngle이
+            // 변하기 때문에 그 자식인 VisualTrm도 영향을 받아 움직임이 이상해 진다.
+            card.VisualTrm.localEulerAngles = new Vector3(sineX, cosineY, 0) * 5;
         }
     }
 }

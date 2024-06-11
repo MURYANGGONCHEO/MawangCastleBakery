@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerData : CanSaveData
 {
-    public int level = 4;
+    public int level = 1;
     public int exp = 0;
-    public string nickName = "배지호";
+    public string nickName = "플레이어";
 
     public int attak = 5;
     public int defination = 3;
@@ -14,6 +14,8 @@ public class PlayerData : CanSaveData
 
     public override void SetInitialValue()
     {
-
+        attak = 5;
+        defination = 3;
+        heartPoint = 20;
     }
 }

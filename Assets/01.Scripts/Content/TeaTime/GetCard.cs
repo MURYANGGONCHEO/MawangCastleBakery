@@ -5,13 +5,12 @@ using UnityEngine;
 public class GetCard : MonoBehaviour
 {
     private CanUseCardData _canUseCardData = new CanUseCardData();
-    private const string CardDataKey = "CanUseCardsDataKey";
 
     public void GetCakeInfo(CardInfo cardInfo)
     {
-        if(DataManager.Instance.IsHaveData(CardDataKey))
+        if(DataManager.Instance.IsHaveData(DataKeyList.canUseCardDataKey))
         {
-            _canUseCardData = DataManager.Instance.LoadData<CanUseCardData>(CardDataKey);
+            _canUseCardData = DataManager.Instance.LoadData<CanUseCardData>(DataKeyList.canUseCardDataKey);
         }
 
         if(!_canUseCardData.CanUseCardsList.Contains(cardInfo.CardName))
@@ -21,6 +20,6 @@ public class GetCard : MonoBehaviour
         }
         Debug.Log("CardAddComplete");
         
-        DataManager.Instance.SaveData(_canUseCardData, CardDataKey);
+        DataManager.Instance.SaveData(_canUseCardData, DataKeyList.canUseCardDataKey);
     }
 }

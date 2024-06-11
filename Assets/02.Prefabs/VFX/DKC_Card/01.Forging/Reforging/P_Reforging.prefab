@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5634615012509625109}
   - component: {fileID: 210100592946612952}
   - component: {fileID: 1596518651788036115}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4906,7 +4906,7 @@ GameObject:
   - component: {fileID: 6093494012997222312}
   - component: {fileID: 3014323953015699313}
   - component: {fileID: 9129076281170380931}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9810,7 +9810,7 @@ GameObject:
   - component: {fileID: 7450933670011566310}
   - component: {fileID: 7502929477335946125}
   - component: {fileID: 2312359034518545638}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19645,7 +19645,7 @@ GameObject:
   - component: {fileID: 5184706834822812734}
   - component: {fileID: 6973031550725685650}
   - component: {fileID: 8433451598066716592}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24549,7 +24549,7 @@ GameObject:
   - component: {fileID: 7698097354351559991}
   - component: {fileID: 8073999298644136333}
   - component: {fileID: 6012070667706108748}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: P_Reforging
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29385,7 +29385,7 @@ GameObject:
   - component: {fileID: 8743991435392712123}
   - component: {fileID: 534262023272078575}
   - component: {fileID: 8994962495135605439}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34271,7 +34271,7 @@ GameObject:
   - component: {fileID: 1293915331787284794}
   - component: {fileID: 2476840698453784051}
   - component: {fileID: 4186721146485382139}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: moru
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39202,7 +39202,7 @@ GameObject:
   - component: {fileID: 7759893962614608328}
   - component: {fileID: 2322117406935769249}
   - component: {fileID: 1262575836521863201}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: glow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

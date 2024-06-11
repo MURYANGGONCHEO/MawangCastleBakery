@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,7 +34,19 @@ public class TeaTimeCreamStand : MonoBehaviour
 
     public void EatCake(ItemDataBreadSO cakeInfo)
     {
-        Debug.Log(cakeInfo);
+        if(DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
+        {
+            BakeryData data = DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
+            CakeData cd = data.CakeDataList.FirstOrDefault(x => x.CakeName == cakeInfo.itemName);
+
+            cd.Count--;
+            if(cd.Count == 0)
+            {
+                data.CakeDataList.Remove(cd);
+            }
+
+            DataManager.Instance.SaveData(data, DataKeyList.bakeryRecipeDataKey);
+        }
     }
 
     public void Reaction()

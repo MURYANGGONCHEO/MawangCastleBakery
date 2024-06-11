@@ -44,6 +44,7 @@ public class KingButterDog : Enemy
         Sequence seq = DOTween.Sequence();
         seq.Append(transform.DOJump(jumpPos, 1f, 1, 0.5f));
         seq.Append(transform.DOMove(pos, 0.5f)).SetEase(Ease.Linear);
+
         seq.OnComplete(OnMoveTarget.Invoke);
     }
 
@@ -54,7 +55,8 @@ public class KingButterDog : Enemy
         OnAttackEnd?.Invoke();
     }
 
-    public override void Spawn(Vector3 spawnPos)
+
+    public override void Spawn(Vector3 spawnPos, Action callBack)
     {
         SpriteRendererCompo.material.SetFloat("_dissolve_amount", 0);
 
@@ -65,6 +67,8 @@ public class KingButterDog : Enemy
         {
             AnimatorCompo.SetBool(spawnAnimationHash, false);
             turnStatus = TurnStatus.Ready;
+
+            callBack?.Invoke();
         });
     }
     public override void MoveToOriginPos()

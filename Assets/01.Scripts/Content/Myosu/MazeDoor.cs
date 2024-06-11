@@ -80,7 +80,7 @@ public class MazeDoor : MonoBehaviour, IPointerEnterHandler,
         seq.Join(_doorTrm.DOLocalRotateQuaternion(Quaternion.Euler(0, -90, 0), 1));
         seq.AppendCallback(() => 
         {
-            MapManager.Instanace.SelectStageData = AssignedStageInfo;
+            StageManager.Instanace.SelectStageData = AssignedStageInfo;
             GameManager.Instance.ChangeScene(SceneType.battle);
         });
         _doorSelectEvent?.Invoke(this);

@@ -13,4 +13,5 @@ public class EnemyGroupSO : ScriptableObject
 {
     public List<FirstSpawnData> firstSpawns = new(); 
     public List<Entity> enemies = new List<Entity>();
+
 }

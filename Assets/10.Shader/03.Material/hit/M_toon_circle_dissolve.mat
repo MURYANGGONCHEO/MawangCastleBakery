@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - USE_CUSTOM_ON
+  - _USE_GRADIENT_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -68,7 +69,8 @@ Material:
     - _VOffset: -1
     - __dirty: 0
     - _threshold: 0
+    - _use_gradient: 1
     m_Colors:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Main_Color: {r: 8.474188, g: 8.474188, b: 8.474188, a: 0}
+    - _Main_Color: {r: 9.734287, g: 9.734287, b: 9.734287, a: 0}
   m_BuildTextureStacks: []

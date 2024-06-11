@@ -24,6 +24,7 @@ public abstract class Enemy : Entity
     protected int spawnAnimationHash = Animator.StringToHash("spawn");
 
     public EnemyVFXPlayer VFXPlayer { get; private set; }
+
     protected Collider2D Collider;
 
     protected override void Awake()
@@ -51,14 +52,15 @@ public abstract class Enemy : Entity
         }
         return list;
     }
+
     protected virtual void HandleAttackStart()
     {
-        BattleController.Player.VFXManager.SetBackgroundColor(Color.gray);
+        BattleController.Player.VFXManager.SetBackgroundFadeOut(0.5f);
         AnimatorCompo.SetBool(attackAnimationHash, true);
     }
     protected virtual void HandleAttackEnd()
     {
-        BattleController.Player.VFXManager.SetBackgroundColor(Color.white);
+        BattleController.Player.VFXManager.SetBackgroundFadeIn(0.5f);
         AnimatorCompo.SetBool(attackAnimationHash, false);
     }
     public virtual void HandleCameraAction()
@@ -97,7 +99,10 @@ public abstract class Enemy : Entity
         Collider.enabled = true;
         ChainningCardList.Clear();
     }
-    public virtual void Spawn(Vector3 spawnPos)
+
+
+    // ���� ���� �����ϰ� ��û
+    public virtual void Spawn(Vector3 spawnPos, Action callBack)
     {
         SpriteRendererCompo.material.SetFloat("_dissolve_amount", 0);
 
@@ -109,6 +114,8 @@ public abstract class Enemy : Entity
         {
             AnimatorCompo.SetBool(spawnAnimationHash, false);
             turnStatus = TurnStatus.Ready;
+
+            callBack?.Invoke();
         });
     }
     public void MoveFormation(Vector3 pos)
@@ -120,7 +127,6 @@ public abstract class Enemy : Entity
     {
         BattleController.SelectPlayerTarget(selectCard, this);
     }
-
     protected override void HandleDie()
     {
         base.HandleDie();
@@ -128,4 +134,5 @@ public abstract class Enemy : Entity
         Inventory.Instance.GetIngredientInThisBattle.Add(es.DropItem);
         Inventory.Instance.AddItem(es.DropItem);
     }
+
 }

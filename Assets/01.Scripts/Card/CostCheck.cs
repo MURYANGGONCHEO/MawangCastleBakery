@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 public class CostCheck : MonoBehaviour
 {
+    [SerializeField] private GameObject _costObject;
     private Tween _numberingTween;
     private int _targetCost;
     [SerializeField] private TextMeshProUGUI _costText;
-    [SerializeField] private Image[] _extramanaArr;
 
     private void Start()
     {
@@ -22,12 +22,27 @@ public class CostCheck : MonoBehaviour
         HandleCheckExMana(CostCalculator.CurrentExMana);
 
         TurnCounter.PlayerTurnStartEvent += HandleCalculateExMana;
+        TurnCounter.PlayerTurnStartEvent += HandleEnableCostObj;
+
+        TurnCounter.PlayerTurnEndEvent += HandleDisableCostObj;
     }
 
     private void OnDisable()
     {
         CostCalculator.MoneyChangeEvent -= HandleCheckCost;
         CostCalculator.ExtraManaChangeEvent -= HandleCheckExMana;
+        TurnCounter.PlayerTurnStartEvent -= HandleEnableCostObj;
+        TurnCounter.PlayerTurnEndEvent -= HandleDisableCostObj;
+    }
+
+    private void HandleEnableCostObj(bool  vlaue)
+    {
+        _costObject.SetActive(true);
+    }
+
+    private void HandleDisableCostObj()
+    {
+        _costObject.SetActive(false);
     }
 
     private void HandleCalculateExMana(bool a)
@@ -53,14 +68,6 @@ public class CostCheck : MonoBehaviour
 
     private void HandleCheckExMana(int currentMana)
     {
-        for (int i = 0; i < _extramanaArr.Length; i++)
-        {
-            //_extramanaArr[i].enabled = false;
-        }
-
-        for (int i = 0; i < currentMana; i++)
-        {
-            //_extramanaArr[i].enabled = true;
-        }
+        
     }
 }

@@ -57,12 +57,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: 97ebf45aa5fef4241a022d60daaa2214, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _sub_alpha_tex:
+    - _main_alpha_tex:
         m_Texture: {fileID: 2800000, guid: b0a6cf593dda73d4d8f04836fc7cf2ea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _sub_alpha_tex:
+        m_Texture: {fileID: 2800000, guid: 1fe61386e77416e4f9f8c62e65dd016a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _sub_sec_tex:
+        m_Texture: {fileID: 2800000, guid: 239b3d54bb568664581b75e832687341, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _sub_tex:
-        m_Texture: {fileID: 2800000, guid: fe36a9d33f861824c8f3d92e9fb55b42, type: 3}
+        m_Texture: {fileID: 2800000, guid: f32e4cf18b8ef62499b0f73f3fc0a133, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -92,7 +100,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-    - _aura_ins: 1.54
+    - _aura_ins: 3.11
     - _aura_length: 0.18
     - _aura_mask_intencity: 1
     - _aura_mask_power: 6.25
@@ -111,7 +119,7 @@ Material:
     - _multiplier: 100
     - _noise_size: 64.8
     - _noise_str: 1.5
-    - _outline_thick: 288.47
+    - _outline_thick: 286.08
     - _rot: 28.31
     - _use_aura: 0
     - _use_aura_mask: 0
@@ -121,10 +129,11 @@ Material:
     - _aura_color: {r: 4.3324127, g: 4.3324127, b: 4.3324127, a: 0}
     - _aura_normal_tiling: {r: 0, g: 0, b: 0, a: 0}
     - _aura_tex_tiling: {r: 1, g: 0.79, b: 0, a: 0}
-    - _blink_color: {r: 2.297397, g: 2.297397, b: 2.297397, a: 0}
+    - _blink_color: {r: 2.2973971, g: 2.2973971, b: 2.2973971, a: 0}
     - _dissolve_color: {r: 0, g: 0, b: 0, a: 0}
     - _line_color: {r: 3.4415905, g: 2.6461287, b: 2.6461287, a: 0}
     - _main_color: {r: 1, g: 1, b: 1, a: 1}
-    - _outline_color: {r: 1, g: 0, b: 0, a: 1}
-    - _sub_color: {r: 1.9999999, g: 1.9999999, b: 1.9999999, a: 0}
+    - _outline_color: {r: 1, g: 0.50377357, b: 0.50377357, a: 1}
+    - _sub_color: {r: 2.6443443, g: 2.6443443, b: 2.6443443, a: 0}
+    - _sub_sec_color: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

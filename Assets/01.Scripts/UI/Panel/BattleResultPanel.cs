@@ -46,7 +46,7 @@ public class BattleResultPanel : PanelUI
         }
         else
         {
-            MapManager.Instanace.SelectStageData.StageClear();
+            StageManager.Instanace.SelectStageData.StageClear();
         }
 
         _stageIconImage.sprite = _iconSpriteArr[(int)stageType];
@@ -87,7 +87,7 @@ public class BattleResultPanel : PanelUI
 
     public void GotoPoolAllEnemy()
     {
-        foreach (var e in _battleController.onFieldMonsterList)
+        foreach (var e in _battleController.OnFieldMonsterArr)
         {
             if(e != null)
                 PoolManager.Instance.Push(e);

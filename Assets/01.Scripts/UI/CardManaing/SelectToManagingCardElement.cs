@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
 public class SelectToManagingCardElement : MonoBehaviour, IPointerClickHandler
 {
@@ -13,11 +14,13 @@ public class SelectToManagingCardElement : MonoBehaviour, IPointerClickHandler
     [SerializeField] private GameObject _usingMask;
 
     public CardInfo CardInfo { get; private set; }
+    public Action UnSelectedAction { get; set; }
 
     public bool IsSelect
     {
         set
         {
+            UnSelectedAction?.Invoke();
             _usingMask.SetActive(value);
         }
     }

@@ -62,7 +62,6 @@ public static class UIFunction
         return sign1 != sign2;
     }
     #endregion
-
     #region 마우스가 이미지 위에 있는지 확인
     public static bool IsMouseInRectTransform(Vector2 mousePosition, RectTransform rectTrm)
     {

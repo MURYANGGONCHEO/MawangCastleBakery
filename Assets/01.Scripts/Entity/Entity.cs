@@ -40,7 +40,8 @@ public abstract class Entity : PoolableMono
     public List<IOnTakeDamage> OnAttack = new();
 
     [Header("셋팅값들")]
-    public Transform hpBarPos;
+
+    public Transform hpBarTrm;
     public Transform forwardTrm;
 
     public Entity target;
@@ -50,7 +51,8 @@ public abstract class Entity : PoolableMono
 
     public TurnStatus turnStatus;
 
-    public UnityEvent BeforeChainingEvent => CardReader.SkillCardManagement.beforeChainingEvent;
+
+    public UnityEvent BeforeChainingEvent => BattleReader.SkillCardManagement.beforeChainingEvent;
 
     public List<CardBase> ChainningCardList { get; set; } = new List<CardBase>();
 
@@ -146,6 +148,7 @@ public abstract class Entity : PoolableMono
     {
         //UI����
         FeedbackManager.Instance.Blink(SpriteRendererCompo.material,0.1f);
+
         float currentHealth = HealthCompo.GetNormalizedHealth();
         if (currentHealth > 0)
         {
@@ -157,6 +160,7 @@ public abstract class Entity : PoolableMono
 
     protected virtual void HandleDie()
     {
+
         AnimatorCompo.SetTrigger(_deathAnimationHash);
     }
 
@@ -189,6 +193,7 @@ public abstract class Entity : PoolableMono
         Sequence seq = DOTween.Sequence();
         //seq.Append(transform.DOMove(target.forwardTrm.position, moveDuration));
         seq.Append(transform.DOJump(target.forwardTrm.position, 1, 1, 0.6f));
+
         seq.OnComplete(OnMoveTarget.Invoke);
     }
     protected abstract void HandleEndMoveToTarget();
@@ -197,6 +202,7 @@ public abstract class Entity : PoolableMono
         transform.DOMove(lastMovePos, moveDuration).OnComplete(OnMoveOriginPos.Invoke);
     }
     protected abstract void HandleEndMoveToOriginPos();
+
 
     public void GotoPool()
     {
@@ -213,6 +219,7 @@ public abstract class Entity : PoolableMono
         }
         HealthCompo.OnDeathEvent.RemoveAllListeners();
         PoolManager.Instance.Push(this);
+
     }
 
     public override void Init()

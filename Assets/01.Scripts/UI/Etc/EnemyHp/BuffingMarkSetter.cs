@@ -16,18 +16,21 @@ public enum BuffingType
     Lightning,
     Faint,
     AtkDown,
-    DefDown
+    DefDown,
+    Smelting
 }
 
-public struct CombatMarkingData
+public class CombatMarkingData
 {
     public BuffingType buffingType;
     public string buffingInfo;
+    public int durationTurn;
 
-    public CombatMarkingData(BuffingType buffType, string buffInfo)
+    public CombatMarkingData(BuffingType buffType, string buffInfo, int duration)
     {
         buffingType = buffType;
         buffingInfo = buffInfo;
+        durationTurn = Mathf.Clamp(duration, 1, int.MaxValue);
     }
 }
 
@@ -40,6 +43,34 @@ public class BuffingMarkSetter : MonoBehaviour
     [SerializeField] private string[] _buffingNameArr;
 
     private List<BuffingMark> _buffingMarkList = new List<BuffingMark>();
+    public Transform BuffingPanelTrm { get; set; }
+
+    private void Start()
+    {
+        TurnCounter.EnemyTurnEndEvent += DecountBuffDuration;
+    }
+    private void OnDestroy()
+    {
+        TurnCounter.EnemyTurnEndEvent -= DecountBuffDuration;
+    }
+
+    public void DecountBuffDuration()
+    {
+        List<BuffingMark> disappearList = new();
+        foreach(var bm in _buffingMarkList)
+        {
+            int turnCount = --bm.CombatMarkingData.durationTurn;
+            if(turnCount == 0)
+            {
+                disappearList.Add(bm);
+            }
+        }
+
+        foreach (var bm in disappearList)
+        {
+            RemoveBuffingMark(bm.CombatMarkingData);
+        }
+    }
 
     public void AddBuffingMark(CombatMarkingData markingData)
     {
@@ -47,7 +78,7 @@ public class BuffingMarkSetter : MonoBehaviour
 
         int idx = (int)markingData.buffingType;
         buffingMark.SetInfo(_buffingMarkTextureArr[idx], 
-                            _buffingNameArr[idx], markingData);
+                            _buffingNameArr[idx], markingData, BuffingPanelTrm);
 
         BuffingMarkPositionSetter(buffingMark.transform);
         _buffingMarkList.Add(buffingMark);
@@ -56,6 +87,8 @@ public class BuffingMarkSetter : MonoBehaviour
     public void RemoveBuffingMark(CombatMarkingData markingData)
     {
         BuffingMark target = _buffingMarkList.Find(x => x.CombatMarkingData.Equals(markingData));
+        if (target == null) return;
+
         int idx = _buffingMarkList.IndexOf(target);
         _buffingMarkList.Remove(target);
 

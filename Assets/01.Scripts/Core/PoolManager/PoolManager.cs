@@ -33,6 +33,7 @@ public enum PoolingType
     Boomerang,
     Tornado,
     Boss,
+    CardBattlePanel,
     GroundCrack,
     DduckProg,
     MeringueSora,

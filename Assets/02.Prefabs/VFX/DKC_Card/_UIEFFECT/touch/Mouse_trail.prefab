@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8692280890089797074}
   - component: {fileID: 8526693723465169152}
   - component: {fileID: 3321976348369055383}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mouse_trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

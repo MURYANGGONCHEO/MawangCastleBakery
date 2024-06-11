@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class LookRecipePreviewPanel : PreviewPanel
 {
@@ -61,8 +62,25 @@ public class LookRecipePreviewPanel : PreviewPanel
 
         BakeryUI bui = UIManager.Instance.GetSceneUI<BakeryUI>();
 
-        bui.BakeryData.CakeDataList.Add(new CakeData(cake.itemName, false));
-        bui.SaveData();
+        BakeryData bd = new BakeryData();
+
+        if (DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
+        {
+            DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
+        }
+
+        CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
+
+        if (cakeData == null)
+        {
+            bd.CakeDataList.Add(cakeData);
+        }
+        else
+        {
+            cakeData.Count++;
+        }
+
+        DataManager.Instance.SaveData(bd, DataKeyList.bakeryRecipeDataKey);
 
         bui.GetCakePanel.SetUp(cake);
         bui.FilteringPreviewContent(MySortType);

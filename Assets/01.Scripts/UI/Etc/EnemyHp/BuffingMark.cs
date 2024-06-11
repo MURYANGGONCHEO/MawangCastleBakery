@@ -11,37 +11,49 @@ public class BuffingMark : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public CombatMarkingData CombatMarkingData { get; set; }
 
     [SerializeField] private Image _visual;
+    [SerializeField] private BuffInfoPanel _infoPanelPrefab;
     [SerializeField] private RectTransform _infoPanelTrm;
+    private BuffInfoPanel _currentInfoPanel;
 
-    [SerializeField] private TextMeshProUGUI _buffNameText;
-    [SerializeField] private TextMeshProUGUI _infoText;
     public int VisualIndex { get; private set; }
+    private Transform _infoPanelParent;
+    private string _buffName;
+    private string _buffInfo;
 
     private Tween _infoPanelTween;
 
-    public void SetInfo(Sprite visual, string buffName, CombatMarkingData data)
+    public void SetInfo(Sprite visual, string buffName, CombatMarkingData data, Transform panelTrm)
     {
         CombatMarkingData = data;
 
-        _buffNameText.text = buffName;
+        _buffName = buffName;
         _visual.sprite = visual;
-        _infoText.text = data.buffingInfo;
+        _buffInfo = data.buffingInfo;
+        _infoPanelParent = panelTrm;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (CardReader.AbilityTargetSystem.OnTargetting) return;
-
-        _infoPanelTrm.SetAsLastSibling();
+        if (BattleReader.AbilityTargetSystem.OnTargetting) return;
         _infoPanelTween.Kill();
-        _infoPanelTween = _infoPanelTrm.DOScaleX(1, 0.1f).SetEase(Ease.OutBounce);
+
+        if(_currentInfoPanel != null)
+        {
+            Destroy(_currentInfoPanel.gameObject);
+        }
+
+        _currentInfoPanel = Instantiate(_infoPanelPrefab, _infoPanelParent);
+        _currentInfoPanel.SetInfo(_buffName, _buffInfo);
+        _currentInfoPanel.transform.position = _infoPanelTrm.position;
+        
+        _infoPanelTween = _currentInfoPanel.transform.DOScaleX(1, 0.1f).SetEase(Ease.OutBounce);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (CardReader.AbilityTargetSystem.OnTargetting) return;
-
+        if (BattleReader.AbilityTargetSystem.OnTargetting) return;    
         _infoPanelTween.Kill();
-        _infoPanelTween = _infoPanelTrm.DOScaleX(0, 0.1f).SetEase(Ease.InBounce);
+        _infoPanelTween = _currentInfoPanel.transform.DOScaleX(0, 0.1f).SetEase(Ease.InBounce).
+                          OnComplete(() => Destroy(_currentInfoPanel.gameObject));
     }
 }

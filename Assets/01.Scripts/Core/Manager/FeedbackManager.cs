@@ -24,13 +24,14 @@ public class FeedbackManager : MonoSingleton<FeedbackManager>
     private CinemachineBasicMultiChannelPerlin _multiChannelPerlin;
 
     private bool _shakingInDuration = false;
-    private bool _isFixedDuration = false;
 
-    // ½Ã°£ °ü·Ã
+
+    // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
     private float _limitTime;
     private float _currentTime;
 
     private int blinkHash = Shader.PropertyToID("_blink_amount");
+
 
     private Bloom _bloom;
 
@@ -68,9 +69,12 @@ public class FeedbackManager : MonoSingleton<FeedbackManager>
         mat.SetFloat(blinkHash, 0);
 
     }
-    public void ShakeScreen(Vector3 dir)
+
+
+    public void ShakeScreen(Vector3 dir, float seconds = 0.2f)
     {
         _impulseSource.m_DefaultVelocity = dir;
+        _impulseSource.m_ImpulseDefinition.m_ImpulseDuration = seconds;
         _impulseSource.GenerateImpulse();
     }
 
@@ -81,19 +85,11 @@ public class FeedbackManager : MonoSingleton<FeedbackManager>
         _impulseSource.m_DefaultVelocity = randomVector;
         _impulseSource.GenerateImpulse();*/
 
-
         _multiChannelPerlin.m_FrequencyGain = shakeValue;
         _multiChannelPerlin.m_AmplitudeGain = shakeValue;
 
         _shakingInDuration = true;
     }
-    public void ShakeScreen(Vector3 shakeValue, CinemachineImpulseListener listener)
-    {
-
-        _shakingInDuration = true;
-        
-    }
-
 
     public void FreezeTime(float freezeValue, float freezeTime)
     {

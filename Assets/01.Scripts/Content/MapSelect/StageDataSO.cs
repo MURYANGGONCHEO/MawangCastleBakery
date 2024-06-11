@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
 
 public enum StageType
 {
@@ -34,13 +33,12 @@ public class StageDataSO : ScriptableObject
     public string stageName;
     public StageType stageType;
     public StageBackGround stageBackGround;
+    public CutScene stageCutScene;
     public EnemyGroupSO enemyGroup;
+    public EnemyFormationSO enemyFormation;
     public TsumegoInfo clearCondition;
     public Compensation compensation;
-    public CutScene stageCutScene;
     public bool isClearThisStage;
-
-    private const string _dataKey = "AdventureKEY";
 
     public void Clone()
     {
@@ -57,7 +55,7 @@ public class StageDataSO : ScriptableObject
         int chapteridx = Convert.ToInt16(numArr[0]);
         int stageidx = Convert.ToInt16(numArr[1]);
 
-        AdventureData ad = DataManager.Instance.LoadData<AdventureData>(_dataKey);
+        AdventureData ad = DataManager.Instance.LoadData<AdventureData>(DataKeyList.adventureDataKey);
         Debug.Log($"{chapteridx}-{stageidx}");
         string challingingStageData = $"{chapteridx}-{stageidx + 1}";
         if(stageidx == 6)
@@ -66,6 +64,7 @@ public class StageDataSO : ScriptableObject
         }
         Debug.Log(challingingStageData);
         ad.InChallingingStageCount = challingingStageData;
-        DataManager.Instance.SaveData(ad, _dataKey);
+
+        DataManager.Instance.SaveData(ad, DataKeyList.adventureDataKey);
     }
 }

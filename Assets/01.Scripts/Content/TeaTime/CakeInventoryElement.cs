@@ -11,6 +11,7 @@ public class CakeInventoryElement : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Image _backgroundImg;
     [SerializeField] private Image _cakeImg;
     [SerializeField] private TextMeshProUGUI _nameText;
+    [SerializeField] private TextMeshProUGUI _countText;
     private CakeCollocation _cakeCollocation;
 
     [Header("¸¶½ºÅ©")]
@@ -31,6 +32,7 @@ public class CakeInventoryElement : MonoBehaviour, IPointerClickHandler
     }
 
     public void SetInfo(ItemDataSO info, 
+                        int count,
                         CakeCollocation cakeCollocation,
                         CakeInventoryPanel cakeInvenPanel)
     {
@@ -40,5 +42,6 @@ public class CakeInventoryElement : MonoBehaviour, IPointerClickHandler
 
         _cakeImg.sprite = info.itemIcon;
         _nameText.text = info.itemName;
+        _countText.text = $"<size=\"35\">X{count}</size>";
     }
 }

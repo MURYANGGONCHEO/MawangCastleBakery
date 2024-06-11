@@ -12,7 +12,6 @@ public class CardVisualSetter : CardSetter
     public override void SetCardInfo(CardShameElementSO shameData, CardInfo cardInfo, int combineLevel)
     {
         _cardCostText.text = CardManagingHelper.GetCardShame(shameData, CardShameType.Cost, combineLevel - 1).ToString();
-        _cardNameText.text = cardInfo.CardName;
         _cardVisual.sprite = cardInfo.CardVisual;
     }
 }

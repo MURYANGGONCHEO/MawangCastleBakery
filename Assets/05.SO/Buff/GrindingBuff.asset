@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917da80877df2714c825df3ccb747ffc, type: 3}
   m_Name: GrindingBuff
   m_EditorClassIdentifier: 
-  type: 0
   statBuffs:
   - type: 2
     values: 0a0000000f00000014000000
-    turn: 4
   specialBuffs: []
   stackBuffs:
   - type: 0

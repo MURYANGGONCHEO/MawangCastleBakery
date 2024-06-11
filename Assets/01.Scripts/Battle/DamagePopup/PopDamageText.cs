@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class PopDamageText : PoolableMono
 {
+    [SerializeField] private Vector3 _moveEndOffset;
     [SerializeField] private Vector2 _reactionMinOffset;
     [SerializeField] private Vector2 _reactionMaxOffset;
     [SerializeField] private GameObject _criticalFrame;
@@ -16,7 +17,6 @@ public class PopDamageText : PoolableMono
     public void SetDamageText(Vector3 position)
     {
         position.x += Random.Range(-.5f, .5f);
-        position.z = -5;
         transform.position = position;
         Vector3 pos = position + Vector3.up * 1.5f;
         transform.DOMove(pos, 0.1f).SetEase(Ease.OutQuart);
@@ -42,11 +42,12 @@ public class PopDamageText : PoolableMono
     public void ShowReactionText(Vector3 position, string word, float fontSize, Color color)
     {
         Debug.Log(9);
+
         _damageText.color = color;
         _damageText.fontSize = fontSize;
         _damageText.text = word;
 
-        position.z = -5;
+
         transform.position = position;
 
         Sequence seq = DOTween.Sequence();
@@ -58,6 +59,7 @@ public class PopDamageText : PoolableMono
     public void ActiveCriticalDamage(bool haveCritical)
     {
         _criticalFrame.SetActive(haveCritical);
+
     }
     private Vector3 GetRandomnessPos()
     {

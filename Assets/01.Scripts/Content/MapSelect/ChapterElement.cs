@@ -5,8 +5,9 @@ using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using DG.Tweening;
 
-public class ChapterElement : MonoBehaviour
+public class ChapterElement : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private MapDataSO _chapterData;
     [SerializeField] private UnityEvent<MapDataSO> _loadMapActiveEvent;
@@ -24,7 +25,24 @@ public class ChapterElement : MonoBehaviour
 
     public void SelectThisChapter()
     {
-        MapManager.Instanace.SelectMapData = _chapterData;
+        StageManager.Instanace.SelectMapData = _chapterData;
         _loadMapActiveEvent?.Invoke(_chapterData);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        SelectThisChapter();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        transform.DOKill();
+        transform.DOScale(Vector3.one * 1.05f, 0.2f).SetEase(Ease.OutBack);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        transform.DOKill();
+        transform.DOScale(Vector3.one, 0.2f);
     }
 }

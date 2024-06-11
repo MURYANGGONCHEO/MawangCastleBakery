@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8186355423919689364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbb0752481207b45bcdf54dbeab4847, type: 3}
+  m_Name: CustomRenderPassFeature
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  settings:
+    material: {fileID: 0}
+    renderPassEvent: 550
 --- !u!114 &-5479422960487942122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32,10 +48,10 @@ MonoBehaviour:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
   m_RendererFeatures:
-  - {fileID: -5479422960487942122}
-  - {fileID: 2660073660308862689}
   - {fileID: 5384766395558697436}
-  m_RendererFeatureMap: 1638ff41d92df5b3e136157fe67aea24dc99bccd8188ba4a
+  - {fileID: -8186355423919689364}
+  - {fileID: 2219311056913568360}
+  m_RendererFeatureMap: dc99bccd8188ba4a6cb12c781d39648e68126ed9a593cc1e
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -74,6 +90,31 @@ MonoBehaviour:
   m_CopyDepthMode: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 1
+--- !u!114 &2219311056913568360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d202035689289e549a29428082179cc2, type: 3}
+  m_Name: CustomGrabFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  _settings:
+    Texture2DPropertyName: _CustomCameraTexture
+    passEvent: 500
+    downsamplingMethod: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 8192
+    shaderTagStrings:
+    - UniversalForwardOnly
+    - SRPDefaultUnlit
+    - LightweightForward
+    - UniversalForward
 --- !u!114 &2660073660308862689
 MonoBehaviour:
   m_ObjectHideFlags: 0

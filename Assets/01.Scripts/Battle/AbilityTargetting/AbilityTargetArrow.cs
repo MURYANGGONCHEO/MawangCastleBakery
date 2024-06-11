@@ -28,6 +28,8 @@ public class AbilityTargetArrow : MonoBehaviour
 
     public void SetFade(float fadeValue)
     {
+        if (_chainVisual[0].color.a == fadeValue) return;
+
         foreach (var chain in _chainVisual)
         {
             chain.color = new Color(chain.color.r, chain.color.g, chain.color.b, _inChaingingValue);
@@ -55,14 +57,6 @@ public class AbilityTargetArrow : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if(IsGenerating)
-        {
-            ArrowBinding(_saveStartTrm, _saveEndPos);
-        }
-    }
-
     public Tween ReChainning(Action callBack, Entity entity)
     {
         MarkingEntity = entity;
@@ -81,12 +75,14 @@ public class AbilityTargetArrow : MonoBehaviour
 
         IsBindSucess = true;
         return re;
-    }
+    } 
 
     public void ArrowBinding(Transform startTrm, Vector2 endPos)
     {
-        _chainArrowVisual.transform.position = MaestrOffice.GetWorldPosToScreenPos(Input.mousePosition);
-        transform.localPosition = startTrm.localPosition;
+        _arrowMask.transform.position = startTrm.position;
+
+        Vector3 pos = new Vector3(endPos.x, endPos.y, 0);
+        _chainArrowVisual.transform.localPosition = pos;
 
         SetAngle((endPos - (Vector2)startTrm.localPosition).normalized);
         SetLength(startTrm.localPosition, endPos);

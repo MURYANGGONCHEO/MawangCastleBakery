@@ -8,6 +8,7 @@ public class PoolVCam : PoolableMono
     private CinemachineVirtualCamera vCam;
     private CinemachineConfiner2D confiner2D;
     public CinemachineVirtualCamera VCam { get => vCam; }
+
     private void Awake()
     {
         vCam = GetComponent<CinemachineVirtualCamera>();
@@ -16,6 +17,7 @@ public class PoolVCam : PoolableMono
     public override void Init()
     {
         vCam.m_Follow = null;
+        transform.rotation = Quaternion.identity;
     }
     public PoolVCam SetCamera(CinemachineSmoothPath path)
     {

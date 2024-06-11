@@ -1,12 +1,14 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class AdventureButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Transform _visualTrm;
     [SerializeField] private GameObject _selectAdventureType;
     private Tween _hoverTween;
+    [SerializeField] private UnityEvent<GameObject> _contentPanelEvent;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -27,6 +29,6 @@ public class AdventureButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void PressButton()
     {
-        _selectAdventureType.SetActive(true);
+        _contentPanelEvent?.Invoke(_selectAdventureType);
     }
 }

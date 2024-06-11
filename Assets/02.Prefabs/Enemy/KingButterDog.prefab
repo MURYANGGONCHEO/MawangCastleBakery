@@ -226,6 +226,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &6033189612070580296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2359823008276158933}
+  m_Layer: 7
+  m_Name: HPBarPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2359823008276158933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6033189612070580296}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 943471458251414188}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6773441510447560694
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +332,6 @@ GameObject:
   - component: {fileID: 3214285344207638200}
   - component: {fileID: 8826672199404272160}
   - component: {fileID: 5306270658333313601}
-  - component: {fileID: -541272975081606920}
   m_Layer: 7
   m_Name: KingButterDog
   m_TagString: Untagged
@@ -318,10 +348,11 @@ Transform:
   m_GameObject: {fileID: 9090521753744756415}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.622, y: -2.96, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2359823008276158933}
   - {fileID: 304453977096951386}
   - {fileID: 3185030763686413798}
   - {fileID: 7779297614088210920}
@@ -345,7 +376,7 @@ MonoBehaviour:
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
-  hpBarPos: {fileID: 7779297614088210920}
+  hpBarTrm: {fileID: 2359823008276158933}
   forwardTrm: {fileID: 8424131560452119225}
   target: {fileID: 0}
   lastMovePos: {x: 0, y: 0, z: 0}
@@ -406,7 +437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927d0c5dd4dff604eb1c458b753681b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  datas: []
 --- !u!61 &5306270658333313601
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -452,18 +482,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3357663, y: 1.1989725}
   m_EdgeRadius: 0
---- !u!114 &-541272975081606920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9090521753744756415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockBackAmount: 0.07
-  filpX: 1
-  _isPlayer: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1315875946772496822}
   - component: {fileID: 5323606797758188030}
   - component: {fileID: 5552100221479316250}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: glow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4906,7 +4906,7 @@ GameObject:
   - component: {fileID: 3160123801610594945}
   - component: {fileID: 2978962479810762848}
   - component: {fileID: 7737286842419636012}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9792,7 +9792,7 @@ GameObject:
   - component: {fileID: 6688139517190876793}
   - component: {fileID: 4062469132504617488}
   - component: {fileID: 2680607090822186699}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14696,7 +14696,7 @@ GameObject:
   - component: {fileID: 8250880176832886333}
   - component: {fileID: 2277328402727734712}
   - component: {fileID: 3106211788840042026}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: hone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19582,7 +19582,7 @@ GameObject:
   - component: {fileID: 8508787176941371826}
   - component: {fileID: 7617451886740434825}
   - component: {fileID: 1604747785859569200}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spark (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24468,7 +24468,7 @@ GameObject:
   - component: {fileID: 2078150697308481072}
   - component: {fileID: 1740202025571105096}
   - component: {fileID: 1729262708812847980}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34249,7 +34249,7 @@ GameObject:
   - component: {fileID: 7845039956901408208}
   - component: {fileID: 4833894750770702174}
   - component: {fileID: 4064658835022683996}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39315,7 +39315,7 @@ GameObject:
   - component: {fileID: 86728247104811331}
   - component: {fileID: 5305463355999154893}
   - component: {fileID: 3336224902085033212}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: star (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44219,7 +44219,7 @@ GameObject:
   - component: {fileID: 1531322879026613821}
   - component: {fileID: 1751534555088531519}
   - component: {fileID: 4672547069377652813}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: P_Grinding
   m_TagString: Untagged
   m_Icon: {fileID: 0}

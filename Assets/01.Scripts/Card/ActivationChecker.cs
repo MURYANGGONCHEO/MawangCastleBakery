@@ -4,20 +4,14 @@ using UnityEngine;
 using CardDefine;
 using UnityEngine.EventSystems;
 using System;
+using DG.Tweening;
 
 public class ActivationChecker : MonoBehaviour
 {
-    [SerializeField] private RectTransform _waitZone;
-    private Vector2 _mousePos;
+    [SerializeField] private CanvasGroup _dragFilter;
 
     private int _selectIDX;
-
-    public bool IsMouseInWaitZone()
-    {
-        _mousePos = MaestrOffice.GetWorldPosToScreenPos(Input.mousePosition);
-        return UIFunction.IsMouseInRectTransform(_mousePos, _waitZone);
-    }
-
+    
     private void Update()
     {
         CheckActivation();
@@ -28,19 +22,39 @@ public class ActivationChecker : MonoBehaviour
 
     private void BindMouse()
     {
-        if (Input.GetMouseButton(0) && CardReader.OnBinding && CardReader.OnPointerCard.CanUseThisCard)
+        if (Input.GetMouseButton(0) && BattleReader.OnBinding && BattleReader.OnPointerCard.CanUseThisCard)
         {
-            Transform cardTrm = CardReader.OnPointerCard.transform;
-            Vector3  mousePos = MaestrOffice.GetWorldPosToScreenPos(Input.mousePosition);
+            if(BattleReader.OnPointerCard.Paneling)
+            {
+                BattleReader.OnPointerCard.BattlePanelDown();
+            }
 
-            float distance = (mousePos - cardTrm.position).x;
-            float rotation = Mathf.Clamp(distance * 50, -30, 30);
+            // 카드 Transform = 선택한 카드의 Transform
+            Transform cardTrm = BattleReader.OnPointerCard.transform;
 
-            Vector3 euler = cardTrm.eulerAngles;
+            // 마우스 위치값 받기. Canvas의 Rendermode가 Camera기 때문에
+            // RectTransformUtility를 활용한다.
+            Vector2 pos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle
+            (UIManager.Instance.CanvasTrm, Input.mousePosition, Camera.main, out pos);
+
+            Vector3 mousePos = pos;
+
+            // 마우스와 카드의 x값의 차를 구함 
+            float distance = (mousePos - cardTrm.localPosition).x;
+            // 구한 거리의 차를 이용하여 기울일 각도의 Z값을 구함
+            float rotation = Mathf.Clamp(distance, -20, 20);
+
+            // 카드의 기울일 각도를 구함
+            Vector3 euler = cardTrm.localEulerAngles;
             euler.z = rotation;
 
-            cardTrm.eulerAngles = Vector3.Lerp(cardTrm.eulerAngles, euler, Time.time * 20);
-            cardTrm.position = Vector3.Lerp(cardTrm.position, mousePos, Time.deltaTime * 20);
+            mousePos.z = 0;
+            // 구한 기울임을 적용함
+            // 딱딱한 움직임을 주지 않기 위헤서 Lerp를 사용함
+            cardTrm.localEulerAngles = Vector3.Lerp(cardTrm.localEulerAngles, euler, Time.time);
+            // 카드의 위치를 마우스 위치로 이동시킴. 마찬가지로 딱딱한 움직임을 주지 않기 위해 Lerp사용
+            cardTrm.localPosition = Vector3.Lerp(cardTrm.localPosition, mousePos, Time.deltaTime * 20);
         }
     }
 
@@ -56,10 +70,10 @@ public class ActivationChecker : MonoBehaviour
         {
             if(result.gameObject.transform.parent.TryGetComponent<CardBase>(out CardBase c))
             {
-                if (!CardReader.OnBinding || c.CanUseThisCard)
+                if (!BattleReader.OnBinding || c.CanUseThisCard)
                 {
                     RectTransform rt = c.transform as RectTransform;
-                    CardReader.OnPointerCard = c;
+                    BattleReader.OnPointerCard = c;
                     rt.SetAsLastSibling();
                 }
                 break;
@@ -72,75 +86,91 @@ public class ActivationChecker : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             SelectOnPointerCard();
-            if (!CardReader.OnPointerCard || !CardReader.OnPointerCard.CanUseThisCard) return;
+            if (!BattleReader.OnPointerCard || !BattleReader.OnPointerCard.CanUseThisCard) return;
 
-            _selectIDX = CardReader.GetIdx(CardReader.OnPointerCard);
-            CardReader.CaptureHand();
+            _selectIDX = BattleReader.GetIdx(BattleReader.OnPointerCard);
+            BattleReader.CaptureHand();
 
-            CardReader.OnBinding = true;
+            BattleReader.OnPointerCard.CardRecordList.Clear();
+            foreach (var c in BattleReader.InHandCardList)
+            {
+                CardRecord record = new CardRecord
+                (
+                    BattleReader.InHandCardList.IndexOf(c),
+                    c.CardID,
+                    c.CardInfo.CardName,
+                    c.CombineLevel
+                );
+
+                BattleReader.OnPointerCard.CardRecordList.Add(record);
+            }
+
+            BattleReader.OnBinding = true;
+
+            _dragFilter.DOKill();
+            _dragFilter.DOFade(0.5f, 0.1f);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            CardReader.OnBinding = false;
+            _dragFilter.DOKill();
+            _dragFilter.DOFade(0f, 0.1f);
+
+            BattleReader.OnBinding = false;
             Activation();
         }
     }
 
     private void Activation()
     {
-        if (!IsPointerOnCard() || !CardReader.OnPointerCard.CanUseThisCard) return;
+        if (!IsPointerOnCard() || !BattleReader.OnPointerCard.CanUseThisCard) return;
 
-        if (IsMouseInWaitZone())
+        if (BattleReader.OnPointerCard.transform.localPosition.y > 20)
         {
-            if(!CostCalculator.CanUseCost(CardReader.OnPointerCard.AbilityCost, CardReader.OnPointerCard.CardInfo.CardType == CardType.SKILL))
+            if(!CostCalculator.CanUseCost(BattleReader.OnPointerCard.AbilityCost, BattleReader.OnPointerCard.CardInfo.CardType == CardType.SKILL))
             {
-                CardReader.InGameError.ErrorSituation("코스트가 부족합니다!");
+                BattleReader.InGameError.ErrorSituation("코스트가 부족합니다!");
 
-                foreach(CardBase cb in CardReader.captureHandList)
-                {
-                    Debug.Log(cb.CardInfo.CardName);
-                }
-                CardReader.ResetByCaptureHand();
-                CardReader.OnPointerCard.SetUpCard(CardReader.GetHandPos(CardReader.OnPointerCard), true);
+                BattleReader.ResetByCaptureHand();
+                BattleReader.OnPointerCard.SetUpCard(BattleReader.GetHandPos(BattleReader.OnPointerCard), true);
                 return;
             }
             
-            CostCalculator.UseCost(CardReader.OnPointerCard.AbilityCost, CardReader.OnPointerCard.CardInfo.CardType == CardType.SKILL);
+            CostCalculator.UseCost(BattleReader.OnPointerCard.AbilityCost, BattleReader.OnPointerCard.CardInfo.CardType == CardType.SKILL);
 
-            if (CardReader.OnPointerCard.CardInfo.CardType == CardType.SKILL)
+            if (BattleReader.OnPointerCard.CardInfo.CardType == CardType.SKILL)
             {
-                CardReader.SkillCardManagement.SetSkillCardInCardZone(CardReader.OnPointerCard);
+                BattleReader.SkillCardManagement.SetSkillCardInCardZone(BattleReader.OnPointerCard);
             }
             else
             {
-                CardReader.SpellCardManagement.UseAbility(CardReader.OnPointerCard);
+                BattleReader.SpellCardManagement.UseAbility(BattleReader.OnPointerCard);
             }
         }
         else //셔플
         {
-            if(CardReader.GetIdx(CardReader.OnPointerCard) == _selectIDX
-            || CardReader.OnPointerCard == CardReader.ShufflingCard)
+            if(BattleReader.GetIdx(BattleReader.OnPointerCard) == _selectIDX
+            || BattleReader.OnPointerCard == BattleReader.ShufflingCard)
             {
-                CardReader.OnPointerCard.SetUpCard(CardReader.GetHandPos(CardReader.OnPointerCard), true);
+                BattleReader.OnPointerCard.SetUpCard(BattleReader.GetHandPos(BattleReader.OnPointerCard), true);
                 return;
             }
 
             if(!CostCalculator.CanUseCost(1, true))
             {
-                CardReader.ShuffleInHandCard(CardReader.OnPointerCard, CardReader.ShufflingCard);
-                CardReader.InGameError.ErrorSituation("코스트가 부족합니다!");
-                CardReader.OnPointerCard.SetUpCard(CardReader.GetHandPos(CardReader.OnPointerCard), true);
+                BattleReader.ShuffleInHandCard(BattleReader.OnPointerCard, BattleReader.ShufflingCard);
+                BattleReader.InGameError.ErrorSituation("코스트가 부족합니다!");
+                BattleReader.OnPointerCard.SetUpCard(BattleReader.GetHandPos(BattleReader.OnPointerCard), true);
                 return;
             }
 
             CostCalculator.UseCost(1, true);
-            CardReader.OnPointerCard.SetUpCard(CardReader.GetHandPos(CardReader.OnPointerCard), true);
+            BattleReader.OnPointerCard.SetUpCard(BattleReader.GetHandPos(BattleReader.OnPointerCard), true);
         }
     }
 
     private bool IsPointerOnCard()
     {
-        return CardReader.OnPointerCard != null;
+        return BattleReader.OnPointerCard != null;
     }
 }

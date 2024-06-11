@@ -6,6 +6,7 @@ public class DeckManager : MonoSingleton<DeckManager>
 {
     [SerializeField] private CardBase[] _totalCardArr;
     private Dictionary<string, CardBase> _getCardDic = new();
+    public (DeckElement, int) SaveDummyDeck { get; set; }
 
     private void Awake()
     {
@@ -38,7 +39,6 @@ public class DeckManager : MonoSingleton<DeckManager>
 
         foreach(string cardName in deckData)
         {
-            print(cardName);
             _deck.Add(_getCardDic[cardName]);
         }
 

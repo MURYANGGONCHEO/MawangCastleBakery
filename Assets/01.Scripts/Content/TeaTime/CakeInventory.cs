@@ -1,3 +1,4 @@
+using ExtensionFunction;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +12,36 @@ public class CakeInventory : MonoBehaviour
     [SerializeField] private CakeCollocation _cakeCollocation;
     [SerializeField] private CakeInventoryPanel _cakeInvenPanel;
 
-    private void Start()
+    public void CreateCakeElement()
     {
-        List<ItemDataSO> cakeList = Inventory.Instance.GetSpecificTypeItemList(ItemType.Bread);
+        _content.Clear();
 
-        for(int i = 0; i < cakeList.Count; i++)
+        if(DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
         {
-            if(i % 5 == 0)
+            List<CakeData> cakeDataList = 
+            DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey).
+            CakeDataList;
+
+            List<(ItemDataSO, int)> cakeList = new ();
+
+            foreach(var cake in cakeDataList) 
             {
-                _content.sizeDelta = 
-                new Vector2(_content.sizeDelta.x, _content.sizeDelta.y + _contentStretchValue);
+                Debug.Log($"Name : {cake.CakeName}");
+                cakeList.Add((BakingManager.Instance.GetCakeDataByName(cake.CakeName), cake.Count));
             }
 
-            CakeInventoryElement cie =Instantiate(_cakeElementPrefab, _content);
+            for (int i = 0; i < cakeList.Count; i++)
+            {
+                if (i % 5 == 0)
+                {
+                    _content.sizeDelta =
+                    new Vector2(_content.sizeDelta.x, _content.sizeDelta.y + _contentStretchValue);
+                }
 
-            cie.SetInfo(cakeList[i], _cakeCollocation, _cakeInvenPanel);
+                CakeInventoryElement cie = Instantiate(_cakeElementPrefab, _content);
+
+                cie.SetInfo(cakeList[i].Item1, cakeList[i].Item2, _cakeCollocation, _cakeInvenPanel);
+            }
         }
     }
 }

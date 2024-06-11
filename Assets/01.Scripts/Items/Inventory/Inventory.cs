@@ -13,7 +13,36 @@ public class Inventory : MonoSingleton<Inventory>
     public ExpansionList<ItemDataIngredientSO> GetIngredientInThisBattle { get; set; } = 
        new ExpansionList<ItemDataIngredientSO>();
 
-    private void HandleClearGetIngList(Scene arg0, Scene arg1)
+    private ItemContainer _itemContainer;
+
+    private void Awake()
+    {
+        _itemContainer = GetComponent<ItemContainer>();
+
+        SceneManager.sceneLoaded += HandleClearGetIngList;
+        SceneManager.sceneLoaded += HandleSaveItems;
+
+        SavingItemData data = new SavingItemData();
+        if (DataManager.Instance.IsHaveData(DataKeyList.itemDataKey))
+        {
+            data = DataManager.Instance.LoadData<SavingItemData>(DataKeyList.itemDataKey);
+        }
+
+        foreach (var item in data.itemDataList)
+        {
+            _inventoryList.Add(_itemContainer.GetItemDataByName(item));
+        }
+    }
+
+    private void HandleSaveItems(Scene arg0, LoadSceneMode mode)
+    {
+        List<string> itemNameList = _inventoryList.Select(i => i.itemName).ToList();
+        SavingItemData data = new SavingItemData();
+        data.itemDataList = itemNameList;
+        DataManager.Instance.SaveData(data, DataKeyList.itemDataKey);
+    }
+
+    private void HandleClearGetIngList(Scene arg0, LoadSceneMode mode)
     {
         GetIngredientInThisBattle.Clear();
     }

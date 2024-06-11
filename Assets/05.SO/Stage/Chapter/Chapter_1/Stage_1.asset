@@ -17,9 +17,9 @@ MonoBehaviour:
   stageType: 0
   stageBackGround: 0
   enemyGroup: {fileID: 11400000, guid: 71a16c5ea467ced43928053155eb456c, type: 2}
+  enemyFormation: {fileID: 11400000, guid: c66d88d76b6813149a77c46fdac6ae5e, type: 2}
   clearCondition: {fileID: 11400000, guid: cff655815dbe9ec4b8bdaeb341b876f9, type: 2}
   compensation:
     Item: {fileID: 0}
     count: 0
-  stageCutScene: {fileID: 0}
   isClearThisStage: 0

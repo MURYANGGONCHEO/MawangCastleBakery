@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class TurnCounting : MonoBehaviour
 {
-    [Header("ÂüÁ¶")]
+    [Header("ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private TextMeshProUGUI _toPTChangingText;
     [SerializeField] private TextMeshProUGUI _toETChangingText;
     [SerializeField] private TextMeshProUGUI _gameEndText;
@@ -16,14 +16,15 @@ public class TurnCounting : MonoBehaviour
     private TextMeshProUGUI _selectText;
     private Transform _selectTrm;
 
-    [Header("º¤ÅÍ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private Transform _startPos;
     [SerializeField] private Transform _normalPos;
     [SerializeField] private Transform _endPos;
 
     private void Start()
     {
-        CardReader.SetDeck(MapManager.Instanace.SelectDeck);
+
+        BattleReader.SetDeck(StageManager.Instanace.SelectDeck);
         TurnCounter.PlayerTurnStartEvent += ToPlayerTurnChanging;
     }
 
@@ -39,7 +40,8 @@ public class TurnCounting : MonoBehaviour
 
         Sequence seq = DOTween.Sequence();
         seq.AppendCallback(() => ToPlayerTurnChanging(false));
-        seq.AppendCallback(() => CardReader.CardDrawer.DrawCard(5));
+
+        seq.AppendCallback(() => BattleReader.CardDrawer.DrawCard(5));
     }
 
     public Sequence BattleEndSequence(bool isVictory)
@@ -61,7 +63,7 @@ public class TurnCounting : MonoBehaviour
 
     public void ToPlayerTurnChanging(bool isTurnChange)
     {
-        Debug.Log(UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd);
+
         if (UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd) return;
 
         _selectTrm = _toPTChangingText.transform;

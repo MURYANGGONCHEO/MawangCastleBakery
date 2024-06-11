@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1501107257515636506}
   - component: {fileID: 7996287420097812962}
   - component: {fileID: 6934380833303930778}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: glow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4906,7 +4906,7 @@ GameObject:
   - component: {fileID: 5375656153155375}
   - component: {fileID: 7059780381080747168}
   - component: {fileID: 3950838033257567048}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14750,7 +14750,7 @@ GameObject:
   - component: {fileID: 5701228725848085478}
   - component: {fileID: 138963911506247807}
   - component: {fileID: 5503460104615591687}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: star (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19654,7 +19654,7 @@ GameObject:
   - component: {fileID: 8542422065455061509}
   - component: {fileID: 1295396038183692412}
   - component: {fileID: 5423332945008385931}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: P_Quenching
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24488,7 +24488,7 @@ GameObject:
   - component: {fileID: 7279272815531463221}
   - component: {fileID: 7307863949987225716}
   - component: {fileID: 8752217686248702524}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29392,7 +29392,7 @@ GameObject:
   - component: {fileID: 8992424546906345724}
   - component: {fileID: 9199817620379624014}
   - component: {fileID: 3270706021607430252}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

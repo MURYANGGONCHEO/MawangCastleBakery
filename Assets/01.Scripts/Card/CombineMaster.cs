@@ -7,12 +7,23 @@ public class CombineMaster : MonoBehaviour
     [SerializeField] private float _combinningSce;
     [SerializeField] private float _combineCompleteSec;
 
+    [Header("ÄÞ¹ÙÀÎ ÄÃ·¯")]
+
+    [SerializeField] private Color _level_1_Color;
+    public Color Level_1_Color => _level_1_Color;
+
+    [SerializeField] private Color _level_2_Color;
+    public Color Level_2_Color => _level_2_Color;
+
+    [SerializeField] private Color _level_3_Color;
+    public Color Level_3_Color => _level_3_Color;
+
     public void CombineGenerate()
     {
-        for(int i = 0; i < CardReader.CountOfCardInHand(); i++)
+        for(int i = 0; i < BattleReader.CountOfCardInHand(); i++)
         {
             CardBase frontC;
-            CardBase currentC = CardReader.GetCardinfoInHand(i);
+            CardBase currentC = BattleReader.GetCardinfoInHand(i);
 
             if (currentC.CheckCanCombine(out frontC) && frontC != currentC)
             {
@@ -21,19 +32,19 @@ public class CombineMaster : MonoBehaviour
             }
         }
 
-        for(int i = 0; i < CardReader.CountOfCardInHand(); i++)
+        for(int i = 0; i < BattleReader.CountOfCardInHand(); i++)
         {
-            CardBase selectC = CardReader.GetCardinfoInHand(i);
-            selectC.SetUpCard(CardReader.GetHandPos(selectC), false);
+            CardBase selectC = BattleReader.GetCardinfoInHand(i);
+            selectC.SetUpCard(BattleReader.GetHandPos(selectC), false);
         }
 
-        CardReader.CardDrawer.CanDraw = true;
+        BattleReader.CardDrawer.CanDraw = true;
     }
 
     public void CombineCard(CardBase cb_1, CardBase cb_2)
     {
         float combineXPos = (cb_1.transform.localPosition.x + cb_2.transform.localPosition.x) * 0.5f;
-        Vector2 fxSpawnPos = (cb_1.transform.position + cb_2.transform.position) * 0.5f;
+        Vector3 fxSpawnPos = (cb_1.transform.position + cb_2.transform.position) * 0.5f;
         float targeXtPos = cb_2.transform.localPosition.x;
         Vector2 visualNormalPos = cb_1.VisualTrm.transform.localPosition;
 
@@ -48,7 +59,7 @@ public class CombineMaster : MonoBehaviour
         });
         seq.AppendCallback(() =>
         {
-            CardReader.RemoveCardInHand(cb_1);
+            BattleReader.RemoveCardInHand(cb_1);
             Destroy(cb_1.gameObject);
 
             cb_2.CombineLevel = (cb_2.CombineLevel + 1);

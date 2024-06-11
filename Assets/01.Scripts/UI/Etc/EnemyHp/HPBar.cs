@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class HPBar : MonoBehaviour
 {
+    [SerializeField] private RectTransform _thisTrm;
+    public RectTransform ThisTrm => _thisTrm;
+
     private bool _canStartFollowOwner;
     private Transform _ownerOfThisHpBar;
     public Transform OwnerOfThisHpBar
@@ -23,26 +26,31 @@ public class HPBar : MonoBehaviour
     [SerializeField] private float _easingTime;
 
     [SerializeField] private Image _fillImg;
-    [SerializeField] private Color enemyColor;
-    [SerializeField] private Color friendColor;
+    [SerializeField] private Sprite _enemySprite;
+    [SerializeField] private Sprite _freindSprite;
 
     public BuffingMarkSetter BuffMarkSetter { get; private set; }
 
-    public void Init(bool isEnemy)
+    private Transform _targetTrm;
+
+    public void Init(bool isEnemy, Transform myTrm)
     {
         BuffMarkSetter = GetComponent<BuffingMarkSetter>();
-        Debug.Log(BuffMarkSetter);
 
         if (!_canStartFollowOwner) return;
         transform.position = _ownerOfThisHpBar.position;
 
-        _fillImg.color = isEnemy ? enemyColor : friendColor;
+        _fillImg.sprite = isEnemy ? _enemySprite : _freindSprite;
+
+        _targetTrm = myTrm;
     }
+
     private void Update()
     {
-        if (!_canStartFollowOwner) return;
-
-        transform.position = _ownerOfThisHpBar.position;
+        if(_targetTrm != null)
+        {
+            ThisTrm.localPosition = MaestrOffice.GetScreenPosToWorldPos(_targetTrm.position);
+        }
     }
 
     public void HandleHealthChanged(float generatedHealth)
