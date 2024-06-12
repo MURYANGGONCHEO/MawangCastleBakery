@@ -160,7 +160,7 @@ public class Health : MonoBehaviour, IDamageable
 
         //���⼭ ������ ����ֱ�
         //DamageTextManager.Instance.PopupReactionText(_owner.transform.position, isLastHitCritical ? DamageCategory.Critical : DamageCategory.Noraml);
-        _knockBack.KnockBack(damage,type);
+        _knockBack?.KnockBack(damage,type);
 
         AfterHitFeedbacks(damage);
 

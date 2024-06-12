@@ -9,8 +9,8 @@ public class BattleContent : Content
     public override void ContentStart()
     {
         Camera.main.orthographic = false;
-        if (MapManager.Instanace.SelectStageData.stageCutScene is not null)
-            cutScene = Instantiate(MapManager.Instanace.SelectStageData.stageCutScene, transform);
+        if (StageManager.Instanace.SelectStageData.stageCutScene is not null)
+            cutScene = Instantiate(StageManager.Instanace.SelectStageData.stageCutScene, transform);
     }
     public override void ContentEnd()
     {

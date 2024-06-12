@@ -19,6 +19,8 @@ public static class BattleReader
             if(_cardDrawer != null) return _cardDrawer;
 
             _cardDrawer = GameObject.FindObjectOfType<CardFactory>();
+            if (_cardDrawer == null)
+                UnityEngine.Debug.LogError("Not Found CardDrawer");
             return _cardDrawer;
         }
     }

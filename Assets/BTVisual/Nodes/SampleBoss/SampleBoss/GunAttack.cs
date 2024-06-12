@@ -19,7 +19,7 @@ public class GunAttack : SampleBossNode
         GameObject obj = Instantiate(hitParticle.gameObject);
         obj.transform.position = brain.target.transform.position;
         Destroy(obj, 1.0f);
-        SoundManager.PlayAudioRandPitch(attackSound);
+        SoundManager.PlayAudioRandPitch(attackSound,true);
         brain.target.HealthCompo.ApplyDamage(Mathf.RoundToInt(brain.CharStat.GetDamage() * 0.3f), brain);
 
         FeedbackManager.Instance.ShakeScreen(1.5f);

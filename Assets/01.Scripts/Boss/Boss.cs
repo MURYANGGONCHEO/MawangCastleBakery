@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class Boss : BossBrain
     protected override void OnEnable()
     {
         base.OnEnable();
-        BuffStatCompo.AddBuff(pattenBuff,5);
+        BuffStatCompo.AddBuff(pattenBuff, 5);
     }
     protected override void OnDisable()
     {
@@ -23,7 +24,7 @@ public class Boss : BossBrain
 
     }
 
-    public override void Spawn(Vector3 spawnPos)
+    public override void Spawn(Vector3 spawnPos, Action callBack = null)
     {
         SpriteRendererCompo.material.SetFloat("_dissolve_amount", 0);
 
@@ -34,11 +35,11 @@ public class Boss : BossBrain
         transform.DOMoveY(spawnPos.y, 0.5f).SetEase(Ease.InCubic).OnComplete(() =>
         {
             PoolManager.Instance.Pop(PoolingType.GroundCrack).transform.position = transform.position + Vector3.down * 1.5f;
-            SoundManager.PlayAudio(_landingSound);
+            SoundManager.PlayAudio(_landingSound, true);
             FeedbackManager.Instance.ShakeScreen(4f);
 
             AnimatorCompo.SetBool(spawnAnimationHash, false);
-
+            callBack?.Invoke();
             turnStatus = TurnStatus.Ready;
         });
     }

@@ -211,6 +211,10 @@ public class BattleController : MonoSingleton<BattleController>
                 _enemyQue.Enqueue(e.enemy.poolingType);
             }
         }
+        foreach (var e in StageManager.Instanace.SelectStageData.enemyGroup.enemies)
+        {
+            _enemyQue.Enqueue(e.poolingType);
+        }
         for (int i = 0; i < EnemyGroupPosList.Count; i++)
         {
             if (_enemyQue.Count > 0)

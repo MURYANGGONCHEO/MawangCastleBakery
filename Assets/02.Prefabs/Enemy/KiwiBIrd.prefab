@@ -433,6 +433,7 @@ GameObject:
   - component: {fileID: 8447595778571552386}
   - component: {fileID: 449017919904322832}
   - component: {fileID: 2775284478216901392}
+  - component: {fileID: -3473833381450759331}
   m_Layer: 7
   m_Name: KiwiBIrd
   m_TagString: Untagged
@@ -502,6 +503,7 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
+  totalDmg: 0
 --- !u!114 &4285700575684202700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,12 +574,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25acb4d62c0c3a44a7815d9f18386d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 32
+  poolingType: 33
   <CharStat>k__BackingField: {fileID: 11400000, guid: 69f8ae33e5cbb034b9d27715e56eb224, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
-  hpBarPos: {fileID: 3584185011077275979}
+  hpBarTrm: {fileID: 0}
   forwardTrm: {fileID: 4648113478761503735}
   target: {fileID: 0}
   lastMovePos: {x: 0, y: 0, z: 0}
@@ -601,6 +603,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockBackAmount: 0.07
   filpX: 1
+  _isPlayer: 0
+--- !u!114 &-3473833381450759331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017429648018809959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackAmount: 0
+  filpX: 0
   _isPlayer: 0
 --- !u!1 &6252350672568047487
 GameObject:

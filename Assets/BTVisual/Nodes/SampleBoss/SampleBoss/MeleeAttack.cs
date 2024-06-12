@@ -16,7 +16,7 @@ public class MeleeAttack : SampleBossNode
         GameObject obj = Instantiate(hitParticle.gameObject);
         obj.transform.position = brain.target.transform.position;
         Destroy(obj, 1.0f);
-        SoundManager.PlayAudioRandPitch(attackSound);
+        SoundManager.PlayAudioRandPitch(attackSound, true);
         brain.target.HealthCompo.ApplyDamage(brain.CharStat.GetDamage() * 2, brain);
         FeedbackManager.Instance.ShakeScreen(4f);
     }

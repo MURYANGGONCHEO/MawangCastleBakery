@@ -644,6 +644,7 @@ GameObject:
   - component: {fileID: 7445431910729709249}
   - component: {fileID: 935272695599999825}
   - component: {fileID: 131790152827115692}
+  - component: {fileID: -1053434943872192709}
   m_Layer: 7
   m_Name: Mr.Muddy
   m_TagString: Untagged
@@ -713,6 +714,7 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
+  totalDmg: 0
 --- !u!114 &7445431910729709249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,6 +753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927d0c5dd4dff604eb1c458b753681b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  datas: []
 --- !u!61 &131790152827115692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -796,3 +799,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5042325, y: 1.5435233}
   m_EdgeRadius: 0
+--- !u!114 &-1053434943872192709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8015018037757811698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackAmount: 0.07
+  filpX: 1
+  _isPlayer: 0

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4766362780943724604}
   - component: {fileID: 4222394787632999790}
   - component: {fileID: 2774288351425483891}
+  - component: {fileID: 1583485428861208966}
   m_Layer: 7
   m_Name: Sora
   m_TagString: Untagged
@@ -82,6 +83,7 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
+  totalDmg: 0
 --- !u!114 &8857882347362131033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,12 +154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebcb3a97e98a7b479705ce06c2b995c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 30
+  poolingType: 31
   <CharStat>k__BackingField: {fileID: 11400000, guid: 73fe46edb576b2d46967bf9c232e6140, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
-  hpBarPos: {fileID: 4512115928746267901}
+  hpBarTrm: {fileID: 0}
   forwardTrm: {fileID: 5604354623745697263}
   target: {fileID: 0}
   lastMovePos: {x: 0, y: 0, z: 0}
@@ -181,6 +183,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockBackAmount: 0.07
   filpX: 1
+  _isPlayer: 0
+--- !u!114 &1583485428861208966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631086464338657092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackAmount: 0
+  filpX: 0
   _isPlayer: 0
 --- !u!1 &2029345023109488489
 GameObject:

@@ -11,7 +11,7 @@ public class ShakeScreenSignal : MonoBehaviour
     {
         CinemachineImpulseListener perlin = timelineCam.ActiveVirtualCamera.VirtualCameraGameObject
             .GetComponent<CinemachineImpulseListener>();
-        FeedbackManager.Instance.ShakeScreen(value, perlin);
+        FeedbackManager.Instance.ShakeScreen(value, 0.3f);
         source.GenerateImpulse(value);
     }
 }

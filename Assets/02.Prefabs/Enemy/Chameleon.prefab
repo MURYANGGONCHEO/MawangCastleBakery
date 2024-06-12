@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5518132954554097469}
   - component: {fileID: 2701667884253395548}
   - component: {fileID: 53557295238351374}
+  - component: {fileID: -8742309543402868280}
   m_Layer: 7
   m_Name: Chameleon
   m_TagString: Untagged
@@ -82,6 +83,7 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
+  totalDmg: 0
 --- !u!114 &749734682985271945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,12 +169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f9792e4e88c534890a0930e753c04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 34
+  poolingType: 36
   <CharStat>k__BackingField: {fileID: 11400000, guid: 69f8ae33e5cbb034b9d27715e56eb224, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
-  hpBarPos: {fileID: 2885081995942438042}
+  hpBarTrm: {fileID: 0}
   forwardTrm: {fileID: 5893639574038885792}
   target: {fileID: 0}
   lastMovePos: {x: 0, y: 0, z: 0}
@@ -182,6 +184,21 @@ MonoBehaviour:
     attack: {fileID: 0}
   _cameraMoveInfo: {fileID: 11400000, guid: 03ebd672a5e24054bb4b634fbdcc6fce, type: 2}
   melonSpawnTrm: {fileID: 4344035709133795039}
+--- !u!114 &-8742309543402868280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155549396413779262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackAmount: 0
+  filpX: 0
+  _isPlayer: 0
 --- !u!1 &1915506819097911827
 GameObject:
   m_ObjectHideFlags: 0

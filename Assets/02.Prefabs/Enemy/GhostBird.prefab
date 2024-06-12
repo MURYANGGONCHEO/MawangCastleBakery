@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 8657492093206619281}
   - component: {fileID: 3589590891568919871}
   - component: {fileID: -6969168908169264579}
+  - component: {fileID: -5594180231146092397}
   m_Layer: 7
   m_Name: GhostBird
   m_TagString: Untagged
@@ -336,6 +337,7 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
+  totalDmg: 0
 --- !u!114 &5643084232044557926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,12 +408,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b8d5df96117f14ba513fd5ff377a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 31
+  poolingType: 32
   <CharStat>k__BackingField: {fileID: 11400000, guid: a4581df0aa4d5df4bb658e431175de92, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
-  hpBarPos: {fileID: 678622334243000935}
+  hpBarTrm: {fileID: 0}
   forwardTrm: {fileID: 2279369863279033129}
   target: {fileID: 0}
   lastMovePos: {x: 0, y: 0, z: 0}
@@ -434,6 +436,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockBackAmount: 0.07
   filpX: 1
+  _isPlayer: 0
+--- !u!114 &-5594180231146092397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6883992332191273422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackAmount: 0
+  filpX: 0
   _isPlayer: 0
 --- !u!1 &7546319415560534508
 GameObject:

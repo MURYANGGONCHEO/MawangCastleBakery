@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 4237488455597836665}
   - component: {fileID: 5295220763491429833}
   - component: {fileID: 1585280121605563005}
+  - component: {fileID: -4425380910067853617}
   m_Layer: 0
   m_Name: RiceBird
   m_TagString: Untagged
@@ -389,6 +390,7 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
+  totalDmg: 0
 --- !u!114 &5295220763491429833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927d0c5dd4dff604eb1c458b753681b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  datas: []
 --- !u!61 &1585280121605563005
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -446,6 +449,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-4425380910067853617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105448646824021433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackAmount: 0.07
+  filpX: 1
+  _isPlayer: 0
 --- !u!1 &6294954123268808074
 GameObject:
   m_ObjectHideFlags: 0

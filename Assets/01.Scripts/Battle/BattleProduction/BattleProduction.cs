@@ -19,7 +19,7 @@ public class BattleProduction : MonoBehaviour
         _content = GameManager.Instance.GetContent<BattleContent>();
         _playerAppear = FindObjectOfType<PlayerAppear>();
         FindObjectOfType<BattleBackground>()?.SetBG();
-        if (MapManager.Instanace.SelectStageData.stageCutScene is not null)
+        if (StageManager.Instanace.SelectStageData.stageCutScene is not null)
         {
             _content.cutScene.endCutScene += OnEndCutScnen;
         }
@@ -37,13 +37,13 @@ public class BattleProduction : MonoBehaviour
 
     protected IEnumerator ProductionCo(bool spawnP)
     {
-        _panelSetEvent?.Invoke(MapManager.Instanace.SelectStageData);
+        _panelSetEvent?.Invoke(StageManager.Instanace.SelectStageData);
 
 
         _stageInfoPanel.PanelSetUp();
         yield return new WaitForSeconds(1.7f);
         _battleStartEvent?.Invoke();
-        _clearChekcerSetEvent?.Invoke(MapManager.Instanace.SelectStageData.clearCondition);
+        _clearChekcerSetEvent?.Invoke(StageManager.Instanace.SelectStageData.clearCondition);
 
         if (spawnP != true)
             _playerAppear.Action();

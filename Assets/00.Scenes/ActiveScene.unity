@@ -707,7 +707,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 0.5
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -741,11 +741,6 @@ MonoBehaviour:
   - {r: 2, g: 0.6709168, b: 0, a: 1}
   - {r: 0, g: 0.5471698, b: 0.021457704, a: 1}
   - {r: 0.07606495, g: 0.026210386, b: 0.2924528, a: 1}
-  _textSizes:
-  - 5
-  - 7
-  - 5
-  - 5
   _reactionType:
   - reactionWordArr:
     - Ouch
@@ -1198,6 +1193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8075597554576919893}
   - component: {fileID: 8873788125889509607}
+  - component: {fileID: 8873788125889509608}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -2952,7 +2948,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: -0.3469735, y: 0.1386218, z: 0}
+  m_DefaultVelocity: {x: 0.09112245, y: 0.4000077, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0
@@ -5163,6 +5159,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2b00b5ca69fc3d4f81e496e1e002cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stageBubblePrefab: {fileID: 4446183830529051844, guid: 3632440a846b6ea4792bf8f820002a9b, type: 3}
+  isOnPanel: 0
+  isOnLoadMap: 0
+--- !u!114 &8873788125889509608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024468368331408880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a46e611c27d12499f4687724cb725e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _stageBubblePrefab: {fileID: 4446183830529051844, guid: 3632440a846b6ea4792bf8f820002a9b, type: 3}

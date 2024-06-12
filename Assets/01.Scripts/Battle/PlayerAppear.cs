@@ -12,7 +12,7 @@ public class PlayerAppear : MonoBehaviour
 
     private void Start()
     {
-        if (MapManager.Instanace.SelectStageData.stageCutScene != null) return;
+        if (StageManager.Instanace.SelectStageData.stageCutScene != null) return;
 
         _targetPos = transform.position;
         transform.position += new Vector3(0, 20, 0);

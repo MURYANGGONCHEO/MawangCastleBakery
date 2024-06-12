@@ -40,8 +40,8 @@ public class TurnCounting : MonoBehaviour
 
         Sequence seq = DOTween.Sequence();
         seq.AppendCallback(() => ToPlayerTurnChanging(false));
-
-        seq.AppendCallback(() => BattleReader.CardDrawer.DrawCard(5));
+        BattleReader.CardDrawer.DrawCard(5);
+        //seq.AppendCallback(() => BattleReader.CardDrawer.DrawCard(5));
     }
 
     public Sequence BattleEndSequence(bool isVictory)
