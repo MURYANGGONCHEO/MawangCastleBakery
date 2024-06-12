@@ -7,6 +7,17 @@ public class CombineMaster : MonoBehaviour
     [SerializeField] private float _combinningSce;
     [SerializeField] private float _combineCompleteSec;
 
+    [Header("ÄÞ¹ÙÀÎ ÄÃ·¯")]
+
+    [SerializeField] private Color _level_1_Color;
+    public Color Level_1_Color => _level_1_Color;
+
+    [SerializeField] private Color _level_2_Color;
+    public Color Level_2_Color => _level_2_Color;
+
+    [SerializeField] private Color _level_3_Color;
+    public Color Level_3_Color => _level_3_Color;
+
     public void CombineGenerate()
     {
         for(int i = 0; i < BattleReader.CountOfCardInHand(); i++)

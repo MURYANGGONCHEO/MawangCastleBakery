@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _sub_alpha_tex:
-        m_Texture: {fileID: 2800000, guid: fe36a9d33f861824c8f3d92e9fb55b42, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1fe61386e77416e4f9f8c62e65dd016a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _sub_sec_tex:
@@ -111,7 +111,7 @@ Material:
     - _aura_upanner: 0
     - _aura_vpanner: 0.48
     - _blink_amount: 0
-    - _dissolve_amount: 0.9
+    - _dissolve_amount: 1
     - _edge_width: 0.345
     - _is_up_direction: 1
     - _line_amount: 1
@@ -134,6 +134,6 @@ Material:
     - _line_color: {r: 3.4415905, g: 2.6461287, b: 2.6461287, a: 0}
     - _main_color: {r: 1, g: 1, b: 1, a: 1}
     - _outline_color: {r: 1, g: 0.50377357, b: 0.50377357, a: 1}
-    - _sub_color: {r: 1.8880861, g: 1.8880861, b: 1.8880861, a: 0}
+    - _sub_color: {r: 2.6443443, g: 2.6443443, b: 2.6443443, a: 0}
     - _sub_sec_color: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
