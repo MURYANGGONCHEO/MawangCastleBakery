@@ -9,6 +9,7 @@ public class CardSettingController : MonoBehaviour
     private CardShameContainer _cardShameContaner;
 
     [SerializeField] private TextMeshProUGUI _combineText;
+    [SerializeField] private TextMeshProUGUI _needGoodsText;
     private int _combineLevel = 1;
 
     private CardInfo _selectCardInfo;
@@ -21,6 +22,7 @@ public class CardSettingController : MonoBehaviour
         ResetInfo();
         SetCombineText();
     }
+
     public void MinusCombineLevel()
     {
         if (_combineLevel == 1) return;
@@ -52,6 +54,7 @@ public class CardSettingController : MonoBehaviour
     public void ResetInfo()
     {
         CardSetting(_combineLevel, _selectCardInfo);
+        _needGoodsText.text = UIManager.Instance.GetSceneUI<CardManagingUI>().ToUseGoods.ToString();
     }
 
     public void CardSetting(int combineLevel, CardInfo cardInfo)
