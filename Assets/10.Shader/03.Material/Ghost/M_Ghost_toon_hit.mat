@@ -130,10 +130,10 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Main_Ins: 1
-    - _Main_Pow: 1.952941
+    - _Main_Pow: 5.66
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Opacity: 1
+    - _Opacity: 1.44
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -169,9 +169,9 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _edge_color: {r: 0, g: 0, b: 0, a: 0}
-    - _main_color_a: {r: 4, g: 4, b: 4, a: 0}
+    - _main_color_a: {r: 4.541206, g: 4.541206, b: 4.541206, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &7045506518333926964
+--- !u!114 &3151941983238413071
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
