@@ -50,7 +50,7 @@ public class GetBreadController : MonoBehaviour
 
         foreach (var production in _productionGraphicsObjArr)
         {
-            production.DoughInStove(/*grade*/_testidx);
+            production.DoughInStove(grade);
         }
     }
 }
