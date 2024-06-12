@@ -8,7 +8,7 @@ public class Pianissimo : MonoBehaviour
     public Transform target;
     private float _speed = 0.0f;
 
-    private void Start()
+    private void OnEnable()
     {
         Ready();
     }

@@ -33,7 +33,8 @@ public enum PoolingType
     Boomerang,
     Tornado,
     Boss,
-    CardBattlePanel
+    CardBattlePanel,
+    Pianissimo,
 }
 public enum ParticleEnum
 {

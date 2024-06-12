@@ -133,6 +133,25 @@ public class PlayerVFXManager : MonoBehaviour
         _cardByEffects[card][combineLevel].Play();
     }
 
+    public void PlayPianissimoParticle(CardBase card)
+    {
+        int level = (int)card.CombineLevel;
+        ParticlePoolObject obj = PoolManager.Instance.Pop(_cardByEffects2[card.CardInfo].poolingType) as ParticlePoolObject;
+        List<Entity> TEList = _player.GetSkillTargetEnemyList[card];
+        Pianissimo[] particleArr = obj.gameObject.GetComponentsInChildren<Pianissimo>();
+        for(int i = 0; i < 2; ++i)
+        {
+            particleArr[i].target = TEList[i % TEList.Count].transform;
+        }
+        obj[level].owner = _player;
+        obj[level].damages = card.GetDamages();
+        //foreach (var t in _player.GetSkillTargetEnemyList[card])
+        //{
+
+        //}
+        obj.Active(level, null, OnEndEffectEvent);
+    }
+
     private IEnumerator EndEffectCo(float f)
     {
         yield return new WaitForSeconds(f);

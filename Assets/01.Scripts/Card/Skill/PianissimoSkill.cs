@@ -29,38 +29,25 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
 
     private IEnumerator AttackCor()
     {
+        // 내일 테스트 해봐야함
+
         yield return new WaitForSeconds(0.3f);
 
-        bool TargetIsOne = Player.GetSkillTargetEnemyList[this].Count == 1 ? true : false;
+        Player.VFXManager.PlayPianissimoParticle(this);
 
-        if(TargetIsOne)
+        List<Entity> TEList = Player.GetSkillTargetEnemyList[this];
+
+        for(int i = 0; i < 2; ++i)
         {
-            Entity e = Player.GetSkillTargetEnemyList[this][0];
-            Player.VFXManager.PlayParticle(this, e.transform.position);
-            for(int i = 0; i < 2; ++i)
+            Entity e = TEList[i % TEList.Count];
+
+            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
+            if(e != null)
             {
-                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
-                if(e != null)
-                {
-                    GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, e.transform.position, Quaternion.identity);
-                    Destroy(obj, 1.0f);
-                }
-                yield return new WaitForSeconds(0.4f);
+                GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, e.transform.position, Quaternion.identity);
+                Destroy(obj, 1.0f);
             }
-        }
-        else
-        {
-            Player.VFXManager.PlayParticle(this);
-            foreach (var e in Player.GetSkillTargetEnemyList[this])
-            {
-                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
-                if (e != null)
-                {
-                    GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, e.transform.position, Quaternion.identity);
-                    Destroy(obj, 1.0f);
-                }
-                yield return new WaitForSeconds(0.4f);
-            }
+            yield return new WaitForSeconds(0.4f);
         }
 
         Player.BuffStatCompo.AddStack(StackEnum.DEFMusicalNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
