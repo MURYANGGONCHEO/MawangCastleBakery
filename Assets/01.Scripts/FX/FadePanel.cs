@@ -28,15 +28,6 @@ public class FadePanel : MonoBehaviour
         //material.SetFloat("_pixel", 128.0f);
     }
 
-    private void Update()
-    {
-        if(Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            Vector2 pos = MaestrOffice.GetWorldPosToScreenPos(Input.mousePosition);
-            print(pos);
-        }
-    }
-
     private void Fade(float xPos, float yPos)
     {
         offset = new Vector2(xPos, yPos);

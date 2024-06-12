@@ -307,7 +307,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052388992}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2052388996
 Camera:
   m_ObjectHideFlags: 0
@@ -3179,7 +3179,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: -0.3158004, y: -0.3670009, z: 0}
+  m_DefaultVelocity: {x: -0.1766616, y: 0.417351, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0

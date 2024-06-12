@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myType: 9
-  _audioClip: {fileID: 0}
+  _audioClip: {fileID: 8300000, guid: dd93c94ff4a74bf48977f6128b1d1bb9, type: 3}
   _appearText: {fileID: 5533242650169379808}
 --- !u!95 &977635509917850035
 Animator:
