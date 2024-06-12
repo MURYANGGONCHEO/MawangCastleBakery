@@ -22,6 +22,7 @@ public class CardSettingController : MonoBehaviour
         ResetInfo();
         SetCombineText();
     }
+
     public void MinusCombineLevel()
     {
         if (_combineLevel == 1) return;
