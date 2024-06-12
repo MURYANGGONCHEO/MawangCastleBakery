@@ -47,6 +47,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         return (T)FindFirstObjectByType(typeof(T));
     }
+
     private void ChangeSceneContentOnChangeScene(Scene updateScene, LoadSceneMode mode)
     {
         if (_currentContent != null)
@@ -74,40 +75,12 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public void ChangeScene(SceneType toChangingScene)
     {
+        if (toChangingScene == CurrentSceneType) return;
+
         SceneObserver.BeforeSceneType = CurrentSceneType;
 
         StartCoroutine(Fade(toChangingScene));
-
-        //SceneObserver.CurrentSceneType = SceneType.loading;
-        //SceneManager.LoadScene("LoadingScene");
-        //StartCoroutine(LoadingProcessCo(toChangingScene));
     }
-    
-/*    private IEnumerator LoadingProcessCo(SceneType toChangingSceneType)
-    {
-        yield return null;
-
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("ActiveScene");
-        asyncOperation.allowSceneActivation = false;
-
-        while (!asyncOperation.isDone)
-        {
-            LoadingProgress = Mathf.CeilToInt(asyncOperation.progress * 100);
-            if (asyncOperation.progress >= 0.9f)
-            {
-                yield return new WaitForSeconds(2.0f);
-                yield return _fadePanel.StartFade(Vector2.zero);
-                SceneObserver.CurrentSceneType = toChangingSceneType;
-                asyncOperation.allowSceneActivation = true;
-            }
-            yield return null;
-        }
-    }
-
-        SceneObserver.CurrentSceneType = SceneType.loading;
-        SceneObserver.CurrentSceneType = toChangingScene;
-        SceneManager.LoadScene("ActiveScene");
-    }*/
     
     public Scene GetCurrentSceneInfo()
     {

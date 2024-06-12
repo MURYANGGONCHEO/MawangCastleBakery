@@ -2921,7 +2921,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 2
+    m_ImpulseDuration: 0.2
     m_ImpulseType: 0
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}
@@ -2952,7 +2952,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0.2, y: 0.2, z: 0}
+  m_DefaultVelocity: {x: 0.3608283, y: 0.3664436, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4431,7 +4431,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b8e49548a056b45be013ea58e25aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDataArr: []
+  _itemDataArr:
+  - {fileID: 11400000, guid: 88f374a1517a43b409740b4ed61138bd, type: 2}
+  - {fileID: 11400000, guid: 95dfa7db78c99034ba2a9decfc8e3539, type: 2}
+  - {fileID: 11400000, guid: fc41c1c9390f49646a642dbd6805ff33, type: 2}
+  - {fileID: 11400000, guid: 2bcf6dbc6e0ffe14ca94acf4ca806df5, type: 2}
+  - {fileID: 11400000, guid: 660723e770fbfa74580dd259bc9a0a6a, type: 2}
+  - {fileID: 11400000, guid: 35ad5b7d998dc7340818715c3ef2ec83, type: 2}
+  - {fileID: 11400000, guid: 276281a078b479d4ab21c22376c0f927, type: 2}
+  - {fileID: 11400000, guid: 3ecff4985eca0b94aaf1f3fe229b8604, type: 2}
 --- !u!4 &8075597554576919893
 Transform:
   m_ObjectHideFlags: 0

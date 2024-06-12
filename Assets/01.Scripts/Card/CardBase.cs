@@ -33,7 +33,25 @@ public abstract class CardBase : MonoBehaviour,
         }
         set
         {
+            if (value == _combineLevel) return;
+
             _combineLevel = value;
+            Material mat = new Material(_cardMat);
+
+            switch (_combineLevel)
+            {
+                case CombineLevel.I:
+                    mat.SetColor("_sub_color", BattleReader.CombineMaster.Level_1_Color);
+                    break;
+                case CombineLevel.II:
+                    mat.SetColor("_sub_color", BattleReader.CombineMaster.Level_2_Color);
+                    break;
+                case CombineLevel.III:
+                    mat.SetColor("_sub_color", BattleReader.CombineMaster.Level_3_Color);
+                    break;
+            }
+
+            VisualTrm.GetComponent<Image>().material = mat;
         }
     }
     [SerializeField] private Transform visualTrm;

@@ -23,6 +23,8 @@ public class Stove : MonoBehaviour, IBakingProductionObject
     [SerializeField] private ParticleSystem _epicEffect;
     [SerializeField] private ParticleSystem _legendEffect;
 
+    [SerializeField] private ParticleSystem _rotateEffect;
+
     public float EasingTime { get; set; } = 0.3f;
 
     public void OnProduction()
@@ -52,15 +54,15 @@ public class Stove : MonoBehaviour, IBakingProductionObject
             seq.Append(qMarkRenderer.DOFade(0, 0));
 
             seq.Append(transform.DORotate(new Vector3(0, 0, dir * 20), EasingTime).SetEase(Ease.OutBack));
-            seq.Join(transform.DOMoveX(-dir, EasingTime).SetEase(Ease.OutBack));
+            seq.Join(transform.DOLocalMoveX(-dir, EasingTime).SetEase(Ease.OutBack));
             seq.Join(_qMark.DOLocalMove(new Vector2(dir * 5f, 2f), EasingTime + 0.6f).SetEase(Ease.OutCubic));
             seq.Join(_qMark.DORotate(new Vector3(0,0,-dir * 20), EasingTime + 0.4f).SetEase(Ease.InOutBack));
-            seq.Join(qMarkRenderer.DOFade(1, EasingTime).SetEase(Ease.OutQuad));
+            seq.Join(qMarkRenderer.DOFade(1, EasingTime + 1).SetEase(Ease.OutQuad));
 
-            seq.Append(transform.DORotate(Vector3.zero, EasingTime));
-            seq.Join(transform.DOMoveX(0, EasingTime));
-            seq.Join(qMarkRenderer.DOFade(0, EasingTime));
         }
+            seq.Append(transform.DORotate(Vector3.zero, EasingTime));
+            seq.Join(transform.DOLocalMoveX(0, EasingTime));
+            seq.Join(qMarkRenderer.DOFade(0, EasingTime));
 
         seq.OnComplete(() =>
         {
@@ -92,20 +94,19 @@ public class Stove : MonoBehaviour, IBakingProductionObject
     {
         Sequence seq = DOTween.Sequence();
 
+
+        _commonEffect.Play();
+
         seq.Append(transform.DOShakeRotation(_normalShkTime, new Vector3(0, 0, 12f), 10, 10, false, ShakeRandomnessMode.Harmonic));
         seq.Join(transform.DOScale(_normalScale * 0.7f, 2f).SetEase(Ease.OutQuad));
         seq.Join(transform.DOLocalMoveY(0, 2f).SetEase(Ease.OutQuad));
-        seq.AppendInterval(0.5f);
-        seq.AppendCallback(() =>
-        {
-            _commonEffect.Play();
-        });
 
         seq.OnComplete(() =>
         {
             _screenEffect.Play();
             transform.DOScale(_normalScale, 0.5f).SetEase(Ease.InOutBack);
             OnEndShaking.Invoke();
+            seq.Kill();
         });
     }
 
@@ -120,7 +121,6 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.Append(transform.DOScale(_normalScale * 1f, 0.7f).SetEase(Ease.OutQuart));
         seq.AppendCallback(() =>
         {
-            _commonEffect.Play();
             _epicEffect.Play();
         });
 
@@ -158,23 +158,21 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.Append(transform.DOScale(_normalScale * 1f, 0.7f).SetEase(Ease.OutQuart));
         seq.AppendCallback(() =>
         {
-            _commonEffect.Play();
             _epicEffect.Play();
         });
         seq.Append(transform.DOShakeRotation(_epicShkTime, new Vector3(0, 0, 14f), 10, 10, false, ShakeRandomnessMode.Harmonic));
         seq.Join(transform.DOScale(_normalScale * 0.65f, 2f).SetEase(Ease.OutQuad));
+        seq.Append(transform.DOScale(_normalScale * 1.1f, 0.7f).SetEase(Ease.OutQuart));
         seq.AppendCallback(() =>
         {
-            _commonEffect.Play();
-            _epicEffect.Play();
+            _rotateEffect.Play();
         });
-        seq.Append(transform.DOScale(_normalScale * 1.1f, 0.7f).SetEase(Ease.OutQuart));
         seq.Join(transform.DORotate(new Vector3(0, 720, 0), 1.5f, RotateMode.FastBeyond360).SetEase(Ease.OutQuart));
+        
         
         seq.AppendInterval(0.5f);
         seq.AppendCallback(() =>
         {
-            _commonEffect.Play();
             _epicEffect.Play();
             _legendEffect.Play();
         });

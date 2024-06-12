@@ -16,6 +16,7 @@ public class DoughHandler : MonoBehaviour
 
     private Vector2 _doughNormalPos;
     [SerializeField] private bool _isInnerDough;
+    private bool _isShaking;
     private bool _isInRange;
     private bool _IsInRange
     {
@@ -83,7 +84,7 @@ public class DoughHandler : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && !_isShaking)
         {
             _isInnerDough = false;
             transform.position = transform.position;
@@ -95,7 +96,8 @@ public class DoughHandler : MonoBehaviour
         if(_IsInRange)
         {
             _doughToInnerEndEvent?.Invoke();
-            transform.SmartScale(Vector2.one * 0.5f, 0.1f);
+            _isShaking = true;
+            transform.SmartScale(Vector2.zero, 0.1f);
         }
         else
         {
