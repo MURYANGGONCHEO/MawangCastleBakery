@@ -39,7 +39,7 @@ namespace Particle.Trigger
         }
 
         public Entity Owner { get; set; }
-        public List<Entity> Targets { get; set; }
+        [SerializeField] public List<Entity> Targets = new();
         public int[] Damages { get; set; }
 
         public void SetCollision(List<Entity> l)
