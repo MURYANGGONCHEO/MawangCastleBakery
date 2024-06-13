@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 
     public PoolVCam CaomObj { get; private set; }
     public BattleController BattleController { get; set; }
-    private Dictionary<CameraTargetType, Action<Vector2, float, float, float, Ease>> _targetActionDic = new ();
+    private Dictionary<CameraTargetType, Action<Vector2, float, float, float, Ease>> _targetActionDic = new();
     private bool _camOnMoving = false;
 
     private Sequence _toPlayerSeq;
@@ -61,38 +61,38 @@ public class CameraController : MonoBehaviour
         UIManager.Instance.CinemachineBrain.m_DefaultBlend.m_Time = time;
     }
 
-    public void StartCameraSequnce(CameraMoveTypeSO moveType)
+    public void StartCameraSequnce(CameraMoveTypeSO moveType, Action endCallBack = null)
     {
         _poolVCam = PoolManager.Instance.Pop(PoolingType.VCamPool) as PoolVCam;
         _vCam = _poolVCam.VCam;
         _vCam.Follow = _target;
 
-        StartCoroutine(CameraSequenceCo(moveType.camMoveSequenceList));
+        StartCoroutine(CameraSequenceCo(moveType.camMoveSequenceList, endCallBack));
     }
 
-    private IEnumerator CameraSequenceCo(List<CameraMoveSequence> sequenceList)
+    private IEnumerator CameraSequenceCo(List<CameraMoveSequence> sequenceList, Action endCallBack = null)
     {
-        foreach(CameraMoveSequence seq in sequenceList)
+        foreach (CameraMoveSequence seq in sequenceList)
         {
             SetTransitionTime(seq.cameraTransitionTime);
             _camOnMoving = false;
             SequenceClear();
 
             _targetActionDic[seq.cameraTarget].
-            Invoke(seq.movingValue * (int)seq.cameraTarget, 
+            Invoke(seq.movingValue * (int)seq.cameraTarget,
                    seq.rotationValue * (int)seq.cameraTarget,
                    seq.zoonInValue,
                    seq.duration, seq.easingType);
 
-            if(seq.shakeDefination.isShaking)
+            if (seq.shakeDefination.isShaking)
             {
-                FeedbackManager.Instance.ShakeScreen(Vector2.one * 0.2f, 
+                FeedbackManager.Instance.ShakeScreen(Vector2.one * 0.2f,
                                                      seq.shakeDefination.seconds);
             }
 
             yield return new WaitUntil(() => _camOnMoving);
         }
-
         PoolManager.Instance.Push(_poolVCam);
+        endCallBack?.Invoke();
     }
 }

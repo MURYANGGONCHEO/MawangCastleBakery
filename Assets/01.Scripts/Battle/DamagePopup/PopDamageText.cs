@@ -25,7 +25,7 @@ public class PopDamageText : PoolableMono
     public void UpdateText(int damage, Color color)
     {
         _damageText.color = color;
-        _damageText.text = damage.ToString();
+        _damageText.SetText(damage.ToString());
 
         float size = Mathf.Clamp(1 + damage * 0.01f, 1, 2.5f);
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(-10f,10f));

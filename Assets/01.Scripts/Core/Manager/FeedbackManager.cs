@@ -99,7 +99,7 @@ public class FeedbackManager : MonoSingleton<FeedbackManager>
 
     private IEnumerator FreezeCo(float time)
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSecondsRealtime(time);
         Time.timeScale = 1;
     }
 

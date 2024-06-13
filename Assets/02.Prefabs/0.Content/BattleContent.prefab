@@ -592,6 +592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneType: 2
   contentConfiner: {fileID: 870121151049315418}
+  cutScene: {fileID: 0}
 --- !u!1 &5715484900563923043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1400,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5595796289188331833, guid: 4ae8dd97a7d84b4489023778de54bddd, type: 3}
+      propertyPath: deadCamSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e556a8585e75ce4eb958de04f65e680, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
