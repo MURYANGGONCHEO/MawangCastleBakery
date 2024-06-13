@@ -5,6 +5,7 @@ using UIDefine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using UnityEngine.Events;
 
 public class BakeryUI : SceneUI
 {
@@ -27,33 +28,13 @@ public class BakeryUI : SceneUI
     [SerializeField] private GameObject _previewPanelObj;
     private PreviewPanel[] _previewPanels;
 
-    public BakeryData BakeryData
-    {
-        get
-        {
-            BakeryData data = DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
-            if(data == null)
-            {
-                data = new BakeryData();
-            }
-            return data;
-        }
-    }
-
-    [SerializeField]
-    private GameObject _tutorialPanel;
+    public ItemDataBreadSO ToGetCakeType { get; set; }
+    public int ToGetCakeCount { get; set; }
+    [SerializeField] private UnityEvent<float> _productionStartEvent;
 
     public override void SceneUIStart()
     {
         _previewPanels = _previewPanelObj.GetComponentsInChildren<PreviewPanel>();
-
-        CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);
-        if (!cf.isFirstOnBaking)
-        {
-            _tutorialPanel.SetActive(true);
-            cf.isFirstOnBaking = true;
-            DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
-        }
     }
     
     public void FilteringPreviewContent(RecipeSortType type)
@@ -72,5 +53,16 @@ public class BakeryUI : SceneUI
     {
         var bp = _previewPanels.FirstOrDefault(x => x.MySortType == RecipeSortType.Baking) as LookBakingPreviewPanel;
         bp.SetIngredientElement(element);
+    }
+
+    public void ProductionStart()
+    {
+        float random = Random.value * 100f;
+        _productionStartEvent?.Invoke(random);
+    }
+
+    public void SetUpResultPanel()
+    {
+        GetCakePanel.SetUp(ToGetCakeType, ToGetCakeCount);
     }
 }
