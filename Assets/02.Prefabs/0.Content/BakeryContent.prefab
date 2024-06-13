@@ -9911,6 +9911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grapicsElementParentObj: {fileID: 296702919392348265}
+  _dough: {fileID: 7831626318507399643}
   _perc: 050000001900000046000000
   _testidx: 0
 --- !u!1 &2314665151744350923
@@ -64897,18 +64898,19 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 3050266147082336891}
         m_TargetAssemblyTypeName: GetBreadController, Assembly-CSharp
-        m_MethodName: ReturnOriginalStove
+        m_MethodName: WaitAndClose
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 2.5
+          m_FloatArgument: 2
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   _normalScale: {x: 2.6, y: 2.6}
   _qMark: {fileID: 4760948299583098958}
+  _dough: {fileID: 0}
   _normalShkTime: 2
   _epicShkTime: 2.5
   _legendShkTime: 3.5

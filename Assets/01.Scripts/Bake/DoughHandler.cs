@@ -15,6 +15,7 @@ public class DoughHandler : MonoBehaviour
     [Space(10)]
 
     private Vector2 _doughNormalPos;
+    private Vector3 _doughNormalScale;
     [SerializeField] private bool _isInnerDough;
     private bool _isShaking;
     private bool _isInRange;
@@ -48,6 +49,7 @@ public class DoughHandler : MonoBehaviour
     void Start()
     {
         _doughNormalPos = transform.position;
+        _doughNormalScale = transform.localScale;
     }
     private void OnMouseEnter()
     {
@@ -105,4 +107,12 @@ public class DoughHandler : MonoBehaviour
             transform.position = _doughNormalPos;
         }
     }    
+
+    public void ReturnDough()
+    {
+        transform.position = _doughNormalPos;
+        transform.SmartScale(_doughNormalScale, 0.5f);
+        _isShaking = false;
+        _IsInRange = false;
+    }
 }

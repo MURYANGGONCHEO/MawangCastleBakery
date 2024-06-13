@@ -11,6 +11,7 @@ public class Stove : MonoBehaviour, IBakingProductionObject
 
     [SerializeField] private Vector2 _normalScale;
     [SerializeField] private Transform _qMark;
+    [SerializeField] private DoughHandler _dough;
 
     [SerializeField] private float _normalShkTime = 2f;
     [SerializeField] private float _epicShkTime = 2.5f;
