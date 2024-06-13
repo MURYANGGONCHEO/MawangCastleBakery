@@ -11,6 +11,7 @@ public class FadePanel : MonoBehaviour
 
     public Vector2 offset = Vector2.zero;
     public float radius = 0.0f;
+    public float pixelCount = 128.0f;
     public Shader shader;
 
     private Material material;
@@ -25,6 +26,7 @@ public class FadePanel : MonoBehaviour
         img.material = material;
         img.enabled = true;
         material.SetFloat("_radius", 5.0f);
+        material.SetFloat("_pixel", pixelCount);
         //material.SetFloat("_pixel", 128.0f);
     }
 

@@ -243,7 +243,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 3c0fb565155bfac4e8ff0924f8510988, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 0.5
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -3162,7 +3162,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0.3608283, y: 0.3664436, z: 0}
+  m_DefaultVelocity: {x: 0.351316, y: 0.4988556, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4291,6 +4291,7 @@ MonoBehaviour:
   yOrigin: 6
   offset: {x: 0, y: 0}
   radius: 2
+  pixelCount: 128
   shader: {fileID: -6465566751694194690, guid: 74ba13b14a998c74cbcfba3b6f325b9b, type: 3}
 --- !u!114 &7540889930491852245
 MonoBehaviour:
@@ -5231,6 +5232,10 @@ PrefabInstance:
     - target: {fileID: 8506927898712649092, guid: fdaa07104a9ccbe46b719d8b0b693de4, type: 3}
       propertyPath: m_Name
       value: Mouse_trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506927898712649092, guid: fdaa07104a9ccbe46b719d8b0b693de4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8692280890089797074, guid: fdaa07104a9ccbe46b719d8b0b693de4, type: 3}
       propertyPath: m_LocalPosition.x
