@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 
     public PoolVCam CaomObj { get; private set; }
     public BattleController BattleController { get; set; }
-    private Dictionary<CameraTargetType, Action<Vector2, float, float, float, Ease>> _targetActionDic = new();
+    private Dictionary<CameraTargetType, Action<Vector2, float, float, float, float, Ease>> _targetActionDic = new();
     private bool _camOnMoving = false;
 
     private Sequence _toPlayerSeq;
@@ -40,19 +40,21 @@ public class CameraController : MonoBehaviour
         _toEnemySeq = DOTween.Sequence();
     }
 
-    private void HandleCamraTargettingPlayer(Vector2 mValue, float rValue, float zValue, float duration, Ease easing)
+    private void HandleCamraTargettingPlayer(Vector2 mValue, float rValue, float zValue, float duration, float delayTime, Ease easing)
     {
         _toPlayerSeq.Append(_target.DOLocalMove(mValue, duration).SetEase(easing));
         _toPlayerSeq.Join(_poolVCam.transform.DORotate(new Vector3(0, 0, rValue), duration).SetEase(easing));
-        _toPlayerSeq.Join(DOTween.To(() => 60, o => _vCam.m_Lens.FieldOfView = o, 60 + zValue, duration).SetEase(easing));
+        _toPlayerSeq.Join(DOTween.To(() => _vCam.m_Lens.FieldOfView, o => _vCam.m_Lens.FieldOfView = o, 60 + zValue, duration).SetEase(easing));
+        _toPlayerSeq.AppendInterval(delayTime);
         _toPlayerSeq.OnComplete(() => _camOnMoving = true);
     }
 
-    private void HandleCamraTargettingEmeny(Vector2 mValue, float rValue, float zValue, float duration, Ease easing)
+    private void HandleCamraTargettingEmeny(Vector2 mValue, float rValue, float zValue, float duration, float delayTime, Ease easing)
     {
         _toEnemySeq.Append(_target.DOLocalMove(mValue, duration).SetEase(easing));
         _toEnemySeq.Join(_poolVCam.transform.DORotate(new Vector3(0, 0, rValue), duration).SetEase(easing));
-        _toEnemySeq.Join(DOTween.To(() => 60, o => _vCam.m_Lens.FieldOfView = o, 60 + zValue, duration).SetEase(easing));
+        _toEnemySeq.Join(DOTween.To(() => _vCam.m_Lens.FieldOfView, o => _vCam.m_Lens.FieldOfView = o, 60 + zValue, duration).SetEase(easing));
+        _toEnemySeq.AppendInterval(delayTime);
         _toEnemySeq.OnComplete(() => _camOnMoving = true);
     }
 
@@ -82,7 +84,8 @@ public class CameraController : MonoBehaviour
             Invoke(seq.movingValue * (int)seq.cameraTarget,
                    seq.rotationValue * (int)seq.cameraTarget,
                    seq.zoonInValue,
-                   seq.duration, seq.easingType);
+                   seq.duration,
+                   seq.delayTime,seq.easingType);
 
             if (seq.shakeDefination.isShaking)
             {

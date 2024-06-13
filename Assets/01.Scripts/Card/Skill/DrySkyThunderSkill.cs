@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,20 +9,23 @@ public class DrySkyThunderSkill : LightningCardBase, ISkillEffectAnim
     {
         IsActivingAbillity = true;
 
-        Player.UseAbility(this);
+        StartCoroutine(AttackCor());
+
+        // 0.2 sec wait
+
+
         Player.OnAnimationCall += HandleAnimationCall;
         Player.VFXManager.OnEndEffectEvent += HandleEffectEnd;
     }
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(CardInfo, Player.transform.position, (int)CombineLevel);
-        StartCoroutine(AttackCor());
         Player.OnAnimationCall -= HandleAnimationCall;
     }
 
     public void HandleEffectEnd()
     {
+        Player.MoveToOriginPos();
         Player.EndAbility();
         Player.VFXManager.EndParticle(CardInfo, (int)CombineLevel);
         IsActivingAbillity = false;
@@ -30,19 +34,31 @@ public class DrySkyThunderSkill : LightningCardBase, ISkillEffectAnim
 
     private IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(0.3f);
+        Player.VFXManager.PlayParticle(CardInfo, Player.transform.position, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
+        SoundManager.PlayAudio(_soundEffect, false);
 
-        foreach (var e in Player.GetSkillTargetEnemyList[this])
+        yield return new WaitForSeconds(1.25f);
+
+        Player.UseAbility(this, true, false, true, 0.1f);
+
+        var targetList = Player.GetSkillTargetEnemyList[this];
+
+        yield return new WaitForSeconds(0.65f);
+
+        foreach (var e in targetList)
         {
-            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
-            if(e != null)
+            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
+            if (e != null)
             {
-                GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, Player.GetSkillTargetEnemyList[this][0].transform.position, Quaternion.identity);
+                GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, targetList[0].transform.position, Quaternion.identity);
                 Destroy(obj, 1.0f);
                 RandomApplyShockedAilment(e, 20f);
             }
         }
 
-        ExtraAttack();
+        if (targetList.Count > 0)
+        {
+            ExtraAttack(targetList[targetList.Count - 1]);
+        }
     }
 }

@@ -35,7 +35,7 @@ public class JaggieLanternSkill : CardBase, ISkillEffectAnim
         FeedbackManager.Instance.ShakeScreen(3);
         foreach (var e in Player.GetSkillTargetEnemyList[this])
         {
-            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
             //우선 임시로 짜둡니다. 나중에 고칠 수 있으면 고칠게요
             if(e != null)
             {

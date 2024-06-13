@@ -35,14 +35,16 @@ public class FallingThunderSkill : LightningCardBase, ISkillEffectAnim
 
         if (isLastEnemy)
         {
-            Player.VFXManager.PlayParticle(this, Player.GetSkillTargetEnemyList[this][0].transform.position);
+            Entity e = Player.GetSkillTargetEnemyList[this][0];
             for (int i = 0; i < 2; ++i)
             {
-                Player.GetSkillTargetEnemyList[this][0]?.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
-                if (Player.GetSkillTargetEnemyList[this][0] != null)
+                Player.VFXManager.PlayParticle(this, e.transform.position, i % 2 != 0);
+                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
+                if (e != null)
                 {
                     GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, Player.GetSkillTargetEnemyList[this][0].transform.position, Quaternion.identity);
                     Destroy(obj, 1.0f);
+                    ExtraAttack(e);
                 }
                 yield return new WaitForSeconds(0.4f);
             }
@@ -50,20 +52,20 @@ public class FallingThunderSkill : LightningCardBase, ISkillEffectAnim
         }
         else
         {
-            Player.VFXManager.PlayParticle(this, Player.transform.position);
-            foreach (var e in Player.GetSkillTargetEnemyList[this])
+            for(int i = 0; i < 2; ++i)
             {
-                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
-                if (e != null)
+                Entity e = Player.GetSkillTargetEnemyList[this][i];
+                Player.VFXManager.PlayParticle(this, e.transform.position, i % 2 != 0);
+                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
+                if(e != null)
                 {
                     GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, e.transform.position, Quaternion.identity);
                     Destroy(obj, 1.0f);
+                    ExtraAttack(e);
                     RandomApplyShockedAilment(e, 20f);
                 }
                 yield return new WaitForSeconds(0.4f);
             }
         }
-
-        ExtraAttack();
     }
 }

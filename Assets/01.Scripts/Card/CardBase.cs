@@ -108,6 +108,11 @@ public abstract class CardBase : MonoBehaviour,
     public float CardIdlingAddValue { get; set; }
     public bool OnPointerInCard { get; set; }
 
+    [SerializeField]
+    protected AudioClip _soundEffect;
+
+    [SerializeField]
+    protected List<float> _skillDurations;
     private CardInfoBattlePanel _cardInfoBattlePanel;
     public bool Paneling { get; private set; }
 
@@ -122,6 +127,7 @@ public abstract class CardBase : MonoBehaviour,
         VisualRectTrm = VisualTrm.GetComponent<RectTransform>();
         _costText = transform.Find("Visual/CsotText").GetComponent<TextMeshProUGUI>();
 
+        Debug.Log(AbilityCost);
         _costText.text = AbilityCost.ToString();
     }
 
@@ -228,10 +234,9 @@ public abstract class CardBase : MonoBehaviour,
             }
         }
     }
-    public int[] GetDamage(CombineLevel level)
+    public int GetDamage(CombineLevel level)
     {
-        CardManagingHelper.GetCardShame(CardInfo.cardShameData, CardShameType.Damage,(int)level);
-        return damageArr.list[(int)level].list.ToArray();
+        return (int)((Player.CharStat.GetDamage() / 100f) * CardManagingHelper.GetCardShame(CardInfo.cardShameData, CardShameType.Damage, (int)level));
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -282,5 +287,15 @@ public abstract class CardBase : MonoBehaviour,
         }
 
         RecoverEvent?.Invoke(this);
+    }
+
+    public int[] GetDamages()
+    {
+        int[] damages = new int[3];
+        for(int i = 0; i < 3; ++i)
+        {
+            damages[i] = (Player.CharStat.GetDamage() / 100) * CardManagingHelper.GetCardShame(CardInfo.cardShameData, CardShameType.Damage, i); ;
+        }
+        return damages;
     }
 }

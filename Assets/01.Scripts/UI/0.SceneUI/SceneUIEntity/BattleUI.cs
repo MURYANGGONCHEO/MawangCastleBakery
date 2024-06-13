@@ -16,9 +16,20 @@ public class BattleUI : SceneUI
 
     public Action<bool> SystemActive { get; private set; }
 
+    [SerializeField]
+    protected GameObject _tutorialPanel;
+
     public override void SceneUIStart()
     {
         SystemActive += HandleBattleSystemActive;
+
+        CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);
+        if (!cf.isFirstOnBattle)
+        {
+            _tutorialPanel.SetActive(true);
+            cf.isFirstOnBattle = true;
+            DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
+        }
     }
 
     public override void SceneUIEnd()

@@ -34,6 +34,7 @@ public enum PoolingType
     Tornado,
     Boss,
     CardBattlePanel,
+    Pianissimo,
     GroundCrack,
     DduckProg,
     MeringueSora,

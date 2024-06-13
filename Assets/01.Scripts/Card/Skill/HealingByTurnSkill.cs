@@ -14,7 +14,7 @@ public class HealingByTurnSkill : CardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel);
+        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         StartCoroutine(HealCor());
         Player.OnAnimationCall -= HandleAnimationCall;
     }

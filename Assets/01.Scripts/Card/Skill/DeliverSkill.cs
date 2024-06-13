@@ -16,7 +16,8 @@ public class DeliverSkill : CardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel);
+        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
+        SoundManager.PlayAudio(_soundEffect, false);
         StartCoroutine(AttackCor());
         Player.OnAnimationCall -= HandleAnimationCall;
     }
@@ -35,7 +36,7 @@ public class DeliverSkill : CardBase, ISkillEffectAnim
 
         foreach (var e in Player.GetSkillTargetEnemyList[this])
         {
-            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
             if (e != null)
             {
                 GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, e.transform.position, Quaternion.identity);
@@ -47,7 +48,7 @@ public class DeliverSkill : CardBase, ISkillEffectAnim
 
         foreach(var e in Player.GetSkillTargetEnemyList[this])
         {
-            e?.HealthCompo.ApplyDamage(5 * Player.BuffStatCompo.GetStack(StackEnum.Forging), Player);
+            e?.HealthCompo.ApplyDamage(Mathf.RoundToInt((Player.CharStat.GetDamage() * 0.03f)) * Player.BuffStatCompo.GetStack(StackEnum.Forging), Player);
             if(e != null)
             {
                 GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, e.transform.position, Quaternion.identity);

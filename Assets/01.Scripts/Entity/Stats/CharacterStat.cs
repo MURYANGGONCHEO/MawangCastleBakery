@@ -18,7 +18,8 @@ public enum StatType
     //iceDamage,
     //chillPercent,
     //lightingDamage,
-    //shockPercent
+    //shockPercent,
+    receivedDmgIncreaseValue,
 }
 public class CharacterStat : ScriptableObject
 {
@@ -27,6 +28,7 @@ public class CharacterStat : ScriptableObject
     [Header("Defensive stats")]
     public Stat maxHealth;
     public Stat armor;
+    public Stat receivedDmgIncreaseValue;
 
     [Header("Offensive stats")]
     public Stat damage;

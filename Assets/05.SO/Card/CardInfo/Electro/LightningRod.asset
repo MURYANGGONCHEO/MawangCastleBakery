@@ -15,8 +15,12 @@ MonoBehaviour:
   CardName: "\uD53C\uB8B0\uCE68"
   CardType: 0
   CardVisual: {fileID: 21300000, guid: 0ec810db716d225478a9138b7060fabe, type: 3}
+  skillPersonalColor: {r: 1, g: 1, b: 1, a: 1}
   abilityAnimation: {fileID: 7400000, guid: fa0da448e6c6a9845abf8b8b082d79f8, type: 2}
   cardShameData: {fileID: 11400000, guid: c621e1857b65665408e71ca65f5ac41c, type: 2}
+  cameraSequenceData: {fileID: 11400000, guid: ca9dd688ccd46684689f9da0a34e9d4c, type: 2}
   hitEffect: {fileID: 0}
   targetEffect: {fileID: 0}
-  AbillityInfo: 'Test: Atk buff'
+  AbillityInfo: "\uD1B1 \uC544\uC774\uB3CC\uC758 \uC7AC\uB2A5\uC758 \uC6D0\uC11D
+    \uD6C4\uC9C0\uD0C0 \uCF54\uD1A0\uB124\n\uD504\uB85C\uB4C0\uC11C\uB97C \uAE30\uB2E4\uB9AC\uB294
+    \uC911!!!"

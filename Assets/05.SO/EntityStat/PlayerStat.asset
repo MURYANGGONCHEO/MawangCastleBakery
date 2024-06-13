@@ -20,8 +20,11 @@ MonoBehaviour:
   armor:
     _baseValue: 0
     modifiers: 
-  damage:
+  receivedDmgIncreaseValue:
     _baseValue: 0
+    modifiers: 
+  damage:
+    _baseValue: 100
     modifiers: 
   criticalChance:
     _baseValue: 10

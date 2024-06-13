@@ -142,6 +142,7 @@ public class BattleController : MonoSingleton<BattleController>
             if (e is null) continue;
 
             e.TurnStart();
+            maskEnableEvent?.Invoke(e);
         }
         StartCoroutine(EnemySquence());
     }
@@ -164,6 +165,21 @@ public class BattleController : MonoSingleton<BattleController>
     {
         foreach (var e in OnFieldMonsterArr)
         {
+            float betweenTime = 1.5f;
+            if (e is null) continue;
+            //Player.VFXManager.SetBackgroundColor(Color.gray);
+
+
+            if (!e.HealthCompo.AilmentStat.HasAilment(AilmentEnum.Faint))
+            {
+                e.TurnAction();
+                betweenTime = 1.5f;
+            }
+            else
+            {
+                e.turnStatus = TurnStatus.End;
+                betweenTime = 0.3f;
+            }
             if (e is null) continue;
             BackGroundFadeOut();
 

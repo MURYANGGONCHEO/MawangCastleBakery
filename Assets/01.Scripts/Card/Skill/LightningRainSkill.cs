@@ -15,7 +15,8 @@ public class LightningRainSkill : LightningCardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(CardInfo, Player.transform.position, (int)CombineLevel);
+        SoundManager.PlayAudio(_soundEffect, false);
+        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         StartCoroutine(AttackCor());
         Player.OnAnimationCall -= HandleAnimationCall;
     }
@@ -30,28 +31,32 @@ public class LightningRainSkill : LightningCardBase, ISkillEffectAnim
 
     private IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
 
-        for (int i = 0; i < 3; ++i)
+        var targetList = Player.GetSkillTargetEnemyList[this];
+
+        for (int i = 0; i < 5; ++i)
         {
-            foreach (var e in Player.GetSkillTargetEnemyList[this])
+            foreach (var e in targetList)
             {
-                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+                e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
                 if (e != null)
                 {
-                    GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, Player.GetSkillTargetEnemyList[this][0].transform.position, Quaternion.identity);
+                    GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, targetList[0].transform.position, Quaternion.identity);
                     Destroy(obj, 1.0f);
                 }
             }
-            ExtraAttack();
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.13f);
         }
 
-        foreach(var e in Player.GetSkillTargetEnemyList[this])
+        if(targetList.Count > 0)
+        {
+            ExtraAttack(targetList[targetList.Count - 1]);
+        }
+        
+        foreach(var e in targetList)
         {
             RandomApplyShockedAilment(e, 20f);
         }
-
-        
     }
 }

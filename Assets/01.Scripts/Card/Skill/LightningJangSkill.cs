@@ -33,7 +33,7 @@ public class LightningJangSkill : LightningCardBase, ISkillEffectAnim
         foreach (var e in targets)
         {
             Vector3 pos = e.transform.position;
-            Player.VFXManager.PlayParticle(CardInfo, pos, (int)CombineLevel);
+            Player.VFXManager.PlayParticle(CardInfo, pos, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         }
 
         if (targets.Count > 0)
@@ -42,8 +42,7 @@ public class LightningJangSkill : LightningCardBase, ISkillEffectAnim
         }
         else
         {
-            Player.VFXManager.
-            PlayParticle(CardInfo, battleController.EnemyGroupPosList[0], (int)CombineLevel);
+            Player.VFXManager.PlayParticle(CardInfo, battleController.EnemyGroupPosList[0], (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         }
             
         Player.OnAnimationCall -= HandleAnimationCall;
@@ -69,18 +68,18 @@ public class LightningJangSkill : LightningCardBase, ISkillEffectAnim
 
         foreach (var e in targets)
         {
-            e.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+            e.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
             if (Random.value * 100 >= 30f)
             {
                 e.HealthCompo.AilmentStat.ApplyAilments(AilmentEnum.Shocked);
             }
             GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, e.transform.position, Quaternion.identity);
             Destroy(obj, 1.0f);
+            ExtraAttack(e);
         }
 
         FeedbackManager.Instance.EndSpeed = 3.0f;
         FeedbackManager.Instance.ShakeScreen(2.0f);
 
-        ExtraAttack();
     }
 }

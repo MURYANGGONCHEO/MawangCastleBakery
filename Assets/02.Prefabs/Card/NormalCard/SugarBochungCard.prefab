@@ -199,6 +199,11 @@ MonoBehaviour:
   buffSO: {fileID: 0}
   damageArr:
     list: []
+  _soundEffect: {fileID: 8300000, guid: 54a591bb9b6d273498c8cfe730e8af06, type: 3}
+  _skillDurations:
+  - 2
+  - 2
+  - 2
   healingAmount: 20
 --- !u!1 &3387054830282070693
 GameObject:

@@ -10,18 +10,18 @@ public class SkillCardManagement : CardManagement
     private ExpansionList<CardBase> InCardZoneCatalogue = new ExpansionList<CardBase>();
     public List<CardBase> InCardZoneList => InCardZoneCatalogue;
 
-    [Header("´ë±âÁ¸ ¼ÂÆÃ°ª")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½")]
     [SerializeField] private Transform _cardWaitZone;
     [SerializeField] private float _waitTurmValue = 85f;
     [SerializeField] private Transform _cardInfoTrm;
     private CardInfoPanel _cardInfoPanel;
 
-    [Header("¹ßµ¿Á¸ ¼ÂÆÃ°ª")]
+    [Header("ï¿½ßµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½")]
     [SerializeField] private Transform _activationCardZone;
     [SerializeField] private Vector2 _lastCardPos;
     [SerializeField] private float _activationTurmValue = 155f;
 
-    [Header("ÀÌº¥Æ®")]
+    [Header("ï¿½Ìºï¿½Æ®")]
     private bool _isInChaining;
     public UnityEvent useCardEndEvnet;
     public UnityEvent beforeChainingEvent;
@@ -98,7 +98,7 @@ public class SkillCardManagement : CardManagement
             
             return;
         }
-        
+
         CardBase selectCard = InCardZoneCatalogue[0];
         InCardZoneCatalogue.Remove(selectCard);
 

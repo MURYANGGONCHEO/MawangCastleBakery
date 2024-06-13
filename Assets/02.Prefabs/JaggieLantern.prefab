@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: duration
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8949192331378723957, guid: 9766c8beaef0dcc49ba8ff8922e8f0ba, type: 3}
+      propertyPath: soundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: ff378483264f52340ac4e83a8bbdfa66, type: 3}
     m_RemovedComponents:
     - {fileID: 5627637016739006554, guid: 9766c8beaef0dcc49ba8ff8922e8f0ba, type: 3}
     m_RemovedGameObjects: []
@@ -190,6 +194,10 @@ PrefabInstance:
       propertyPath: duration
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6114337948283115393, guid: 1e9b52878a1adcf40b9cd301d11d32b4, type: 3}
+      propertyPath: soundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: ff378483264f52340ac4e83a8bbdfa66, type: 3}
     - target: {fileID: 7154836785486955595, guid: 1e9b52878a1adcf40b9cd301d11d32b4, type: 3}
       propertyPath: TriggerModule.outside
       value: 0
@@ -232,6 +240,10 @@ PrefabInstance:
       propertyPath: duration
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6788601777709963253, guid: 9c19a1a89ccbe07429d62f9e975717cf, type: 3}
+      propertyPath: soundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: ff378483264f52340ac4e83a8bbdfa66, type: 3}
     - target: {fileID: 7790905375056579747, guid: 9c19a1a89ccbe07429d62f9e975717cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0799999

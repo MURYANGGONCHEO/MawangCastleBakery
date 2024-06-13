@@ -9,9 +9,9 @@ public class AilmentStat
 
     private Dictionary<AilmentEnum, int> _ailmentStack;
 
-    public AilmentEnum currentAilment; //Áúº´ ¹× µð¹öÇÁ »óÅÂ
+    public AilmentEnum currentAilment; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    public event Action<AilmentEnum> EndOFAilmentEvent; // »óÅÂÀÌ»ó Á¾·á½Ã ¹ß»ý
+    public event Action<AilmentEnum> EndOFAilmentEvent; // ï¿½ï¿½ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 
     public AilmentStat(Health health)
     {
@@ -32,8 +32,8 @@ public class AilmentStat
     }
     public void CuredAilment(AilmentEnum ailment)
     {
-        currentAilment ^= ailment; //XOR·Î »©ÁÖ°í
-        EndOFAilmentEvent?.Invoke(ailment); //Á¾·á ¾Ë¸².
+        currentAilment ^= ailment; //XORï¿½ï¿½ ï¿½ï¿½ï¿½Ö°ï¿½
+        EndOFAilmentEvent?.Invoke(ailment); //ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½.
     }
 
     private void AilmentDamage()
@@ -70,7 +70,7 @@ public class AilmentStat
         }
     }
 
-    //Æ¯Á¤ µð¹öÇÁ°¡ Á¸ÀçÇÏ´ÂÁö Ã¼Å©
+    //Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ Ã¼Å©
     public bool HasAilment(AilmentEnum ailment)
     {
         bool temp = ((currentAilment & ailment) > 0);
@@ -85,9 +85,9 @@ public class AilmentStat
     public void ApplyAilments(AilmentEnum value, int stack = 1)
     {
         Debug.Log(value);
-        currentAilment |= value; //ÇöÀç »óÅÂÀÌ»ó¿¡ Ãß°¡ »óÅÂÀÌ»ó µ¡¾º¿ì°í
+        currentAilment |= value; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-        //»óÅÂÀÌ»ó »õ·Î µé¾î¿Â ¾ÖµéÀº ½Ã°£ °»½ÅÇØÁÖ°í. 
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½. 
         SetAilment(value, stack);
 
         if ((value & AilmentEnum.Chilled) > 0 && _ailmentStack[value] >= 5)
@@ -101,8 +101,8 @@ public class AilmentStat
 
 
 
-    //Áúº´È¿°ú¿Í Áö¼Ó½Ã°£ ¼ÂÆÃ
-    private void SetAilment(AilmentEnum ailment, int stack = 1)
+    //ï¿½ï¿½ï¿½ï¿½È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public void SetAilment(AilmentEnum ailment, int stack = 1)
     {
         _ailmentStack[ailment] += stack;
     }

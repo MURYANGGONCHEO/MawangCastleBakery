@@ -60,6 +60,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5863180011268143273}
     m_Modifications:
+    - target: {fileID: 3420545567612359670, guid: 6cf85b8abaf38454f8e2f0445ce52a26, type: 3}
+      propertyPath: soundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: b527b19a82966ae48be336cc6c089897, type: 3}
     - target: {fileID: 6184664313182263262, guid: 6cf85b8abaf38454f8e2f0445ce52a26, type: 3}
       propertyPath: m_Name
       value: P_Seedgun_level3
@@ -141,6 +145,10 @@ PrefabInstance:
       propertyPath: TriggerModule.colliderQueryMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1368421278148285918, guid: e0d65b92238355b4fadbe842b37712f6, type: 3}
+      propertyPath: soundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: b527b19a82966ae48be336cc6c089897, type: 3}
     - target: {fileID: 3599030315999073390, guid: e0d65b92238355b4fadbe842b37712f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.1
@@ -227,6 +235,10 @@ PrefabInstance:
       propertyPath: TriggerModule.colliderQueryMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 729814507692904906, guid: 4ea12d6c9be4ca040ae27480296f7079, type: 3}
+      propertyPath: soundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: b527b19a82966ae48be336cc6c089897, type: 3}
     - target: {fileID: 1020182757187630093, guid: 4ea12d6c9be4ca040ae27480296f7079, type: 3}
       propertyPath: TriggerModule.colliderQueryMode
       value: 2

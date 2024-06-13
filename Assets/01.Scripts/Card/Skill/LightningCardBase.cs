@@ -6,17 +6,27 @@ using UnityEngine;
 public abstract class LightningCardBase : CardBase
 {
     [SerializeField] private ParticleSystem _shockedEffect;
+    [SerializeField] private ParticleSystem _staticEffect;
+    private ParticleSystem.MainModule _mainModule;
 
-    protected void ExtraAttack()
+    protected void ExtraAttack(Entity me)
     {
         foreach (var e in battleController.OnFieldMonsterArr)
         {
             try
             {
-                Debug.Log("번개 체인");
-                e?.HealthCompo.AilmentStat.UsedToAilment(AilmentEnum.Shocked);
-                //GameObject shockedEffects = Instantiate(_shockedEffect.gameObject, Player.target.transform.position, Quaternion.identity);
-                //Destroy(shockedEffects, 1.0f);
+                if (e != null && e.HealthCompo.AilmentStat.HasAilment(AilmentEnum.Shocked) && e != me)
+                {
+                    e?.HealthCompo.AilmentStat.UsedToAilment(AilmentEnum.Shocked);
+                    ParticleSystem shockedFX = Instantiate(_staticEffect, Vector3.Lerp(me.transform.position, e.transform.position, 0.5f), Quaternion.identity);
+                    Vector2 dir = e.transform.position - me.transform.position;
+                    float zRot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                    shockedFX.transform.rotation = Quaternion.Euler(0, 0, zRot);
+                    float distance = Vector2.Distance(e.transform.position, me.transform.position);
+                    _mainModule = shockedFX.main;
+                    _mainModule.startSizeX = distance;
+                    Destroy(shockedFX, 2f);
+                }
             }
             catch (Exception ex)
             {

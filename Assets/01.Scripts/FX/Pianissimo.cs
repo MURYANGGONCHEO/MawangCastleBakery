@@ -8,23 +8,22 @@ public class Pianissimo : MonoBehaviour
     public Transform target;
     private float _speed = 0.0f;
 
-    private void Start()
+    private void OnEnable()
     {
-        Ready();
+
     }
 
     private void Update()
     {
-        transform.position += Vector3.up * _speed;
+        transform.position += transform.forward * _speed;
     }
 
-    private void Ready()
+    public void Ready()
     {
-        Vector3 dir = (transform.position - target.position).normalized;
-        Quaternion quat = Quaternion.LookRotation(dir);
+        Vector2 dir = (target.position - transform.position).normalized;
 
         Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DORotateQuaternion(quat, 1.0f));
+        seq.Append(transform.DORotate(dir , 0.4f));
         seq.AppendCallback(() =>
         {
             Attack();
@@ -33,6 +32,6 @@ public class Pianissimo : MonoBehaviour
 
     private void Attack()
     {
-        _speed = 1.0f;
+        _speed = 0.5f;
     }
 }

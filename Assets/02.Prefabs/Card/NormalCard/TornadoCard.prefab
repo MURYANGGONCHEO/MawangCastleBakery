@@ -203,6 +203,8 @@ MonoBehaviour:
     - list: 02000000
     - list: 03000000
     - list: 04000000
+  _soundEffect: {fileID: 8300000, guid: 5d2d01c8c37417c4c97c0aaeb5b55bbd, type: 3}
+  _skillDurations: []
 --- !u!1 &2846604494539106573
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ public class TripleStepSkill : CardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(CardInfo, Player.forwardTrm.position + new Vector3(1.8f, 0f, 0f), (int)CombineLevel);
+        Player.VFXManager.PlayParticle(CardInfo, Player.forwardTrm.position + new Vector3(1.8f, 0f, 0f), (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         if (target.Count > 0)
             StartCoroutine(AttackCor());
         Player.OnAnimationCall -= HandleAnimationCall;
@@ -53,7 +53,7 @@ public class TripleStepSkill : CardBase, ISkillEffectAnim
         for (int i = 0; i < 2; ++i)
         {
             yield return new WaitForSeconds(0.2f);
-            Player.target.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0], Player);
+            Player.target.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
 
             if (Player.target != null)
             {
@@ -66,7 +66,7 @@ public class TripleStepSkill : CardBase, ISkillEffectAnim
 
         yield return new WaitForSeconds(2.6f);
 
-        Player.target.HealthCompo.ApplyDamage(GetDamage(CombineLevel)[0] * 2, Player);
+        Player.target.HealthCompo.ApplyDamage(GetDamage(CombineLevel) * 2, Player);
 
         GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, Player.target.transform.position, Quaternion.identity);
         Destroy(obj, 1.0f);

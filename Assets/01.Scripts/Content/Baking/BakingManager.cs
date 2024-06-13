@@ -8,9 +8,9 @@ using UnityEngine.InputSystem;
 
 public enum IngredientType
 {
-    Core,       // º£ÀÌ½º
-    Trace,     // ÈçÀû
-    Subjectivity,     // ÁÖ°ü
+    Core,       // ï¿½ï¿½ï¿½Ì½ï¿½
+    Trace,     // ï¿½ï¿½ï¿½ï¿½
+    Subjectivity,     // ï¿½Ö°ï¿½
 }
 
 public struct CakeGroup

@@ -27,9 +27,33 @@ public class BakeryUI : SceneUI
     [SerializeField] private GameObject _previewPanelObj;
     private PreviewPanel[] _previewPanels;
 
+    public BakeryData BakeryData
+    {
+        get
+        {
+            BakeryData data = DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
+            if(data == null)
+            {
+                data = new BakeryData();
+            }
+            return data;
+        }
+    }
+
+    [SerializeField]
+    private GameObject _tutorialPanel;
+
     public override void SceneUIStart()
     {
         _previewPanels = _previewPanelObj.GetComponentsInChildren<PreviewPanel>();
+
+        CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);
+        if (!cf.isFirstOnBaking)
+        {
+            _tutorialPanel.SetActive(true);
+            cf.isFirstOnBaking = true;
+            DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
+        }
     }
     
     public void FilteringPreviewContent(RecipeSortType type)

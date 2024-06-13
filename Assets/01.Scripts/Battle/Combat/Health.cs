@@ -9,13 +9,17 @@ public enum AilmentEnum : int
 {
     None = 0,
     Chilled = 1,
-    Shocked = 2
+    Shocked = 2,
+    Faint = 3,
 }
 
 public enum StackEnum : int
 {
     Forging = 0, // ����
     Lightning, // ����
+    DEFMusicalNote, // ���� ����
+    DMGMusicaldNote, // �޴� ������ ����
+    FAINTMusicalNote, // ����
 }
 
 public class Health : MonoBehaviour, IDamageable
@@ -122,7 +126,6 @@ public class Health : MonoBehaviour, IDamageable
         if (_isInvincible) return; //����ϰų� �������¸� ���̻� ������ ����.
 
 
-
         if (dealer.CharStat.IsCritical(ref damage))
         {
 
@@ -191,6 +194,7 @@ public class Health : MonoBehaviour, IDamageable
         //������� ������ �ؽ�Ʈ �߰�
         DamageTextManager.Instance.PopupDamageText(this, _owner.transform.position, damage, DamageCategory.Debuff);
 
+        DamageTextManager.Instance.PopupDamageText(_owner.transform.position, damage, DamageCategory.Debuff);
         OnDamageEvent?.Invoke(_currentHealth, maxHealth);
         //Debug.Log($"{gameObject.name} : shocked damage added = {shockDamage}");
     }

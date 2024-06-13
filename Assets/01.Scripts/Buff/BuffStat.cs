@@ -64,7 +64,7 @@ public class BuffStat
     //        _buffDic.Add(so, durationTurn);
     //    }
     //}
-    #region ╫╨ец
+    #region О©╫О©╫О©╫О©╫
     public void AddStack(StackEnum type, int cnt)
     {
         _stackDic[type] += cnt;

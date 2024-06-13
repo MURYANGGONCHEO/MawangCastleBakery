@@ -16,7 +16,8 @@ public class QuenchingSkill : CardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel);
+        SoundManager.PlayAudio(_soundEffect, false);
+        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         StartCoroutine(SkillCor());
         Player.OnAnimationCall -= HandleAnimationCall;
     }

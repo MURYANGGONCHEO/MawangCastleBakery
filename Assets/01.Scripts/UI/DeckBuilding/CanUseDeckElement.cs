@@ -47,6 +47,7 @@ public class CanUseDeckElement : MonoBehaviour, IPointerEnterHandler, IPointerEx
         _deckInfoData.deckName = DeckInfo.deckName;
         _deckInfoData.PlayerSelectDeck = DeckInfo.deck;
         DataManager.Instance.SaveData(_deckInfoData, DataKeyList.playerDeckDataKey);
+        StageManager.Instanace.SelectDeck = DeckManager.Instance.GetDeck(DeckInfo.deck);
 
         _deckGenerator.ResetDeckList();
     }

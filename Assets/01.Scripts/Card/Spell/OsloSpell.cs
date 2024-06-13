@@ -8,7 +8,7 @@ public class OsloSpell : CardBase,ISkillEffectAnim
     {
         IsActivingAbillity = true;
         Player.UseAbility(this);
-        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel);
+        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         Player.BuffStatCompo.AddBuff(buffSO, 0, (int)CombineLevel);
         Player.VFXManager.OnEndEffectEvent += HandleEffectEnd;
     }

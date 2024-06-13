@@ -84,4 +84,9 @@ public class Inventory : MonoSingleton<Inventory>
             Debug.LogError("아이템 없음!");
         }
     }
+
+    public ItemDataSO GetItemInfo(string itemName)
+    {
+        return _itemContainer.GetItemDataByName(itemName);
+    }
 }

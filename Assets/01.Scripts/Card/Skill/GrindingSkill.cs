@@ -16,7 +16,8 @@ public class GrindingSkill : CardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel);
+        SoundManager.PlayAudio(_soundEffect, false);
+        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         StartCoroutine(AddStackCor());
         Player.OnAnimationCall -= HandleAnimationCall;
     }
@@ -33,7 +34,7 @@ public class GrindingSkill : CardBase, ISkillEffectAnim
     {
         yield return new WaitForSeconds(0.3f);
 
-        Player.BuffStatCompo.AddStack(StackEnum.Forging, (int)CombineLevel);
+        Player.BuffStatCompo.AddStack(StackEnum.Forging, (int)CombineLevel + 1);
         Player.BuffStatCompo.AddBuff(buffSO, 2, (int)CombineLevel);
 
         Debug.Log($"Current Forging Stat: {Player.BuffStatCompo.GetStack(StackEnum.Forging)}");

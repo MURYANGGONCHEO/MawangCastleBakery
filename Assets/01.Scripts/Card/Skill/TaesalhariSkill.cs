@@ -8,7 +8,7 @@ public class TaesalhariSkill : ChilledCardBase, ISkillEffectAnim
     {
         IsActivingAbillity = true;
         Player.UseAbility(this);
-        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel);
+        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         Player.VFXManager.OnEndEffectEvent += HandleEffectEnd;
         Player.BuffStatCompo.AddBuff(buffSO,2,(int)CombineLevel);
     }
