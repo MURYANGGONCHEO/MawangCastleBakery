@@ -6,6 +6,7 @@ public class GetBreadController : MonoBehaviour
 {
     [SerializeField] private GameObject _grapicsElementParentObj;
     private IBakingProductionObject[] _productionGraphicsObjArr;
+    [SerializeField] private DoughHandler _dough;
 
     [SerializeField] private int[] _perc = { 5, 25, 70 };
     [SerializeField] private int _testidx;
@@ -52,5 +53,17 @@ public class GetBreadController : MonoBehaviour
         {
             production.DoughInStove(/*grade*/_testidx);
         }
+    }
+
+    public void WaitAndClose(float time)
+    {
+        StartCoroutine(WaitCloseCor(time));
+    }
+
+    private IEnumerator WaitCloseCor(float time)
+    {
+        yield return new WaitForSeconds(time);
+        ExitProduction();
+        _dough.ReturnDough();
     }
 }
