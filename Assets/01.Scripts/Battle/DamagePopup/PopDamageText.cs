@@ -25,11 +25,13 @@ public class PopDamageText : PoolableMono
     public void UpdateText(int damage, Color color)
     {
         _damageText.color = color;
-        _damageText.SetText(damage.ToString());
-
+        _damageText.text = damage.ToString();
+        _damageText.ForceMeshUpdate();
         float size = Mathf.Clamp(1 + damage * 0.01f, 1, 2.5f);
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(-10f,10f));
-        transform.DOScale(Vector2.one * size, 0.1f).SetEase(Ease.InOutQuad);
+        Vector3 scale = Vector2.one * size;
+        scale.z = 1;
+        transform.DOScale(scale, 0.1f).SetEase(Ease.InOutQuad);
     }
     public void EndText()
     {

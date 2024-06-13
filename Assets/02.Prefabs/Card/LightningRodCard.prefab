@@ -202,10 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toMovePosInSec: 0.5
   _myCardInfo: {fileID: 11400000, guid: 4e10e7780f8030549b0cfe6c6e69ae13, type: 2}
-  _objArr:
-  - {fileID: 3404619632539736702}
-  - {fileID: 5129837475305104781}
-  - {fileID: 3192851710385597527}
   _combineLevel: 0
   visualTrm: {fileID: 4765647492564359230}
   _cardMat: {fileID: 2100000, guid: 7215dc6c25e09bd4da589c4bef8f3be2, type: 2}
@@ -213,7 +209,10 @@ MonoBehaviour:
   buffSO: {fileID: 11400000, guid: 65737f45fbfce8b49a83f1772a1c1e02, type: 2}
   damageArr:
     list: []
+  _soundEffect: {fileID: 8300000, guid: 0e185bee5248250488e4229217263a7c, type: 3}
+  _skillDurations: []
   _shockedEffect: {fileID: 4328475238343711852, guid: b6ae50348cfae0a4faeb538a76a5c759, type: 3}
+  _staticEffect: {fileID: 0}
 --- !u!1 &3192851710385597527
 GameObject:
   m_ObjectHideFlags: 0

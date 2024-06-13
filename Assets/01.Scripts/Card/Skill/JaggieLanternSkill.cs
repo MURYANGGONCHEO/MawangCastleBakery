@@ -14,7 +14,7 @@ public class JaggieLanternSkill : CardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(this, Player.transform.position);
+        Player.VFXManager.PlayParticle(this, Player.transform.position,true);
         StartCoroutine(AttackCor());
         Player.OnAnimationCall -= HandleAnimationCall;
     }

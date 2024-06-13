@@ -39,9 +39,9 @@ public class FinaleDebuff : SpecialBuff, IOnEndSkill
         }
     }
 
-    public override void Active(int level)
+    public override void UpdateBuff(int level)
     {
-        base.Active(level);
+        base.UpdateBuff(level);
         duration--;
         if (duration <= 0)
         {

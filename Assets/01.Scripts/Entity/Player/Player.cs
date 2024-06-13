@@ -110,9 +110,15 @@ public class Player : Entity
     }
     protected override void HandleDie()
     {
-        AnimatorCompo.SetBool(_deathAnimationHash, true);
+        StartCoroutine(DeathDelay());
         BattleController.CameraController.StartCameraSequnce(deadCamSO,
+            true,
             () => UIManager.Instance.GetSceneUI<BattleUI>().SetResult(false));
+    }
+    private IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        AnimatorCompo.SetBool(_deathAnimationHash, true);
     }
 
     public override void SlowEntityBy(float percent)

@@ -42,12 +42,11 @@ public class DamageTextManager : MonoSingleton<DamageTextManager>
         PopDamageText dmgText = null;
         if (!entityByText.TryGetValue(health, out dmgText))
         {
-            PopDamageText _damageText = PoolManager.Instance.Pop(PoolingType.DamageText) as PopDamageText;
-            //_damageText.DamageText.font = _damageTextFont;
-            dmgText = _damageText;
+            dmgText = PoolManager.Instance.Pop(PoolingType.DamageText) as PopDamageText;
+            dmgText.DamageText.font = _damageTextFont;
             dmgText.SetDamageText(position);
 
-            entityByText.Add(health, _damageText);
+            entityByText.Add(health, dmgText);
         }
         int idx = (int)category;
         //이후 더하고 효과 추가

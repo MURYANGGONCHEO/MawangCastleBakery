@@ -193,8 +193,6 @@ public class Health : MonoBehaviour, IDamageable
         //��ũ������ �߰� �κ�.
         //������� ������ �ؽ�Ʈ �߰�
         DamageTextManager.Instance.PopupDamageText(this, _owner.transform.position, damage, DamageCategory.Debuff);
-
-        DamageTextManager.Instance.PopupDamageText(_owner.transform.position, damage, DamageCategory.Debuff);
         OnDamageEvent?.Invoke(_currentHealth, maxHealth);
         //Debug.Log($"{gameObject.name} : shocked damage added = {shockDamage}");
     }

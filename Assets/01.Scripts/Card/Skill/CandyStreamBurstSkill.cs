@@ -14,7 +14,7 @@ public class CandyStreamBurstSkill : CardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(this, Player.cream.transform.position);
+        Player.VFXManager.PlayParticle(this, Player.cream.transform.position,true);
         FeedbackManager.Instance.EndSpeed = 1.5f;
         FeedbackManager.Instance.ShakeScreen(2.0f);
 
