@@ -32,21 +32,38 @@ public class GetBreadController : MonoBehaviour
         }
     }
 
-    public void DoughInStove()
+    public void DoughInStove(float randomValue)
     {
         int grade = -1;
-        float r = Random.value * 100;
-        //Debug.Log(r);
+        int cakeCount = 0;
         float cumulative = 0f;
+
         for (int i = 0; i < _perc.Length; i++)
         {
             cumulative += _perc[i];
-            if(cumulative >= r)
+            if(cumulative >= randomValue)
             {
                 grade = i;
                 break;
             }
         }
+
+        switch(grade)
+        {
+            case 0:
+                cakeCount = 10;
+                break;
+            case 1:
+                cakeCount = 50;
+                break;
+            case 2:
+                cakeCount = 150;
+                break;
+            default:
+                break;
+        }
+
+        UIManager.Instance.GetSceneUI<BakeryUI>().ToGetCakeitemData = (Inventory.Instance.GetRandomCake(),  cakeCount);
 
         foreach (var production in _productionGraphicsObjArr)
         {

@@ -5,6 +5,7 @@ using UIDefine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using UnityEngine.Events;
 
 public class BakeryUI : SceneUI
 {
@@ -27,6 +28,9 @@ public class BakeryUI : SceneUI
     [SerializeField] private GameObject _previewPanelObj;
     private PreviewPanel[] _previewPanels;
 
+    public (ItemDataBreadSO, int) ToGetCakeitemData { get; set; }
+    [SerializeField] private UnityEvent<float> _productionStartEvent;
+
     public override void SceneUIStart()
     {
         _previewPanels = _previewPanelObj.GetComponentsInChildren<PreviewPanel>();
@@ -48,5 +52,11 @@ public class BakeryUI : SceneUI
     {
         var bp = _previewPanels.FirstOrDefault(x => x.MySortType == RecipeSortType.Baking) as LookBakingPreviewPanel;
         bp.SetIngredientElement(element);
+    }
+
+    public void ProductionStart()
+    {
+        float random = Random.value * 100f;
+        _productionStartEvent?.Invoke(random);
     }
 }
