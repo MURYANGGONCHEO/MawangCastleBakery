@@ -63,7 +63,7 @@ public class GetBreadController : MonoBehaviour
                 break;
         }
 
-        UIManager.Instance.GetSceneUI<BakeryUI>().ToGetCakeitemData = (Inventory.Instance.GetRandomCake(),  cakeCount);
+        UIManager.Instance.GetSceneUI<BakeryUI>().ToGetCakeCount = cakeCount;
 
         foreach (var production in _productionGraphicsObjArr)
         {

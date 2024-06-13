@@ -813,6 +813,9 @@ MonoBehaviour:
   _audioClip: {fileID: 0}
   _getCakePanel: {fileID: 3142738785894503656}
   _previewPanelObj: {fileID: 6933025954325942088}
+  _productionStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1588772514897767970
 GameObject:
   m_ObjectHideFlags: 0
@@ -4556,7 +4559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &373657367978321212
 RectTransform:
   m_ObjectHideFlags: 0

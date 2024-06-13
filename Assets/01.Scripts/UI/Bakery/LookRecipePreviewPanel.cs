@@ -81,9 +81,5 @@ public class LookRecipePreviewPanel : PreviewPanel
         }
 
         DataManager.Instance.SaveData(bd, DataKeyList.bakeryRecipeDataKey);
-
-        bui.GetCakePanel.SetUp(cake);
-        bui.FilteringPreviewContent(MySortType);
-        bui.RecipePanel.InvokeRecipeAction(MySortType);
     }
 }

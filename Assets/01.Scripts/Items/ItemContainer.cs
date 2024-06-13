@@ -29,9 +29,4 @@ public class ItemContainer : MonoBehaviour
         return _itemDataDic[name];
     }
 
-    public ItemDataBreadSO GetRandomCake()
-    {
-        int rdIdx = Random.Range(0, _cakeDataArr.Length);
-        return _cakeDataArr[rdIdx];
-    }
 }

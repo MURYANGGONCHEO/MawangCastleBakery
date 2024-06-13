@@ -28,7 +28,8 @@ public class BakeryUI : SceneUI
     [SerializeField] private GameObject _previewPanelObj;
     private PreviewPanel[] _previewPanels;
 
-    public (ItemDataBreadSO, int) ToGetCakeitemData { get; set; }
+    public ItemDataBreadSO ToGetCakeType { get; set; }
+    public int ToGetCakeCount { get; set; }
     [SerializeField] private UnityEvent<float> _productionStartEvent;
 
     public override void SceneUIStart()
@@ -58,5 +59,10 @@ public class BakeryUI : SceneUI
     {
         float random = Random.value * 100f;
         _productionStartEvent?.Invoke(random);
+    }
+
+    public void SetUpResultPanel()
+    {
+        GetCakePanel.SetUp(ToGetCakeType, ToGetCakeCount);
     }
 }

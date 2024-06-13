@@ -89,9 +89,4 @@ public class Inventory : MonoSingleton<Inventory>
     {
         return _itemContainer.GetItemDataByName(itemName);
     }
-
-    public ItemDataBreadSO GetRandomCake()
-    {
-        return _itemContainer.GetRandomCake();
-    }
 }

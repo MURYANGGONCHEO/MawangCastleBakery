@@ -39,7 +39,7 @@ public class LookBakingPreviewPanel : PreviewPanel
     public void BakeCake()
     {
         ItemDataIngredientSO[] ingDatas =
-            {
+        {
                 _ingredientElementArr[0].IngredientData,
                 _ingredientElementArr[1].IngredientData,
                 _ingredientElementArr[2].IngredientData,
@@ -64,7 +64,7 @@ public class LookBakingPreviewPanel : PreviewPanel
             }
 
             CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
-            Debug.Log($"CakeData : {cakeData}, {cakeData == null}");
+
             if (cakeData == null)
             {
                 bd.CakeDataList.Add(new CakeData(cake.itemName, false));
@@ -75,10 +75,6 @@ public class LookBakingPreviewPanel : PreviewPanel
             }
 
             DataManager.Instance.SaveData(bd, DataKeyList.bakeryRecipeDataKey);
-
-            bui.GetCakePanel.SetUp(cake);
-            bui.FilteringPreviewContent(MySortType);
-            bui.RecipePanel.InvokeRecipeAction(MySortType);
         }
     }
 }
