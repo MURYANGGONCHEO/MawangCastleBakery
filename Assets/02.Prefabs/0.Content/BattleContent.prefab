@@ -2742,7 +2742,7 @@ PrefabInstance:
       objectReference: {fileID: 5538261958890929539}
     - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: cardAndEffects.Array.size
-      value: 28
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: cardAndEffects.Array.data[25].info
@@ -2759,11 +2759,15 @@ PrefabInstance:
     - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: cardAndEffects.Array.data[28].info
       value: 
-      objectReference: {fileID: 11400000, guid: 4e10e7780f8030549b0cfe6c6e69ae13, type: 2}
+      objectReference: {fileID: 11400000, guid: d6e32e6b9c3631d4aa2b5639e8496b69, type: 2}
     - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: cardAndEffects.Array.data[29].info
       value: 
       objectReference: {fileID: 11400000, guid: 4e10e7780f8030549b0cfe6c6e69ae13, type: 2}
+    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
+      propertyPath: cardAndEffects.Array.data[28].poolObject
+      value: 
+      objectReference: {fileID: 8757323107581500810, guid: bd3447c511beddb4fbe64c03c29f17ae, type: 3}
     - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: cardAndEffects.Array.data[25].particle.Array.size
       value: 3
@@ -2871,15 +2875,15 @@ PrefabInstance:
     - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: cardAndEffects.Array.data[28].particle.Array.data[0]
       value: 
-      objectReference: {fileID: 6182937299967805892}
+      objectReference: {fileID: 5144497205340189202}
     - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: cardAndEffects.Array.data[28].particle.Array.data[1]
       value: 
-      objectReference: {fileID: 6182937299967805892}
+      objectReference: {fileID: 5144497205340189202}
     - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: cardAndEffects.Array.data[28].particle.Array.data[2]
       value: 
-      objectReference: {fileID: 6182937299967805892}
+      objectReference: {fileID: 5144497205340189202}
     - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: cardAndEffects.Array.data[29].particle.Array.data[0]
       value: 
