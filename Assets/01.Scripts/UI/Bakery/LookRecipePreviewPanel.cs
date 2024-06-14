@@ -57,6 +57,17 @@ public class LookRecipePreviewPanel : PreviewPanel
     {
         ItemDataIngredientSO[] data = 
         BakingManager.Instance.GetIngredientDatasByCakeName(_recipeElement.CakeItemData.itemName);
+
+        if(!BakingManager.Instance.CanBake(data))
+        {
+            return;
+        }
+
+        foreach(var item in data)
+        {
+            Inventory.Instance.RemoveItem(item);
+        }
+
         ItemDataBreadSO cake = BakingManager.Instance.BakeBread(data);
         Inventory.Instance.AddItem(cake);
 
@@ -66,7 +77,7 @@ public class LookRecipePreviewPanel : PreviewPanel
 
         if (DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
         {
-            DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
+            bd = DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
         }
 
         CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
@@ -82,8 +93,12 @@ public class LookRecipePreviewPanel : PreviewPanel
 
         DataManager.Instance.SaveData(bd, DataKeyList.bakeryRecipeDataKey);
 
-        bui.GetCakePanel.SetUp(cake);
+        bui.ToGetCakeType = cake;
         bui.FilteringPreviewContent(MySortType);
         bui.RecipePanel.InvokeRecipeAction(MySortType);
+
+        bui.ProductionStart();
+
+        Inventory.Instance.SaveCurrentData();
     }
 }

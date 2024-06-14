@@ -23,6 +23,6 @@ public class SceneUI : MonoBehaviour
     IEnumerator DelayCo(float delay)
     {
         yield return new WaitForSeconds(delay);
-        SoundManager.PlayAudio(_audioClip, true);
+        SoundManager.PlayAudio(_audioClip, false, true);
     }
 }

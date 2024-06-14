@@ -92,11 +92,24 @@ public static class BattleReader
         }
     }
 
+    private static CombatMarkManagement _combatMarkManagement;
+    public static CombatMarkManagement CombatMarkManagement
+    {
+        get
+        {
+            if(_combatMarkManagement != null) return _combatMarkManagement;
+            _combatMarkManagement = GameObject.FindObjectOfType<CombatMarkManagement>();
+            return _combatMarkManagement;
+        }
+    }
+
     public static CardBase OnPointerCard { get; set; }
     public static bool OnBinding { get; set; }
 
     public static CardBase ShufflingCard { get; set; }
     private static int _deckIdx;
+
+    public static bool IsOnTargetting { get; set; }
 
     public static void CaptureHand()
     {

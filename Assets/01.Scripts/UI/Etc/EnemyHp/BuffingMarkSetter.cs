@@ -80,8 +80,8 @@ public class BuffingMarkSetter : MonoBehaviour
         buffingMark.SetInfo(_buffingMarkTextureArr[idx], 
                             _buffingNameArr[idx], markingData, BuffingPanelTrm);
 
-        BuffingMarkPositionSetter(buffingMark.transform);
         _buffingMarkList.Add(buffingMark);
+        BuffingMarkPositionSetter(buffingMark.transform);
     }
 
     public void RemoveBuffingMark(CombatMarkingData markingData)
@@ -93,41 +93,46 @@ public class BuffingMarkSetter : MonoBehaviour
         _buffingMarkList.Remove(target);
 
         Destroy(target.gameObject);
-        BuffingMarkPositionGenerate(idx);
+        BuffingMarkPositionGenerate();
     }
 
     private void BuffingMarkPositionSetter(Transform buffingMarkTrm)
     {
+        bool isMovingX = _buffingMarkList.Count > 3;
+
+        float x = !isMovingX ?
+        (_startBuffingPosition.x - (_buffingMarkDistance * (_buffingMarkList.Count - 1))) :
+        _buffingMarkList[_buffingMarkList.Count - 2].transform.localPosition.x - _buffingMarkDistance;
+
         buffingMarkTrm.localPosition =
-        new Vector2(_startBuffingPosition.x - (_buffingMarkDistance * _buffingMarkList.Count),
-                    _startBuffingPosition.y + 18);
+        new Vector2(x, _startBuffingPosition.y + 18);
 
         buffingMarkTrm.DOLocalMoveY(buffingMarkTrm.localPosition.y - 18, 0.2f).OnComplete(() =>
         {
-            if (_buffingMarkList.Count <= 3) return;
-
-            foreach(var item in _buffingMarkList)
+            if (isMovingX)
             {
-                item.transform.DOLocalMoveX(item.transform.localPosition.x + 20, 0.1f).SetEase(Ease.OutBounce);
+                foreach (var item in _buffingMarkList)
+                {
+                    item.transform.DOLocalMoveX(item.transform.localPosition.x + 20, 0.1f).SetEase(Ease.OutBounce);
+                }
             }
+            
         });
     }
 
-    private void BuffingMarkPositionGenerate(int deleteIdx)
+    private void BuffingMarkPositionGenerate()
     {
+        float[] arr = new float[_buffingMarkList.Count];
+        int temp = arr.Length > 3 ? 20 * (arr.Length - 3) : 0;
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            arr[i] = _startBuffingPosition.x - (_buffingMarkDistance * i) + temp;
+        }
+
         for(int i = 0; i <  _buffingMarkList.Count; i++)
         {
-            float targetX = _buffingMarkList[i].transform.localPosition.x;
-            if (i < deleteIdx)
-            {
-                targetX += 20;
-            }
-            else
-            {
-                targetX -= 20;
-            }
-
-            _buffingMarkList[i].transform.DOLocalMoveX(targetX, 0.1f).SetEase(Ease.OutBounce);
+            _buffingMarkList[i].transform.DOLocalMoveX(arr[i], 0.1f).SetEase(Ease.OutBounce);
         }
     }
 }
