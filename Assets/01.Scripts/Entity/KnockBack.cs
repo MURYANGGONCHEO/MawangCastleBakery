@@ -13,6 +13,6 @@ public class KnockBack : KnockBackBase
     {
         Vector3 knockbackPos = _owner.transform.position;
         knockbackPos.x += (_system.filpX ? -1 : 1) * dmg * _system.knockBackAmount;
-        _owner.transform.DOMove(knockbackPos, 0.025f).SetEase(Ease.OutQuad);
+        _owner.transform.DOJump(knockbackPos, 1f, 1, 1f).SetEase(Ease.OutQuad);
     }
 }

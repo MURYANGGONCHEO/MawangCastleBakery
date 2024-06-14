@@ -54,7 +54,7 @@ public class TurnCounting : MonoBehaviour
         _gameEndText.text = isVictory ? "VICTORY" : "DEFEAT";
 
         seq.Join(_gameEndText.DOFade(1, 0.4f));
-        seq.AppendInterval(0.3f);
+        seq.AppendInterval(1f);
         seq.Append(_turnChaingLabel.DOScaleY(0, 0.4f));
         seq.Join(_gameEndText.DOFade(0, 0.4f));
 

@@ -7,6 +7,7 @@ using System;
 public enum KnockBackType
 {
     None,
+    PushBack,
     KnockBack,
     Vibration
 }

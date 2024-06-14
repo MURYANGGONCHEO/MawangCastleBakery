@@ -707,7 +707,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 1
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupDamageText: 1
-  _damageTextFont: {fileID: 11400000, guid: 7737abcfca537fa40859b8ac303ba006, type: 2}
+  _damageTextFont: {fileID: 11400000, guid: 5c35ac25eff3e584ca92c725f6816ed9, type: 2}
   _reactionTextFont: {fileID: 11400000, guid: 7737abcfca537fa40859b8ac303ba006, type: 2}
   _textColors:
   - {r: 2.1879842, g: 2.1879842, b: 2.1879842, a: 1}
@@ -2947,7 +2947,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: -0.4758135, y: -0.13382, z: 0}
+  m_DefaultVelocity: {x: -0.1656572, y: -0.4395026, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0

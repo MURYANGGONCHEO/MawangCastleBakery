@@ -43,6 +43,7 @@ public class DamageTextManager : MonoSingleton<DamageTextManager>
         if (!entityByText.TryGetValue(health, out dmgText))
         {
             dmgText = PoolManager.Instance.Pop(PoolingType.DamageText) as PopDamageText;
+            dmgText.transform.position = Camera.main.transform.position;
             dmgText.DamageText.font = _damageTextFont;
             dmgText.SetDamageText(position);
 

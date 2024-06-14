@@ -18,7 +18,7 @@ MonoBehaviour:
   skillPersonalColor: {r: 0.33816814, g: 0, b: 1, a: 1}
   abilityAnimation: {fileID: 0}
   cardShameData: {fileID: 11400000, guid: c37c21bc0a625be4f928db1e7f07fd2d, type: 2}
-  cameraSequenceData: {fileID: 11400000, guid: f309e535f2be4164381990eb6628394e, type: 2}
+  cameraSequenceData: {fileID: 11400000, guid: a200ce7f288e37e45a0790c45b477041, type: 2}
   hitEffect: {fileID: 7993180798688134084, guid: d1b4ff7625bef694c9ddc8c4f34e375a, type: 3}
   targetEffect: {fileID: 7991482987039085331, guid: 988a17af331576c4cb9bc6e9be72644d, type: 3}
   AbillityInfo: "\uBC88\uAC1C\uB97C \uB0B4\uB9AC\uCCD0 \uB2E8\uC77C \uB300\uC0C1\uC5D0\uAC8C

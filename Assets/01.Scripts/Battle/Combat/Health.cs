@@ -121,7 +121,7 @@ public class Health : MonoBehaviour, IDamageable
         if (_isDead || _isInvincible) return; //����ϰų� �������¸� ���̻� ������ ����.
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
     }
-    public void ApplyDamage(int damage, Entity dealer, KnockBackType type = KnockBackType.KnockBack)
+    public void ApplyDamage(int damage, Entity dealer, KnockBackType type = KnockBackType.PushBack)
     {
         if (_isInvincible) return; //����ϰų� �������¸� ���̻� ������ ����.
 

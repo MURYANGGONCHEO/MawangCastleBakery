@@ -31,14 +31,12 @@ public class KingButterDog : Enemy
         lastMovePos = transform.position;
 
         //seq.Append(transform.DOMove(target.forwardTrm.position, moveDuration));
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
-        Vector2 pos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width + 30, transform.position.y));
-        pos.y = transform.position.y;
+        Vector3 pos = new Vector3(20, transform.position.y,transform.position.z);
 
         Vector3 jumpPos = Vector3.zero;
         jumpPos.y = transform.position.y;
         jumpPos.x = transform.position.x + 3;
-
+        jumpPos.z = transform.position.z;
         StartCoroutine(AttackCor());
 
         Sequence seq = DOTween.Sequence();
@@ -84,8 +82,7 @@ public class KingButterDog : Enemy
 
     protected override void HandleEndMoveToTarget()
     {
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
-        transform.position = Camera.main.ScreenToWorldPoint(new Vector2(-30, screenPos.y));
+        transform.position = new Vector3(-20, transform.position.y,transform.position.z);
         MoveToOriginPos();
     }
 }
