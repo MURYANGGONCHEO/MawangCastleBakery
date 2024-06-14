@@ -147,6 +147,8 @@ public class AbilityTargettingSystem : MonoBehaviour
     }
     private IEnumerator HandleCountEnemyTargetting(CardBase selectCard, int count)
     {
+        BattleReader.IsOnTargetting = true;
+
         for (int i = 0; i < count; i++)
         {
             _selectCard = selectCard;
@@ -163,6 +165,8 @@ public class AbilityTargettingSystem : MonoBehaviour
 
             yield return new WaitUntil(() => ata.IsBindSucess);
         }
+
+        BattleReader.IsOnTargetting = false;
 
         foreach (var e in _battleController.OnFieldMonsterArr)
         {

@@ -145,6 +145,7 @@ public class SkillCardManagement : CardManagement
 
     private void GenerateCardPosition(CardBase selectCard)
     {
+        selectCard.transform.rotation = Quaternion.identity;
         BattleReader.AbilityTargetSystem.AllGenerateChainPos(true);
         Sequence seq = DOTween.Sequence();
 

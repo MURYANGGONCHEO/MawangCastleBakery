@@ -107,6 +107,8 @@ public static class BattleReader
     public static CardBase ShufflingCard { get; set; }
     private static int _deckIdx;
 
+    public static bool IsOnTargetting { get; set; }
+
     public static void CaptureHand()
     {
         captureHandList.Clear();
