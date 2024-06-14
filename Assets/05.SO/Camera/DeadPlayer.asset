@@ -15,7 +15,7 @@ MonoBehaviour:
   camMoveSequenceList:
   - cameraTarget: 1
     easingType: 9
-    movingValue: {x: 10, y: 0}
+    movingValue: {x: 8, y: 0}
     rotationValue: 0
     zoonInValue: -15
     duration: 0.5

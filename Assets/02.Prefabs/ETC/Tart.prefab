@@ -215,8 +215,8 @@ MonoBehaviour:
   lastMovePos: {x: 0, y: 0, z: 0}
   moveDuration: 0.1
   turnStatus: 0
-  <PlayerDead>k__BackingField: {fileID: 0}
   cream: {fileID: 7715560980413006402}
+  deadCamSO: {fileID: 11400000, guid: 9e556a8585e75ce4eb958de04f65e680, type: 2}
 --- !u!114 &2657064243816768280
 MonoBehaviour:
   m_ObjectHideFlags: 0

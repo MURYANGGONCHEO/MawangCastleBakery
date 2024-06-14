@@ -10,7 +10,7 @@ public class CinemachineConfinerBinding : MonoBehaviour
     private void Awake()
     {
         confiner = GetComponent<CinemachineConfiner2D>();
-        confiner.m_BoundingShape2D = GameManager.Instance.GetContent<BattleContent>().contentConfiner;
+        confiner.m_BoundingShape2D = GameManager.Instance.GetContent<BattleContent>().ContentConfiner;
         confiner.InvalidateCache();
     }
 
