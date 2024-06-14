@@ -28,6 +28,11 @@ public class Stove : MonoBehaviour, IBakingProductionObject
 
     public float EasingTime { get; set; } = 0.3f;
 
+    public void ActiveResultPanel()
+    {
+        UIManager.Instance.GetSceneUI<BakeryUI>().SetUpResultPanel();
+    }
+
     public void OnProduction()
     {
         transform.SmartScale(_normalScale * 1.3f, EasingTime);
@@ -41,8 +46,6 @@ public class Stove : MonoBehaviour, IBakingProductionObject
 
     public void DoughInStove(int grade)
     {
-        Debug.Log(grade);
-
         SpriteRenderer qMarkRenderer = _qMark.GetComponent<SpriteRenderer>();
 
         Sequence seq = DOTween.Sequence();
@@ -132,7 +135,7 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         {
             _screenEffect.Play();
             transform.DOScale(_normalScale, 0.5f).SetEase(Ease.InOutBack);
-            OnEndShaking.Invoke();
+            
             
         });
 
@@ -144,6 +147,7 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.OnComplete(() =>
         {
             seq.Kill();
+            OnEndShaking.Invoke();
         });
     }
 
@@ -185,7 +189,7 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         {
             _screenEffect.Play();
             transform.DOScale(_normalScale, 0.5f).SetEase(Ease.InOutBack);
-            OnEndShaking.Invoke();
+            
         });
 
         seq.AppendInterval(1.07f);
@@ -196,6 +200,7 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         seq.OnComplete(() =>
         {
             seq.Kill();
+            OnEndShaking.Invoke();
         });
     }
 }

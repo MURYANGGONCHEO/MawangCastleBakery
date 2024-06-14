@@ -118,13 +118,13 @@ public class BuffingMarkSetter : MonoBehaviour
         for(int i = 0; i <  _buffingMarkList.Count; i++)
         {
             float targetX = _buffingMarkList[i].transform.localPosition.x;
-            if (i < deleteIdx)
+            if (i <= deleteIdx)
             {
-                targetX += 20;
+                targetX += _buffingMarkDistance;
             }
             else
             {
-                targetX -= 20;
+                targetX -= _buffingMarkDistance;
             }
 
             _buffingMarkList[i].transform.DOLocalMoveX(targetX, 0.1f).SetEase(Ease.OutBounce);

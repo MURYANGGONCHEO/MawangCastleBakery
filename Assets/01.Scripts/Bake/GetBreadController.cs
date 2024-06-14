@@ -27,14 +27,17 @@ public class GetBreadController : MonoBehaviour
 
     public void ExitProduction()
     {
+        _dough.ReturnDough();
         foreach (var production in _productionGraphicsObjArr)
         {
             production.ExitProduction();
         }
     }
 
-    public void DoughInStove(float randomValue)
+    public void DoughInStove()
     {
+        float randomValue = Random.value * 100;
+
         int grade = -1;
         int cakeCount = 0;
         float cumulative = 0f;
@@ -52,13 +55,13 @@ public class GetBreadController : MonoBehaviour
         switch(grade)
         {
             case 0:
-                cakeCount = 10;
+                cakeCount = 150;
                 break;
             case 1:
                 cakeCount = 50;
                 break;
             case 2:
-                cakeCount = 150;
+                cakeCount = 10;
                 break;
             default:
                 break;
@@ -72,15 +75,4 @@ public class GetBreadController : MonoBehaviour
         }
     }
 
-    public void WaitAndClose(float time)
-    {
-        StartCoroutine(WaitCloseCor(time));
-    }
-
-    private IEnumerator WaitCloseCor(float time)
-    {
-        yield return new WaitForSeconds(time);
-        ExitProduction();
-        _dough.ReturnDough();
-    }
 }

@@ -12,6 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
     private Dictionary<SceneType, Content> _contentDic = new Dictionary<SceneType, Content>();
     private SceneType CurrentSceneType => SceneObserver.CurrentSceneType;
     private Content _currentContent;
+    public Content CurrentContent => _currentContent;
 
     [Header("Pooling")]
     [SerializeField] private PoolListSO _poolingList;

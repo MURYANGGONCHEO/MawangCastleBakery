@@ -127,7 +127,6 @@ public abstract class CardBase : MonoBehaviour,
         VisualRectTrm = VisualTrm.GetComponent<RectTransform>();
         _costText = transform.Find("Visual/CsotText").GetComponent<TextMeshProUGUI>();
 
-        Debug.Log(AbilityCost);
         _costText.text = AbilityCost.ToString();
     }
 

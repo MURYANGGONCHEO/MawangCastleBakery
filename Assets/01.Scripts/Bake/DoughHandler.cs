@@ -1,5 +1,6 @@
 using DG.Tweening;
 using ExtensionFunction;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,7 +45,7 @@ public class DoughHandler : MonoBehaviour
 
     [SerializeField] private UnityEvent _doughEnterRangeEvent;
     [SerializeField] private UnityEvent _doughExitRangeEvent;
-    [SerializeField] private UnityEvent _doughToInnerEndEvent;
+    public Action doughToInnerEndEvent;
 
     void Start()
     {
@@ -97,7 +98,7 @@ public class DoughHandler : MonoBehaviour
     {
         if(_IsInRange)
         {
-            _doughToInnerEndEvent?.Invoke();
+            doughToInnerEndEvent?.Invoke();
             _isShaking = true;
             transform.SmartScale(Vector2.zero, 0.1f);
         }
