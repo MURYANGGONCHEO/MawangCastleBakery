@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BattleContent : Content
 {
-    public CompositeCollider2D contentConfiner;
+    [SerializeField] private Collider2D _contentConfiner;
+    public Collider2D ContentConfiner => _contentConfiner;
 
     public override void ContentStart()
     {
