@@ -30,7 +30,8 @@ public class BakeryUI : SceneUI
 
     public ItemDataBreadSO ToGetCakeType { get; set; }
     public int ToGetCakeCount { get; set; }
-    [SerializeField] private UnityEvent<float> _productionStartEvent;
+
+    [SerializeField] private GameObject _bakingGroup;
 
     public override void SceneUIStart()
     {
@@ -57,8 +58,14 @@ public class BakeryUI : SceneUI
 
     public void ProductionStart()
     {
-        float random = Random.value * 100f;
-        _productionStartEvent?.Invoke(random);
+        _bakingGroup.SetActive(false);
+        GameManager.Instance.GetContent<BakingContent>().EnableStoveGroup();
+    }
+
+    public void ProductionEnd()
+    {
+        _bakingGroup.SetActive(true);
+        GameManager.Instance.GetContent<BakingContent>().DisableStoveGroup();
     }
 
     public void SetUpResultPanel()

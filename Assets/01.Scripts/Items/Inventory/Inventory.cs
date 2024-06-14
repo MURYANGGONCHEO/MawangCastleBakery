@@ -8,14 +8,14 @@ using UnityEngine.SceneManagement;
 
 public class Inventory : MonoSingleton<Inventory>
 {
-    private List<ItemDataSO> _inventoryList = new List<ItemDataSO>();
+    [SerializeField] private List<ItemDataSO> _inventoryList = new List<ItemDataSO>();
 
     public ExpansionList<ItemDataIngredientSO> GetIngredientInThisBattle { get; set; } = 
        new ExpansionList<ItemDataIngredientSO>();
 
     private ItemContainer _itemContainer;
 
-    private void Awake()
+    private void Start()
     {
         _itemContainer = GetComponent<ItemContainer>();
 
@@ -74,7 +74,7 @@ public class Inventory : MonoSingleton<Inventory>
         if (_inventoryList.Contains(item))
         {
             Mathf.Clamp(item.haveCount -= count, 0, int.MaxValue);
-            if(item.haveCount == 0)
+            if(item.haveCount <= 0)
             {
                 _inventoryList.Remove(item);
             }
@@ -88,5 +88,14 @@ public class Inventory : MonoSingleton<Inventory>
     public ItemDataSO GetItemInfo(string itemName)
     {
         return _itemContainer.GetItemDataByName(itemName);
+    }
+
+    public void SaveCurrentData()
+    {
+        SavingItemData data = new SavingItemData();
+        List<string> list = _inventoryList.Select(i => i.itemName).ToList();
+        data.itemDataList = list;
+
+        DataManager.Instance.SaveData(data, DataKeyList.itemDataKey);
     }
 }

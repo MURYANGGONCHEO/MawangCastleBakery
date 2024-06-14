@@ -25,7 +25,6 @@ public class FavoritesMark : MonoBehaviour, IPointerClickHandler
 
     private void ChangeStateVisual(bool isFavorites)
     {
-        Debug.Log(isFavorites);
         _isThisRecipeFavorites = isFavorites;
 
         _visualImage.sprite = isFavorites ? _onFacoriteSprite : _notFacoriteSprite;

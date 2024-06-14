@@ -84,7 +84,6 @@ public class AilmentStat
 
     public void ApplyAilments(AilmentEnum value, int stack = 1)
     {
-        Debug.Log(value);
         currentAilment |= value; //���� �����̻� �߰� �����̻� �������
 
         //�����̻� ���� ���� �ֵ��� �ð� �������ְ�. 
@@ -98,9 +97,7 @@ public class AilmentStat
             _health.IsFreeze = true;
         }
     }
-
-
-
+     
     //����ȿ���� ���ӽð� ����
     public void SetAilment(AilmentEnum ailment, int stack = 1)
     {

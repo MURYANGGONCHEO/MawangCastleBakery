@@ -60,11 +60,11 @@ public class LookBakingPreviewPanel : PreviewPanel
 
             if(DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
             {
-                DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
+                bd = DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
             }
 
             CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
-
+            Debug.Log(cakeData);
             if (cakeData == null)
             {
                 bd.CakeDataList.Add(new CakeData(cake.itemName, false));
@@ -75,6 +75,14 @@ public class LookBakingPreviewPanel : PreviewPanel
             }
 
             DataManager.Instance.SaveData(bd, DataKeyList.bakeryRecipeDataKey);
+
+            bui.ToGetCakeType = cake;
+            bui.FilteringPreviewContent(MySortType);
+            bui.RecipePanel.InvokeRecipeAction(MySortType);
+
+            bui.ProductionStart();
+
+            Inventory.Instance.SaveCurrentData();
         }
     }
 }

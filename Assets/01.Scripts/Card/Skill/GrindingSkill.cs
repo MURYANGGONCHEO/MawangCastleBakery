@@ -37,6 +37,13 @@ public class GrindingSkill : CardBase, ISkillEffectAnim
         Player.BuffStatCompo.AddStack(StackEnum.Forging, (int)CombineLevel + 1);
         Player.BuffStatCompo.AddBuff(buffSO, 2, (int)CombineLevel);
 
+        CombatMarkingData forgeData =
+        new CombatMarkingData(BuffingType.Smelting,
+        "진정한 강철은 수만번의 담금질 속에서 만들어진다.",
+        2);
+
+        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, forgeData, (int)CombineLevel + 1);
+
         Debug.Log($"Current Forging Stat: {Player.BuffStatCompo.GetStack(StackEnum.Forging)}");
     }
 }

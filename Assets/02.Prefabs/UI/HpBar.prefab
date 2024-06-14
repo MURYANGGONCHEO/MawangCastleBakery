@@ -262,9 +262,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4171b9c1113feca4ab1a667f5484099d, type: 3}
   - {fileID: 21300000, guid: 6d549ff4a41fc5945b8572bfe60b4f8b, type: 3}
   - {fileID: 21300000, guid: 438f161a36cb4eb4580694cb6e122e07, type: 3}
-  - {fileID: 21300000, guid: 202502b73d4a8054d81e8aca6993010b, type: 3}
   - {fileID: 21300000, guid: 7ea9277979e927e4b8e8bd07f120d165, type: 3}
   - {fileID: 21300000, guid: a19c1a0592244614f8f86cd20951f901, type: 3}
+  - {fileID: 21300000, guid: f11c876c790b69946a0151bfea56e4f8, type: 3}
   _buffingNameArr:
   - "\uD0C0\uAC9F\uD305"
   - "\uCCB4\uB825 \uD68C\uBCF5"

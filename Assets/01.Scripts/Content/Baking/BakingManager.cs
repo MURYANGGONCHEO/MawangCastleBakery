@@ -70,7 +70,7 @@ public class BakingManager : MonoSingleton<BakingManager>
     {
         foreach(ItemDataIngredientSO i in ingredients)
         {
-            if(i == null) return false;
+            if(i.haveCount <= 0) return false;
         }
 
         return true;
