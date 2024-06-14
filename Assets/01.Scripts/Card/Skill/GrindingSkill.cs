@@ -40,7 +40,7 @@ public class GrindingSkill : CardBase, ISkillEffectAnim
         CombatMarkingData forgeData =
         new CombatMarkingData(BuffingType.Smelting,
         "진정한 강철은 수만번의 담금질 속에서 만들어진다.",
-        2);
+        int.MaxValue);
 
         BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, forgeData, (int)CombineLevel + 1);
 
