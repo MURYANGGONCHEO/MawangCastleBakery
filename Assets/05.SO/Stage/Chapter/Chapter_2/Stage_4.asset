@@ -16,7 +16,9 @@ MonoBehaviour:
   stageName: "\uB300\uAC00\uBB44"
   stageType: 0
   stageBackGround: 3
-  enemyGroup: {fileID: 11400000, guid: 973b0e33e986c2f49b1017186bcc3cd9, type: 2}
+  stageCutScene: {fileID: 0}
+  enemyGroup: {fileID: 11400000, guid: 8d59637d6375811408237807b0c5cdbd, type: 2}
+  enemyFormation: {fileID: 11400000, guid: c66d88d76b6813149a77c46fdac6ae5e, type: 2}
   clearCondition: {fileID: 11400000, guid: cff655815dbe9ec4b8bdaeb341b876f9, type: 2}
   compensation:
     Item: {fileID: 0}
