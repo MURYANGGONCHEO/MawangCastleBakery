@@ -40,6 +40,10 @@ public class FinaleSkill : MusicCardBase, ISkillEffectAnim
             Player.BuffStatCompo.ClearStack(StackEnum.DEFMusicalNote);
             Player.BuffStatCompo.ClearStack(StackEnum.DMGMusicaldNote);
             Player.BuffStatCompo.ClearStack(StackEnum.FAINTMusicalNote);
+
+            Player.BuffSetter.RemoveSpecificBuffingType(BuffingType.MusicDef);
+            Player.BuffSetter.RemoveSpecificBuffingType(BuffingType.MusicAtk);
+            Player.BuffSetter.RemoveSpecificBuffingType(BuffingType.MusicFaint);
         }
 
         foreach(var e in Player.GetSkillTargetEnemyList[this])

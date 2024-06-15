@@ -9,14 +9,14 @@ public static class CardReader
     private static List<CardBase> _inDeckCardList = new List<CardBase>();
     public static List<CardBase> captureHandList = new List<CardBase>();
 
-    private static CardDrawer _cardDrawer;
-    public static CardDrawer CardDrawer
+    private static CardFactory _cardDrawer;
+    public static CardFactory CardDrawer
     {
         get
         {
             if(_cardDrawer != null) return _cardDrawer;
 
-            _cardDrawer = GameObject.FindObjectOfType<CardDrawer>();
+            _cardDrawer = GameObject.FindObjectOfType<CardFactory>();
             return _cardDrawer;
         }
     }

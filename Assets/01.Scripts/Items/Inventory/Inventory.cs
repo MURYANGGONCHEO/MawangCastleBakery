@@ -73,7 +73,7 @@ public class Inventory : MonoSingleton<Inventory>
     {
         if (_inventoryList.Contains(item))
         {
-            Mathf.Clamp(item.haveCount -= count, 0, int.MaxValue);
+            item.haveCount = Mathf.Clamp(item.haveCount - count, 0, int.MaxValue);
             if(item.haveCount <= 0)
             {
                 _inventoryList.Remove(item);

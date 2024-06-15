@@ -10,17 +10,17 @@ public class TakeDamageOnceParticle : ParticleTriggerEventBase, IUseInit
     {
         if (takeDamages.Contains(col))
             return;
-        foreach (var d in info.Damages)
-        {
-            foreach (var t in info.Targets)
-            {
-                if (t.ColliderCompo == col)
-                {
-                    t.HealthCompo.ApplyDamage(d, info.Owner);
-                    takeDamages.Add(t.ColliderCompo);
-                }
-            }
-        }
+        //foreach (var d in info.Damage)
+        //{
+        //    foreach (var t in info.Targets)
+        //    {
+        //        if (t.ColliderCompo == col)
+        //        {
+        //            t.HealthCompo.ApplyDamage(d, info.Owner);
+        //            takeDamages.Add(t.ColliderCompo);
+        //        }
+        //    }
+        //}
     }
 
     public void Init()

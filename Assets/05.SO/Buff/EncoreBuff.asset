@@ -17,3 +17,4 @@ MonoBehaviour:
   stackBuffs:
   - type: 2
     values: 05000000370000004d000000
+  buffInfo: 

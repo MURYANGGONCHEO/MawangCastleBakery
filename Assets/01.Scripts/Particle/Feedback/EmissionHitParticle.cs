@@ -12,6 +12,7 @@ public struct EmissionParticleInfo
 
 public class EmissionHitParticle : ParticleTriggerEventBase
 {
+    public Vector3 offset;
     public List<EmissionParticleInfo> particles;
     public override void Action(ref ParticleSystem.Particle p, Collider2D col)
     {
@@ -24,7 +25,7 @@ public class EmissionHitParticle : ParticleTriggerEventBase
                 emitParams.applyShapeToPosition = true;
                 particleInfo.particle.gameObject.SetActive(true);
                 emitParams.applyShapeToPosition = true;
-                emitParams.position = particleInfo.particle.transform.InverseTransformPoint((Vector3)Random.insideUnitCircle * 0.1f + health.transform.position);
+                emitParams.position = particleInfo.particle.transform.InverseTransformPoint((Vector3)Random.insideUnitCircle * 0.1f + health.transform.position) ;
                 emitParams.startSize = Random.Range(mainModule.startSize.constantMin, mainModule.startSize.constantMax);
                 particleInfo.particle.Emit(emitParams, particleInfo.emitCount);
             }

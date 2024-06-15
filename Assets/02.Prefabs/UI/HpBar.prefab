@@ -265,6 +265,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7ea9277979e927e4b8e8bd07f120d165, type: 3}
   - {fileID: 21300000, guid: a19c1a0592244614f8f86cd20951f901, type: 3}
   - {fileID: 21300000, guid: f11c876c790b69946a0151bfea56e4f8, type: 3}
+  - {fileID: 21300000, guid: 396a21a271ede1d439a9317fd2941f42, type: 3}
+  - {fileID: 21300000, guid: b5dbb96be4919684387df4812133dfb9, type: 3}
+  - {fileID: 21300000, guid: 3a1aa74f9461a43429cbc427532edec7, type: 3}
   _buffingNameArr:
   - "\uD0C0\uAC9F\uD305"
   - "\uCCB4\uB825 \uD68C\uBCF5"
@@ -275,9 +278,12 @@ MonoBehaviour:
   - "\uBE59\uACB0"
   - "\uAC10\uC804"
   - "\uAE30\uC808"
-  - "\uCDE8\uC57D\uD568"
   - "\uACF5\uACA9\uB825 \uAC10\uC18C"
   - "\uBC29\uC5B4\uB825 \uAC10\uC18C"
+  - "\uC7AC\uB828 \uC644\uB8CC"
+  - "\uC74C\uD45C \uBC29\uC5B4"
+  - "\uC804\uD22C\uC758 \uC120\uC728 "
+  - "\uACE0\uC74C \uC7A5\uC804 "
 --- !u!1 &4265772663953541215
 GameObject:
   m_ObjectHideFlags: 0

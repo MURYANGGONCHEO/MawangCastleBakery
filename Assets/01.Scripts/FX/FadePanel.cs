@@ -2,11 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
 public class FadePanel : MonoBehaviour
 {
+    public float xOrigin;
+    public float yOrigin;
+
     public Vector2 offset = Vector2.zero;
     public float radius = 0.0f;
+    public float pixelCount = 128.0f;
     public Shader shader;
 
     private Material material;
@@ -21,6 +26,8 @@ public class FadePanel : MonoBehaviour
         img.material = material;
         img.enabled = true;
         material.SetFloat("_radius", 5.0f);
+        material.SetFloat("_pixel", pixelCount);
+        //material.SetFloat("_pixel", 128.0f);
     }
 
     private void Fade(float xPos, float yPos)
@@ -47,8 +54,8 @@ public class FadePanel : MonoBehaviour
 
     private IEnumerator FadeCo(float xPos, float yPos)
     {
-        float remapXPos = remap(xPos, -9.0f, 9.0f, -.5f, .5f);
-        float remapYPos = remap(yPos, -5.0f, 5.0f, -.5f, .5f);
+        float remapXPos = remap(xPos, -xOrigin, xOrigin, -.5f, .5f);
+        float remapYPos = remap(yPos, -yOrigin, yOrigin, -.5f, .5f);
 
         Fade(-remapXPos, -remapYPos);
         yield return new WaitForSeconds(1.5f);

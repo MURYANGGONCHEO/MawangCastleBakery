@@ -72,7 +72,8 @@ public class PlayerVFXManager : MonoBehaviour
         int level = (int)card.CombineLevel;
         ParticlePoolObject obj = PoolManager.Instance.Pop(_cardByEffects2[card.CardInfo].poolingType) as ParticlePoolObject;
         obj.transform.position = pos;
-        obj[level].owner = _player;
+        obj[level].owner = _player; ;
+        obj[level].combineLevel = (int)card.CombineLevel;
         obj[level].damages = card.GetDamages();
         foreach (var t in _player.GetSkillTargetEnemyList[card])
         {
@@ -93,7 +94,8 @@ public class PlayerVFXManager : MonoBehaviour
         int level = (int)card.CombineLevel;
         ParticlePoolObject obj = PoolManager.Instance.Pop(_cardByEffects2[card.CardInfo].poolingType) as ParticlePoolObject;
         obj.transform.position = pos;
-        obj[level].owner = _player;
+        obj[level].owner = _player; ;
+        obj[level].combineLevel = (int)card.CombineLevel;
         obj[level].damages = card.GetDamages();
         foreach (var t in _player.GetSkillTargetEnemyList[card])
         {
@@ -108,7 +110,8 @@ public class PlayerVFXManager : MonoBehaviour
         int level = (int)card.CombineLevel;
         ParticlePoolObject obj = PoolManager.Instance.Pop(_cardByEffects2[card.CardInfo].poolingType) as ParticlePoolObject;
         obj.transform.right = Vector2.left;
-        obj[level].owner = _player;
+        obj[level].owner = _player; ;
+        obj[level].combineLevel = (int)card.CombineLevel;
         obj[level].damages = card.GetDamages();
         foreach (var t in _player.GetSkillTargetEnemyList[card])
         {
@@ -132,25 +135,31 @@ public class PlayerVFXManager : MonoBehaviour
         _cardByEffects[card][combineLevel].Play();
     }
 
-    public void PlayPianissimoParticle(CardBase card)
+    public void PlayPianissimoParticle(CardBase card, Vector3 pos, bool invokeFunc = false)
     {
         int level = (int)card.CombineLevel;
         ParticlePoolObject obj = PoolManager.Instance.Pop(_cardByEffects2[card.CardInfo].poolingType) as ParticlePoolObject;
+        obj[level].owner = _player;
+        obj[level].combineLevel = (int)card.CombineLevel;
+        obj[level].damages = card.GetDamages();
+        obj.transform.position = pos;
         List<Entity> TEList = _player.GetSkillTargetEnemyList[card];
         Pianissimo[] particleArr = obj.gameObject.GetComponentsInChildren<Pianissimo>();
-        obj.transform.position = _player.transform.position;
-        for(int i = 0; i < 2; ++i)
+        for (int i = 0; i < 2; ++i)
         {
+            obj[level].SetTriggerTarget(i,TEList[i]);
+            particleArr[i].isTriggered = false;
             particleArr[i].target = TEList[i % TEList.Count].transform;
             particleArr[i].Ready();
         }
-        obj[level].owner = _player;
-        obj[level].damages = card.GetDamages();
-        //foreach (var t in _player.GetSkillTargetEnemyList[card])
-        //{
-
-        //}
-        obj.Active(level, null, OnEndEffectEvent);
+        if (!invokeFunc)
+        {
+            obj.Active(level, OnEffectEvent, null);
+        }
+        else
+        {
+            obj.Active(level, OnEffectEvent, OnEndEffectEvent);
+        }
     }
 
     private IEnumerator EndEffectCo(float f)

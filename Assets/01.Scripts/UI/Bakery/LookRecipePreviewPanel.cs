@@ -63,12 +63,13 @@ public class LookRecipePreviewPanel : PreviewPanel
             return;
         }
 
-        foreach(var item in data)
+        ItemDataBreadSO cake = BakingManager.Instance.BakeBread(data);
+
+        foreach (var item in data)
         {
             Inventory.Instance.RemoveItem(item);
         }
 
-        ItemDataBreadSO cake = BakingManager.Instance.BakeBread(data);
         Inventory.Instance.AddItem(cake);
 
         BakeryUI bui = UIManager.Instance.GetSceneUI<BakeryUI>();

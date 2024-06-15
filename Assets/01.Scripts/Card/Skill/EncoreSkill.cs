@@ -15,7 +15,7 @@ public class EncoreSkill : MusicCardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(CardInfo, Player.transform.position, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
+        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
         SoundManager.PlayAudio(_soundEffect, false);
         StartCoroutine(AttackCor());
         Player.OnAnimationCall -= HandleAnimationCall;
@@ -31,10 +31,22 @@ public class EncoreSkill : MusicCardBase, ISkillEffectAnim
 
     private IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(2.45f);
 
         Player.BuffStatCompo.AddStack(StackEnum.DEFMusicalNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
         Player.BuffStatCompo.AddStack(StackEnum.DMGMusicaldNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
         Player.BuffStatCompo.AddStack(StackEnum.FAINTMusicalNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
+
+        CombatMarkingData d_data = new CombatMarkingData(BuffingType.MusicDef,
+                                 buffSO.buffInfo, (int)CombineLevel + 1);
+        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, d_data, int.MaxValue);
+
+        CombatMarkingData a_data = new CombatMarkingData(BuffingType.MusicAtk,
+                                 buffSO.buffInfo, (int)CombineLevel + 1);
+        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, a_data, int.MaxValue);
+
+        CombatMarkingData f_data = new CombatMarkingData(BuffingType.MusicFaint,
+                                 buffSO.buffInfo, (int)CombineLevel + 1);
+        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, f_data, int.MaxValue);
     }
 }

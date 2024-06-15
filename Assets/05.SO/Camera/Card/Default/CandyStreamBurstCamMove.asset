@@ -28,7 +28,18 @@ MonoBehaviour:
     easingType: 0
     movingValue: {x: 3.2, y: 0}
     rotationValue: 0
-    zoonInValue: 1
+    zoonInValue: 3
+    duration: 0.1
+    cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 1
+      seconds: 0.1
+    delayTime: 3.5
+  - cameraTarget: -1
+    easingType: 0
+    movingValue: {x: 3.2, y: 0}
+    rotationValue: 0
+    zoonInValue: 3
     duration: 0.3
     cameraTransitionTime: 0.2
     shakeDefination:
