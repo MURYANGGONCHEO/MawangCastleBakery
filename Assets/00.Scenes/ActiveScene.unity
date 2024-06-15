@@ -2994,7 +2994,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: -0.3405509, y: 0.1786536, z: 0}
+  m_DefaultVelocity: {x: 0.2, y: 0.2, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4503,7 +4503,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35ad5b7d998dc7340818715c3ef2ec83, type: 2}
   - {fileID: 11400000, guid: 276281a078b479d4ab21c22376c0f927, type: 2}
   - {fileID: 11400000, guid: 3ecff4985eca0b94aaf1f3fe229b8604, type: 2}
-  _cakeDataArr: []
+  _cakeDataArr:
+  - {fileID: 11400000, guid: 7a6d4fb06b888cc4eb9564e0ddbf6eef, type: 2}
 --- !u!4 &8075597554576919893
 Transform:
   m_ObjectHideFlags: 0
