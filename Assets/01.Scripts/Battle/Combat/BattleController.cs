@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
+using UnityEngine.Playables;
 
 [Serializable]
 public class SEList<T>
@@ -56,7 +57,6 @@ public class BattleController : MonoSingleton<BattleController>
             return _player;
         }
     }
-
     private bool _isGameEnd;
     public bool IsGameEnd
     {
@@ -66,6 +66,7 @@ public class BattleController : MonoSingleton<BattleController>
             _isGameEnd = value;
             if (_isGameEnd)
             {
+
                 for (int i = 0; i < OnFieldMonsterArr.Length; i++)
                 {
                     Enemy e = OnFieldMonsterArr[i];
@@ -87,10 +88,13 @@ public class BattleController : MonoSingleton<BattleController>
         }
     }
 
+    public Action OnChangeTurnEnemy;
+
     [SerializeField] private UnityEvent<Enemy, Vector3> _maskCreateEvent;
     public UnityEvent<Enemy> maskEnableEvent;
     public UnityEvent<Enemy> maskDisableEvent;
     public CameraController CameraController { get; private set; }
+
 
     private Action _spawnCallBack;
 
@@ -103,56 +107,34 @@ public class BattleController : MonoSingleton<BattleController>
         CameraController = FindObjectOfType<CameraController>();
         CameraController.BattleController = this;
 
+
         OnFieldMonsterArr = new Enemy[EnemyGroupPosList.Count];
-
-        BattleReader.SkillCardManagement.useCardEndEvnet.AddListener(HandleEndSkill);
-
+        CardReader.SkillCardManagement.useCardEndEvnet.AddListener(CalculateDeathEntity);
         TurnCounter.PlayerTurnStartEvent += HandleCardDraw;
         TurnCounter.EnemyTurnStartEvent += OnEnemyTurnStart;
         TurnCounter.EnemyTurnEndEvent += OnEnemyTurnEnd;
+
 
         Player.BattleController = this;
         _hpBarMaker.SetupHpBar(Player);
         Player.HealthCompo.OnDeathEvent.AddListener(() => IsGameEnd = true);
     }
 
+
     private void HandleCardDraw(bool obj)
     {
         BattleReader.CardDrawer.DrawCard(3, false);
     }
 
-    private void HandleEndSkill()
+
+        private void OnDestroy()
     {
-        foreach (var e in OnFieldMonsterArr)
-        {
-            if (e != null)
-            {
-                Health h = e.HealthCompo;
-                if (h.GetNormalizedHealth() <= 0)
-                {
-                    h.IsDead = true;
-                    e.DeadSequence();
-                }
-            }
-        }
+        CardReader.SkillCardManagement.useCardEndEvnet.RemoveListener(CalculateDeathEntity);
 
-        Health health = Player.HealthCompo;
-
-        if (health.GetNormalizedHealth() <= 0)
-        {
-            health.IsDead = true;
-            health.OnDeathEvent?.Invoke();
-        }
-    }
-
-    private void OnDestroy()
-    {
-        BattleReader.SkillCardManagement.useCardEndEvnet.RemoveListener(HandleEndSkill);
         TurnCounter.EnemyTurnStartEvent -= OnEnemyTurnStart;
         TurnCounter.EnemyTurnEndEvent -= OnEnemyTurnEnd;
         TurnCounter.PlayerTurnStartEvent -= HandleCardDraw;
     }
-
     private void OnEnemyTurnStart(bool value)
     {
         foreach (var e in OnFieldMonsterArr)
@@ -165,6 +147,8 @@ public class BattleController : MonoSingleton<BattleController>
         StartCoroutine(EnemySquence());
     }
 
+
+
     private void OnEnemyTurnEnd()
     {
         foreach (var e in OnFieldMonsterArr)
@@ -175,6 +159,7 @@ public class BattleController : MonoSingleton<BattleController>
             maskDisableEvent?.Invoke(e);
         }
     }
+
 
     private IEnumerator EnemySquence()
     {
@@ -200,7 +185,11 @@ public class BattleController : MonoSingleton<BattleController>
 
             e.TurnAction();
             yield return new WaitUntil(() => e.turnStatus == TurnStatus.End);
+             DamageTextManager.Instance.PushAllText();
 
+            OnChangeTurnEnemy?.Invoke();
+
+            CalculateDeathEntity();
             BackGroundFadeIn();
 
             if (_isGameEnd) break;
@@ -212,49 +201,70 @@ public class BattleController : MonoSingleton<BattleController>
             TurnCounter.ChangeTurn();
         }
     }
+    private void CalculateDeathEntity()
+    {
+        foreach (var e in OnFieldMonsterArr)
+        {
+            if (e is null) continue;
 
+            if (e.HealthCompo.IsDead)
+                e.HealthCompo.InvokeDeadEvent();
+        }
+        if (Player.HealthCompo.IsDead)
+            Player.HealthCompo.InvokeDeadEvent();
+    }
     public void SetStage()
     {
-        _enemyGroup = StageManager.Instanace.SelectStageData.enemyGroup;
-
-        foreach (var e in _enemyGroup.enemies)
+        if (StageManager.Instanace.SelectStageData.stageCutScene != null) return;
+        InitField();
+    }
+    public void InitField()
+    {
+        foreach (var e in StageManager.Instanace.SelectStageData.enemyGroup.firstSpawns)
+        {
+            if (!SpawnMonster(e.enemy.poolingType, e.mapIdx))
+            {
+                _enemyQue.Enqueue(e.enemy.poolingType);
+            }
+        }
+        foreach (var e in StageManager.Instanace.SelectStageData.enemyGroup.enemies)
         {
             _enemyQue.Enqueue(e.poolingType);
         }
-
         for (int i = 0; i < EnemyGroupPosList.Count; i++)
         {
-            SpawnMonster(i);
+            if (_enemyQue.Count > 0)
+                SpawnMonster(_enemyQue.Dequeue(), i);
         }
     }
-
-    private void SpawnMonster(int idx)
+    private bool SpawnMonster(PoolingType enemyType, int idx)
     {
-        if (_enemyQue.Count > 0)
-        {
-            Vector3 selectPos = EnemyGroupPosList[idx];
-            Enemy selectEnemy = PoolManager.Instance.Pop(_enemyQue.Dequeue()) as Enemy;
+        if (OnFieldMonsterArr[idx] != null)
+            return false;
+        Vector3 selectPos = EnemyGroupPosList[idx];
+        Enemy selectEnemy = PoolManager.Instance.Pop(enemyType) as Enemy;
 
-            selectEnemy.transform.position = selectPos;
-            selectEnemy.BattleController = this;
+        selectEnemy.transform.position = selectPos;
+        selectEnemy.BattleController = this;
 
-            int posChecker = ((idx + 2) % 2) * 2;
+        int posChecker = ((idx + 3) % 2) * 2;
 
-            _spawnCallBack = null;
+         _spawnCallBack = null;
             _spawnCallBack += ()=> _maskCreateEvent?.Invoke(selectEnemy, selectPos);
             _spawnCallBack += ()=> _hpBarMaker.SetupHpBar(selectEnemy);
 
             selectEnemy.Spawn(selectPos, _spawnCallBack);
 
-            selectEnemy.SpriteRendererCompo.sortingOrder = posChecker;
+        selectEnemy.SpriteRendererCompo.sortingOrder = posChecker;
 
-            selectEnemy.HealthCompo.OnDeathEvent.AddListener(() => DeadMonster(selectEnemy));
+        selectEnemy.HealthCompo.OnDeathEvent.AddListener(() => DeadMonster(selectEnemy));
 
-            OnFieldMonsterArr[idx] = selectEnemy;
-            selectEnemy.target = Player;
+        OnFieldMonsterArr[idx] = selectEnemy;
+        selectEnemy.target = Player;
 
-            SpawnEnemyList.Add(selectEnemy);
-        }
+        SpawnEnemyList.Add(selectEnemy);
+        return true;
+
     }
 
     public void DeadMonster(Enemy enemy)
@@ -275,7 +285,6 @@ public class BattleController : MonoSingleton<BattleController>
         e1.DOMove(e2.position, 0.5f);
         e2.DOMove(e1.position, 0.5f).OnComplete(() => callback?.Invoke());
     }
-
     public void ChangeXPosition(Transform e1, Transform e2, Action callback = null)
     {
         e1.DOMoveX(e2.position.x, 0.5f);
@@ -286,6 +295,7 @@ public class BattleController : MonoSingleton<BattleController>
     {
         Player.SaveSkillToEnemy(cardBase, entity);
     }
+
 
     public void BackGroundFadeIn()
     {

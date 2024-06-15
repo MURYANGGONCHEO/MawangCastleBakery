@@ -7,9 +7,9 @@ public class HealingBuff : SpecialBuff
     public List<int> healingAmounts;
     public int turnDuration;
 
-    public override void Active(int level)
+    public override void UpdateBuff(int level)
     {
-        base.Active(level);
+        base.UpdateBuff(level);
         entity.HealthCompo.ApplyHeal(Mathf.RoundToInt(entity.HealthCompo.maxHealth * healingAmounts[combineLevel] * 0.01f));
         turnDuration--;
 

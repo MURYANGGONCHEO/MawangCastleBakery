@@ -35,6 +35,15 @@ public enum PoolingType
     Boss,
     CardBattlePanel,
     Pianissimo,
+    GroundCrack,
+    DduckProg,
+    MeringueSora,
+    GhostBird,
+    KiwiBird,
+    ThrowKiwi,
+    Chameleon,
+    ThrowMelon,
+
 }
 public enum ParticleEnum
 {

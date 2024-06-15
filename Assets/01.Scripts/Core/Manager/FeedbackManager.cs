@@ -25,9 +25,13 @@ public class FeedbackManager : MonoSingleton<FeedbackManager>
 
     private bool _shakingInDuration = false;
 
-    // ½Ã°£ °ü·Ã
+
+    // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
     private float _limitTime;
     private float _currentTime;
+
+    private int blinkHash = Shader.PropertyToID("_blink_amount");
+
 
     private Bloom _bloom;
 
@@ -54,6 +58,18 @@ public class FeedbackManager : MonoSingleton<FeedbackManager>
 
         DontDestroyOnLoad(volumeObj);
     }
+    public void Blink(Material mat, float time)
+    {
+        StartCoroutine(BlineTimer(mat, time));
+    }
+    private IEnumerator BlineTimer(Material mat,float time)
+    {
+        mat.SetFloat(blinkHash, 1);
+        yield return new WaitForSeconds(time);
+        mat.SetFloat(blinkHash, 0);
+
+    }
+
 
     public void ShakeScreen(Vector3 dir, float seconds = 0.2f)
     {
@@ -83,7 +99,7 @@ public class FeedbackManager : MonoSingleton<FeedbackManager>
 
     private IEnumerator FreezeCo(float time)
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSecondsRealtime(time);
         Time.timeScale = 1;
     }
 

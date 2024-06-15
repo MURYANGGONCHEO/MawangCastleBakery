@@ -10,8 +10,10 @@ public class PlayerAppear : MonoBehaviour
     private Player _player;
     private Vector2 _targetPos;
 
-    private void Awake()
+    private void Start()
     {
+        if (StageManager.Instanace.SelectStageData.stageCutScene != null) return;
+
         _targetPos = transform.position;
         transform.position += new Vector3(0, 20, 0);
         transform.localScale = new Vector3(0.5f, 1, 1);
@@ -24,6 +26,7 @@ public class PlayerAppear : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         seq.Append(transform.DOMove(_targetPos, 0.5f).SetEase(Ease.InQuart));
         seq.Join(transform.DOScale(Vector3.one, 0.5f));
+
         seq.AppendCallback(()=> _crackFX.gameObject.SetActive(true));
         seq.AppendCallback(()=> _crackFX.Play());
         seq.AppendCallback(()=> _player.cream.transform.SetParent(transform.parent));

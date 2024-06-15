@@ -33,6 +33,7 @@ public class StageDataSO : ScriptableObject
     public string stageName;
     public StageType stageType;
     public StageBackGround stageBackGround;
+    public CutScene stageCutScene;
     public EnemyGroupSO enemyGroup;
     public EnemyFormationSO enemyFormation;
     public TsumegoInfo clearCondition;
@@ -63,6 +64,7 @@ public class StageDataSO : ScriptableObject
         }
         Debug.Log(challingingStageData);
         ad.InChallingingStageCount = challingingStageData;
+
         DataManager.Instance.SaveData(ad, DataKeyList.adventureDataKey);
     }
 }

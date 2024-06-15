@@ -15,6 +15,6 @@ public class MineBattleProduction : BattleProduction
         UIManager.Instance.GetSceneUI<MineUI>().PanelActive(false);
         _turnSystem.SetActive(true);
         Camera.main.orthographic = false;
-        StartCoroutine(ProductionCo());
+        StartCoroutine(ProductionCo(false));
     }
 }

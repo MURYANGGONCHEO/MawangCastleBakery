@@ -28,9 +28,20 @@ public class KingButterDog : Enemy
 
     public override void MoveToTargetForward(Vector3 p)
     {
+        lastMovePos = transform.position;
+
+        //seq.Append(transform.DOMove(target.forwardTrm.position, moveDuration));
+        Vector3 pos = new Vector3(20, transform.position.y,transform.position.z);
+
+        Vector3 jumpPos = Vector3.zero;
+        jumpPos.y = transform.position.y;
+        jumpPos.x = transform.position.x + 3;
+        jumpPos.z = transform.position.z;
         StartCoroutine(AttackCor());
 
         Sequence seq = DOTween.Sequence();
+        seq.Append(transform.DOJump(jumpPos, 1f, 1, 0.5f));
+        seq.Append(transform.DOMove(pos, 0.5f)).SetEase(Ease.Linear);
 
         seq.OnComplete(OnMoveTarget.Invoke);
     }
@@ -41,6 +52,7 @@ public class KingButterDog : Enemy
         Attack();
         OnAttackEnd?.Invoke();
     }
+
 
     public override void Spawn(Vector3 spawnPos, Action callBack)
     {
@@ -53,6 +65,7 @@ public class KingButterDog : Enemy
         {
             AnimatorCompo.SetBool(spawnAnimationHash, false);
             turnStatus = TurnStatus.Ready;
+
             callBack?.Invoke();
         });
     }
@@ -69,8 +82,7 @@ public class KingButterDog : Enemy
 
     protected override void HandleEndMoveToTarget()
     {
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
-        transform.position = Camera.main.ScreenToWorldPoint(new Vector2(-30, screenPos.y));
+        transform.position = new Vector3(-20, transform.position.y,transform.position.z);
         MoveToOriginPos();
     }
 }

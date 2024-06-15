@@ -18,9 +18,9 @@ public class LightingRodBuff : SpecialBuff, IOnEndSkill
         for (int i = 0; i < entity.BuffStatCompo.GetStack(StackEnum.Lightning); i++)
             entity.CharStat.IncreaseStatBy(dmgValues[combineLevel], entity.CharStat.GetStatByType(StatType.damage));
     }
-    public override void Active(int level)
+    public override void UpdateBuff(int level)
     {
-        base.Active(level);
+        base.UpdateBuff(level);
         duration--;
         if (duration <= 0)
         {

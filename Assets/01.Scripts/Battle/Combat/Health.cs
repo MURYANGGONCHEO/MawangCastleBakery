@@ -33,7 +33,7 @@ public class Health : MonoBehaviour, IDamageable
 
     public Action OnBeforeHit;
     public UnityEvent OnDeathEvent;
-    public UnityEvent OnHitEvent;
+    public UnityEvent<int> OnHitEvent;
     public UnityEvent<AilmentEnum> OnAilmentChanged;
 
     private Entity _owner;
@@ -53,10 +53,13 @@ public class Health : MonoBehaviour, IDamageable
     public bool isLastHitCritical = false; //������ ������ ũ��Ƽ�÷� �����߳�?
 
     public bool IsFreeze;
+    private KnockBackSystem _knockBack;
 
+    public int totalDmg = 0;
     protected void Awake()
     {
         _ailmentStat = new AilmentStat(this);
+        _knockBack = GetComponent<KnockBackSystem>();
 
 
     }
@@ -85,9 +88,8 @@ public class Health : MonoBehaviour, IDamageable
     {
         //������ ���� ���ڰ� �ߵ��� �ؾ��Ѵ�.
         Debug.Log($"{ailment.ToString()} dot damaged : {damage}");
-        OnHitEvent?.Invoke();
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
-        AfterHitFeedbacks();
+        AfterHitFeedbacks(damage);
     }
 
     protected void UpdateHealth()
@@ -119,27 +121,32 @@ public class Health : MonoBehaviour, IDamageable
         if (_isDead || _isInvincible) return; //����ϰų� �������¸� ���̻� ������ ����.
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
     }
-    public void ApplyDamage(int damage, Entity dealer, Action action = null)
+    public void ApplyDamage(int damage, Entity dealer, KnockBackType type = KnockBackType.PushBack)
     {
-        if (_isDead || _isInvincible) return; //����ϰų� �������¸� ���̻� ������ ����.
+        if (_isInvincible) return; //����ϰų� �������¸� ���̻� ������ ����.
 
 
         if (dealer.CharStat.IsCritical(ref damage))
         {
+
             isLastHitCritical = true;
         }
         else
         {
             isLastHitCritical = false;
         }
-        _owner.BuffStatCompo.OnHitDamageEvent?.Invoke(dealer, ref damage);
+        if (!_isDead)
+            _owner.BuffStatCompo.OnHitDamageEvent?.Invoke(dealer, ref damage);
 
         damage = _owner.CharStat.ArmoredDamage(damage, IsFreeze);
-        DamageTextManager.Instance.PopupDamageText(_owner.transform.position, damage, isLastHitCritical ? DamageCategory.Critical : DamageCategory.Noraml);
-        foreach (var b in dealer.OnAttack)
-        {
-            b?.TakeDamage(this, ref damage);
-        }
+        totalDmg += damage;
+        DamageTextManager.Instance.PopupDamageText(this, _owner.transform.position, totalDmg, isLastHitCritical ? DamageCategory.Critical : DamageCategory.Noraml);
+        if (!_isDead)
+            foreach (var b in dealer.OnAttack)
+            {
+                b?.TakeDamage(this, ref damage);
+            }
+
         if (_owner.CharStat.CanEvasion())
         {
             Debug.Log($"{_owner.gameObject.name} is evasion attack!");
@@ -148,40 +155,30 @@ public class Health : MonoBehaviour, IDamageable
 
 
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
-        _owner.BuffStatCompo.OnHitDamageAfterEvent?.Invoke(dealer, this, ref damage);
+        if (!_isDead)
+            _owner.BuffStatCompo.OnHitDamageAfterEvent?.Invoke(dealer, this, ref damage);
+
         OnDamageEvent?.Invoke(_currentHealth, maxHealth);
 
 
         //���⼭ ������ ����ֱ�
         //DamageTextManager.Instance.PopupReactionText(_owner.transform.position, isLastHitCritical ? DamageCategory.Critical : DamageCategory.Noraml);
+        _knockBack?.KnockBack(damage,type);
 
+        AfterHitFeedbacks(damage);
 
-        AfterHitFeedbacks();
-
-        action?.Invoke();
     }
 
-    private void AfterHitFeedbacks()
+    private void AfterHitFeedbacks(int damage)
     {
-        OnHitEvent?.Invoke();
+        OnHitEvent?.Invoke(damage);
+        if (_currentHealth <= 0)
+        {
+            _isDead = true;
+        }
     }
+    public void InvokeDeadEvent() => OnDeathEvent?.Invoke();
 
-    [ContextMenu("Chilled")]
-    private void Test1()
-    {
-        SetAilment(AilmentEnum.Chilled, 2);
-    }
-    [ContextMenu("Shocked")]
-    private void Test2()
-    {
-        SetAilment(AilmentEnum.Shocked, 2);
-    }
-    [ContextMenu("asdf")]
-    private void Test3()
-    {
-        print("asdf");
-        TurnCounter.ChangeRound();
-    }
 
     //�����̻� �ɱ�.
     public void SetAilment(AilmentEnum ailment, int duration)
@@ -195,7 +192,7 @@ public class Health : MonoBehaviour, IDamageable
     {
         //��ũ������ �߰� �κ�.
         //������� ������ �ؽ�Ʈ �߰�
-        DamageTextManager.Instance.PopupDamageText(_owner.transform.position, damage, DamageCategory.Debuff);
+        DamageTextManager.Instance.PopupDamageText(this, _owner.transform.position, damage, DamageCategory.Debuff);
         OnDamageEvent?.Invoke(_currentHealth, maxHealth);
         //Debug.Log($"{gameObject.name} : shocked damage added = {shockDamage}");
     }
@@ -205,9 +202,5 @@ public class Health : MonoBehaviour, IDamageable
     {
         _isInvincible = value;
     }
-    [ContextMenu("TestHitFeedback")]
-    private void TestDead()
-    {
-        AfterHitFeedbacks();
-    }
+
 }

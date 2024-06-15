@@ -10,9 +10,9 @@ public class SampleBossBuff : SpecialBuff, IOnHitDamageAfter
     private float _targetHealthAmount = 1f;
 
     private int totalDmg = 0;
-    public override void Active(int level)
+    public override void UpdateBuff(int level)
     {
-        base.Active(level);
+        base.UpdateBuff(level);
         _remainTurn--;
         if (_remainTurn <= 0)
         {

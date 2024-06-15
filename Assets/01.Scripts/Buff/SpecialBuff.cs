@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,7 @@ public abstract class SpecialBuff : ScriptableObject
     {
         combineLevel = level;
     }
-    public virtual void Active(int level)
+    public virtual void UpdateBuff(int level)
     {
         combineLevel = level;
     }
@@ -33,5 +34,10 @@ public abstract class SpecialBuff : ScriptableObject
             EndBuff();
             entity.BuffStatCompo.CompleteBuff(this);
         }
+    }
+
+    public SpecialBuff Clone()
+    {
+        return Instantiate(this);
     }
 }

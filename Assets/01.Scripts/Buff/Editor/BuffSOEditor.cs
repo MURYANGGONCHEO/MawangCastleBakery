@@ -21,7 +21,7 @@ public class BuffSOEditor : Editor
             normalBuffList = new ReorderableList(serializedObject,
                     serializedObject.FindProperty("statBuffs"),
                     true, true, true, true);
-            normalBuffList.elementHeight *= 2;
+            normalBuffList.elementHeight *= 3;
             normalBuffList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
             {
                 var element = normalBuffList.serializedProperty.GetArrayElementAtIndex(index);
@@ -42,6 +42,9 @@ public class BuffSOEditor : Editor
                         sp.GetArrayElementAtIndex(i), GUIContent.none);
                     fieldRect.x += fieldRect.width + 2;
                 }
+                fieldRect = new Rect(rect.x, rect.y + EditorGUIUtility.singleLineHeight * 2, rect.width, fieldRect.height);
+                SerializedProperty p = element.FindPropertyRelative("turn");
+                EditorGUI.PropertyField(fieldRect, p, GUIContent.none);
             };
             normalBuffList.drawHeaderCallback = rect =>
             {
@@ -135,6 +138,7 @@ public class BuffSOEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        base.DrawDefaultInspector();
         serializedObject.Update();
         normalBuffList.DoLayoutList();
         specialBuffList.DoLayoutList();

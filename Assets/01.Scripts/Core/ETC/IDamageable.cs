@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    public void ApplyDamage(int damage, Entity dealer, Action action);
+    public void ApplyDamage(int damage, Entity dealer, KnockBackType type = KnockBackType.KnockBack);
 
     //상태이상 걸기
     public void SetAilment(AilmentEnum ailment, int duration);

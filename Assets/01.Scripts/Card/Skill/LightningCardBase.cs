@@ -34,6 +34,8 @@ public abstract class LightningCardBase : CardBase
                     _mainModule.startSizeX = distance;
 
                     Destroy(shockedFX, 2f);
+
+                    e.BuffSetter.RemoveSpecificBuffingType(BuffingType.Lightning);
                 }
             }
             catch (Exception ex)
@@ -46,11 +48,25 @@ public abstract class LightningCardBase : CardBase
     protected void ApplyShockedAilment(Entity enemy)
     {
         enemy.HealthCompo.AilmentStat.ApplyAilments(AilmentEnum.Shocked);
+        CreateLightningToken(enemy);
     }
 
     protected void RandomApplyShockedAilment(Entity enemy, float percentage)
     {
         if (UnityEngine.Random.value * 100 >= percentage)
+        {
             enemy.HealthCompo.AilmentStat.ApplyAilments(AilmentEnum.Shocked);
+            CreateLightningToken(enemy);
+        }
+    }
+
+    private void CreateLightningToken(Entity entity)
+    {
+        CombatMarkingData lightningData =
+        new CombatMarkingData(BuffingType.Lightning,
+        "감전 상태입니다.\n감전 공격을 받으면 다른 모든 감전 상태의 적에게 데미지가 전이됩니다.",
+        2);
+
+        BattleReader.CombatMarkManagement.AddBuffingData(entity, CardID, lightningData);
     }
 }

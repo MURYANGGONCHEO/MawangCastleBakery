@@ -8,43 +8,47 @@ using Random = UnityEngine.Random;
 public class PopDamageText : PoolableMono
 {
     [SerializeField] private Vector3 _moveEndOffset;
-
     [SerializeField] private Vector2 _reactionMinOffset;
     [SerializeField] private Vector2 _reactionMaxOffset;
     [SerializeField] private GameObject _criticalFrame;
     [SerializeField] private TextMeshPro _damageText;
     public TextMeshPro DamageText => _damageText;
 
-    public void ShowDamageText(Vector3 position, int damage, float fontSize, Color color)
+    public void SetDamageText(Vector3 position)
+    {
+        position.x += Random.Range(-.5f, .5f);
+        transform.position = position;
+        Vector3 pos = position + Vector3.up * 1.5f;
+        transform.DOMove(pos, 0.1f).SetEase(Ease.OutQuart);
+
+    }
+    public void UpdateText(int damage, Color color)
     {
         _damageText.color = color;
-        _damageText.fontSize = fontSize;
         _damageText.text = damage.ToString();
-
-        position.z = 0;
-        transform.position = position;
+        _damageText.ForceMeshUpdate();
+        float size = Mathf.Clamp(1 + damage * 0.01f, 1, 2.5f);
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(-10f,10f));
+        Vector3 scale = Vector2.one * size;
+        scale.z = 1;
+        transform.DOScale(scale, 0.1f).SetEase(Ease.InOutQuad);
+    }
+    public void EndText()
+    {
         Sequence seq = DOTween.Sequence();
-        Vector3 endPos = Vector2.zero;
-
-        if (position.x < 0)
-        {
-            endPos = transform.position - new Vector3(_moveEndOffset.x, -_moveEndOffset.y);
-        }
-        else
-        {
-            endPos = transform.position + _moveEndOffset;
-        }
-
-        seq.Append(transform.DOMove(endPos + GetRandomnessPos(), 0.5f).SetEase(Ease.OutQuart));
-        seq.Append(_damageText.DOFade(0, 0.5f));
+        seq.AppendInterval(0.3f);
+        seq.Append(transform.DOMove(transform.position + transform.right * 5, .4f).SetEase(Ease.InBack));
+        seq.Join(_damageText.DOFade(0, 0.4f));
         seq.OnComplete(() => PoolManager.Instance.Push(this));
     }
-
     public void ShowReactionText(Vector3 position, string word, float fontSize, Color color)
     {
+        Debug.Log(9);
+
         _damageText.color = color;
         _damageText.fontSize = fontSize;
         _damageText.text = word;
+
 
         transform.position = position;
 
@@ -53,10 +57,11 @@ public class PopDamageText : PoolableMono
         seq.Join(_damageText.DOFade(0, 1f));
         seq.OnComplete(() => PoolManager.Instance.Push(this));
     }
-    
-    public void ActiveCriticalDamage()
+
+    public void ActiveCriticalDamage(bool haveCritical)
     {
-        _criticalFrame.SetActive(true);
+        _criticalFrame.SetActive(haveCritical);
+
     }
     private Vector3 GetRandomnessPos()
     {

@@ -30,7 +30,10 @@ public class PoolVCam : PoolableMono
         transform.position = pos;
         if (size < 1)
             size = Camera.main.orthographicSize;
-        confiner2D.m_BoundingShape2D = GameManager.Instance.GetContent<BattleContent>()?.contentConfiner;
+
+        confiner2D.m_BoundingShape2D =
+        GameManager.Instance.GetContent<BattleContent>().ContentConfiner;
+
         confiner2D.InvalidateCache();
         vCam.m_Lens.OrthographicSize = size;
 
@@ -40,7 +43,10 @@ public class PoolVCam : PoolableMono
     {
         if (size < 1)
             size = Camera.main.orthographicSize;
-        confiner2D.m_BoundingShape2D = GameManager.Instance.GetContent<BattleContent>()?.contentConfiner;
+
+        confiner2D.m_BoundingShape2D =
+        GameManager.Instance.GetContent<BattleContent>().ContentConfiner;
+
         confiner2D.InvalidateCache();
         vCam.m_Lens.OrthographicSize = size;
 

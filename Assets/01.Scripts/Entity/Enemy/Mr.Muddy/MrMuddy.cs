@@ -25,7 +25,7 @@ public class MrMuddy : Enemy
     {
         turnStatus = TurnStatus.Running;
         AnimatorCompo.SetBool(attackAnimationHash,true);
-        OnAttackStart?.Invoke();
+
         MoveToTargetForward(Vector3.zero);
     }
 
@@ -37,8 +37,8 @@ public class MrMuddy : Enemy
     public override void TurnStart()
     {
         base.TurnStart();
-        
-        turnStatus = TurnStatus.Ready;
+        OnAttackStart?.Invoke();
+
     }
 
     protected override void HandleEndMoveToOriginPos()

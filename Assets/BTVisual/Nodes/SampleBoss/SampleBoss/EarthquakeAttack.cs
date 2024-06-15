@@ -3,20 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using BTVisual;
 
-public class EarthquakeAttack : SampleBossNode, IAnimationEventHandler,IAnimationEndHandler
+public class EarthquakeAttack : SampleBossNode
 {
     private readonly int _earthquakeAnimHash = Animator.StringToHash("EarthQuake");
 
     [SerializeField] private int _quakeCnt = 3;
     private int _remainCnt;
 
-    public void OnAnimationEndHandle()
+    protected override void OnAnimationEndHandle()
     {
 
     }
 
-    public void OnAnimationEventHandle()
+    protected override void OnAnimationEventHandle()
     {
+        PoolManager.Instance.Pop(attackParticle).transform.position = brain.transform.position + Vector3.down * 1.5f;
+
+        GameObject obj = Instantiate(hitParticle.gameObject);
+        obj.transform.position = brain.target.transform.position;
+        Destroy(obj, 1.0f);
+
+        SoundManager.PlayAudioRandPitch(attackSound,true);
+
         brain.target.HealthCompo.ApplyDamage(Mathf.RoundToInt(brain.CharStat.GetDamage() * 0.2f), brain);
         FeedbackManager.Instance.ShakeScreen(2f);
         if (--_remainCnt > 0) brain.AnimatorCompo.SetTrigger(_earthquakeAnimHash);
@@ -29,16 +37,11 @@ public class EarthquakeAttack : SampleBossNode, IAnimationEventHandler,IAnimatio
 
         _remainCnt = _quakeCnt;
         brain.AnimatorCompo.SetTrigger(_earthquakeAnimHash);
-
-        brain.BossAnimator.OnAnimationEvent += OnAnimationEventHandle;
-        brain.BossAnimator.OnAnimationEnd += OnAnimationEndHandle;
     }
+
 
     protected override void OnStop()
     {
-        brain.BossAnimator.OnAnimationEvent -= OnAnimationEventHandle;
-        brain.BossAnimator.OnAnimationEnd -= OnAnimationEndHandle;
-
         base.OnStop();
     }
 

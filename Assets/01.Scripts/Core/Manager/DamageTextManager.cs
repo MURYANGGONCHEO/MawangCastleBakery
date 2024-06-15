@@ -30,22 +30,39 @@ public class DamageTextManager : MonoSingleton<DamageTextManager>
     [Header("normal, critical, heal, debuff")]
     [ColorUsage(true, true)]
     [SerializeField] private Color[] _textColors;
-    [SerializeField] private float[] _textSizes;
     [SerializeField] private ReactionWord[] _reactionType;
 
-    public void PopupDamageText(Vector3 position, int number, DamageCategory category)
+    private Dictionary<Health, PopDamageText> entityByText = new();
+
+    public void PopupDamageText(Health health, Vector3 position, int damage, DamageCategory category)
     {
         if (!_popupDamageText) return; //텍스트가 뜨기로 되어 있을 때만 띄운다.
 
-        PopDamageText _damageText = PoolManager.Instance.Pop(PoolingType.DamageText) as PopDamageText;
-        _damageText.DamageText.font = _damageTextFont;
 
-        int idx = (int)category;
-        _damageText.ShowDamageText(position, number, _textSizes[idx], _textColors[idx]);
-        if(category == DamageCategory.Critical)
+        PopDamageText dmgText = null;
+        if (!entityByText.TryGetValue(health, out dmgText))
         {
-            _damageText.ActiveCriticalDamage();
+            dmgText = PoolManager.Instance.Pop(PoolingType.DamageText) as PopDamageText;
+            dmgText.transform.position = Camera.main.transform.position;
+            dmgText.DamageText.font = _damageTextFont;
+            dmgText.SetDamageText(position);
+
+            entityByText.Add(health, dmgText);
         }
+        int idx = (int)category;
+        //이후 더하고 효과 추가
+        dmgText.UpdateText(damage, _textColors[idx]);
+        dmgText.ActiveCriticalDamage(category == DamageCategory.Critical);
+    }
+
+    public void PushAllText()
+    {
+        foreach(var t in entityByText)
+        {
+            t.Value.EndText();
+            t.Key.totalDmg = 0;
+        }
+        entityByText.Clear();
     }
 
     public void PopupReactionText(Vector3 position, DamageCategory category)
@@ -65,4 +82,3 @@ public class DamageTextManager : MonoSingleton<DamageTextManager>
         _reactionText.ShowReactionText(position, message, 5, color);
     }
 }
-              

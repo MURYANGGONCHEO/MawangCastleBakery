@@ -14,7 +14,7 @@ public class JaggieLanternSkill : CardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(this, Player.transform.position);
+        Player.VFXManager.PlayParticle(this, Player.transform.position,true);
         StartCoroutine(AttackCor());
         Player.OnAnimationCall -= HandleAnimationCall;
     }
@@ -35,7 +35,7 @@ public class JaggieLanternSkill : CardBase, ISkillEffectAnim
         FeedbackManager.Instance.ShakeScreen(3);
         foreach (var e in Player.GetSkillTargetEnemyList[this])
         {
-            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
+            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player,KnockBackType.KnockBack);
             //우선 임시로 짜둡니다. 나중에 고칠 수 있으면 고칠게요
             if(e != null)
             {

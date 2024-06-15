@@ -9,7 +9,7 @@ public class StageInfoPanel : PanelUI
 {
     [SerializeField] private float _chaingValue;
 
-    [Header("ÂüÁ¶°ª")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private List<Sprite> _stageTypeIconList = new List<Sprite>();
     [SerializeField] private Image _stageIcon;
     [SerializeField] private TextMeshProUGUI _stageNameLabel;

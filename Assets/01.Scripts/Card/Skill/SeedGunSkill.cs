@@ -26,7 +26,7 @@ public class SeedGunSkill : CardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        Player.VFXManager.PlayParticle(this, Player.forwardTrm.position); 
+        Player.VFXManager.PlayParticle(this, Player.forwardTrm.position,true); 
         Player.OnAnimationCall -= HandleAnimationCall;
     }
 

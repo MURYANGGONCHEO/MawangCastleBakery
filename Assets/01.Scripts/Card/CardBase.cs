@@ -127,7 +127,6 @@ public abstract class CardBase : MonoBehaviour,
         VisualRectTrm = VisualTrm.GetComponent<RectTransform>();
         _costText = transform.Find("Visual/CsotText").GetComponent<TextMeshProUGUI>();
 
-        Debug.Log(AbilityCost);
         _costText.text = AbilityCost.ToString();
     }
 
@@ -241,7 +240,7 @@ public abstract class CardBase : MonoBehaviour,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (IsOnActivationZone || BattleReader.OnBinding) return;
+        if (IsOnActivationZone || BattleReader.OnBinding || BattleReader.IsOnTargetting) return;
 
         OnPointerSetCardAction?.Invoke(transform);
         OnPointerInCard = true;
@@ -260,7 +259,7 @@ public abstract class CardBase : MonoBehaviour,
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (IsOnActivationZone || BattleReader.OnBinding) return;
+        if (IsOnActivationZone || BattleReader.OnBinding || BattleReader.IsOnTargetting) return;
 
         OnPointerInitCardAction?.Invoke(transform);
         OnPointerInCard = false;
@@ -276,7 +275,7 @@ public abstract class CardBase : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!IsOnActivationZone) return;
+        if (!IsOnActivationZone || BattleReader.IsOnTargetting) return;
 
         var initList = BattleReader.SkillCardManagement.InCardZoneList;
 

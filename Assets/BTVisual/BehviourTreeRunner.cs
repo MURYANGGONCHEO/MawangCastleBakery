@@ -18,7 +18,7 @@ namespace BTVisual
         public void Update()
         {
             if (brain.turnStatus == TurnStatus.Running)
-            {
+            { 
                 if (tree.Update() != Node.State.RUNNING) brain.turnStatus = TurnStatus.End;
             }
         }

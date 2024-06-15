@@ -6,6 +6,7 @@ public class GetBreadController : MonoBehaviour
 {
     [SerializeField] private GameObject _grapicsElementParentObj;
     private IBakingProductionObject[] _productionGraphicsObjArr;
+    [SerializeField] private DoughHandler _dough;
 
     [SerializeField] private int[] _perc = { 5, 25, 70 };
     [SerializeField] private int _testidx;
@@ -26,6 +27,7 @@ public class GetBreadController : MonoBehaviour
 
     public void ExitProduction()
     {
+        _dough.ReturnDough();
         foreach (var production in _productionGraphicsObjArr)
         {
             production.ExitProduction();
@@ -34,23 +36,43 @@ public class GetBreadController : MonoBehaviour
 
     public void DoughInStove()
     {
+        float randomValue = Random.value * 100;
+
         int grade = -1;
-        float r = Random.value * 100;
-        //Debug.Log(r);
+        int cakeCount = 0;
         float cumulative = 0f;
+
         for (int i = 0; i < _perc.Length; i++)
         {
             cumulative += _perc[i];
-            if(cumulative >= r)
+            if(cumulative >= randomValue)
             {
                 grade = i;
                 break;
             }
         }
 
+        switch(grade)
+        {
+            case 0:
+                cakeCount = 150;
+                break;
+            case 1:
+                cakeCount = 50;
+                break;
+            case 2:
+                cakeCount = 10;
+                break;
+            default:
+                break;
+        }
+
+        UIManager.Instance.GetSceneUI<BakeryUI>().ToGetCakeCount = cakeCount;
+
         foreach (var production in _productionGraphicsObjArr)
         {
-            production.DoughInStove(/*grade*/_testidx);
+            production.DoughInStove(grade);
         }
     }
+
 }

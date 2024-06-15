@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 159784293569747907}
   - component: {fileID: 6201914371747861088}
   - component: {fileID: 5570287621423313586}
+  - component: {fileID: 6668691617051349318}
   m_Layer: 7
   m_Name: PumpkinBat
   m_TagString: Untagged
@@ -421,6 +422,7 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
+  totalDmg: 0
 --- !u!114 &159784293569747907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927d0c5dd4dff604eb1c458b753681b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  datas: []
 --- !u!61 &5570287621423313586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -504,6 +507,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0516925, y: 1.1981554}
   m_EdgeRadius: 0
+--- !u!114 &6668691617051349318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538058483777057668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackAmount: 0.07
+  filpX: 1
+  _isPlayer: 0
 --- !u!1 &6589148049345219474
 GameObject:
   m_ObjectHideFlags: 0

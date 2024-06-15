@@ -6,9 +6,9 @@ public class EndAddCostBuff : SpecialBuff
 {
     public int addCostValue = 3;
 
-    public override void Active(int level)
+    public override void UpdateBuff(int level)
     {
-        base.Active(level);
+        base.UpdateBuff(level);
         CostCalculator.GetCost(addCostValue);
         SetIsComplete(true);
     }

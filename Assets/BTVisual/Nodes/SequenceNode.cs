@@ -14,10 +14,10 @@ namespace BTVisual
         protected override void OnStop()
         {
             _current = 0;
-            foreach(var child in children)
-            {
-                child.Break();
-            }
+            //foreach(var child in children)
+            //{
+            //    child.Break();
+            //}
         }
 
         protected override State OnUpdate()

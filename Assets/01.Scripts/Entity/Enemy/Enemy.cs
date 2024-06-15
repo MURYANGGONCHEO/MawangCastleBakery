@@ -23,7 +23,8 @@ public abstract class Enemy : Entity
     protected int attackTriggerAnimationHash = Animator.StringToHash("attackTrigger");
     protected int spawnAnimationHash = Animator.StringToHash("spawn");
 
-    protected EnemyVFXPlayer VFXPlayer { get; private set; }
+    public EnemyVFXPlayer VFXPlayer { get; private set; }
+
     protected Collider2D Collider;
 
     protected override void Awake()
@@ -44,13 +45,14 @@ public abstract class Enemy : Entity
     }
     private int[] SetDamage(EnemyStat stat)
     {
-        List<int> list = new();
+        int[] list = new int[stat.attackCnt];
         for (int i = 0; i < stat.attackCnt; i++)
         {
-            list.Add(stat.damage.GetValue() / stat.attackCnt);
+            list[i] = stat.damage.GetValue();
         }
-        return list.ToArray();
+        return list;
     }
+
     protected virtual void HandleAttackStart()
     {
         BattleController.Player.VFXManager.SetBackgroundFadeOut(0.5f);
@@ -61,7 +63,7 @@ public abstract class Enemy : Entity
         BattleController.Player.VFXManager.SetBackgroundFadeIn(0.5f);
         AnimatorCompo.SetBool(attackAnimationHash, false);
     }
-    public void HandleCameraAction()
+    public virtual void HandleCameraAction()
     {
         BattleController.CameraController.StartCameraSequnce(_cameraMoveInfo);
     }
@@ -69,6 +71,8 @@ public abstract class Enemy : Entity
     protected override void OnEnable()
     {
         base.OnEnable();
+        HealthCompo.OnDeathEvent.AddListener(GotoPool);
+
         OnAttackStart += HandleAttackStart;
         OnAttackStart += HandleCameraAction;
         OnAttackEnd += HandleAttackEnd;
@@ -77,8 +81,10 @@ public abstract class Enemy : Entity
     protected override void OnDisable()
     {
         base.OnDisable();
-        OnAttackStart = null;
-        OnAttackEnd = null;
+        HealthCompo.OnDeathEvent.RemoveListener(GotoPool);
+        OnAttackStart -= HandleAttackStart;
+        OnAttackStart -= HandleCameraAction;
+        OnAttackEnd -= HandleAttackEnd;
     }
     public abstract void Attack();
     public virtual void TurnStart()
@@ -94,7 +100,8 @@ public abstract class Enemy : Entity
         ChainningCardList.Clear();
     }
 
-    // ¿¬Ãâ ¼öÁ¤ °­·ÂÇÏ°Ô ¿äÃ»
+
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Ã»
     public virtual void Spawn(Vector3 spawnPos, Action callBack)
     {
         SpriteRendererCompo.material.SetFloat("_dissolve_amount", 0);
@@ -107,6 +114,7 @@ public abstract class Enemy : Entity
         {
             AnimatorCompo.SetBool(spawnAnimationHash, false);
             turnStatus = TurnStatus.Ready;
+
             callBack?.Invoke();
         });
     }
@@ -119,4 +127,12 @@ public abstract class Enemy : Entity
     {
         BattleController.SelectPlayerTarget(selectCard, this);
     }
+    protected override void HandleDie()
+    {
+        base.HandleDie();
+        EnemyStat es = CharStat as EnemyStat;
+        Inventory.Instance.GetIngredientInThisBattle.Add(es.DropItem);
+        Inventory.Instance.AddItem(es.DropItem);
+    }
+
 }

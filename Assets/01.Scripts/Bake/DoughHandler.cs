@@ -1,5 +1,6 @@
 using DG.Tweening;
 using ExtensionFunction;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class DoughHandler : MonoBehaviour
     [Space(10)]
 
     private Vector2 _doughNormalPos;
+    private Vector3 _doughNormalScale;
     [SerializeField] private bool _isInnerDough;
     private bool _isShaking;
     private bool _isInRange;
@@ -43,11 +45,12 @@ public class DoughHandler : MonoBehaviour
 
     [SerializeField] private UnityEvent _doughEnterRangeEvent;
     [SerializeField] private UnityEvent _doughExitRangeEvent;
-    [SerializeField] private UnityEvent _doughToInnerEndEvent;
+    public Action doughToInnerEndEvent;
 
     void Start()
     {
         _doughNormalPos = transform.position;
+        _doughNormalScale = transform.localScale;
     }
     private void OnMouseEnter()
     {
@@ -95,7 +98,7 @@ public class DoughHandler : MonoBehaviour
     {
         if(_IsInRange)
         {
-            _doughToInnerEndEvent?.Invoke();
+            doughToInnerEndEvent?.Invoke();
             _isShaking = true;
             transform.SmartScale(Vector2.zero, 0.1f);
         }
@@ -105,4 +108,12 @@ public class DoughHandler : MonoBehaviour
             transform.position = _doughNormalPos;
         }
     }    
+
+    public void ReturnDough()
+    {
+        transform.position = _doughNormalPos;
+        transform.SmartScale(_doughNormalScale, 0.5f);
+        _isShaking = false;
+        _IsInRange = false;
+    }
 }

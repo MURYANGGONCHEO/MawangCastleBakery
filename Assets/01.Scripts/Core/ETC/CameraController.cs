@@ -8,7 +8,7 @@ using DG.Tweening;
 public class CameraController : MonoBehaviour
 {
     private CinemachineVirtualCamera _vCam;
-    private PoolVCam _poolVCam;
+    private static PoolVCam _poolVCam;
     private Transform _target;
 
     public PoolVCam CaomObj { get; private set; }
@@ -19,16 +19,22 @@ public class CameraController : MonoBehaviour
     private Sequence _toPlayerSeq;
     private Sequence _toEnemySeq;
 
+    private Coroutine _runningCamCor;
+
     private void Awake()
     {
         _target = GameManager.Instance.gameObject.transform.Find("CameraTrm");
         _vCam = UIManager.Instance.VirtualCamera;
+        SetTransitionTime(0);
+        if(_poolVCam != null)
+            PoolManager.Instance.Push(_poolVCam);
     }
 
     private void Start()
     {
         _targetActionDic.Add(CameraTargetType.Player, HandleCamraTargettingPlayer);
         _targetActionDic.Add(CameraTargetType.Enemy, HandleCamraTargettingEmeny);
+        
     }
 
     private void SequenceClear()
@@ -63,16 +69,33 @@ public class CameraController : MonoBehaviour
         UIManager.Instance.CinemachineBrain.m_DefaultBlend.m_Time = time;
     }
 
-    public void StartCameraSequnce(CameraMoveTypeSO moveType)
+    public void StartCameraSequnce(CameraMoveTypeSO moveType, bool stayCam = false, Action endCallBack = null)
     {
+        if (_runningCamCor != null)
+        {
+            StopCoroutine(_runningCamCor);
+            _runningCamCor = null;
+        }
+        if (_toPlayerSeq.IsActive())
+        {
+            _toPlayerSeq.Complete();
+        }
+        if (_toEnemySeq.IsActive())
+        {
+            _toEnemySeq.Complete();
+        }
+        if (_poolVCam != null)
+        {
+            PoolManager.Instance.Push(_poolVCam);
+        }
         _poolVCam = PoolManager.Instance.Pop(PoolingType.VCamPool) as PoolVCam;
         _vCam = _poolVCam.VCam;
         _vCam.Follow = _target;
 
-        StartCoroutine(CameraSequenceCo(moveType.camMoveSequenceList));
+        _runningCamCor = StartCoroutine(CameraSequenceCo(moveType.camMoveSequenceList, stayCam, endCallBack));
     }
 
-    private IEnumerator CameraSequenceCo(List<CameraMoveSequence> sequenceList)
+    private IEnumerator CameraSequenceCo(List<CameraMoveSequence> sequenceList, bool stayCam, Action endCallBack = null)
     {
         foreach (CameraMoveSequence seq in sequenceList)
         {
@@ -85,7 +108,7 @@ public class CameraController : MonoBehaviour
                    seq.rotationValue * (int)seq.cameraTarget,
                    seq.zoonInValue,
                    seq.duration,
-                   seq.delayTime,seq.easingType);
+                   seq.delayTime, seq.easingType);
 
             if (seq.shakeDefination.isShaking)
             {
@@ -95,7 +118,12 @@ public class CameraController : MonoBehaviour
 
             yield return new WaitUntil(() => _camOnMoving);
         }
-
-        PoolManager.Instance.Push(_poolVCam);
+        if (!stayCam)
+        {
+            PoolManager.Instance.Push(_poolVCam);
+            _poolVCam = null;
+        }
+        _runningCamCor = null;
+        endCallBack?.Invoke();
     }
 }

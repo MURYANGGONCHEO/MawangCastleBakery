@@ -38,6 +38,8 @@ public class Player : Entity
     private Dictionary<CardBase, List<Entity>> _saveSkillDic = new();
     public Dictionary<CardBase, List<Entity>> GetSkillTargetEnemyList => _saveSkillDic;
 
+    [SerializeField] private CameraMoveTypeSO deadCamSO;
+
     protected override void Awake()
     {
         base.Awake();
@@ -78,7 +80,6 @@ public class Player : Entity
         clipOverrides = new AnimationClipOverrides(animatorOverrideController.overridesCount);
         animatorOverrideController.GetOverrides(clipOverrides);
 
-        HealthCompo.OnDeathEvent.AddListener(() => UIManager.Instance.GetSceneUI<BattleUI>().SetResult(false));
 
         cream.OnAnimationCall = () => OnAnimationCall?.Invoke();
         cream.OnAnimationEnd = () => OnAnimationEnd?.Invoke();
@@ -98,9 +99,26 @@ public class Player : Entity
     public void AnimationEndTrigger()
     {
     }
-
+    protected override void HandleHit(int dmg)
+    {
+        base.HandleHit(dmg);
+        float currentHealth = HealthCompo.GetNormalizedHealth();
+        if (!HealthCompo.IsDead && currentHealth <= 0)
+        {
+            FeedbackManager.Instance.FreezeTime(0.3f, 1.5f);
+        }
+    }
     protected override void HandleDie()
     {
+        StartCoroutine(DeathDelay());
+        BattleController.CameraController.StartCameraSequnce(deadCamSO,
+            true,
+            () => UIManager.Instance.GetSceneUI<BattleUI>().SetResult(false));
+    }
+    private IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        AnimatorCompo.SetBool(_deathAnimationHash, true);
     }
 
     public override void SlowEntityBy(float percent)

@@ -40,6 +40,7 @@ public abstract class Entity : PoolableMono
     public List<IOnTakeDamage> OnAttack = new();
 
     [Header("셋팅값들")]
+
     public Transform hpBarTrm;
     public Transform forwardTrm;
 
@@ -49,6 +50,7 @@ public abstract class Entity : PoolableMono
     [SerializeField] protected float moveDuration = 0.1f;
 
     public TurnStatus turnStatus;
+
 
     public UnityEvent BeforeChainingEvent => BattleReader.SkillCardManagement.beforeChainingEvent;
 
@@ -142,9 +144,11 @@ public abstract class Entity : PoolableMono
         }
     }
 
-    protected virtual void HandleHit()
+    protected virtual void HandleHit(int dmg)
     {
         //UI����
+        FeedbackManager.Instance.Blink(SpriteRendererCompo.material,0.1f);
+
         float currentHealth = HealthCompo.GetNormalizedHealth();
         if (currentHealth > 0)
         {
@@ -156,9 +160,7 @@ public abstract class Entity : PoolableMono
 
     protected virtual void HandleDie()
     {
-        EnemyStat es = CharStat as EnemyStat;
-        Inventory.Instance.GetIngredientInThisBattle.Add(es.DropItem);
-        Inventory.Instance.AddItem(es.DropItem);
+
         AnimatorCompo.SetTrigger(_deathAnimationHash);
     }
 
@@ -190,7 +192,8 @@ public abstract class Entity : PoolableMono
 
         Sequence seq = DOTween.Sequence();
         //seq.Append(transform.DOMove(target.forwardTrm.position, moveDuration));
-        seq.Append(transform.DOJump(target.forwardTrm.position, 1,1,0.6f));
+        seq.Append(transform.DOJump(target.forwardTrm.position, 1, 1, 0.6f));
+
         seq.OnComplete(OnMoveTarget.Invoke);
     }
 
@@ -212,12 +215,7 @@ public abstract class Entity : PoolableMono
     }
     protected abstract void HandleEndMoveToOriginPos();
 
-    public void DeadSequence()
-    {
-        BattleReader.SkillCardManagement.useCardEndEvnet.RemoveListener(DeadSequence);
-        HealthCompo.OnDeathEvent?.Invoke();
-        GotoPool();
-    }
+
     public void GotoPool()
     {
         StartCoroutine(DissolveCo());
@@ -228,12 +226,12 @@ public abstract class Entity : PoolableMono
         while (timer < 1)
         {
             timer += Time.deltaTime;
-            SpriteRendererCompo.material.SetFloat("_dissolve_amount",Mathf.Lerp(0,1,timer));
+            SpriteRendererCompo.material.SetFloat("_dissolve_amount", Mathf.Lerp(0, 1, timer));
             yield return null;
         }
         HealthCompo.OnDeathEvent.RemoveAllListeners();
-        if(this is not Player)
-            PoolManager.Instance.Push(this);
+        PoolManager.Instance.Push(this);
+
     }
 
     public override void Init()

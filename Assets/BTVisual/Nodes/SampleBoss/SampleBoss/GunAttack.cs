@@ -3,32 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunAttack : SampleBossNode, IAnimationEventHandler
+public class GunAttack : SampleBossNode
 {
     private readonly int _fireHash = Animator.StringToHash("Fire");
 
     [SerializeField] private int _attackCnt;
     private int _remainCnt;
 
-    public void OnAnimationEventHandle()
+    protected override void OnAnimationEndHandle()
     {
+    }
+
+    protected override void OnAnimationEventHandle()
+    {
+        GameObject obj = Instantiate(hitParticle.gameObject);
+        obj.transform.position = brain.target.transform.position;
+        Destroy(obj, 1.0f);
+        SoundManager.PlayAudioRandPitch(attackSound,true);
         brain.target.HealthCompo.ApplyDamage(Mathf.RoundToInt(brain.CharStat.GetDamage() * 0.3f), brain);
+
         FeedbackManager.Instance.ShakeScreen(1.5f);
         if (--_remainCnt > 0) brain.AnimatorCompo.SetTrigger(_fireHash);
     }
 
     protected override void OnStart()
     {
+        Debug.Log("√— Ω√¿€");
         base.OnStart();
         _remainCnt = _attackCnt;
         brain.AnimatorCompo.SetTrigger(_fireHash);
 
-        brain.BossAnimator.OnAnimationEvent += OnAnimationEventHandle;
     }
 
     protected override void OnStop()
     {
-        brain.BossAnimator.OnAnimationEvent -= OnAnimationEventHandle;
+        Debug.Log("√—≥°");
+        _remainCnt = 0;
         base.OnStop();
     }
 
