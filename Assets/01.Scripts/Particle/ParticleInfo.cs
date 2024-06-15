@@ -27,12 +27,13 @@ namespace Particle
         {
             ps = GetComponent<ParticleSystem>();
         }
-        public void SettingInfo()
+        public void SettingInfo(bool isPlayer = true)
         {
             foreach (ParticleTriggerInfo i in triggerInfos)
             {
                 i.Owner = owner;
-                i.Damage = damages[combineLevel];
+                if(isPlayer)
+                    i.Damage = damages[combineLevel];
                 i.InitEvents();
             }
         }
