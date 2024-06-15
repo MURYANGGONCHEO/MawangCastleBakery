@@ -50,6 +50,11 @@ public class BakeryUI : SceneUI
         var bp = _previewPanels.FirstOrDefault(x => x.MySortType == RecipeSortType.Fast) as LookRecipePreviewPanel;
         bp.HandleAppearRecipe(element);
     }
+    public void SelectFavoriteRecipe(RecipeElement element)
+    {
+        var bp = _previewPanels.FirstOrDefault(x => x.MySortType == RecipeSortType.Favorites) as LookRecipePreviewPanel;
+        bp.HandleAppearRecipe(element);
+    }
     public void SelectIngredient(IngredientElement element)
     {
         var bp = _previewPanels.FirstOrDefault(x => x.MySortType == RecipeSortType.Baking) as LookBakingPreviewPanel;

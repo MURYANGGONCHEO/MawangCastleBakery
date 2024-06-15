@@ -17,4 +17,5 @@ MonoBehaviour:
   itemInfo: 
   itemIcon: {fileID: 21300000, guid: c20c988f36ba64449a9db94cefbc08f1, type: 3}
   dropChance: 50
-  hogamdo: 0
+  haveCount: 1
+  ToGetCardBase: {fileID: 0}
