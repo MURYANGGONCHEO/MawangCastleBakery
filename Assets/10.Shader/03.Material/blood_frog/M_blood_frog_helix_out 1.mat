@@ -12,9 +12,10 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _USE_CUSTOMDATA1_ON
   - _USE_CUSTOMDATA_ON
-  m_InvalidKeywords: []
+  - _USE_MAINTEXALPHA_ON
+  m_InvalidKeywords:
+  - _USE_CUSTOMDATA1_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -77,6 +78,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _diss_normal_tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _grad_tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _main_tex:
         m_Texture: {fileID: 2800000, guid: 44ff3b05d8eb0254fb956f8e4fe7f3d4, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -88,6 +97,10 @@ Material:
     - _sub_tex:
         m_Texture: {fileID: 2800000, guid: f57fcbef66b4d344184703b9951ea258, type: 3}
         m_Scale: {x: 0.67, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
@@ -110,6 +123,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
+    - _CULLMODE: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -142,10 +156,17 @@ Material:
     - _UOffset: -1
     - _Use_Customdata: 1
     - _Use_Customdata1: 1
+    - _Use_ToonDissolve: 0
+    - _Use_grad: 0
     - _Use_lerp: 0
     - _VOffset: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _diss_normal_power: 0
+    - _diss_normal_upanner: 0
+    - _diss_normal_vpanner: 0
+    - _edge_width: 0.06
+    - _grad_intencity: 0
     - _intencity: 1.8938943
     - _main_pow: 0.58
     - _main_upanner: 0
@@ -160,6 +181,8 @@ Material:
     - _sub_vpanner: 0
     - _subs_ins: 5.87
     - _subs_pow: 3.49
+    - _use_mainTexAlpha: 1
+    - _use_other_diss: 0
     - _use_polar: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
@@ -167,6 +190,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Main_Color: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _edge_color: {r: 0, g: 0, b: 0, a: 0}
     - _main_color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 0}
     - _main_color_a: {r: 4.5412054, g: 4.5412054, b: 4.5412054, a: 0}
     - _main_color_b: {r: 1, g: 1, b: 1, a: 0}

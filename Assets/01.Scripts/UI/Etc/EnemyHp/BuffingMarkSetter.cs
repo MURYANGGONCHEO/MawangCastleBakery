@@ -17,7 +17,10 @@ public enum BuffingType
     Faint,
     AtkDown,
     DefDown,
-    Smelting
+    Smelting,
+    MusicDef,
+    MusicAtk,
+    MusicFaint
 }
 
 public class CombatMarkingData
@@ -137,7 +140,7 @@ public class BuffingMarkSetter : MonoBehaviour
     {
         foreach(Tween t in _movingTweenArr)
         {
-            t.Kill();
+            t?.Kill();
         }
 
         float[] arr = new float[_buffingMarkList.Count];

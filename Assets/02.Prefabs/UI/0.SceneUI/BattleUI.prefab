@@ -5654,7 +5654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4379289787878982250}
-  - component: {fileID: 3610023427892563476}
+  - component: {fileID: 765209745556380229}
   m_Layer: 5
   m_Name: CardFactory
   m_TagString: Untagged
@@ -5681,7 +5681,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3610023427892563476
+--- !u!114 &765209745556380229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5690,7 +5690,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8716922857803300854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 254402fced586ae4baa67dc029448e40, type: 3}
+  m_Script: {fileID: 11500000, guid: e32b7631dbfc691479b93c56fe74011d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cardSpawnTrm: {fileID: 1967255356242308219}
