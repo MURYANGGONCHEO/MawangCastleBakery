@@ -31,7 +31,7 @@ public class FinaleSkill : MusicCardBase, ISkillEffectAnim
 
     private IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(9.5f);
 
         if(GetNoteCount() > 0)
         {
