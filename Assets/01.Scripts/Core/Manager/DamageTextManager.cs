@@ -45,10 +45,10 @@ public class DamageTextManager : MonoSingleton<DamageTextManager>
             dmgText = PoolManager.Instance.Pop(PoolingType.DamageText) as PopDamageText;
             dmgText.transform.position = Camera.main.transform.position;
             dmgText.DamageText.font = _damageTextFont;
-            dmgText.SetDamageText(position);
 
             entityByText.Add(health, dmgText);
         }
+        dmgText.SetDamageText(position);
         int idx = (int)category;
         //이후 더하고 효과 추가
         dmgText.UpdateText(damage, _textColors[idx]);
@@ -57,7 +57,7 @@ public class DamageTextManager : MonoSingleton<DamageTextManager>
 
     public void PushAllText()
     {
-        foreach(var t in entityByText)
+        foreach (var t in entityByText)
         {
             t.Value.EndText();
             t.Key.totalDmg = 0;

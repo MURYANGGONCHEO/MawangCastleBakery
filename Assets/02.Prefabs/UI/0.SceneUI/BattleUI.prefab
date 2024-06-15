@@ -2636,6 +2636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 49864010104170632}
+  - component: {fileID: 3931812716942180478}
   m_Layer: 5
   m_Name: CardGroup
   m_TagString: Untagged
@@ -2667,6 +2668,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3931812716942180478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3916733586471905798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32b7631dbfc691479b93c56fe74011d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardSpawnTrm: {fileID: 1967255356242308219}
+  _cardParent: {fileID: 352307794724691004}
 --- !u!1 &3961605674819758161
 GameObject:
   m_ObjectHideFlags: 0

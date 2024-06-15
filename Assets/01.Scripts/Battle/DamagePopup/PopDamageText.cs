@@ -18,7 +18,7 @@ public class PopDamageText : PoolableMono
     {
         position.x += Random.Range(-.5f, .5f);
         transform.position = position;
-        Vector3 pos = position + Vector3.up * 1.5f;
+        Vector3 pos = position + Vector3.up * 2;
         transform.DOMove(pos, 0.1f).SetEase(Ease.OutQuart);
 
     }
