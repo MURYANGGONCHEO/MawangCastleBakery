@@ -154,12 +154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebcb3a97e98a7b479705ce06c2b995c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 31
+  poolingType: 32
   <CharStat>k__BackingField: {fileID: 11400000, guid: 73fe46edb576b2d46967bf9c232e6140, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
-  hpBarTrm: {fileID: 0}
+  hpBarTrm: {fileID: 4512115928746267901}
   forwardTrm: {fileID: 5604354623745697263}
   target: {fileID: 0}
   lastMovePos: {x: 0, y: 0, z: 0}
@@ -408,7 +408,7 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1231692
+  m_InstanceId: 134250
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
@@ -559,7 +559,7 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1231704
+  m_InstanceId: 134256
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
