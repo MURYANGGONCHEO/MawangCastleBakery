@@ -56,6 +56,6 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
         CombatMarkingData data = new CombatMarkingData(BuffingType.MusicDef,
                                  buffSO.buffInfo, (int)CombineLevel + 1);
 
-        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, data);
+        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, data, int.MaxValue);
     }
 }
