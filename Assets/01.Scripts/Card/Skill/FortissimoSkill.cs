@@ -46,6 +46,6 @@ public class FortissimoSkill : MusicCardBase, ISkillEffectAnim
         CombatMarkingData data = new CombatMarkingData(BuffingType.MusicAtk,
                                  buffSO.buffInfo, (int)CombineLevel + 1);
 
-        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, data, int.MaxValue);
+        //BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, data, int.MaxValue);
     }
 }
