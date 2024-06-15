@@ -40,7 +40,7 @@ namespace Particle.Trigger
 
         public Entity Owner { get; set; }
         [SerializeField] public List<Entity> Targets = new();
-        public int[] Damages { get; set; }
+        public int Damage { get; set; }
 
         public void SetCollision(List<Entity> l)
         {
@@ -77,6 +77,7 @@ namespace Particle.Trigger
         {
             foreach (ParticleSystemTriggerEventType type in Enum.GetValues(typeof(ParticleSystemTriggerEventType)))
             {
+                // if (other 1= target) break;
                 if (!IsCallEventType(type)) continue;
                 List<ParticleSystem.Particle> particleList = new();
                 if (type != ParticleSystemTriggerEventType.Outside)
@@ -131,6 +132,15 @@ namespace Particle.Trigger
                     return triggerModule.exit == ParticleSystemOverlapAction.Callback;
                 default:
                     return false;
+            }
+        }
+
+        public void InitEvents()
+        {
+            ParticleTriggerEventBase[] events = GetComponents<ParticleTriggerEventBase>();
+            foreach (var e in events)
+            {
+                e.Init(this);
             }
         }
     }

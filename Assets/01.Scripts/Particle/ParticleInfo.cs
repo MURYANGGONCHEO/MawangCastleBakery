@@ -20,6 +20,7 @@ namespace Particle
 
         private List<Entity> _targets = new();
         public int[] damages { get; set; }
+        public int combineLevel { get; set; }
         public Entity owner { get; set; }
 
         private void Awake()
@@ -31,7 +32,8 @@ namespace Particle
             foreach (ParticleTriggerInfo i in triggerInfos)
             {
                 i.Owner = owner;
-                i.Damages = damages;
+                i.Damage = damages[combineLevel];
+                i.InitEvents();
             }
         }
 
@@ -64,6 +66,10 @@ namespace Particle
             {
                 col.SetCollision(_targets);
             }
+        }
+        public void SetTriggerTarget(int idx,Entity target)
+        {
+            triggerInfos[idx].SetCollision(new List<Entity>() { target});
         }
 
         public void StartParticle(Action OnStartParticleEvent, Action OnEndParticleEvent)

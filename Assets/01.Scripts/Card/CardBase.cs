@@ -294,7 +294,7 @@ public abstract class CardBase : MonoBehaviour,
         int[] damages = new int[3];
         for(int i = 0; i < 3; ++i)
         {
-            damages[i] = (Player.CharStat.GetDamage() / 100) * CardManagingHelper.GetCardShame(CardInfo.cardShameData, CardShameType.Damage, i); ;
+            damages[i] = (Player.CharStat.GetDamage() / 100) * CardManagingHelper.GetCardShame(CardInfo.cardShameData, CardShameType.Damage, i);
         }
         return damages;
     }

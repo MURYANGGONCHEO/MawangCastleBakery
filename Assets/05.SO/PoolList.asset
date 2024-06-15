@@ -78,4 +78,4 @@ MonoBehaviour:
     count: 5
   - type: 29
     prefab: {fileID: 8757323107581500810, guid: bd3447c511beddb4fbe64c03c29f17ae, type: 3}
-    count: 5
+    count: 1

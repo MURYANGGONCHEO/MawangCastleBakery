@@ -17,14 +17,22 @@ public abstract class LightningCardBase : CardBase
             {
                 if (e != null && e.HealthCompo.AilmentStat.HasAilment(AilmentEnum.Shocked) && e != me)
                 {
+                    // Apply Damage
                     e?.HealthCompo.AilmentStat.UsedToAilment(AilmentEnum.Shocked);
+
+                    // Static chain effect spawn
                     ParticleSystem shockedFX = Instantiate(_staticEffect, Vector3.Lerp(me.transform.position, e.transform.position, 0.5f), Quaternion.identity);
+
+                    // Set rotate
                     Vector2 dir = e.transform.position - me.transform.position;
                     float zRot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                     shockedFX.transform.rotation = Quaternion.Euler(0, 0, zRot);
+
+                    // Set size
                     float distance = Vector2.Distance(e.transform.position, me.transform.position);
                     _mainModule = shockedFX.main;
                     _mainModule.startSizeX = distance;
+
                     Destroy(shockedFX, 2f);
                 }
             }
