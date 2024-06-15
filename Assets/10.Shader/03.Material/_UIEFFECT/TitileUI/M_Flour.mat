@@ -24,8 +24,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 4b7c34181f4d74244be6861121c94efa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _USE_MAINTEXALPHA_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -148,10 +147,10 @@ Material:
     - _GlossyReflections: 0
     - _Keyword0: 0
     - _Main_Ins: 1
-    - _Main_Pow: 1
+    - _Main_Pow: 1.58
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.56
+    - _Opacity: 0.08
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -180,7 +179,7 @@ Material:
     - _normal_str: 0
     - _normal_upanner: 1
     - _normal_vpanner: 1
-    - _use_mainTexAlpha: 1
+    - _use_mainTexAlpha: 0
     - _use_other_diss: 0
     - _use_polar: 0
     m_Colors:

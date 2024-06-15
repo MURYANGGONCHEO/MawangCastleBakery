@@ -56,7 +56,7 @@ public class AudioPoolObject : PoolableMono
         //stdPitch = pitch;
         source.Play();
 
-        if(!isLoop)
+        if(!isLoop && source.clip)
         {
             StartCoroutine(WaitForPush(source.clip.length * 1.05f));
         }

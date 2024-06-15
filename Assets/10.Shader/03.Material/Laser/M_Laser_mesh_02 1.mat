@@ -144,7 +144,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _Diss_Tex_UPanner: 0
     - _Diss_Tex_VPanner: -0.94
-    - _Dissolve: -0.985
+    - _Dissolve: -0.35
     - _Dst: 10
     - _DstBlend: 0
     - _DstBlendAlpha: 0
@@ -162,11 +162,11 @@ Material:
     - _Mask_Mirror: 0
     - _Mask_Pow: 1.8
     - _Metallic: 0
-    - _Noise_Str: 0.06793601
+    - _Noise_Str: 0.052
     - _Noise_Tex_UPanner: 0
     - _Noise_Tex_VPanner: 0
     - _OcclusionStrength: 1
-    - _Opacity: 1.05
+    - _Opacity: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0

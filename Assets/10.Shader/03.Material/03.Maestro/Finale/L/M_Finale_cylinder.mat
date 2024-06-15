@@ -11,8 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 4b7c34181f4d74244be6861121c94efa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _USE_MAINTEXALPHA_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -80,10 +79,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _grad_tex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _gradient_texture:
         m_Texture: {fileID: 2800000, guid: dae700802e074e4418a20f1e1e8e58c5, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -125,7 +120,6 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CULLMODE: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -158,7 +152,6 @@ Material:
     - _UOffset: 0.042
     - _Use_Customdata: 0
     - _Use_ToonDissolve: 0
-    - _Use_grad: 0
     - _Use_lerp: 0
     - _VOffset: 0
     - _WorkflowMode: 1
@@ -167,7 +160,6 @@ Material:
     - _diss_normal_upanner: 0
     - _diss_normal_vpanner: 0
     - _edge_width: 0.06
-    - _grad_intencity: 0
     - _intencity: 8.72
     - _main_pow: 1
     - _main_upanner: 0
@@ -182,7 +174,6 @@ Material:
     - _sub_vpanner: 0
     - _subs_ins: 0
     - _subs_pow: 0
-    - _use_mainTexAlpha: 1
     - _use_other_diss: 0
     - _use_polar: 0
     m_Colors:
