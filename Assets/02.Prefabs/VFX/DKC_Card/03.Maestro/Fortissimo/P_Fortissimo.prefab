@@ -287,8 +287,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 10.8
-      minScalar: 4.2
+      scalar: 5.4
+      minScalar: 2.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4380,7 +4380,7 @@ ParticleSystem:
     vector0_1:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 21.01
+      scalar: 2.97
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -10072,7 +10072,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 7.02
+      scalar: 3.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14765,7 +14765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6323366485217575769, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 4.95
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 6323366485217575769, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -14881,8 +14881,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 8221824988431401744}
     m_Modifications:
     - target: {fileID: 2412015478903525026, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412015478903525026, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 3.43
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 2412015478903525026, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -14978,11 +14982,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6323366485217575769, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 2.12
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 6323366485217575769, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 10.6
+      value: 5.15
       objectReference: {fileID: 0}
     - target: {fileID: 6323366485217575769, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -15033,16 +15037,24 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6323366485217575769, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].repeatInterval
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323366485217575769, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6505872184449082838, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 2.06
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6505872184449082838, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 12.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505872184449082838, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6505872184449082838, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
@@ -15238,7 +15250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6323366485217575769, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 11.23
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 6323366485217575769, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
