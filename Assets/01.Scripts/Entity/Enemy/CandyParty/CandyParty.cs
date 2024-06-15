@@ -20,13 +20,7 @@ public class CandyParty : Enemy
     private IEnumerator AttackCor()
     {
         yield return new WaitForSeconds(1.5f);
-        for (int i = 0; i < 5; ++i)
-        {
-            //VFXPlayer.PlayHitEffect(attackParticle, target.transform.position);
-            target.HealthCompo.ApplyDamage(CharStat.GetDamage(), this);
-            yield return new WaitForSeconds(0.3f);
-        }
-
+        target.HealthCompo.ApplyDamage(CharStat.GetDamage(), this);
         OnAttackEnd?.Invoke();
     }
 
