@@ -587,7 +587,7 @@ MonoBehaviour:
   turnStatus: 0
   attackParticle:
     attack: {fileID: 0}
-  _cameraMoveInfo: {fileID: 11400000, guid: 345c0933b8e8c194c85b6526a5eab97c, type: 2}
+  _cameraMoveInfo: {fileID: 11400000, guid: 123332b106291aa42874de50c2249d29, type: 2}
   kiwiSpawnTrm: {fileID: 5723007808917114183}
 --- !u!114 &2775284478216901392
 MonoBehaviour:

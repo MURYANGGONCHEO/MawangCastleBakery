@@ -182,7 +182,7 @@ MonoBehaviour:
   turnStatus: 0
   attackParticle:
     attack: {fileID: 0}
-  _cameraMoveInfo: {fileID: 11400000, guid: 03ebd672a5e24054bb4b634fbdcc6fce, type: 2}
+  _cameraMoveInfo: {fileID: 11400000, guid: 3940cc0d67021ed40a88458271463f30, type: 2}
   melonSpawnTrm: {fileID: 4344035709133795039}
 --- !u!114 &-8742309543402868280
 MonoBehaviour:

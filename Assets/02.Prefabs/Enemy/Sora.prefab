@@ -167,7 +167,7 @@ MonoBehaviour:
   turnStatus: 0
   attackParticle:
     attack: {fileID: 0}
-  _cameraMoveInfo: {fileID: 11400000, guid: 345c0933b8e8c194c85b6526a5eab97c, type: 2}
+  _cameraMoveInfo: {fileID: 11400000, guid: bd102c9d7b2571c40b7b0103b4900541, type: 2}
   specialBuff: {fileID: 11400000, guid: 6f8d149370e800340b2855f4de5c6bdd, type: 2}
 --- !u!114 &2774288351425483891
 MonoBehaviour:
