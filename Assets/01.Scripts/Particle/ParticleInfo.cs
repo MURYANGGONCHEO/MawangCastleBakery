@@ -27,7 +27,7 @@ namespace Particle
         {
             ps = GetComponent<ParticleSystem>();
         }
-        private void Start()
+        public void SettingInfo()
         {
             foreach (ParticleTriggerInfo i in triggerInfos)
             {

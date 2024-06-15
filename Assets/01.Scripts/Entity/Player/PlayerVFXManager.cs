@@ -73,8 +73,9 @@ public class PlayerVFXManager : MonoBehaviour
         ParticlePoolObject obj = PoolManager.Instance.Pop(_cardByEffects2[card.CardInfo].poolingType) as ParticlePoolObject;
         obj.transform.position = pos;
         obj[level].owner = _player; ;
-        obj[level].combineLevel = (int)card.CombineLevel;
+        obj[level].combineLevel = level;
         obj[level].damages = card.GetDamages();
+        obj[level].SettingInfo();
         foreach (var t in _player.GetSkillTargetEnemyList[card])
         {
             obj[level].AddTriggerTarget(t);
@@ -97,6 +98,8 @@ public class PlayerVFXManager : MonoBehaviour
         obj[level].owner = _player; ;
         obj[level].combineLevel = (int)card.CombineLevel;
         obj[level].damages = card.GetDamages();
+        obj[level].SettingInfo();
+
         foreach (var t in _player.GetSkillTargetEnemyList[card])
         {
             obj[level].AddTriggerTarget(t);
@@ -113,6 +116,8 @@ public class PlayerVFXManager : MonoBehaviour
         obj[level].owner = _player; ;
         obj[level].combineLevel = (int)card.CombineLevel;
         obj[level].damages = card.GetDamages();
+        obj[level].SettingInfo();
+
         foreach (var t in _player.GetSkillTargetEnemyList[card])
         {
             //obj[level].SetTriggerTarget(t);
@@ -142,6 +147,8 @@ public class PlayerVFXManager : MonoBehaviour
         obj[level].owner = _player;
         obj[level].combineLevel = (int)card.CombineLevel;
         obj[level].damages = card.GetDamages();
+        obj[level].SettingInfo();
+
         obj.transform.position = pos;
         List<Entity> TEList = _player.GetSkillTargetEnemyList[card];
         Pianissimo[] particleArr = obj.gameObject.GetComponentsInChildren<Pianissimo>();
