@@ -52,6 +52,7 @@ public class BuffingMarkSetter : MonoBehaviour
 
     private void Start()
     {
+        _movingTweenArr = new Tween[_buffingMarkList.Count];
         TurnCounter.EnemyTurnEndEvent += DecountBuffDuration;
     }
     private void OnDestroy()

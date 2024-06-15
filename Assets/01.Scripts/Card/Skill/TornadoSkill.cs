@@ -2,6 +2,7 @@ using Particle;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class TornadoSkill : CardBase
 {
@@ -15,7 +16,12 @@ public class TornadoSkill : CardBase
     private void HandleAnimationCall()
     {
         //Player.VFXManager.PlayParticle(CardInfo, battleController.enemyGroupCenter.position, (int)CombineLevel);
-        Player.VFXManager.PlayParticle(this, battleController.FormationCenterPos,out ParticlePoolObject obj);
+        ParticlePoolObject tornado = null;
+        Player.VFXManager.PlayParticle(this, battleController.FormationCenterPos,out tornado);
+        Vector3 pos = tornado.transform.position;
+        pos.x -= 5;
+        tornado.transform.DOMove(pos, 5f);
+
         StartCoroutine(AttackCor());
         Player.OnAnimationCall -= HandleAnimationCall;
     }
