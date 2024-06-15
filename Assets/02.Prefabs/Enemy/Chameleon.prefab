@@ -174,7 +174,7 @@ MonoBehaviour:
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
-  hpBarTrm: {fileID: 0}
+  hpBarTrm: {fileID: 2885081995942438042}
   forwardTrm: {fileID: 5893639574038885792}
   target: {fileID: 0}
   lastMovePos: {x: 0, y: 0, z: 0}
@@ -377,7 +377,7 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: -4050
+  m_InstanceId: 133680
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
@@ -603,7 +603,7 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: -4038
+  m_InstanceId: 133668
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}

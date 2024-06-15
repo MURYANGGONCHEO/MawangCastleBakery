@@ -33,7 +33,7 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
 
         yield return new WaitForSeconds(0.3f);
 
-        Player.VFXManager.PlayPianissimoParticle(this);
+        Player.VFXManager.PlayPianissimoParticle(this,Player.transform.position,true);
 
         List<Entity> TEList = Player.GetSkillTargetEnemyList[this];
 
