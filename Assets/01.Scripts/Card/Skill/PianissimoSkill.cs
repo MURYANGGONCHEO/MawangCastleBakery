@@ -29,7 +29,7 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
 
     private IEnumerator AttackCor()
     {
-        // ³»ÀÏ Å×½ºÆ® ÇØºÁ¾ßÇÔ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ® ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½
 
         yield return new WaitForSeconds(0.3f);
 
