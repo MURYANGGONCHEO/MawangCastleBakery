@@ -45,6 +45,8 @@ public class BuffingMarkSetter : MonoBehaviour
     private List<BuffingMark> _buffingMarkList = new List<BuffingMark>();
     public Transform BuffingPanelTrm { get; set; }
 
+    private Tween[] _movingTweenArr;
+
     private void Start()
     {
         TurnCounter.EnemyTurnEndEvent += DecountBuffDuration;
@@ -96,6 +98,17 @@ public class BuffingMarkSetter : MonoBehaviour
         BuffingMarkPositionGenerate();
     }
 
+    public void RemoveSpecificBuffingType(BuffingType buffingType)
+    {
+        BuffingMark[] markArr =
+        _buffingMarkList.FindAll(x => x.CombatMarkingData.buffingType == buffingType).ToArray();
+
+        foreach(var bf in markArr)
+        {
+            RemoveBuffingMark(bf.CombatMarkingData);
+        }
+    }
+
     private void BuffingMarkPositionSetter(Transform buffingMarkTrm)
     {
         bool isMovingX = _buffingMarkList.Count > 3;
@@ -122,7 +135,13 @@ public class BuffingMarkSetter : MonoBehaviour
 
     private void BuffingMarkPositionGenerate()
     {
+        foreach(Tween t in _movingTweenArr)
+        {
+            t.Kill();
+        }
+
         float[] arr = new float[_buffingMarkList.Count];
+        _movingTweenArr = new Tween[_buffingMarkList.Count];
         int temp = arr.Length > 3 ? 20 * (arr.Length - 3) : 0;
 
         for (int i = 0; i < arr.Length; i++)
@@ -132,6 +151,7 @@ public class BuffingMarkSetter : MonoBehaviour
 
         for(int i = 0; i <  _buffingMarkList.Count; i++)
         {
+            _movingTweenArr[i] = 
             _buffingMarkList[i].transform.DOLocalMoveX(arr[i], 0.1f).SetEase(Ease.OutBounce);
         }
     }

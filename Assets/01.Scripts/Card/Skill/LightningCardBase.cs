@@ -26,6 +26,8 @@ public abstract class LightningCardBase : CardBase
                     _mainModule = shockedFX.main;
                     _mainModule.startSizeX = distance;
                     Destroy(shockedFX, 2f);
+
+                    e.BuffSetter.RemoveSpecificBuffingType(BuffingType.Lightning);
                 }
             }
             catch (Exception ex)
