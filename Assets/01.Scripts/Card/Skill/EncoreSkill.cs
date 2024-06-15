@@ -47,6 +47,6 @@ public class EncoreSkill : MusicCardBase, ISkillEffectAnim
 
         CombatMarkingData f_data = new CombatMarkingData(BuffingType.MusicFaint,
                                  buffSO.buffInfo, (int)CombineLevel + 1);
-        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, f_data, int.MaxValue);
+        //BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, f_data, int.MaxValue);
     }
 }
