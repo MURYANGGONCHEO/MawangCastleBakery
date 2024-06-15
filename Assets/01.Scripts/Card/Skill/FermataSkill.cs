@@ -31,7 +31,7 @@ public class FermataSkill : MusicCardBase, ISkillEffectAnim
 
     private IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(2.4f);
 
         foreach (var e in Player.GetSkillTargetEnemyList[this])
         {

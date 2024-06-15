@@ -127,10 +127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toMovePosInSec: 0.5
   _myCardInfo: {fileID: 11400000, guid: 51d4b5bd78a68de4494bfbb6ee8c7428, type: 2}
-  _objArr:
-  - {fileID: 3404619632539736702}
-  - {fileID: 5129837475305104781}
-  - {fileID: 3192851710385597527}
   _combineLevel: 0
   visualTrm: {fileID: 4765647492564359230}
   _cardMat: {fileID: 2100000, guid: 7215dc6c25e09bd4da589c4bef8f3be2, type: 2}
@@ -141,6 +137,11 @@ MonoBehaviour:
     - list: 02000000
     - list: 03000000
     - list: 06000000
+  _soundEffect: {fileID: 0}
+  _skillDurations:
+  - 6
+  - 6
+  - 6
 --- !u!1 &2640445690644565256
 GameObject:
   m_ObjectHideFlags: 0

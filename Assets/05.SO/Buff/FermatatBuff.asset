@@ -17,3 +17,5 @@ MonoBehaviour:
   stackBuffs:
   - type: 4
     values: 010000000300000005000000
+  buffInfo: "\uC5F0\uC8FC \uC2DC 5 \uC2A4\uD0DD\uB9C8\uB2E4 \uAE30\uC808 1\uD134
+    \uBD80\uC5EC"

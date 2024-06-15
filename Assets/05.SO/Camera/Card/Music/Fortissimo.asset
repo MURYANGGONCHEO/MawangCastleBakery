@@ -26,9 +26,31 @@ MonoBehaviour:
     delayTime: 0
   - cameraTarget: -1
     easingType: 0
-    movingValue: {x: 5, y: 2}
+    movingValue: {x: 5, y: -1}
     rotationValue: 0
     zoonInValue: 0
+    duration: 0.15
+    cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 0
+      seconds: 0
+    delayTime: 0
+  - cameraTarget: -1
+    easingType: 0
+    movingValue: {x: 5, y: -3}
+    rotationValue: 0
+    zoonInValue: -3
+    duration: 0.2
+    cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 0
+      seconds: 0
+    delayTime: 0
+  - cameraTarget: -1
+    easingType: 0
+    movingValue: {x: 5, y: -3}
+    rotationValue: 0
+    zoonInValue: -3
     duration: 1.1
     cameraTransitionTime: 0
     shakeDefination:
@@ -37,11 +59,55 @@ MonoBehaviour:
     delayTime: 0
   - cameraTarget: -1
     easingType: 0
-    movingValue: {x: 5, y: 0}
+    movingValue: {x: 5, y: -3}
     rotationValue: 0
-    zoonInValue: 0
+    zoonInValue: -7
     duration: 0.15
     cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 0
+      seconds: 0
+    delayTime: 0
+  - cameraTarget: -1
+    easingType: 0
+    movingValue: {x: 5, y: -4}
+    rotationValue: 0
+    zoonInValue: 0
+    duration: 1.45
+    cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 0
+      seconds: 0
+    delayTime: 0
+  - cameraTarget: -1
+    easingType: 0
+    movingValue: {x: 5, y: 2}
+    rotationValue: 0
+    zoonInValue: 0
+    duration: 0.3
+    cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 0
+      seconds: 0
+    delayTime: 0
+  - cameraTarget: -1
+    easingType: 0
+    movingValue: {x: 5, y: 1}
+    rotationValue: 0
+    zoonInValue: 7
+    duration: 0.1
+    cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 1
+      seconds: 0.1
+    delayTime: 0
+  - cameraTarget: -1
+    easingType: 0
+    movingValue: {x: 5, y: 1}
+    rotationValue: 0
+    zoonInValue: 7
+    duration: 1
+    cameraTransitionTime: 0.3
     shakeDefination:
       isShaking: 0
       seconds: 0

@@ -31,7 +31,7 @@ public class FortissimoSkill : MusicCardBase, ISkillEffectAnim
 
     private IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(3.02f);
 
         Player.GetSkillTargetEnemyList[this][0]?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
         if(Player.GetSkillTargetEnemyList[this][0] != null)
