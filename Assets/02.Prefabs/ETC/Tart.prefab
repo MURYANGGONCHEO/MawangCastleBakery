@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 2657064243816768280}
   - component: {fileID: 383724233090319472}
   - component: {fileID: 5353449337678811547}
+  - component: {fileID: 2478064050385136060}
   m_Layer: 0
   m_Name: Tart
   m_TagString: Untagged
@@ -304,6 +305,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9034257, y: 2.4454823}
   m_EdgeRadius: 0
+--- !u!114 &2478064050385136060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963006655913565341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackAmount: 0
+  filpX: 0
+  _isPlayer: 1
 --- !u!1 &1236320640496573639
 GameObject:
   m_ObjectHideFlags: 0

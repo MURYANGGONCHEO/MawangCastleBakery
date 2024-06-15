@@ -12,7 +12,7 @@ public class PushBack : KnockBackBase
     public override void Knockback(int dmg)
     {
         Vector3 knockbackPos = _owner.transform.position;
-        knockbackPos.x += (_system.filpX ? -1 : 1) * dmg * _system.knockBackAmount;
+        knockbackPos.x += (_system.filpX ? -1 : 1) * CalculateKnockBackValue(dmg);
         _owner.transform.DOMove(knockbackPos, 0.025f).SetEase(Ease.OutQuad);
     }
 }
