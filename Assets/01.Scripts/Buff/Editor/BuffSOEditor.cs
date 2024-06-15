@@ -138,6 +138,7 @@ public class BuffSOEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        base.DrawDefaultInspector();
         serializedObject.Update();
         normalBuffList.DoLayoutList();
         specialBuffList.DoLayoutList();

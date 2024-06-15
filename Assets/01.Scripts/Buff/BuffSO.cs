@@ -31,6 +31,9 @@ public class BuffSO : ScriptableObject
     private List<NormalBuff> applyBuff = new();
     private int _combineLevel = 0;
 
+    [TextArea]
+    public string buffInfo;
+
     public void SetOwner(Entity owner, int combineLevel)
     {
         _owner = owner;

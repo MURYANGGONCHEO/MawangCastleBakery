@@ -17,7 +17,7 @@ public class StageManager : MonoBehaviour
             _instance = FindObjectOfType<StageManager>();
             if (_instance == null)
             {
-                Debug.LogError("Not Exist MapManager");
+                Debug.LogError("Not Exist StageManager");
             }
             return _instance;
         }
