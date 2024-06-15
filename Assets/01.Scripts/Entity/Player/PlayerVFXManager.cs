@@ -64,7 +64,6 @@ public class PlayerVFXManager : MonoBehaviour
         _cardByEffects[card][combineLevel].transform.position = pos;
         _cardByEffects[card][combineLevel].gameObject.SetActive(true);
         SetBackgroundFadeOut(1);
-        ParticleSystem.MainModule mainModule = _cardByEffects[card][combineLevel].main;
         StartCoroutine(EndEffectCo(duration));
         _cardByEffects[card][combineLevel].Play();
     }
