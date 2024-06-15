@@ -12,7 +12,15 @@ public static class CardManagingHelper
             return 0;
         }
 
-        return shameData.cardShameDataList[combineLevel].list[shameData.cardLevel - 1].list.FirstOrDefault(x => (x.cardShameType & type) != 0).currentShame;
+        try
+        {
+            return shameData.cardShameDataList[combineLevel].list[shameData.cardLevel - 1].list.FirstOrDefault(x => (x.cardShameType & type) != 0).currentShame;
+        }
+        catch
+        {
+            Debug.LogError(shameData);
+            return 0;
+        }
     }
 
     public static int GetAfterLevelShame(CardShameElementSO shameData, CardShameType type, int combineLevel)

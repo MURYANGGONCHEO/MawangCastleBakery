@@ -46,8 +46,7 @@ public class FermataSkill : MusicCardBase, ISkillEffectAnim
         Player.BuffStatCompo.AddStack(StackEnum.FAINTMusicalNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
         Debug.Log($"Stacks: DEF({Player.BuffStatCompo.GetStack(StackEnum.DEFMusicalNote)}) / DMG({Player.BuffStatCompo.GetStack(StackEnum.DMGMusicaldNote)}) / FAINT({Player.BuffStatCompo.GetStack(StackEnum.FAINTMusicalNote)})");
 
-        CombatMarkingData data = new CombatMarkingData(BuffingType.MusicFaint,
-                                 buffSO.buffInfo, (int)CombineLevel + 1);
+        CombatMarkingData data = new CombatMarkingData(BuffingType.MusicFaint, buffSO.buffInfo, (int)CombineLevel + 1);
 
         BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, data, buffSO.stackBuffs[0].values[(int)CombineLevel]);
     }
