@@ -10,38 +10,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8045e48cabe016240baf7183522017b6, type: 3}
-  m_Name: CandyParty
+  m_Name: Muddy
   m_EditorClassIdentifier: 
   camMoveSequenceList:
   - cameraTarget: -1
-    easingType: 1
-    movingValue: {x: 5, y: 0}
+    easingType: 0
+    movingValue: {x: 3, y: 0}
     rotationValue: 0
-    zoonInValue: -3
-    duration: 1.5
+    zoonInValue: -2
+    duration: 0
+    cameraTransitionTime: 0
+    shakeDefination:
+      isShaking: 0
+      seconds: 0
+    delayTime: 0
+  - cameraTarget: -1
+    easingType: 0
+    movingValue: {x: 3, y: 0}
+    rotationValue: 0
+    zoonInValue: -2
+    duration: 0.3
     cameraTransitionTime: 0
     shakeDefination:
       isShaking: 0
       seconds: 0
     delayTime: 0
   - cameraTarget: 1
-    easingType: 1
+    easingType: 0
     movingValue: {x: 5, y: 0}
     rotationValue: 0
-    zoonInValue: 3
-    duration: 0.01
+    zoonInValue: 0
+    duration: 0.2
     cameraTransitionTime: 0
     shakeDefination:
-      isShaking: 1
-      seconds: 0.1
+      isShaking: 0
+      seconds: 0
     delayTime: 0
   - cameraTarget: 1
-    easingType: 1
+    easingType: 0
     movingValue: {x: 5, y: 0}
     rotationValue: 0
-    zoonInValue: 3
-    duration: 2
-    cameraTransitionTime: 0.5
+    zoonInValue: 0
+    duration: 1
+    cameraTransitionTime: 0.3
     shakeDefination:
       isShaking: 0
       seconds: 0

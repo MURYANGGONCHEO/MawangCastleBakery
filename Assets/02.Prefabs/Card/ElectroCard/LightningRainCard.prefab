@@ -68,7 +68,7 @@ MonoBehaviour:
   - 2.5
   - 2.5
   _shockedEffect: {fileID: 4328475238343711852, guid: b6ae50348cfae0a4faeb538a76a5c759, type: 3}
-  _staticEffect: {fileID: 0}
+  _staticEffect: {fileID: 2091689041402810337, guid: 8cecfab1b34c5af489c9e5bbc196221a, type: 3}
 --- !u!1 &5095892556922366697
 GameObject:
   m_ObjectHideFlags: 0
