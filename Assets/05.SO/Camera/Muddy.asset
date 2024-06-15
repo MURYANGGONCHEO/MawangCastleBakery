@@ -15,7 +15,7 @@ MonoBehaviour:
   camMoveSequenceList:
   - cameraTarget: -1
     easingType: 0
-    movingValue: {x: 3, y: 0}
+    movingValue: {x: 5, y: 0}
     rotationValue: 0
     zoonInValue: -2
     duration: 0
@@ -26,10 +26,10 @@ MonoBehaviour:
     delayTime: 0
   - cameraTarget: -1
     easingType: 0
-    movingValue: {x: 3, y: 0}
+    movingValue: {x: 5, y: 0}
     rotationValue: 0
     zoonInValue: -2
-    duration: 0.3
+    duration: 0.6
     cameraTransitionTime: 0
     shakeDefination:
       isShaking: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
     movingValue: {x: 5, y: 0}
     rotationValue: 0
     zoonInValue: 0
-    duration: 0.2
+    duration: 0.3
     cameraTransitionTime: 0
     shakeDefination:
       isShaking: 0

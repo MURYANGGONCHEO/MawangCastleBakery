@@ -49,6 +49,6 @@ public class FermataSkill : MusicCardBase, ISkillEffectAnim
         CombatMarkingData data = new CombatMarkingData(BuffingType.MusicFaint,
                                  buffSO.buffInfo, (int)CombineLevel + 1);
 
-        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, data, int.MaxValue);
+        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, data, buffSO.stackBuffs[0].values[(int)CombineLevel]);
     }
 }
