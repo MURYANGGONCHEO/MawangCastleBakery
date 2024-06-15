@@ -12,6 +12,8 @@ public class DeliverSkill : CardBase, ISkillEffectAnim
         Player.UseAbility(this);
         Player.OnAnimationCall += HandleAnimationCall;
         Player.VFXManager.OnEndEffectEvent += HandleEffectEnd;
+
+        Player.BuffSetter.RemoveSpecificBuffingType(BuffingType.Smelting);
     }
 
     public void HandleAnimationCall()
