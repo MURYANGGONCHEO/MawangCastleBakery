@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Stage_2
   m_EditorClassIdentifier: 
   stageNumber: 1-2
-  stageName: "\uD6C4\uB048 \uBE44\uD0C4\uAE38 \uCD08\uC785\uBD80"
+  stageName: "\uB113\uC740 \uACF5\uD130"
   stageType: 0
   stageBackGround: 0
+  stageCutScene: {fileID: 0}
   enemyGroup: {fileID: 11400000, guid: 2be54a42ba1b20e41903808fe9a4622c, type: 2}
   enemyFormation: {fileID: 11400000, guid: c66d88d76b6813149a77c46fdac6ae5e, type: 2}
   clearCondition: {fileID: 11400000, guid: cff655815dbe9ec4b8bdaeb341b876f9, type: 2}

@@ -1579,82 +1579,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5538261958890929539}
     - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[8].info
-      value: 
-      objectReference: {fileID: 11400000, guid: ff7d3767b562e0045a6f415fc95120de, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[9].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 7d589c4811089d147b60f26f2294b26b, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[12].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 453cc4f3184c962459de31da818dce95, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[13].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 75879bcb30d9b3a4b8de33ea7f908d8e, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[15].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 6227060c6bb572c438064c2d48dc96dc, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[16].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 9622156cac39d5d46944444b5cfa3bfe, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[17].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 707402a4310aec049adc214377f2db8f, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[18].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 1ec831be6b041ca4688573e42f47b4bf, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[19].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 043efc424a738d04189707a4230ad62c, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[20].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 1ddfa105c24b50644be6deb3c7759f2f, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[21].info
-      value: 
-      objectReference: {fileID: 11400000, guid: c69c2b3f4874dce4181e167f9ae0ea3a, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[22].info
-      value: 
-      objectReference: {fileID: 11400000, guid: bb5492ac0df5aab4180ea783d1020e6d, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[23].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 8be02c7192f15e1448848ec69f5d8e1c, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[24].info
-      value: 
-      objectReference: {fileID: 11400000, guid: ad7f08e230ed7b142adeb57c7d2d348c, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[25].info
-      value: 
-      objectReference: {fileID: 11400000, guid: c90ec53907042884b89bf8bf8fb40dd5, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[26].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 29826a62ed394524fa3d2c9a216eb694, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[27].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 784b113f8dc929448ab0c368968d5ce7, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[28].info
-      value: 
-      objectReference: {fileID: 11400000, guid: 784b113f8dc929448ab0c368968d5ce7, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: cardAndEffects.Array.data[29].info
-      value: 
-      objectReference: {fileID: 11400000, guid: ccab6fde32eb6d34683d276342e1083c, type: 2}
-    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: cardAndEffects.Array.data[23].particle.Array.data[0]
       value: 
       objectReference: {fileID: 1359171777787867102}
@@ -1666,10 +1590,6 @@ PrefabInstance:
       propertyPath: cardAndEffects.Array.data[23].particle.Array.data[2]
       value: 
       objectReference: {fileID: 1359171777787867102}
-    - target: {fileID: 2125830076538026216, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5190873446312323021, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: m_Name
       value: PlayerVFX
