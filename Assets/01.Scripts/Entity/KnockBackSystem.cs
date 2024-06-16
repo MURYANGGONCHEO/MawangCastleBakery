@@ -40,18 +40,25 @@ public class KnockBackSystem : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    private void Start()
     {
         if (_isPlayer)
             BattleController.Instance.OnChangeTurnEnemy += ResetPos;
-        else
-            CardReader.SkillCardManagement?.useCardEndEvnet.AddListener(ResetPos);
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (_isPlayer)
             BattleController.Instance.OnChangeTurnEnemy -= ResetPos;
-        else
+    }
+    private void OnEnable()
+    {
+        if(!_isPlayer)
+            CardReader.SkillCardManagement?.useCardEndEvnet.AddListener(ResetPos);
+        
+    }
+    private void OnDisable()
+    {
+        if(!_isPlayer)
             CardReader.SkillCardManagement?.useCardEndEvnet.RemoveListener(ResetPos);
     }
 

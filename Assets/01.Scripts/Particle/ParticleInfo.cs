@@ -32,8 +32,10 @@ namespace Particle
             foreach (ParticleTriggerInfo i in triggerInfos)
             {
                 i.Owner = owner;
-                if(isPlayer)
+                if (isPlayer)
                     i.Damage = damages[combineLevel];
+                else
+                    i.Damage = damages[0];
                 i.InitEvents();
             }
         }

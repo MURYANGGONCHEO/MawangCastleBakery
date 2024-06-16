@@ -47,13 +47,13 @@ public class LookBakingPreviewPanel : PreviewPanel
 
         if (BakingManager.Instance.CanBake(ingDatas))
         {
-            foreach(var ingData in ingDatas)
+            ItemDataBreadSO cake = BakingManager.Instance.BakeBread(ingDatas);
+            Inventory.Instance.AddItem(cake);
+
+            foreach (var ingData in ingDatas)
             {
                 Inventory.Instance.RemoveItem(ingData);
             }
-
-            ItemDataBreadSO cake = BakingManager.Instance.BakeBread(ingDatas);
-            Inventory.Instance.AddItem(cake);
 
             BakeryUI bui = UIManager.Instance.GetSceneUI<BakeryUI>();
             BakeryData bd = new BakeryData();
