@@ -3946,6 +3946,7 @@ GameObject:
   - component: {fileID: 5117759325017822254}
   - component: {fileID: 4880571573338263047}
   - component: {fileID: 7757510539636055280}
+  - component: {fileID: 7757510539636055281}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -4488,6 +4489,27 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_Damping: 0.5
   m_MaxWindowSize: -1
+--- !u!95 &7757510539636055281
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6386583483393006014}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7773829210448782588
 MonoBehaviour:
   m_ObjectHideFlags: 0
