@@ -154,7 +154,7 @@ Material:
     - _diss_normal_vpanner: 0
     - _diss_upanner: -0.01
     - _diss_vpanner: -1.23
-    - _edge_width: 0.06
+    - _edge_width: 0.08
     - _fresnel_intencity: 1
     - _fresnel_power: 1.33
     - _fresnel_scale: 4.08
@@ -173,9 +173,9 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _edge_color: {r: 0, g: 0, b: 0, a: 0}
-    - _fresnel_color: {r: 0.113175035, g: 0.04780706, b: 0.116495356, a: 0}
-    - _main_color_a: {r: 2.608238, g: 1.291816, b: 2.4454813, a: 0}
+    - _edge_color: {r: 0.2871746, g: 0, b: 0, a: 0}
+    - _fresnel_color: {r: 0.633554, g: 0.17755428, b: 0.6603774, a: 0}
+    - _main_color_a: {r: 10.43295, g: 5.167263, b: 9.781923, a: 0}
     - _main_color_b: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5954333226481113708

@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+
 
 namespace BTVisual
 {
@@ -17,8 +20,8 @@ namespace BTVisual
             treeState = treeRoot.Update();
             return treeState;
         }
-
 #if UNITY_EDITOR
+
         /// <summary>
         /// 해당 타입의 노드를 생성함. 생성된 노드는 타입을 이름으로 받고, GUID를 생성하여 받음.
         /// </summary>
@@ -117,6 +120,7 @@ namespace BTVisual
                 return;
             }
         }
+#endif
 
         public List<Node> GetChildren(Node parent)
         {
@@ -141,18 +145,18 @@ namespace BTVisual
             }
             return children;
         }
-#endif
+
         public void Traverse(Node node, System.Action<Node> visitor)
         {
             //노드를 순회하면서 각 노드들을 tree.nodes 리스트에 넣어주는 함수
             if (node)
             {
                 visitor.Invoke(node);
-                var children = GetChildren(node);
+                var children = GetChildren(node); //여기서 빌드 오류
                 children.ForEach(n => Traverse(n, visitor));
             }
         }
-        
+
         public BehaviourTree Clone()
         {
             var tree = Instantiate(this);
@@ -175,6 +179,7 @@ namespace BTVisual
                 n.brain = brain;
             });
         }
+
     }
-    
+
 }

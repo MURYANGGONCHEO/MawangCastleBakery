@@ -35,8 +35,8 @@ public class MapNode : MonoBehaviour, IPointerClickHandler
     public void ClickThisNode()
     {
         StageManager.Instanace.CreateStageInfoBubble(_stageData.stageName, 
-                                                   transform.localPosition, 
-                                                   _isStageBubbleReverse);
+                                                     _stageData.stageNumber);
+
         StageManager.Instanace.SelectStageData = _stageData;
     }
 

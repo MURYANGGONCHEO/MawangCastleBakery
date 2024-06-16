@@ -149,7 +149,7 @@ Material:
     - _Main_Ins: 8.44
     - _Main_Pow: 2.36
     - _Main_UPanner: 0
-    - _Main_VPanner: 0.83
+    - _Main_VPanner: 1.33
     - _Mask_1x: 0
     - _Mask_Mirror: 1
     - _Mask_Pow: 1
@@ -158,7 +158,7 @@ Material:
     - _Noise_Tex_UPanner: 0
     - _Noise_Tex_VPanner: 0
     - _OcclusionStrength: 1
-    - _Opacity: 2.17
+    - _Opacity: 3.89
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -190,5 +190,5 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SubTex_Color: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 1, g: 1, b: 1, a: 0}
+    - _TintColor: {r: 5.278032, g: 5.278032, b: 5.278032, a: 0}
   m_BuildTextureStacks: []

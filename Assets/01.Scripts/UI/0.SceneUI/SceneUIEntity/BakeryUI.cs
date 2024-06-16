@@ -35,6 +35,7 @@ public class BakeryUI : SceneUI
 
     public override void SceneUIStart()
     {
+        base.SceneUIStart();
         _previewPanels = _previewPanelObj.GetComponentsInChildren<PreviewPanel>();
     }
     
