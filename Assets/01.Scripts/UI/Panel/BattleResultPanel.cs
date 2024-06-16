@@ -39,6 +39,7 @@ public class BattleResultPanel : PanelUI
                            string stageName, 
                            string conditionName)
     {
+        Camera.main.orthographic = true;
 
         if (!isClear)
         {
