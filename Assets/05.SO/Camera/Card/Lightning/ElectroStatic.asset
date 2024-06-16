@@ -20,9 +20,11 @@ MonoBehaviour:
     zoonInValue: 0
     duration: 0
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0
+    delayTime: 0
   - cameraTarget: -1
     easingType: 36
     movingValue: {x: 2, y: 0}
@@ -30,9 +32,11 @@ MonoBehaviour:
     zoonInValue: 0
     duration: 0.35
     cameraTransitionTime: 0.1
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0.2
+    delayTime: 0
   - cameraTarget: -1
     easingType: 36
     movingValue: {x: 2, y: 0}
@@ -40,6 +44,8 @@ MonoBehaviour:
     zoonInValue: 0
     duration: 0.4
     cameraTransitionTime: 0.1
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 1
       seconds: 0.27
+    delayTime: 0

@@ -27,6 +27,7 @@ public struct CameraMoveSequence
     public float zoonInValue;
     public float duration;
     public float cameraTransitionTime;
+    public float cameraShakeValue;
     public ShakeDefination shakeDefination;
     public float delayTime;
 

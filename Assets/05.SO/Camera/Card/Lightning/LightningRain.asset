@@ -20,9 +20,11 @@ MonoBehaviour:
     zoonInValue: 4
     duration: 0.3
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0
+    delayTime: 0
   - cameraTarget: -1
     easingType: 18
     movingValue: {x: 3, y: 0}
@@ -30,9 +32,11 @@ MonoBehaviour:
     zoonInValue: 4
     duration: 0.1
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 1
       seconds: 0.2
+    delayTime: 0
   - cameraTarget: -1
     easingType: 18
     movingValue: {x: 3, y: 0}
@@ -40,9 +44,11 @@ MonoBehaviour:
     zoonInValue: 4
     duration: 0.13
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0.2
+    delayTime: 0
   - cameraTarget: -1
     easingType: 18
     movingValue: {x: 3, y: 0}
@@ -50,9 +56,11 @@ MonoBehaviour:
     zoonInValue: 4
     duration: 0.1
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 1
       seconds: 0.2
+    delayTime: 0
   - cameraTarget: -1
     easingType: 18
     movingValue: {x: 3, y: 0}
@@ -60,9 +68,11 @@ MonoBehaviour:
     zoonInValue: 4
     duration: 0.13
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0.2
+    delayTime: 0
   - cameraTarget: -1
     easingType: 18
     movingValue: {x: 3, y: 0}
@@ -70,9 +80,11 @@ MonoBehaviour:
     zoonInValue: 4
     duration: 0.1
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 1
       seconds: 0.2
+    delayTime: 0
   - cameraTarget: -1
     easingType: 18
     movingValue: {x: 3, y: 0}
@@ -80,9 +92,11 @@ MonoBehaviour:
     zoonInValue: 4
     duration: 0.13
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0.2
+    delayTime: 0
   - cameraTarget: -1
     easingType: 18
     movingValue: {x: 3, y: 0}
@@ -90,9 +104,11 @@ MonoBehaviour:
     zoonInValue: 4
     duration: 0.1
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 1
       seconds: 0.2
+    delayTime: 0
   - cameraTarget: -1
     easingType: 18
     movingValue: {x: 3, y: 0}
@@ -100,9 +116,11 @@ MonoBehaviour:
     zoonInValue: 4
     duration: 0.13
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0.2
+    delayTime: 0
   - cameraTarget: -1
     easingType: 18
     movingValue: {x: 3, y: 0}
@@ -110,9 +128,11 @@ MonoBehaviour:
     zoonInValue: 4
     duration: 0.1
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 1
       seconds: 0.2
+    delayTime: 0
   - cameraTarget: -1
     easingType: 18
     movingValue: {x: 3, y: 0}
@@ -120,9 +140,11 @@ MonoBehaviour:
     zoonInValue: 4
     duration: 0.13
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0.2
+    delayTime: 0
   - cameraTarget: -1
     easingType: 18
     movingValue: {x: 3, y: 0}
@@ -130,6 +152,8 @@ MonoBehaviour:
     zoonInValue: -4
     duration: 1.5
     cameraTransitionTime: 0.3
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0.2
+    delayTime: 0
