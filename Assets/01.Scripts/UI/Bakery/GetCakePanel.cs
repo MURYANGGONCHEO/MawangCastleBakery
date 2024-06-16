@@ -13,21 +13,12 @@ public class GetCakePanel : MonoBehaviour
 
     public void SetUp(ItemDataBreadSO cakeData, int Count)
     {
-        StartCoroutine(TurmCO(cakeData, Count));
-        
-    }
-
-    IEnumerator TurmCO(ItemDataBreadSO cakeData, int Count)
-    {
-        yield return new WaitForSeconds(1);
-
         gameObject.SetActive(true);
 
         _cakeVisual.sprite = cakeData.itemIcon;
         _cakenameText.text = cakeData.itemName;
         _cakeRatingText.text = GetRatingText(Count);
     }
-
     private string GetRatingText(int count)
     {
         switch (count)
