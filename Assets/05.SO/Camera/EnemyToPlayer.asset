@@ -15,11 +15,25 @@ MonoBehaviour:
   camMoveSequenceList:
   - cameraTarget: -1
     easingType: 1
-    movingValue: 1.5
+    movingValue: {x: 0, y: 0}
+    rotationValue: 0
+    zoonInValue: 0
     duration: 0.5
     cameraTransitionTime: 0.5
+    cameraShakeValue: 0.2
+    shakeDefination:
+      isShaking: 0
+      seconds: 0
+    delayTime: 0
   - cameraTarget: 1
     easingType: 9
-    movingValue: 2
+    movingValue: {x: 0, y: 0}
+    rotationValue: 0
+    zoonInValue: 0
     duration: 0.5
     cameraTransitionTime: 0.5
+    cameraShakeValue: 0.2
+    shakeDefination:
+      isShaking: 0
+      seconds: 0
+    delayTime: 0

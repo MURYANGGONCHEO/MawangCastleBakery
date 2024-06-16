@@ -20,6 +20,7 @@ MonoBehaviour:
     zoonInValue: 0
     duration: 0
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0
@@ -31,6 +32,7 @@ MonoBehaviour:
     zoonInValue: 0
     duration: 1.45
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0
@@ -42,6 +44,7 @@ MonoBehaviour:
     zoonInValue: -5
     duration: 0.5
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0
@@ -53,6 +56,7 @@ MonoBehaviour:
     zoonInValue: -5
     duration: 0.5
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0
@@ -64,6 +68,7 @@ MonoBehaviour:
     zoonInValue: 5
     duration: 0.25
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0
@@ -75,6 +80,7 @@ MonoBehaviour:
     zoonInValue: 5
     duration: 1.8
     cameraTransitionTime: 0
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 1
       seconds: 0.2
@@ -86,6 +92,7 @@ MonoBehaviour:
     zoonInValue: 5
     duration: 1
     cameraTransitionTime: 0.3
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 1
       seconds: 0.2
