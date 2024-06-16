@@ -21,6 +21,7 @@ public class BattleUI : SceneUI
 
     public override void SceneUIStart()
     {
+        base.SceneUIStart();
         SystemActive += HandleBattleSystemActive;
 
         CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);

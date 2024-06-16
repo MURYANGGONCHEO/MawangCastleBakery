@@ -6,22 +6,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class StageBubble : MonoBehaviour, 
-                           IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class StageBubble : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI _stageNameText;
-    [SerializeField] private Transform _infoBlockTrm;
+    [SerializeField] private TextMeshProUGUI _chapterNameText;
 
-    public void SetInfo(string stageName, bool isReverse)
+    public void SetInfo(string stageName, string chapterName)
     {
         _stageNameText.text = stageName;
-
-        if(isReverse)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, -180);
-            _infoBlockTrm.localRotation = Quaternion.Euler(0, 0, -180);
-        }
+        _chapterNameText.text = chapterName;
     }
 
     public void EnterStage()
@@ -29,20 +23,8 @@ public class StageBubble : MonoBehaviour,
         GameManager.Instance.ChangeScene(SceneType.battle);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void ClosePanel()
     {
-        transform.DOKill();
-        transform.DOScale(1.1f, 0.2f);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        transform.DOKill();
-        transform.DOScale(1f, 0.2f);
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        EnterStage();
+        Destroy(gameObject);
     }
 }
