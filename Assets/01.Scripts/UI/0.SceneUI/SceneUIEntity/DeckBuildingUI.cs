@@ -9,6 +9,7 @@ public class DeckBuildingUI : SceneUI
 
     public override void SceneUIStart()
     {
+        base.SceneUIStart();
         _deckBuilder = GetComponent<DeckBuilder>();
     }
 

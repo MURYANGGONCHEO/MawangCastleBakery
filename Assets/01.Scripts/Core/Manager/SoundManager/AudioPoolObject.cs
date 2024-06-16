@@ -39,6 +39,7 @@ public class AudioPoolObject : PoolableMono
     {
         if (isLoop)
         {
+            Debug.Log("sd");
             if (SoundManager.Instance.CurrentBgmObject != null)
             {
                 SoundManager.Instance.CurrentBgmObject.Push();

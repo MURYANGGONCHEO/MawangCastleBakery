@@ -35,7 +35,7 @@ public class MapManager : MonoBehaviour
     public int SelectStageNumber { get; set; }
     public GameObject LoadMapObject { get; set; }
 
-    public void CreateStageInfoBubble(string stageName, Vector2 pos, bool isReverse)
+    public void CreateStageInfoBubble(string stageName, string chaptername)
     {
         if (_stageBubbleObject != null)
         {
@@ -44,10 +44,8 @@ public class MapManager : MonoBehaviour
 
         Transform parent = LoadMapObject.transform.Find("BubbleParent");
         _stageBubbleObject = Instantiate(_stageBubblePrefab, parent);
-        _stageBubbleObject.transform.localPosition = pos + new Vector2(0, 20);
-        _stageBubbleObject.transform.DOLocalMove(pos, 0.3f);
 
-        _stageBubbleObject.SetInfo(stageName, isReverse);
+        _stageBubbleObject.SetInfo(stageName, chaptername);
     }
 
 }

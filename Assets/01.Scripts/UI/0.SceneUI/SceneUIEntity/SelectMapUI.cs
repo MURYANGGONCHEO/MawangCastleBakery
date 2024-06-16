@@ -10,6 +10,7 @@ public class SelectMapUI : SceneUI
 
     public override void SceneUIStart()
     {
+        base    .SceneUIStart();
         SceneObserver.BeforeSceneType = SceneType.Lobby;
 
         GenerateUnLockPanel();
