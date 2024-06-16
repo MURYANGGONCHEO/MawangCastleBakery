@@ -1770,12 +1770,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3724031915430470973}
     m_Modifications:
+    - target: {fileID: 1299343514247612486, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2279039881457437939, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
       propertyPath: m_Name
       value: Finale_Timeline
       objectReference: {fileID: 0}
     - target: {fileID: 2279039881457437939, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2427809607718595543, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2480869289949384071, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
@@ -1818,6 +1826,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2740368692735010911, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423560821168303037, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599334261793688866, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4275678606215921124, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5536265851108849749, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118771677210656823, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772550119548260044, guid: 87f17826f3be5614ca64bbde9f2db36d, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1851,7 +1887,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

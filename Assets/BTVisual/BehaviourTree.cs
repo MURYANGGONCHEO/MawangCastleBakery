@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-#if UNITY_EDITOR
 
 namespace BTVisual
 {
@@ -21,6 +20,7 @@ namespace BTVisual
             treeState = treeRoot.Update();
             return treeState;
         }
+#if UNITY_EDITOR
 
         /// <summary>
         /// 해당 타입의 노드를 생성함. 생성된 노드는 타입을 이름으로 받고, GUID를 생성하여 받음.
@@ -144,6 +144,7 @@ namespace BTVisual
             }
             return children;
         }
+#endif
 
         public void Traverse(Node node, System.Action<Node> visitor)
         {
@@ -182,4 +183,3 @@ namespace BTVisual
     }
 
 }
-#endif
