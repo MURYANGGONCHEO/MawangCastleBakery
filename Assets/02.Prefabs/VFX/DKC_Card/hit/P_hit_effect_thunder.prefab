@@ -14748,4 +14748,4 @@ MonoBehaviour:
   poolingType: 7
   mainParticleSystem: {fileID: 7993180798688134084}
   pushTime: 1
-  hitSound: {fileID: 8300000, guid: 9f12f4690313ae7488f1ec96c4428e72, type: 3}
+  hitSound: {fileID: 8300000, guid: 4fb13d200656fac4e8a7d9cc1ede82a4, type: 3}
