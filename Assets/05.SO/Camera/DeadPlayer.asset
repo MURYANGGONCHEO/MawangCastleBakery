@@ -20,6 +20,7 @@ MonoBehaviour:
     zoonInValue: -15
     duration: 0.5
     cameraTransitionTime: 0.5
+    cameraShakeValue: 0.2
     shakeDefination:
       isShaking: 0
       seconds: 0
