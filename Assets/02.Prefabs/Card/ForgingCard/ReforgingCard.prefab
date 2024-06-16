@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toMovePosInSec: 0.5
-  _myCardInfo: {fileID: 11400000, guid: d9598beeb09ba954f9f060e01e709ac8, type: 2}
+  _myCardInfo: {fileID: 11400000, guid: 6227060c6bb572c438064c2d48dc96dc, type: 2}
   _combineLevel: 0
   visualTrm: {fileID: 4765647492564359230}
   _cardMat: {fileID: 2100000, guid: 7215dc6c25e09bd4da589c4bef8f3be2, type: 2}

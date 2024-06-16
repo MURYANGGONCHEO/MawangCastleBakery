@@ -31,6 +31,8 @@ public class PlayerVFXManager : MonoBehaviour
     {
         foreach (var c in cardAndEffects)
         {
+            if (c.info == null) continue;
+
             if (!_cardByEffects.ContainsKey(c.info))
             {
                 _cardByEffects.Add(c.info, c.particle);
@@ -129,7 +131,7 @@ public class PlayerVFXManager : MonoBehaviour
     {
         if (!_cardByEffects.ContainsKey(card))
         {
-            Debug.LogError("����Ʈ�� �����");
+            Debug.LogError(card);
             return;
         }
 

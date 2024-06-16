@@ -75,6 +75,12 @@ public class BakeryUI : SceneUI
 
     public void SetUpResultPanel()
     {
+        StartCoroutine(TurmCo());
+    }
+
+    IEnumerator TurmCo()
+    {
+        yield return new WaitForSeconds(1);
         GetCakePanel.SetUp(ToGetCakeType, ToGetCakeCount);
     }
 }

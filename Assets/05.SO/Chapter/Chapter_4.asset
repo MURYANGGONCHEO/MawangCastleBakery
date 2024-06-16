@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Chapter_4
   m_EditorClassIdentifier: 
   myChapterType: 3
-  chapterSprite: {fileID: 21300000, guid: 8ce8c7b06d32d13478dacbcbfad9f46d, type: 3}
-  loadMap: {fileID: 2161916790984048551, guid: 37ca7e6a57e40e64ab54ef96a1cc779a, type: 3}
-  chapterName: "\uD3C9\uC628\uD55C \uBE44\uACBD"
-  chapterInfo: "\uCC28\uBD84\uD558\uACE0 \uD3B8\uC548\uD558\uC9C0\uB9CC \uC5B4\uB518\uAC00
-    \uC218\uC0C1\uD55C \uC7A5\uC18C"
+  chapterSprite: {fileID: 21300000, guid: 8b54290620752d445bf029b13a06a4ea, type: 3}
+  battleBG: {fileID: 0}
+  loadMap: {fileID: 0}
+  chapterName: "\uC774\uAE00\uC774\uAE00 \uD654\uC0B0"
+  chapterInfo: "\uD654\uB048 \uB9E4\uCF64\uD55C \uD654\uC0B0\uC9C0\uB300"

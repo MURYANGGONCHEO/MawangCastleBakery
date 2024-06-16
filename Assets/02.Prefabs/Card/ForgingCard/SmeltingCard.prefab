@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toMovePosInSec: 0.5
-  _myCardInfo: {fileID: 11400000, guid: 736ebf39906f4304b906e63fd00329d3, type: 2}
+  _myCardInfo: {fileID: 11400000, guid: 1ec831be6b041ca4688573e42f47b4bf, type: 2}
   _combineLevel: 0
   visualTrm: {fileID: 4765647492564359230}
   _cardMat: {fileID: 2100000, guid: 7215dc6c25e09bd4da589c4bef8f3be2, type: 2}

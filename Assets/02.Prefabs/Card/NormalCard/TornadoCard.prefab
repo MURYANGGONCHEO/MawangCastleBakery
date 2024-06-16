@@ -188,11 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toMovePosInSec: 0.5
-  _myCardInfo: {fileID: 11400000, guid: fb45bd2fae2551544b6f23b1e0c0ad04, type: 2}
-  _objArr:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _myCardInfo: {fileID: 11400000, guid: 65e6a6cf461e8da4fa10e9ca74aea3fa, type: 2}
   _combineLevel: 0
   visualTrm: {fileID: 4765647492564359230}
   _cardMat: {fileID: 2100000, guid: 7215dc6c25e09bd4da589c4bef8f3be2, type: 2}

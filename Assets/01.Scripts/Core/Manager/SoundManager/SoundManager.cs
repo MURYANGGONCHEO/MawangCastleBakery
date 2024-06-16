@@ -45,7 +45,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         _bgmVolumeValue = value;
 
-        CurrentBgmObject.SetVolume(value);
+        CurrentBgmObject?.SetVolume(value);
     }
 
     public void SetSFXVolume(float value)
