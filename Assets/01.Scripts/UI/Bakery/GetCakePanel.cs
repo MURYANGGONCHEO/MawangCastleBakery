@@ -19,7 +19,6 @@ public class GetCakePanel : MonoBehaviour
         _cakenameText.text = cakeData.itemName;
         _cakeRatingText.text = GetRatingText(Count);
     }
-
     private string GetRatingText(int count)
     {
         switch (count)

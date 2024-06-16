@@ -78,38 +78,55 @@ public class BuffingMarkSetter : MonoBehaviour
         }
     }
 
-    public void AddBuffingMark(CombatMarkingData markingData)
+    public void AddBuffingMark(CombatMarkingData markingData, int addCount = 1)
     {
-        BuffingMark buffingMark = Instantiate(_buffingMarkPrefab, transform);
+        BuffingMark target = _buffingMarkList.Find(x => x.CombatMarkingData.buffingType == markingData.buffingType);
+        if (target == null)
+        {
+            BuffingMark buffingMark = Instantiate(_buffingMarkPrefab, transform);
 
-        int idx = (int)markingData.buffingType;
-        buffingMark.SetInfo(_buffingMarkTextureArr[idx], 
-                            _buffingNameArr[idx], markingData, BuffingPanelTrm);
+            int idx = (int)markingData.buffingType;
+            buffingMark.SetInfo(_buffingMarkTextureArr[idx],
+                                _buffingNameArr[idx], markingData, BuffingPanelTrm);
 
-        _buffingMarkList.Add(buffingMark);
-        BuffingMarkPositionSetter(buffingMark.transform);
+            _buffingMarkList.Add(buffingMark);
+            BuffingMarkPositionSetter(buffingMark.transform);
+
+            buffingMark.TokenCount += addCount;
+        }
+        else
+        {
+            target.TokenCount += addCount;
+        }
     }
 
-    public void RemoveBuffingMark(CombatMarkingData markingData)
+    public void RemoveBuffingMark(CombatMarkingData markingData, int RemoveCount = 1)
     {
-        BuffingMark target = _buffingMarkList.Find(x => x.CombatMarkingData.Equals(markingData));
+        BuffingMark target = _buffingMarkList.Find(x => x.CombatMarkingData.buffingType == markingData.buffingType);
         if (target == null) return;
 
-        int idx = _buffingMarkList.IndexOf(target);
-        _buffingMarkList.Remove(target);
+        if(target.TokenCount - RemoveCount <= 0) 
+        {
+            int idx = _buffingMarkList.IndexOf(target);
+            _buffingMarkList.Remove(target);
 
-        Destroy(target.gameObject);
-        BuffingMarkPositionGenerate();
+            Destroy(target.gameObject);
+            BuffingMarkPositionGenerate();
+        }
+        else
+        {
+            target.TokenCount = target.TokenCount - RemoveCount;
+        }
     }
 
     public void RemoveSpecificBuffingType(BuffingType buffingType)
     {
-        BuffingMark[] markArr =
-        _buffingMarkList.FindAll(x => x.CombatMarkingData.buffingType == buffingType).ToArray();
+        BuffingMark target = _buffingMarkList.Find(x => x.CombatMarkingData.buffingType == buffingType);
 
-        foreach(var bf in markArr)
+        if(target != null)
         {
-            RemoveBuffingMark(bf.CombatMarkingData);
+            Destroy(target.gameObject);
+            BuffingMarkPositionGenerate();
         }
     }
 

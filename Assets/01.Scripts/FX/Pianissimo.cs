@@ -7,23 +7,22 @@ public class Pianissimo : MonoBehaviour
 {
     public Transform target;
     private float _speed = 0.0f;
+    private Vector3 _dir;
 
-    private void OnEnable()
-    {
-
-    }
+    public bool isTriggered = false;
 
     private void Update()
     {
-        transform.position += transform.forward * _speed;
+        if (!isTriggered)
+            transform.position += _dir * _speed;
     }
 
     public void Ready()
     {
-        Vector2 dir = (target.position - transform.position).normalized;
+        _dir = (target.position - transform.position).normalized;
 
         Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DORotate(dir , 0.4f));
+        seq.Append(transform.DORotate(_dir, 1f).SetEase(Ease.OutExpo));
         seq.AppendCallback(() =>
         {
             Attack();
@@ -32,6 +31,6 @@ public class Pianissimo : MonoBehaviour
 
     private void Attack()
     {
-        _speed = 0.5f;
+        _speed = 0.7f;
     }
 }

@@ -15,10 +15,11 @@ MonoBehaviour:
   CardName: "\uC11C\uB9AC \uB3CC\uD48D"
   CardType: 0
   CardVisual: {fileID: 21300000, guid: 53b9eeda8e5660249914da697608c46c, type: 3}
+  skillPersonalColor: {r: 1, g: 1, b: 1, a: 1}
   abilityAnimation: {fileID: 0}
-  targetEnemyCount: 6
+  cardShameData: {fileID: 0}
+  cameraSequenceData: {fileID: 0}
   hitEffect: {fileID: 0}
   targetEffect: {fileID: 0}
-  AbillityCost: 4
   AbillityInfo: "\uC11C\uB9AC\uB97C \uB9CC\uB4E4\uC5B4 \uBAA8\uB4E0 \uC801\uC5D0\uAC8C
-    \uBE59\uACB0 1\uC2A4\uD0DD!"
+    \uBE59\uACB0 \uC2A4\uD0DD\uC744 \uBD80\uC5EC!\n<color=#808080ff><size=20>(\uC73C\uC73C...\uCD94\uC6CC\uB77C!)</size></color>"

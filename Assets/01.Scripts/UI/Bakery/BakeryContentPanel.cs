@@ -89,11 +89,11 @@ public class BakeryContentPanel : MonoBehaviour
             RecipeElement re = Instantiate(_recipeElementPrefab, _recipeElementTrm);
             re.ThisCakeData = cd;
             re.SetCakeInfo(BakingManager.Instance.GetCakeDataByName(cd.CakeName));
-            re.ClickAction += UIManager.Instance.GetSceneUI<BakeryUI>().SelectRecipe;
+            re.ClickAction += UIManager.Instance.GetSceneUI<BakeryUI>().SelectFavoriteRecipe;
 
             _recipeElementTrm.sizeDelta += new Vector2(0, _recipeElementInterval);
         }
-    }
+    } 
 
     private void Start()
     {

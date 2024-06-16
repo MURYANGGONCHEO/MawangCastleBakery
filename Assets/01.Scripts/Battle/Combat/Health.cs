@@ -194,6 +194,8 @@ public class Health : MonoBehaviour, IDamageable
         //������� ������ �ؽ�Ʈ �߰�
         DamageTextManager.Instance.PopupDamageText(this, _owner.transform.position, damage, DamageCategory.Debuff);
         OnDamageEvent?.Invoke(_currentHealth, maxHealth);
+        AfterHitFeedbacks(damage);
+
         //Debug.Log($"{gameObject.name} : shocked damage added = {shockDamage}");
     }
 

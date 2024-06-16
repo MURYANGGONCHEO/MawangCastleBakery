@@ -31,7 +31,7 @@ public class FermataSkill : MusicCardBase, ISkillEffectAnim
 
     private IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(2.4f);
 
         foreach (var e in Player.GetSkillTargetEnemyList[this])
         {
@@ -48,6 +48,6 @@ public class FermataSkill : MusicCardBase, ISkillEffectAnim
 
         CombatMarkingData data = new CombatMarkingData(BuffingType.MusicFaint, buffSO.buffInfo, (int)CombineLevel + 1);
 
-        //BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, data, int.MaxValue);
+        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, data, buffSO.stackBuffs[0].values[(int)CombineLevel]);
     }
 }

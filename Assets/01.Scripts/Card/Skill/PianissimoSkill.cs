@@ -15,7 +15,8 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
-        StartCoroutine(AttackCor());
+        Player.VFXManager.PlayPianissimoParticle(this, Player.transform.position, true);
+        Player.BuffStatCompo.AddStack(StackEnum.DEFMusicalNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
         Player.OnAnimationCall -= HandleAnimationCall;
     }
 
@@ -26,14 +27,13 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
         IsActivingAbillity = false;
         Player.VFXManager.OnEndEffectEvent -= HandleEffectEnd;
     }
-
     private IEnumerator AttackCor()
     {
         // ���� �׽�Ʈ �غ�����
 
         yield return new WaitForSeconds(0.3f);
 
-        Player.VFXManager.PlayPianissimoParticle(this);
+        Player.VFXManager.PlayPianissimoParticle(this, Player.transform.position, true);
 
         List<Entity> TEList = Player.GetSkillTargetEnemyList[this];
 
@@ -56,6 +56,6 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
         CombatMarkingData data = new CombatMarkingData(BuffingType.MusicDef,
                                  buffSO.buffInfo, (int)CombineLevel + 1);
 
-        //BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, data, int.MaxValue);
+        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, data, buffSO.stackBuffs[0].values[(int)CombineLevel]);
     }
 }

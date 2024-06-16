@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class KnockBackBase 
+public abstract class KnockBackBase
 {
     protected KnockBackSystem _system;
     protected Entity _owner;
@@ -16,5 +16,11 @@ public abstract class KnockBackBase
     public virtual void ResetPos(Vector3 knockBackBeforePos)
     {
         _owner.transform.DOMove(knockBackBeforePos, 0.2f).SetEase(Ease.OutExpo);
+    }
+    protected float CalculateKnockBackValue(int dmg)
+    {
+        float value = 4 * (1f - 1f / Mathf.Sqrt(0.05f * dmg + 1f));
+        Debug.Log(value);
+        return value;
     }
 }

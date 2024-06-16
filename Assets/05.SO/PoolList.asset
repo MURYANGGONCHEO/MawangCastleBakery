@@ -23,7 +23,7 @@ MonoBehaviour:
     prefab: {fileID: 7301192598319959032, guid: 6a6136265c5f16c438f44ada3bbb7489, type: 3}
     count: 5
   - type: 8
-    prefab: {fileID: 6139292405422245742, guid: fdd713a919e209940b0c7edaece70231, type: 3}
+    prefab: {fileID: 6139292405422245742, guid: 328f7b2de8273b449b04ebda64510d27, type: 3}
     count: 3
   - type: 10
     prefab: {fileID: 767786925461405567, guid: aa3553af6abd36b498bfb191ecb4d5fb, type: 3}
@@ -99,4 +99,4 @@ MonoBehaviour:
     count: 5
   - type: 29
     prefab: {fileID: 8757323107581500810, guid: bd3447c511beddb4fbe64c03c29f17ae, type: 3}
-    count: 5
+    count: 1

@@ -147,7 +147,7 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: -154054
+  m_InstanceId: 133824
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
@@ -502,7 +502,7 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: -154042
+  m_InstanceId: 133822
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
@@ -754,12 +754,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0aea1fa16ea094780a3867eb695115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 30
+  poolingType: 31
   <CharStat>k__BackingField: {fileID: 11400000, guid: 73fe46edb576b2d46967bf9c232e6140, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
-  hpBarTrm: {fileID: 0}
+  hpBarTrm: {fileID: 6946468496451767205}
   forwardTrm: {fileID: 8826935808434868624}
   target: {fileID: 0}
   lastMovePos: {x: 0, y: 0, z: 0}
@@ -767,7 +767,7 @@ MonoBehaviour:
   turnStatus: 0
   attackParticle:
     attack: {fileID: 0}
-  _cameraMoveInfo: {fileID: 11400000, guid: 345c0933b8e8c194c85b6526a5eab97c, type: 2}
+  _cameraMoveInfo: {fileID: 11400000, guid: efbb7ba3f753f9a47ab299f1d83cc652, type: 2}
 --- !u!114 &5505460555375558076
 MonoBehaviour:
   m_ObjectHideFlags: 0

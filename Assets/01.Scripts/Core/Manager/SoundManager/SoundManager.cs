@@ -45,13 +45,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         _bgmVolumeValue = value;
 
-        foreach(var ao in AudioObjList)
-        {
-            if(!ao.IsSFX)
-            {
-                ao.SetVolume(value);
-            }
-        }
+        CurrentBgmObject?.SetVolume(value);
     }
 
     public void SetSFXVolume(float value)

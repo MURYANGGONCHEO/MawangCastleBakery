@@ -41,7 +41,7 @@ public abstract class Enemy : Entity
     {
         attackParticle.attack.owner = this;
         attackParticle.attack.damages = SetDamage((EnemyStat)CharStat);
-
+        attackParticle.attack.SettingInfo(false);
     }
     private int[] SetDamage(EnemyStat stat)
     {

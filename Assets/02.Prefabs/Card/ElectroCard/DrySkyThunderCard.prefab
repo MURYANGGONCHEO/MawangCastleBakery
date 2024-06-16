@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toMovePosInSec: 0.5
-  _myCardInfo: {fileID: 11400000, guid: bcc0cb6b5fd07eb488b996d0b7cb0ec3, type: 2}
+  _myCardInfo: {fileID: 11400000, guid: 8be02c7192f15e1448848ec69f5d8e1c, type: 2}
   _combineLevel: 0
   visualTrm: {fileID: 4765647492564359230}
   _cardMat: {fileID: 2100000, guid: 7215dc6c25e09bd4da589c4bef8f3be2, type: 2}
@@ -143,7 +143,7 @@ MonoBehaviour:
   - 3.5
   - 3.5
   _shockedEffect: {fileID: 4328475238343711852, guid: b6ae50348cfae0a4faeb538a76a5c759, type: 3}
-  _staticEffect: {fileID: 0}
+  _staticEffect: {fileID: 2091689041402810337, guid: 8cecfab1b34c5af489c9e5bbc196221a, type: 3}
 --- !u!1 &5095892556922366697
 GameObject:
   m_ObjectHideFlags: 0

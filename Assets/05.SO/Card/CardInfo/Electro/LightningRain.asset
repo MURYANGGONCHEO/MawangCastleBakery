@@ -21,5 +21,6 @@ MonoBehaviour:
   cameraSequenceData: {fileID: 11400000, guid: 88d221b6651935e4889c51c4704dbcbc, type: 2}
   hitEffect: {fileID: 7993180798688134084, guid: d1b4ff7625bef694c9ddc8c4f34e375a, type: 3}
   targetEffect: {fileID: 0}
-  AbillityInfo: "[Yellow Big Bang!] \uD6C4\uC9C0\uD0C0 \uCF54\uD1A0\uB124 \uD53D\uC5C5
-    \uC885\uB8CC\uAE4C\uC9C0 8\uC77C!!"
+  AbillityInfo: "\uC801 \uC9C4\uC601\uC5D0 \uBC88\uAC1C\uB97C \uB09C\uC0AC\uD574
+    \uC5B4\uB9C8\uC5B4\uB9C8\uD55C \uB370\uBBF8\uC9C0!\n<color=#808080ff><size=20>(\uC6B0\uB974\uB974
+    \uCF70\uACFC\uAD11!)</size></color>"
