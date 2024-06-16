@@ -89,8 +89,15 @@ public class CameraController : MonoBehaviour
             PoolManager.Instance.Push(_poolVCam);
         }
         _poolVCam = PoolManager.Instance.Pop(PoolingType.VCamPool) as PoolVCam;
+
+        _poolVCam.Confiner.m_BoundingShape2D
+        = GameManager.Instance.GetContent<BattleContent>().ContentConfiner;
+
+        Debug.Log(_poolVCam.Confiner.m_BoundingShape2D);
+
         _vCam = _poolVCam.VCam;
         _vCam.Follow = _target;
+        
 
         _runningCamCor = StartCoroutine(CameraSequenceCo(moveType.camMoveSequenceList, stayCam, endCallBack));
     }

@@ -13,14 +13,43 @@ public class BuffingMark : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private Image _visual;
     [SerializeField] private BuffInfoPanel _infoPanelPrefab;
     [SerializeField] private RectTransform _infoPanelTrm;
+    [SerializeField] private TextMeshProUGUI _tokenCountText;
     private BuffInfoPanel _currentInfoPanel;
 
     public int VisualIndex { get; private set; }
     private Transform _infoPanelParent;
     private string _buffName;
     private string _buffInfo;
+    private int _tokenCount;
+    public int TokenCount
+    {
+        get
+        {
+            return _tokenCount;
+        }
+        set
+        {
+            _tokenCount = value;
+            SetCountText(_tokenCount);
+        }
+    }
 
     private Tween _infoPanelTween;
+
+    private void SetCountText(int totalCount)
+    {
+        if (totalCount <= 1) return;
+
+        _tokenCountText.enabled = true;
+        _tokenCountText.transform.DOKill();
+
+        _tokenCountText.transform.DOScale(1.1f, 0.1f).OnComplete(() =>
+        {
+            _tokenCountText.text = $"<size=\"15\">X</size>{totalCount}";
+            _tokenCountText.transform.DOScale(1f, 0.1f);
+        });
+        
+    }
 
     public void SetInfo(Sprite visual, string buffName, CombatMarkingData data, Transform panelTrm)
     {

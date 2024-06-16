@@ -977,7 +977,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 0
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -3217,7 +3217,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0.2, y: 0.2, z: 0}
+  m_DefaultVelocity: {x: -0.4688216, y: -0.1978516, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4728,7 +4728,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 276281a078b479d4ab21c22376c0f927, type: 2}
   - {fileID: 11400000, guid: 3ecff4985eca0b94aaf1f3fe229b8604, type: 2}
   _cakeDataArr:
+  - {fileID: 11400000, guid: a2dcd3252ef8c0c4d98f385f36915429, type: 2}
+  - {fileID: 11400000, guid: 4eb8b922153dea447bf11104fbb0b74c, type: 2}
+  - {fileID: 11400000, guid: ad6ca02ae66b4db409bb305d2be9d65b, type: 2}
+  - {fileID: 11400000, guid: 7c4ca15359656944fb0842d63995cf54, type: 2}
+  - {fileID: 11400000, guid: 7f057995505fc6545a06210547b328fc, type: 2}
+  - {fileID: 11400000, guid: 129bdd709eb7b384289c2ac4626a9d0d, type: 2}
+  - {fileID: 11400000, guid: d588bea15cbe4ca4aaa3e015a04e2324, type: 2}
+  - {fileID: 11400000, guid: e920e50755661e44f93a673db82d56a3, type: 2}
+  - {fileID: 11400000, guid: e0d2e5b6616073c4a8fe652aaca6d84b, type: 2}
+  - {fileID: 11400000, guid: 5ac00b009317a424598decadf8b6eb61, type: 2}
+  - {fileID: 11400000, guid: 64bc43cfaf9d7d34bbf120424a76d9f3, type: 2}
+  - {fileID: 11400000, guid: 0aa861c512299c446bc0ba44cd51ecc2, type: 2}
   - {fileID: 11400000, guid: 7a6d4fb06b888cc4eb9564e0ddbf6eef, type: 2}
+  - {fileID: 11400000, guid: 69aef7abd455f154199d807fe13c530d, type: 2}
+  - {fileID: 11400000, guid: 80a8d54f3763e8749a1ab29962ef5738, type: 2}
 --- !u!4 &8075597554576919893
 Transform:
   m_ObjectHideFlags: 0

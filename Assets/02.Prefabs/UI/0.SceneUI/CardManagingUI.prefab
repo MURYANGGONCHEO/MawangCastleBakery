@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myType: 10
-  _audioClip: {fileID: 0}
+  _audioClip: {fileID: 8300000, guid: da7bdee8db510394b8ff46994b782f74, type: 3}
   _onPressLevelUpEvent:
     m_PersistentCalls:
       m_Calls:

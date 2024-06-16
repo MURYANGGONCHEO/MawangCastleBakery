@@ -20728,7 +20728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myType: 4
-  _audioClip: {fileID: 8300000, guid: d061cc8c766d62343912989f37f2c32b, type: 3}
+  _audioClip: {fileID: 8300000, guid: 18aad0836f255744ebb77f5b5dbb93bd, type: 3}
   _eatRange: {fileID: 4942015437264009739}
   _creamStand: {fileID: 3839284644253613737}
   _cakeCollocation: {fileID: 507611781726430238}
