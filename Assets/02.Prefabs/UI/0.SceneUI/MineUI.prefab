@@ -1974,7 +1974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myType: 8
-  _audioClip: {fileID: 8300000, guid: 908fcec18fd43924999a7e7e0e3b7eea, type: 3}
+  _audioClip: {fileID: 8300000, guid: 0990f5384b4fa38439983692d5b27860, type: 3}
   _battleController: {fileID: 563568355524848664}
   _battleResultPanel: {fileID: 7853449820836899743}
   _turnCounting: {fileID: 8653707888193491943}
@@ -5278,7 +5278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1840610453011533679}
-  - component: {fileID: 1680991127224025873}
+  - component: {fileID: 7466776874389536421}
   m_Layer: 5
   m_Name: CardFactory
   m_TagString: Untagged
@@ -5305,7 +5305,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1680991127224025873
+--- !u!114 &7466776874389536421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5314,7 +5314,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6752530333566202611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 254402fced586ae4baa67dc029448e40, type: 3}
+  m_Script: {fileID: 11500000, guid: e32b7631dbfc691479b93c56fe74011d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cardSpawnTrm: {fileID: 4467691753575866750}
@@ -6062,7 +6062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18487d215e09ee4aab185fa9351b426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waitZone: {fileID: 6434277317110115116}
+  _dragFilter: {fileID: 0}
 --- !u!1 &7733832554174663774
 GameObject:
   m_ObjectHideFlags: 0
@@ -7095,6 +7095,9 @@ MonoBehaviour:
   _combineFX: {fileID: 5967044954516746548, guid: 42b37a345329f254d87f64799b2396f9, type: 3}
   _combinningSce: 0.5
   _combineCompleteSec: 0.5
+  _level_1_Color: {r: 0, g: 0, b: 0, a: 0}
+  _level_2_Color: {r: 0, g: 0, b: 0, a: 0}
+  _level_3_Color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8842705559369365729
 GameObject:
   m_ObjectHideFlags: 0
