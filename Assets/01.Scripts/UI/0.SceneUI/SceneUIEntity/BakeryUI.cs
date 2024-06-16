@@ -84,4 +84,9 @@ public class BakeryUI : SceneUI
         yield return new WaitForSeconds(1);
         GetCakePanel.SetUp(ToGetCakeType, ToGetCakeCount);
     }
+
+    public void Reload()
+    {
+        GameManager.Instance.ChangeScene(SceneType.bakery);
+    }
 }
