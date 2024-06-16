@@ -152,7 +152,7 @@ namespace BTVisual
             if (node)
             {
                 visitor.Invoke(node);
-                var children = GetChildren(node);
+                var children = GetChildren(node); //여기서 빌드 오류
                 children.ForEach(n => Traverse(n, visitor));
             }
         }
