@@ -16,6 +16,10 @@ public class BattleContent : Content
     }
     public override void ContentEnd()
     {
+        
+    }
+    public void OnDestroy()
+    {
         Camera.main.orthographic = true;
     }
 }
