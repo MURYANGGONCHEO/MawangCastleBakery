@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5896723930e00cd458e877f2f5442079, type: 3}
   m_Name: JaggieLantern
   m_EditorClassIdentifier: 
-  CardName: "\uC7AC\uAE30 \uB79C\uD134"
+  CardName: "\uD38C\uD0A8 \uD31D"
   CardType: 0
   CardVisual: {fileID: 21300000, guid: 9430e4ac3a291624296a2e7aa6d270d5, type: 3}
   skillPersonalColor: {r: 1, g: 0.60981077, b: 0, a: 1}

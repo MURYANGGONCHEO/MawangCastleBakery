@@ -129,7 +129,7 @@ public class PlayerVFXManager : MonoBehaviour
     {
         if (!_cardByEffects.ContainsKey(card))
         {
-            Debug.LogError("����Ʈ�� �����");
+            Debug.LogError(card);
             return;
         }
 

@@ -12,6 +12,8 @@ public class DeckManager : MonoSingleton<DeckManager>
     {
         foreach(CardBase card in _totalCardArr)
         {
+            Debug.Log(card);
+            Debug.LogWarning(card.CardInfo.CardName);
             _getCardDic.Add(card.CardInfo.CardName, card);
         }
     }
