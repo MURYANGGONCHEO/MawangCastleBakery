@@ -11,7 +11,7 @@ public class MonStrowberry : Enemy
     protected override void Start()
     {
         base.Start();
-        VFXPlayer.OnEndEffect += () => 
+        VFXPlayer.OnEndEffect += () =>
         {
             turnStatus = TurnStatus.End;
             OnAttackEnd?.Invoke();
@@ -23,20 +23,11 @@ public class MonStrowberry : Enemy
         attackParticle.attack.AddTriggerTarget(target);
 
         OnAttackStart?.Invoke();
+        Vector3 pos = (Vector3)attackParticle.attack.transform.position - new Vector3(1.52f, 0);
+        Vector3 dir = (Vector3)target.transform.position - pos;
 
+        attackParticle.attack.transform.right = -dir;
         VFXPlayer.PlayParticle(attackParticle);
-        StartCoroutine(AttackCor());
-    }
-    private IEnumerator AttackCor()
-    {
-        yield return new WaitForSeconds(1.4f);
-        Vector3 vfxPos = attackParticle.attack.transform.position;
-        Quaternion vfxQua = attackParticle.attack.transform.rotation;
-        SetSeedVFXPos();
-
-        attackParticle.attack.transform.position = vfxPos;
-        attackParticle.attack.transform.rotation = vfxQua;
-
     }
 
     public override void SlowEntityBy(float percent)
@@ -67,13 +58,5 @@ public class MonStrowberry : Enemy
 
     protected override void HandleEndMoveToTarget()
     {
-    }
-    private void SetSeedVFXPos()
-    {
-        Vector2 pos = (Vector2)attackParticle.attack.transform.position - new Vector2(1.64f, 0);
-        Vector2 dir = (Vector2)target.transform.position - pos;
-
-        attackParticle.attack.transform.position = pos + dir.normalized;
-        attackParticle.attack.transform.right = dir.normalized * -1;
     }
 }
