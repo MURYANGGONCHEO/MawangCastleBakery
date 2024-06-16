@@ -11,5 +11,6 @@ public class MapDataSO : ScriptableObject
     public Sprite battleBG;
     public GameObject loadMap;
     public string chapterName;
+    [TextArea]
     public string chapterInfo;
 }
