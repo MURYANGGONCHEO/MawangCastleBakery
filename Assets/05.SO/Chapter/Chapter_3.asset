@@ -17,5 +17,5 @@ MonoBehaviour:
   battleBG: {fileID: 21300000, guid: 25abc653faddbcc499edd601c87eeafc, type: 3}
   loadMap: {fileID: 259170663023186285, guid: f64e584b5591af440bf3a42de542b991, type: 3}
   chapterName: "\uC5BC\uC74C \uAF41\uAF41 \uACE8\uC9DC\uAE30"
-  chapterInfo: "\uB208\uACFC \uC5BC\uC74C\uC73C\uB85C \uB4A4\uB365\uD78C \uC5B4\uB290
+  chapterInfo: "\uB208\uACFC \uC5BC\uC74C\uC73C\uB85C \uB4A4\uB365\uD78C \n\uC5B4\uB290
     \uC0B0\uACE8\uC9DC\uAE30"

@@ -9,6 +9,8 @@ public class CombatMarkManagement : MonoBehaviour
 
     public void AddBuffingData(Entity entity, int cardID, CombatMarkingData markingData, int count = 1)
     {
+        if(entity.HealthCompo.IsDead) return;
+
         for(int i = 0; i< count; i++)
         {
             entity.BuffSetter.AddBuffingMark(markingData);

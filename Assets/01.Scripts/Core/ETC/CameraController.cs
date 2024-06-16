@@ -119,7 +119,7 @@ public class CameraController : MonoBehaviour
 
             if (seq.shakeDefination.isShaking)
             {
-                FeedbackManager.Instance.ShakeScreen(Vector2.one * 0.2f,
+                FeedbackManager.Instance.ShakeScreen(Vector2.one * 2f,
                                                      seq.shakeDefination.seconds);
             }
 

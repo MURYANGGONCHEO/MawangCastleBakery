@@ -35,6 +35,7 @@ public class BakeryUI : SceneUI
 
     public override void SceneUIStart()
     {
+        base.SceneUIStart();
         _previewPanels = _previewPanelObj.GetComponentsInChildren<PreviewPanel>();
     }
     
@@ -82,5 +83,10 @@ public class BakeryUI : SceneUI
     {
         yield return new WaitForSeconds(1);
         GetCakePanel.SetUp(ToGetCakeType, ToGetCakeCount);
+    }
+
+    public void Reload()
+    {
+        GameManager.Instance.ChangeScene(SceneType.bakery);
     }
 }

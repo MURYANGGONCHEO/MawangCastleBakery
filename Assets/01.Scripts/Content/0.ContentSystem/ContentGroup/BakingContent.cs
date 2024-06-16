@@ -24,4 +24,9 @@ public class BakingContent : Content
     {
         _stoveGroup.SetActive(true);
     }
+
+    public void OnEnable()
+    {
+        
+    }
 }

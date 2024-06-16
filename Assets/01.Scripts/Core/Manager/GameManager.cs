@@ -20,6 +20,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     [Header("Fade")]
     [SerializeField] private FadePanel _fadePanel;
+    private bool _isLoading = false;
 
     private void Start()
     {
@@ -76,7 +77,7 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public void ChangeScene(SceneType toChangingScene)
     {
-        if (toChangingScene == CurrentSceneType) return;
+        if (_isLoading) return;
 
         SceneObserver.BeforeSceneType = CurrentSceneType;
 
@@ -90,7 +91,9 @@ public class GameManager : MonoSingleton<GameManager>
 
     private IEnumerator Fade(SceneType toChangingScene)
     {
+        _isLoading = true;
         yield return _fadePanel.StartFade(MaestrOffice.GetWorldPosToScreenPos(Input.mousePosition));
+        _isLoading = false;
 
         SceneObserver.CurrentSceneType = SceneType.loading;
         SceneObserver.CurrentSceneType = toChangingScene;
