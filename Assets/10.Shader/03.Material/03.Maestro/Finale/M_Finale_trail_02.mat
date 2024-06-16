@@ -184,7 +184,7 @@ Material:
     - _Mask_Pow: 1
     - _Mask_Range: 2.9
     - _Metallic: 0
-    - _Noise_Str: 0.113
+    - _Noise_Str: 0.055
     - _Noise_Tex_UPanner: 0
     - _Noise_Tex_VPanner: 0
     - _Noise_UPanner: 0
@@ -192,7 +192,7 @@ Material:
     - _Noise_VPanner: 0
     - _Noise_str: 1
     - _OcclusionStrength: 1
-    - _Opacity: 2.41
+    - _Opacity: 2.52
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -209,9 +209,9 @@ Material:
     - _SubTex_UPanner: 0
     - _SubTex_VPanner: 0
     - _Surface: 0
-    - _Trail_Ins: 2.2
-    - _Trail_Pow: 1
-    - _UPanner: 0.7
+    - _Trail_Ins: 2.8
+    - _Trail_Pow: 2.52
+    - _UPanner: -2.01
     - _Use_AddMulityMask: 0
     - _Use_Ceil: 0
     - _Use_Customdata: 0
@@ -251,7 +251,7 @@ Material:
     - _step_a: 0.548
     - _step_b: 1
     - _sub_ins: 10
-    - _sub_pow: 10
+    - _sub_pow: 3.15
     - _sub_upanner: -0.82
     - _sub_vpanner: 0
     - _use_other_diss: 0
@@ -267,7 +267,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SubTex_Color: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 6.498019, g: 6.498019, b: 6.498019, a: 0}
+    - _TintColor: {r: 9.734287, g: 9.734287, b: 9.734287, a: 0}
     - _Tint_Color: {r: 1, g: 1, b: 1, a: 0}
     - _color_a: {r: 1, g: 1, b: 1, a: 0}
     - _color_b: {r: 0.44139373, g: 0.48180932, b: 0.8584906, a: 0}

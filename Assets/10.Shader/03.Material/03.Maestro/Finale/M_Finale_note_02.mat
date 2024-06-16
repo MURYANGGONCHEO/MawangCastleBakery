@@ -266,7 +266,7 @@ Material:
     - _color_b: {r: 0.44139373, g: 0.48180932, b: 0.8584906, a: 0}
     - _edge_color: {r: 0, g: 0, b: 0, a: 0}
     - _main_color: {r: 1, g: 1, b: 1, a: 0}
-    - _main_color_a: {r: 6.422234, g: 6.422234, b: 6.422234, a: 0}
+    - _main_color_a: {r: 16.948378, g: 16.948378, b: 16.948378, a: 0}
     - _main_color_b: {r: 1, g: 1, b: 1, a: 0}
     - _main_scale: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

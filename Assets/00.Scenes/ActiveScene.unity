@@ -4349,10 +4349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae3d494dac42a6488a117f61726eed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xOrigin: 0
-  yOrigin: 0
+  xOrigin: 11
+  yOrigin: 6
   offset: {x: 0, y: 0}
-  radius: 0
+  radius: 2
   pixelCount: 128
   shader: {fileID: -6465566751694194690, guid: 74ba13b14a998c74cbcfba3b6f325b9b, type: 3}
 --- !u!114 &7540889930491852245

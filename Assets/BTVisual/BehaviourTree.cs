@@ -120,6 +120,7 @@ namespace BTVisual
                 return;
             }
         }
+#endif
 
         public List<Node> GetChildren(Node parent)
         {
@@ -144,7 +145,6 @@ namespace BTVisual
             }
             return children;
         }
-#endif
 
         public void Traverse(Node node, System.Action<Node> visitor)
         {
