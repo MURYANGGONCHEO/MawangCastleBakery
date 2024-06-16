@@ -21,4 +21,5 @@ MonoBehaviour:
   cameraSequenceData: {fileID: 11400000, guid: 9a63dce6b35820c40af25a2cab3af73c, type: 2}
   hitEffect: {fileID: 0}
   targetEffect: {fileID: 0}
-  AbillityInfo: "\uCE58\uC720 \uC0C1\uD0DC\uC640 \uC7AC\uB828 \uC2A4\uD0DD \uBD80\uC5EC!"
+  AbillityInfo: "\uCE58\uC720 \uC0C1\uD0DC\uC640 \uC7AC\uB828 \uC2A4\uD0DD \uBD80\uC5EC!\n<color=#808080ff><size=20>(\uC0C8\uAC83
+    \uCC98\uB7FC \uAE68\uB057\uD558\uAC8C!)</size></color>"
