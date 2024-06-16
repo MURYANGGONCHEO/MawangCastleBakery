@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myType: 3
-  _audioClip: {fileID: 0}
+  _audioClip: {fileID: 8300000, guid: 9818fe9124efdd14a9323b5aa1bcd605, type: 3}
   _getCakePanel: {fileID: 3142738785894503656}
   _previewPanelObj: {fileID: 6933025954325942088}
   _bakingGroup: {fileID: 1479307559204508322}
