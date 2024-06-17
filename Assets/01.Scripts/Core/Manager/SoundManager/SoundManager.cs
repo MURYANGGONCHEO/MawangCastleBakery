@@ -52,14 +52,13 @@ public class SoundManager : MonoSingleton<SoundManager>
     public void SetSFXVolume(float value)
     {
         _sfxVolumeValue = value;
-
-        foreach (var ao in AudioObjList)
-        {
-            if (ao.IsSFX)
-            {
-                ao.SetVolume(value);
-            }
-        }
+        //foreach (var ao in AudioObjList)
+        //{
+        //    if (ao.IsSFX)
+        //    {
+        //        ao.SetVolume(value);
+        //    }
+        //}
     }
 
     public void SetMasterVolume(float value)
