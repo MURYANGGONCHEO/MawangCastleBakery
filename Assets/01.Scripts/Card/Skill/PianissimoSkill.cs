@@ -15,6 +15,7 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
 
     public void HandleAnimationCall()
     {
+        SoundManager.PlayAudio(_soundEffect, true);
         Player.VFXManager.PlayPianissimoParticle(this, Player.transform.position, true);
         StartCoroutine(AttackCor());
         Player.BuffStatCompo.AddStack(StackEnum.DEFMusicalNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
