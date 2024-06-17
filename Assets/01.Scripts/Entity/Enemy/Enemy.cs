@@ -72,7 +72,6 @@ public abstract class Enemy : Entity
     protected override void OnEnable()
     {
         base.OnEnable();
-        HealthCompo.OnDeathEvent.AddListener(GotoPool);
 
         OnAttackStart += HandleAttackStart;
         OnAttackStart += HandleCameraAction;
@@ -82,7 +81,6 @@ public abstract class Enemy : Entity
     protected override void OnDisable()
     {
         base.OnDisable();
-        HealthCompo.OnDeathEvent.RemoveListener(GotoPool);
         OnAttackStart -= HandleAttackStart;
         OnAttackStart -= HandleCameraAction;
         OnAttackEnd -= HandleAttackEnd;

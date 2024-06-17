@@ -21,8 +21,9 @@ public class Pianissimo : MonoBehaviour
     {
         _dir = (target.position - transform.position).normalized;
 
+        float angle = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
         Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DORotate(_dir, 1f).SetEase(Ease.OutExpo));
+        seq.Append(transform.DOLocalRotateQuaternion(Quaternion.Euler(0, angle+45, 0), 1f));
         seq.AppendCallback(() =>
         {
             Attack();

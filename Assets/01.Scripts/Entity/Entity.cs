@@ -100,13 +100,14 @@ public abstract class Entity : PoolableMono
 
         OnMoveTarget += HandleEndMoveToTarget;
         OnMoveOriginPos += HandleEndMoveToOriginPos;
-        HealthCompo.OnHitEvent.AddListener(HandleHit);
 
         HealthCompo.OnAilmentChanged.AddListener(HandleAilmentChanged);
         OnHealthBarChanged?.Invoke(HealthCompo.GetNormalizedHealth()); //�ִ�ġ�� UI����.
 
         HealthCompo.OnDeathEvent.AddListener(HandleDie);
         HealthCompo.OnDeathEvent.AddListener(BuffStatCompo.ClearStat);
+        HealthCompo.OnHitEvent.AddListener(HandleHit);
+
         ColliderCompo.enabled = true;
     }
     protected virtual void OnDisable()
@@ -147,7 +148,7 @@ public abstract class Entity : PoolableMono
     protected virtual void HandleHit(int dmg)
     {
         //UI����
-        FeedbackManager.Instance.Blink(SpriteRendererCompo.material,0.1f);
+        FeedbackManager.Instance.Blink(SpriteRendererCompo.material, 0.1f);
 
         float currentHealth = HealthCompo.GetNormalizedHealth();
         if (currentHealth > 0)
@@ -162,6 +163,7 @@ public abstract class Entity : PoolableMono
     {
 
         AnimatorCompo.SetTrigger(_deathAnimationHash);
+        OnAnimationCall += GotoPool;
     }
 
     public abstract void SlowEntityBy(float percent); //���ο�� �ڽĵ��� ����.
@@ -194,7 +196,7 @@ public abstract class Entity : PoolableMono
         //seq.Append(transform.DOMove(target.forwardTrm.position, moveDuration));
         seq.Append(transform.DOJump(target.forwardTrm.position, 1, 1, 0.6f));
 
-        seq.OnComplete(OnMoveTarget.Invoke);
+        seq.OnComplete(() => OnMoveTarget?.Invoke());
     }
 
     public virtual void MoveToEnemiesCenter(float duration)
@@ -205,7 +207,7 @@ public abstract class Entity : PoolableMono
         Sequence seq = DOTween.Sequence();
         //seq.Append(transform.DOMove(target.forwardTrm.position, moveDuration));
         seq.Append(transform.DOJump(BattleController.FormationCenterPos, 1, 1, duration));
-        seq.OnComplete(OnMoveTarget.Invoke);
+        seq.OnComplete(()=>OnMoveTarget?.Invoke());
     }
 
     protected abstract void HandleEndMoveToTarget();
@@ -218,6 +220,7 @@ public abstract class Entity : PoolableMono
 
     public void GotoPool()
     {
+        OnAnimationCall -= GotoPool;
         StartCoroutine(DissolveCo());
     }
     private IEnumerator DissolveCo()
@@ -236,6 +239,14 @@ public abstract class Entity : PoolableMono
 
     public override void Init()
     {
+        OnHealthBarChanged.RemoveAllListeners();
+        //OnAnimationCall = null;
+        //OnAnimationEnd = null;
 
+        //OnMoveTarget = null;
+        //OnMoveOriginPos = null;
+
+        //OnAttackStart = null;
+        //OnAttackEnd = null;
     }
 }
