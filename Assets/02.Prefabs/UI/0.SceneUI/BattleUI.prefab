@@ -5663,7 +5663,7 @@ MonoBehaviour:
   _characterStandImg: {fileID: 5319295625983510550}
   _characterInteractionList:
   - characterFaceVisual: {fileID: 21300000, guid: 32c2c73dd6351234fb5e8cdfc01721e4, type: 3}
-    line: "\uC774\uC815\uB3C4\uB294 \n\uAC00\uBFD0\uD558\uD558\uC8E0!"
+    line: "\uC774\uC815\uB3C4\uB294 \n\uAC00\uBFD0\uD558\uC8E0! "
   _speachBubble: {fileID: 1198907826303237867}
 --- !u!1 &8165656545168704638
 GameObject:

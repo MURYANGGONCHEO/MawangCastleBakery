@@ -44,8 +44,12 @@ public class TeaTimeCakeObject : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             _teaTimeUI.TeaTimeCreamStand.EatCake(CakeInfo);
             _teaTimeUI.CakeCollocation.UnCollocateCake(CakeInfo);
+
+            Debug.Log($"케이크 인포 : {CakeInfo}, 카드 : {CakeInfo.ToGetCardBase.CardInfo}");
+
             _teaTimeUI.TeaTimeCreamStand.Reaction();
             UIManager.Instance.GetSceneUI<TeaTimeUI>().SetCard(CakeInfo.ToGetCardBase.CardInfo);
+
             _cakeImg.enabled = false;
         }
         else
