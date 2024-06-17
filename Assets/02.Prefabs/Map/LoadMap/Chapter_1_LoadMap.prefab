@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isStageBubbleReverse: 0
-  _stageData: {fileID: 11400000, guid: d1ae0d6efcb4810499f2ebd071cf78fc, type: 2}
+  _stageData: {fileID: 11400000, guid: 5df10278e76c1ea48b9bd7dfa1ccbae6, type: 2}
 --- !u!1 &5590222932398808895
 GameObject:
   m_ObjectHideFlags: 0
