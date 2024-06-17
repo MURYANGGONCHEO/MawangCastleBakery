@@ -52,7 +52,7 @@ public class CardFactory : MonoBehaviour
         {
             for (int i = 0; i < count; i++)
             {
-                CardBase selectInfo = BattleReader.GetCardInDeck();
+                CardBase selectInfo = BattleReader.GetRandomCardInDeck();
 
                 _toDrawCatalog.Enqueue(selectInfo);
             }

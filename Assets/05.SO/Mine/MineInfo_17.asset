@@ -15,4 +15,4 @@ MonoBehaviour:
   Floor: 17
   ClearGem: 100
   IsClearThisStage: 0
-  stageData: {fileID: 11400000, guid: a21ced6014087f4468df0394c60114cd, type: 2}
+  stageData: {fileID: 11400000, guid: 97049db6ccd6ebc47b64a51af42deb80, type: 2}

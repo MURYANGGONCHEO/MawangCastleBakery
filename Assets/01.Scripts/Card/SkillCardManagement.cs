@@ -32,7 +32,7 @@ public class SkillCardManagement : CardManagement
 
     private void Start()
     {
-        InCardZoneCatalogue.ListChanged += HandleCheckAcceptBtn;
+        InCardZoneCatalogue.ListAdded += HandleCheckAcceptBtn;
 
         TurnCounter.EnemyTurnStartEvent += (bool v) => _checkStageClearEvent?.Invoke();
         TurnCounter.PlayerTurnStartEvent += (bool v) => _checkStageClearEvent?.Invoke();
