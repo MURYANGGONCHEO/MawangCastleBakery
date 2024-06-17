@@ -244,7 +244,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -3236,7 +3236,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 2, y: 2, z: 0}
+  m_DefaultVelocity: {x: 0.2, y: 0.2, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4379,7 +4379,6 @@ MonoBehaviour:
   xOrigin: 11
   yOrigin: 6
   offset: {x: 0, y: 0}
-  radius: 2
   pixelCount: 128
   shader: {fileID: -6465566751694194690, guid: 74ba13b14a998c74cbcfba3b6f325b9b, type: 3}
 --- !u!114 &7540889930491852245
@@ -4430,10 +4429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8724537186fb349abe1057d4e64a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryList:
-  - {fileID: 11400000, guid: 95dfa7db78c99034ba2a9decfc8e3539, type: 2}
-  - {fileID: 11400000, guid: fc41c1c9390f49646a642dbd6805ff33, type: 2}
-  - {fileID: 11400000, guid: 660723e770fbfa74580dd259bc9a0a6a, type: 2}
+  _inventoryList: []
 --- !u!4 &7663057329350200401
 Transform:
   m_ObjectHideFlags: 0
