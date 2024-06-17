@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class SelectMapUI : SceneUI
 {
+    [SerializeField] private ChapterElement[] _chapterElement;
     [SerializeField] private MapSelectPanelLock[] _panelLockArr;
     private AdventureData _adventureData = new AdventureData();
 
     public override void SceneUIStart()
     {
-        base    .SceneUIStart();
+        base.SceneUIStart();
         SceneObserver.BeforeSceneType = SceneType.Lobby;
 
         GenerateUnLockPanel();
@@ -31,6 +32,8 @@ public class SelectMapUI : SceneUI
         int chapterIdx = Convert.ToInt16(_adventureData.InChallingingStageCount.Split('-')[0]);
         for (int i = 0; i < chapterIdx; i++)
         {
+            //_chapterElement[i].CanTryThisChapter = true;
+
             if (_adventureData.IsLookUnLockProductionArr[i])
             {
                 _panelLockArr[i].UnLockStageWithOutProduction();
@@ -41,6 +44,8 @@ public class SelectMapUI : SceneUI
                 _adventureData.IsLookUnLockProductionArr[i] = true;
             }
         }
+
+        _chapterElement[0].CanTryThisChapter = true;
 
         DataManager.Instance.SaveData(_adventureData, DataKeyList.adventureDataKey);
     }
