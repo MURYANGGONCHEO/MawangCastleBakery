@@ -19,6 +19,7 @@ MonoBehaviour:
   abilityAnimation: {fileID: 7400000, guid: fa0da448e6c6a9845abf8b8b082d79f8, type: 2}
   cardShameData: {fileID: 11400000, guid: bf18d64870174274e96d8381df677c06, type: 2}
   cameraSequenceData: {fileID: 11400000, guid: dbfadf25c23ecbd4985e61b3108d6cec, type: 2}
+  clip: {fileID: 8300000, guid: 8fef283772baf5042ae81349317e31c1, type: 3}
   hitEffect: {fileID: 6323366485217575769, guid: 971de85cfbed0404eb0c45f742358806, type: 3}
   targetEffect: {fileID: 0}
   AbillityInfo: "\uC801 \uC804\uCCB4\uC5D0\uAC8C \uC74C\uD45C\uB97C \uB09C\uC0AC!\n<color=#808080ff><size=20>(\uC74C\uC744
