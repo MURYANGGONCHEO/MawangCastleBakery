@@ -64,11 +64,11 @@ Material:
     - _EnableExternalAlpha: 0
     - _alpha: 1
     - _blink_amount: 0
-    - _dissolve_amount: 0.514
-    - _dissolve_edge: 0.0124
+    - _dissolve_amount: 0
+    - _dissolve_edge: 0.0115
     - _dissolve_pixelize_scale: 31.48
     - _is_outline: 1
-    - _noise_scale: 193.3
+    - _noise_scale: 17.7
     - _noise_step: 0.429
     - _outline_thickness: 0
     - _pixel: 500
@@ -80,7 +80,8 @@ Material:
     - _aura_panner_speed: {r: 0, g: -0.36, b: 0, a: 0}
     - _aura_tiling: {r: 1.19, g: 0.07, b: 0, a: 0}
     - _blink_color: {r: 1, g: 1, b: 1, a: 0}
-    - _dissolve_color: {r: 2.4622898, g: 0.7317182, b: 2.0943062, a: 0}
+    - _dissolve_color: {r: 3.0082355, g: 2.5641897, b: 0.9507159, a: 0}
+    - _dissolve_tiling: {r: 9, g: 1, b: 0, a: 0}
     - _outline_color: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8458588442279574301
