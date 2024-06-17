@@ -53,6 +53,7 @@ public class StageInfoPanel : PanelUI
         {
             gameObject.SetActive(false);
             UIManager.Instance.GetSceneUI<BattleUI>().SystemActive?.Invoke(true);
+            seq.Kill();
         });
     }
 }

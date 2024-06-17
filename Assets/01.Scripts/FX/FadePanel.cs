@@ -10,7 +10,6 @@ public class FadePanel : MonoBehaviour
     public float yOrigin;
 
     public Vector2 offset = Vector2.zero;
-    public float radius = 0.0f;
     public float pixelCount = 128.0f;
     public Shader shader;
 
@@ -18,8 +17,6 @@ public class FadePanel : MonoBehaviour
 
     private void Awake()
     {
-        radius = 2.0f;
-
         if (material == null) material = new Material(shader);
 
         Image img = GetComponent<Image>();
@@ -36,14 +33,15 @@ public class FadePanel : MonoBehaviour
 
         material.SetFloat("_xOff", offset.x);
         material.SetFloat("_yOff", offset.y);
-        material.DOFloat(0.0f, Shader.PropertyToID("_radius"), 1.0f).SetEase(Ease.OutQuad);
+        
+        material.DOFloat(0.0f, Shader.PropertyToID("_radius"), 1.0f).SetUpdate(UpdateType.Fixed);
     }
 
     private void DeFade()
     {
         material.SetFloat("_xOff", 0);
         material.SetFloat("_yOff", 0);
-        material.DOFloat(4.0f, Shader.PropertyToID("_radius"), 2.0f);
+        material.DOFloat(5.0f, Shader.PropertyToID("_radius"), 2.0f);
     }
 
     public Coroutine StartFade(Vector2 pos)
