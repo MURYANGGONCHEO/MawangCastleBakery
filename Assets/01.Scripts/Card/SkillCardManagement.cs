@@ -33,6 +33,9 @@ public class SkillCardManagement : CardManagement
     private void Start()
     {
         InCardZoneCatalogue.ListChanged += HandleCheckAcceptBtn;
+
+        TurnCounter.EnemyTurnStartEvent += (bool v) => _checkStageClearEvent?.Invoke();
+        TurnCounter.PlayerTurnStartEvent += (bool v) => _checkStageClearEvent?.Invoke();
     }
     private void HandleCheckAcceptBtn(object sender, EventArgs e)
     {
@@ -92,7 +95,6 @@ public class SkillCardManagement : CardManagement
 
             TurnCounter.TurnCounting.ToEnemyTurnChanging(true);
             _setupHandCardEvent?.Invoke(true);
-            _checkStageClearEvent?.Invoke();
 
             BattleReader.AbilityTargetSystem.AllChainClear();
             

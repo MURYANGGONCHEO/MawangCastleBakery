@@ -6292,10 +6292,10 @@ MonoBehaviour:
   _stagePanel:
     inStageCount: {fileID: 1403707329423207126}
     chapterVisualList:
-    - {fileID: 21300000, guid: a600d2e144a67b142a54f16e34498b11, type: 3}
+    - {fileID: 21300000, guid: f90f8b3fa33f9844a947c6f639c006d0, type: 3}
     - {fileID: 21300000, guid: 3d9c9c5ee72d3cb4481d9b3799d7fba7, type: 3}
     - {fileID: 21300000, guid: 8eacc780fb5e090409fdaeb97a0466b4, type: 3}
-    - {fileID: 21300000, guid: f90f8b3fa33f9844a947c6f639c006d0, type: 3}
+    - {fileID: 21300000, guid: a600d2e144a67b142a54f16e34498b11, type: 3}
     - {fileID: 21300000, guid: c505dce134da90c40a0ae3dabc49a304, type: 3}
     - {fileID: 21300000, guid: b3e5c0440bd76894784ba34a664def1b, type: 3}
     visual: {fileID: 6932377297937664027}

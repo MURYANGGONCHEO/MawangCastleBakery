@@ -11,6 +11,7 @@ public class BakingContent : Content
     public override void ContentStart()
     {
         _doughHandler.doughToInnerEndEvent += _breadController.DoughInStove;
+        SceneObserver.BeforeSceneType = SceneType.Lobby;
 
         DisableStoveGroup();
     }
