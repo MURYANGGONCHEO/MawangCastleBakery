@@ -15844,8 +15844,8 @@ MonoBehaviour:
   _cakeCollocation: {fileID: 507611781726430238}
   _getCard: {fileID: 192021098817977456}
   director: {fileID: 8973695357881045143}
-  cardImage: {fileID: 0}
-  cardName: {fileID: 0}
+  cardImage: {fileID: 2531722753668158105}
+  cardName: {fileID: 7265767524300017268}
   _tutorialPanel: {fileID: 1262677839675376098}
 --- !u!320 &8973695357881045143
 PlayableDirector:
