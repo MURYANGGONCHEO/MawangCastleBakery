@@ -25,6 +25,7 @@ public class CombatMarkManagement : MonoBehaviour
 
     public void RemoveBuffingData(Entity entity, int cardID, BuffingType markingType, int count = 1)
     {
+        if (!_markingDataDic.ContainsKey(cardID)) return;
         for(int i = 0; i < count; i++)
         {
             CombatMarkingData data = 
