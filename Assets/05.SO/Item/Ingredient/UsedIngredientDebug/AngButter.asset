@@ -17,7 +17,7 @@ MonoBehaviour:
   itemInfo: 
   itemIcon: {fileID: 21300000, guid: fdf5bf0bb2a322d4797e57c8afc77d74, type: 3}
   dropChance: 50
-  haveCount: 0
+  haveCount: 5
   itemIndex: 1
   ingredientType: 1
   isUsed: 0
