@@ -20,7 +20,6 @@ public abstract class KnockBackBase
     protected float CalculateKnockBackValue(int dmg)
     {
         float value = 4 * (1f - 1f / Mathf.Sqrt(0.05f * dmg + 1f));
-        Debug.Log(value);
         return value;
     }
 }

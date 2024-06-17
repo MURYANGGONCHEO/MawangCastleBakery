@@ -12,6 +12,7 @@ public class MyosuUI : SceneUI
     public override void SceneUIStart()
     {
         base.SceneUIStart();
+        SceneObserver.BeforeSceneType = SceneType.Lobby;
 
         CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);
         if (!cf.isFirstOnEnterMaze)

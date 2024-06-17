@@ -32,7 +32,8 @@ public class BattleResultPanel : PanelUI
     [SerializeField] private BattleResultProfilePanel _itemProfile;
     [SerializeField] private Transform _itemProfileTrm;
 
-    [SerializeField] private UnityEvent _sequenceEndEvent;
+    [SerializeField] private UnityEvent _clearEvent;
+    [SerializeField] private UnityEvent _defaetEvent;
 
     public void LookResult(bool isClear,
                            StageType stageType, 
@@ -83,7 +84,14 @@ public class BattleResultPanel : PanelUI
             _battleController.DeathEnemyList.Clear();
         });
 
-        seq.AppendCallback(() => _sequenceEndEvent?.Invoke());
+        if(isClear)
+        {
+            seq.AppendCallback(() => _clearEvent?.Invoke());
+        }
+        else
+        {
+            seq.AppendCallback(()=> _defaetEvent?.Invoke());
+        }
     }
 
     public void GotoPoolAllEnemy()
