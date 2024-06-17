@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 857595022699698316}
+      - m_Target: {fileID: 6599361968506537273}
         m_TargetAssemblyTypeName: LookRecipePreviewPanel, Assembly-CSharp
         m_MethodName: BakeCake
         m_Mode: 1
