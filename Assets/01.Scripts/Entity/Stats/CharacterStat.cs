@@ -97,7 +97,7 @@ public class CharacterStat : ScriptableObject
     {
         int curArmor = armor.GetValue();
         if (isChilled) curArmor = curArmor >> 1;
-        return Mathf.Max(incomingDamage - curArmor, 0);
+        return Mathf.Max(incomingDamage -= Mathf.RoundToInt(incomingDamage * (curArmor * 0.01f)), 0);
     }
 
     public bool IsCritical(ref int incomingDamage)

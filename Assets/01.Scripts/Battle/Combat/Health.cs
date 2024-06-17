@@ -139,6 +139,11 @@ public class Health : MonoBehaviour, IDamageable
             _owner.BuffStatCompo.OnHitDamageEvent?.Invoke(dealer, ref damage);
 
         damage = _owner.CharStat.ArmoredDamage(damage, IsFreeze);
+
+        Stat receivedDmgIncreaseStat = _owner.CharStat.GetStatByType(StatType.receivedDmgIncreaseValue);
+        if(receivedDmgIncreaseStat != null)
+            damage += Mathf.RoundToInt(damage * (receivedDmgIncreaseStat.GetValue() * 0.01f));
+
         totalDmg += damage;
         DamageTextManager.Instance.PopupDamageText(this, _owner.transform.position, totalDmg, isLastHitCritical ? DamageCategory.Critical : DamageCategory.Noraml);
         if (!_isDead)
