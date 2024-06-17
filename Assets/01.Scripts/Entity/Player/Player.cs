@@ -40,6 +40,9 @@ public class Player : Entity
 
     [SerializeField] private CameraMoveTypeSO deadCamSO;
 
+    [SerializeField] private ParticleSystem hitEffect;
+    [SerializeField] private AudioClip hitSfx;
+ 
     protected override void Awake()
     {
         base.Awake();
@@ -102,6 +105,8 @@ public class Player : Entity
     protected override void HandleHit(int dmg)
     {
         base.HandleHit(dmg);
+        hitEffect.Play();
+        SoundManager.PlayAudio(hitSfx, true);
         float currentHealth = HealthCompo.GetNormalizedHealth();
         if (!HealthCompo.IsDead && currentHealth <= 0)
         {
