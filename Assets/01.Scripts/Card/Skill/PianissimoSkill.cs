@@ -16,6 +16,7 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
     public void HandleAnimationCall()
     {
         Player.VFXManager.PlayPianissimoParticle(this, Player.transform.position, true);
+        StartCoroutine(AttackCor());
         Player.BuffStatCompo.AddStack(StackEnum.DEFMusicalNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
         Player.OnAnimationCall -= HandleAnimationCall;
     }
@@ -31,24 +32,24 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
     {
         // ���� �׽�Ʈ �غ�����
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
 
-        Player.VFXManager.PlayPianissimoParticle(this, Player.transform.position, true);
+        //Player.VFXManager.PlayPianissimoParticle(this, Player.transform.position, true);
 
-        List<Entity> TEList = Player.GetSkillTargetEnemyList[this];
+        //List<Entity> TEList = Player.GetSkillTargetEnemyList[this];
 
-        for(int i = 0; i < 2; ++i)
-        {
-            Entity e = TEList[i % TEList.Count];
+        //for(int i = 0; i < 2; ++i)
+        //{
+        //    Entity e = TEList[i % TEList.Count];
 
-            e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
-            if(e != null)
-            {
-                GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, e.transform.position, Quaternion.identity);
-                Destroy(obj, 1.0f);
-            }
-            yield return new WaitForSeconds(0.4f);
-        }
+        //    e?.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
+        //    if(e != null)
+        //    {
+        //        GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, e.transform.position, Quaternion.identity);
+        //        Destroy(obj, 1.0f);
+        //    }
+        //    yield return new WaitForSeconds(0.4f);
+        //}
 
         Player.BuffStatCompo.AddStack(StackEnum.DEFMusicalNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
         Debug.Log($"Stacks: DEF({Player.BuffStatCompo.GetStack(StackEnum.DEFMusicalNote)}) / DMG({Player.BuffStatCompo.GetStack(StackEnum.DMGMusicaldNote)}) / FAINT({Player.BuffStatCompo.GetStack(StackEnum.FAINTMusicalNote)})");
