@@ -4532,10 +4532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8724537186fb349abe1057d4e64a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryList:
-  - {fileID: 11400000, guid: 95dfa7db78c99034ba2a9decfc8e3539, type: 2}
-  - {fileID: 11400000, guid: fc41c1c9390f49646a642dbd6805ff33, type: 2}
-  - {fileID: 11400000, guid: 660723e770fbfa74580dd259bc9a0a6a, type: 2}
+  _inventoryList: []
 --- !u!4 &7663057329350200401
 Transform:
   m_ObjectHideFlags: 0

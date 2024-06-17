@@ -40,7 +40,8 @@ public class BattleResultPanel : PanelUI
                            string stageName, 
                            string conditionName)
     {
-        Camera.main.orthographic = true;
+        MaestrOffice.Camera.orthographic = true;
+        MaestrOffice.EffectCamera.orthographic = true;
 
         if (!isClear)
         {
