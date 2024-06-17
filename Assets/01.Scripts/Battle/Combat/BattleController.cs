@@ -170,7 +170,6 @@ public class BattleController : MonoSingleton<BattleController>
             if (e is null) continue;
             //Player.VFXManager.SetBackgroundColor(Color.gray);
 
-
             if (!e.HealthCompo.AilmentStat.HasAilment(AilmentEnum.Faint))
             {
                 e.TurnAction();
@@ -184,7 +183,7 @@ public class BattleController : MonoSingleton<BattleController>
             if (e is null) continue;
             BackGroundFadeOut();
 
-            e.TurnAction();
+            //e.TurnAction();
             yield return new WaitUntil(() => e.turnStatus == TurnStatus.End);
              DamageTextManager.Instance.PushAllText();
 
