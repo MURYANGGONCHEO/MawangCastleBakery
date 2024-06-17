@@ -41,7 +41,13 @@ public class CakeInventoryElement : MonoBehaviour, IPointerClickHandler
         _cakeInvenPanel = cakeInvenPanel;
 
         _cakeImg.sprite = info.itemIcon;
-        _nameText.text = info.itemName;
+        string cakeName = info.itemName;
+
+        if(cakeName.Length > 5)
+        {
+            cakeName = cakeName.Substring(0, 5);
+        }
+        _nameText.text = $"{cakeName}..";
         _countText.text = $"<size=\"35\">X{count}</size>";
     }
 }

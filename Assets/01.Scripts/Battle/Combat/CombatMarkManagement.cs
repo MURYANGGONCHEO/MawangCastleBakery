@@ -25,20 +25,16 @@ public class CombatMarkManagement : MonoBehaviour
 
     public void RemoveBuffingData(Entity entity, int cardID, BuffingType markingType, int count = 1)
     {
-        if (!_markingDataDic.ContainsKey(cardID)) return;
-        for(int i = 0; i < count; i++)
+        CombatMarkingData data =
+        _markingDataDic[cardID].FirstOrDefault(x => x.buffingType == markingType);
+
+        if (data == null)
         {
-            CombatMarkingData data = 
-            _markingDataDic[cardID].FirstOrDefault(x => x.buffingType == markingType);
-
-            if(data == null)
-            {
-                Debug.LogError($"Error : Cant Remove : {markingType}Data, It dose not exist");
-                return;
-            }
-
-            entity.BuffSetter.RemoveBuffingMark(data);
-            _markingDataDic[cardID].Remove(data);
+            Debug.LogError($"Error : Cant Remove : {markingType}Data, It dose not exist");
+            return;
         }
+
+        entity.BuffSetter.RemoveBuffingMark(data, count);
+        _markingDataDic[cardID].Remove(data);
     }
 }

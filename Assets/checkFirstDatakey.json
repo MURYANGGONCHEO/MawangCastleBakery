@@ -1,1 +1,10 @@
-{"isFirstOnDeckBuilding":false,"isFirstOnCardUpgrade":false,"isFirstOnBaking":false,"isFirstOnTeaTime":false,"isFirstOnEnterDungeon":true,"isFirstOnEnterMaze":true,"isFirstOnAdventure":false,"isFirstOnBattle":true}
+{
+  "isFirstOnDeckBuilding": true,
+  "isFirstOnCardUpgrade": true,
+  "isFirstOnBaking": true,
+  "isFirstOnTeaTime": true,
+  "isFirstOnEnterDungeon": true,
+  "isFirstOnEnterMaze": true,
+  "isFirstOnAdventure": true,
+  "isFirstOnBattle": true
+}

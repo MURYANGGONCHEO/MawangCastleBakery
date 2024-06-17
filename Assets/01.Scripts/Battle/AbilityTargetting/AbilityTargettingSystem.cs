@@ -23,6 +23,7 @@ public class AbilityTargettingSystem : MonoBehaviour
     }
     [SerializeField] private BattleController _battleController;
     private Dictionary<TargetEnemyCount, Func<CardBase, int, IEnumerator>> _targetCountingActionDic = new();
+    private Dictionary<int, List<Entity>> _remeberTargetDic = new();
 
     [Header("마우스 카드 바인딩")]
     [SerializeField] private AbilityTargetArrow _targetArrowPrefab;
@@ -96,6 +97,15 @@ public class AbilityTargettingSystem : MonoBehaviour
         EnemyTargetting(selectCard);
     }
 
+    private void RememberTargettingEnemy(int cardID, Entity target)
+    {
+        if (!_remeberTargetDic.ContainsKey(cardID))
+        {
+            _remeberTargetDic.Add(cardID, new List<Entity>());
+        }
+        _remeberTargetDic[cardID].Add(target);
+    }
+
     private void Start()
     {
         foreach(TargetEnemyCount tec in Enum.GetValues(typeof(TargetEnemyCount)))
@@ -120,11 +130,14 @@ public class AbilityTargettingSystem : MonoBehaviour
         _selectCard = selectCard;
         AbilityTargetArrow ata = Instantiate(_targetArrowPrefab, transform);
         ata.ActiveArrow(false);
+
         if (!_getTargetArrowDic.ContainsKey(selectCard))
         {
             List<AbilityTargetArrow> atlist = new();
             _getTargetArrowDic.Add(selectCard, atlist);
         }
+
+        RememberTargettingEnemy(selectCard.CardID, _battleController.Player);
         
         _getTargetArrowDic[selectCard].Add(ata);
 
@@ -164,6 +177,9 @@ public class AbilityTargettingSystem : MonoBehaviour
             _isBindingMouseAndCard = true;
 
             yield return new WaitUntil(() => ata.IsBindSucess);
+
+            Debug.Log(BattleReader.SelectEnemy);
+            RememberTargettingEnemy(selectCard.CardID, BattleReader.SelectEnemy);
         }
 
         BattleReader.IsOnTargetting = false;
@@ -193,6 +209,8 @@ public class AbilityTargettingSystem : MonoBehaviour
 
             _getTargetArrowDic[selectCard].Add(ata);
 
+            RememberTargettingEnemy(selectCard.CardID, e);
+
             Vector3 pos = _maskCreater.GetTargetMaskDic[e].transform.localPosition;
             int idx = _getTargetArrowDic[_selectCard].Count - 1;
             _getTargetArrowDic[_selectCard][idx].ArrowBinding(_selectCard.transform, pos);
@@ -218,10 +236,12 @@ public class AbilityTargettingSystem : MonoBehaviour
 
     public void TargettingCancle(int cardID)
     {
-        foreach(Enemy e in _battleController.OnFieldMonsterArr)
+        foreach (var entity in _remeberTargetDic[cardID])
         {
-            BattleReader.CombatMarkManagement.RemoveBuffingData(e, cardID, BuffingType.Targetting);
+            BattleReader.CombatMarkManagement.RemoveBuffingData(entity, cardID, BuffingType.Targetting);
         }
+
+        _remeberTargetDic.Remove(cardID);
     }
 
     private void EnemyTargetting(CardBase selectCard)
