@@ -147,7 +147,7 @@ public abstract class Entity : PoolableMono
     protected virtual void HandleHit(int dmg)
     {
         //UI����
-        FeedbackManager.Instance.Blink(SpriteRendererCompo.material,0.1f);
+        FeedbackManager.Instance.Blink(SpriteRendererCompo.material, 0.1f);
 
         float currentHealth = HealthCompo.GetNormalizedHealth();
         if (currentHealth > 0)
@@ -236,6 +236,14 @@ public abstract class Entity : PoolableMono
 
     public override void Init()
     {
+        OnHealthBarChanged = null;
+        OnAnimationCall = null;
+        OnAnimationEnd = null;
 
+        OnMoveTarget = null;
+        OnMoveOriginPos = null;
+
+        OnAttackStart = null;
+        OnAttackEnd = null;
     }
 }
