@@ -13,6 +13,8 @@ public class BattleContent : Content
         if (StageManager.Instanace.SelectStageData.stageCutScene is not null)
             cutScene = Instantiate(StageManager.Instanace.SelectStageData.stageCutScene, transform);
 
-        BattleReader.OnBinding = false;
+        MaestrOffice.Camera.orthographic = false;
+        MaestrOffice.EffectCamera.orthographic = false;
+
     }
 }

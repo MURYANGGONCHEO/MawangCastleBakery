@@ -10,14 +10,7 @@ public class BattleResultAccept : MonoBehaviour
 
     private void OnEnable()
     {
-        if(StageManager.Instanace.SelectStageData.stageType != StageType.Mine)
-        {
-            _myButton.onClick.AddListener(StageAccept);
-        }
-        else
-        {
-            _myButton.onClick.AddListener(MineAccept);
-        }
+        _myButton.onClick.AddListener(StageAccept);
     }
 
     private void OnDisable()
@@ -30,9 +23,4 @@ public class BattleResultAccept : MonoBehaviour
         GameManager.Instance.ChangeScene(SceneObserver.BeforeSceneType);
     }
 
-    public void MineAccept()
-    {
-        UIManager.Instance.GetSceneUI<MineUI>().MineSystem.CurrentMineInfo.IsClearThisStage = true;
-        GameManager.Instance.ChangeScene(SceneObserver.CurrentSceneType);
-    }
 }
