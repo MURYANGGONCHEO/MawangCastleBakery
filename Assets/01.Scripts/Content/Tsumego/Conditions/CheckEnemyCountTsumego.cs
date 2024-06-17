@@ -14,7 +14,8 @@ public class CheckEnemyCountTsumego : TsumegoCondition
 {
     public int Limit;
     public CheckEnemyCountCondition LimitCondition;
-    BattleController _battleController;
+
+    private BattleController _battleController;
 
     public override bool CheckCondition()
     {
@@ -22,7 +23,6 @@ public class CheckEnemyCountTsumego : TsumegoCondition
         {
             _battleController = FindObjectOfType<BattleController>();
         }
-
         switch (LimitCondition)
         {
             case CheckEnemyCountCondition.Upper:

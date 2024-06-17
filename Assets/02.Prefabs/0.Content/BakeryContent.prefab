@@ -59877,8 +59877,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b424c1cee01f4448c3d60c3f8969f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _normalPos: {x: 2.18, y: -4.68}
-  _disAppearPos: {x: 2.18, y: -8.71}
+  _normalPos: {x: 0, y: -4.68}
+  _disAppearPos: {x: 0, y: -8.71}
 --- !u!1 &8390341482691395285
 GameObject:
   m_ObjectHideFlags: 0

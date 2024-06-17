@@ -11,7 +11,8 @@ public class TurnCounting : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _toPTChangingText;
     [SerializeField] private TextMeshProUGUI _toETChangingText;
     [SerializeField] private TextMeshProUGUI _gameEndText;
-    [SerializeField] private Transform _turnChaingLabel; 
+    [SerializeField] private Transform _turnChaingLabel;
+    [SerializeField] private GameObject _visualObject;
 
     private TextMeshProUGUI _selectText;
     private Transform _selectTrm;
@@ -31,6 +32,11 @@ public class TurnCounting : MonoBehaviour
     private void OnDestroy()
     {
         TurnCounter.PlayerTurnStartEvent -= ToPlayerTurnChanging;
+    }
+
+    public void BattleEnd(bool isBattleEnd)
+    {
+        _visualObject.SetActive(!isBattleEnd);
     }
 
     public void BattleStart()

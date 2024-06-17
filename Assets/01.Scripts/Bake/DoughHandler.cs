@@ -87,11 +87,15 @@ public class DoughHandler : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0) && !_isShaking)
+        if (Input.GetMouseButtonUp(0) && _isInRange)
         {
             _isInnerDough = false;
             transform.position = transform.position;
             ActiveInnerStoveRange();
+        }
+        else if(Input.GetMouseButtonUp(0) && !_isInRange)
+        {
+            ReturnDough();
         }
     }
     private void ActiveInnerStoveRange()

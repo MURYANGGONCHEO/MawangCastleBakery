@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 416503807}
   - component: {fileID: 416503810}
   m_Layer: 0
-  m_Name: SecondaryCamera
+  m_Name: EffectFilterCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -1825,6 +1825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5720360553198423427}
   - component: {fileID: 1719554687355843845}
+  - component: {fileID: 5720360553198423428}
   m_Layer: 0
   m_Name: ManagerGroup
   m_TagString: Untagged
@@ -3235,7 +3236,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0.2, y: 0.2, z: 0}
+  m_DefaultVelocity: {x: 2, y: 2, z: 0}
 --- !u!1 &5171322741866065844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3713,6 +3714,18 @@ Transform:
   - {fileID: 1950460732}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5720360553198423428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2574275896066220016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c187126b7ac22e4db63d3b7fa720c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5759872384444917465
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3946,7 +3959,6 @@ GameObject:
   - component: {fileID: 5117759325017822254}
   - component: {fileID: 4880571573338263047}
   - component: {fileID: 7757510539636055280}
-  - component: {fileID: 7757510539636055281}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -4367,6 +4379,7 @@ MonoBehaviour:
   xOrigin: 11
   yOrigin: 6
   offset: {x: 0, y: 0}
+  radius: 2
   pixelCount: 128
   shader: {fileID: -6465566751694194690, guid: 74ba13b14a998c74cbcfba3b6f325b9b, type: 3}
 --- !u!114 &7540889930491852245
@@ -4417,7 +4430,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8724537186fb349abe1057d4e64a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryList: []
+  _inventoryList:
+  - {fileID: 11400000, guid: 95dfa7db78c99034ba2a9decfc8e3539, type: 2}
+  - {fileID: 11400000, guid: fc41c1c9390f49646a642dbd6805ff33, type: 2}
+  - {fileID: 11400000, guid: 660723e770fbfa74580dd259bc9a0a6a, type: 2}
 --- !u!4 &7663057329350200401
 Transform:
   m_ObjectHideFlags: 0
@@ -4488,27 +4504,6 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_Damping: 0.5
   m_MaxWindowSize: -1
---- !u!95 &7757510539636055281
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6386583483393006014}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7773829210448782588
 MonoBehaviour:
   m_ObjectHideFlags: 0
