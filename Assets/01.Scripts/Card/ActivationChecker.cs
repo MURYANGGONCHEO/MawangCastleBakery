@@ -9,11 +9,14 @@ using DG.Tweening;
 public class ActivationChecker : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _dragFilter;
+    [SerializeField] private BattleController _battleController;
 
     private int _selectIDX;
     
     private void Update()
     {
+        if (_battleController.IsGameEnd) return;
+
         CheckActivation();
 
         if (!IsPointerOnCard()) return;

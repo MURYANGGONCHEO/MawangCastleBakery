@@ -240,7 +240,8 @@ public abstract class CardBase : MonoBehaviour,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (IsOnActivationZone || BattleReader.OnBinding || BattleReader.IsOnTargetting) return;
+        if (IsOnActivationZone || BattleReader.OnBinding || 
+            BattleReader.IsOnTargetting) return;
 
         OnPointerSetCardAction?.Invoke(transform);
         OnPointerInCard = true;
@@ -259,7 +260,8 @@ public abstract class CardBase : MonoBehaviour,
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (IsOnActivationZone || BattleReader.OnBinding || BattleReader.IsOnTargetting) return;
+        if (IsOnActivationZone || BattleReader.OnBinding || 
+            BattleReader.IsOnTargetting) return;
 
         OnPointerInitCardAction?.Invoke(transform);
         OnPointerInCard = false;
