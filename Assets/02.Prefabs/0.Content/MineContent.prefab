@@ -1792,6 +1792,10 @@ PrefabInstance:
       propertyPath: backgrounds.Array.data[1]
       value: 
       objectReference: {fileID: 6218195379118055546}
+    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
+      propertyPath: cardAndEffects.Array.data[28].info
+      value: 
+      objectReference: {fileID: 11400000, guid: f6a0d05db1a9275438243c3a1131b6ed, type: 2}
     - target: {fileID: 2717423199549972756, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.33
