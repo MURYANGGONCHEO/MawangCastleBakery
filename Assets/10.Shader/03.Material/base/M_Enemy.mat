@@ -64,11 +64,11 @@ Material:
     - _EnableExternalAlpha: 0
     - _alpha: 1
     - _blink_amount: 0
-    - _dissolve_amount: 0
-    - _dissolve_edge: 0.0745
-    - _dissolve_pixelize_scale: 26.2
+    - _dissolve_amount: 0.514
+    - _dissolve_edge: 0.0124
+    - _dissolve_pixelize_scale: 31.48
     - _is_outline: 1
-    - _noise_scale: 167
+    - _noise_scale: 193.3
     - _noise_step: 0.429
     - _outline_thickness: 0
     - _pixel: 500
