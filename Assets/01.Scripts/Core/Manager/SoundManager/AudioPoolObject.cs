@@ -18,9 +18,7 @@ public class AudioPoolObject : PoolableMono
 
     public void SetMasterVolume(float vlaue)
     {
-        Debug.Log(vlaue);
         source.volume = _saveValue * vlaue;
-        Debug.Log(source.volume);
     }
 
     public override void Init()
