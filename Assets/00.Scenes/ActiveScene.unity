@@ -3205,7 +3205,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 0.2
+    m_ImpulseDuration: 0.1
     m_ImpulseType: 0
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}
@@ -3723,7 +3723,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2574275896066220016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c187126b7ac22e4db63d3b7fa720c12, type: 3}
+  m_Script: {fileID: 11500000, guid: fd96d46bbfc873a43bf60deeb43f3fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &5759872384444917465

@@ -16,7 +16,7 @@ public class EncoreSkill : MusicCardBase, ISkillEffectAnim
     public void HandleAnimationCall()
     {
         Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
-        SoundManager.PlayAudio(_soundEffect, false);
+        SoundManager.PlayAudio(_soundEffect, true);
         StartCoroutine(AttackCor());
         Player.OnAnimationCall -= HandleAnimationCall;
     }
