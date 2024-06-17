@@ -7592,6 +7592,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1526593641882624832, guid: 4ae8dd97a7d84b4489023778de54bddd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2795552642070612492, guid: 4ae8dd97a7d84b4489023778de54bddd, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -7634,6 +7638,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3852968925161291744, guid: 4ae8dd97a7d84b4489023778de54bddd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128460650792382496, guid: 4ae8dd97a7d84b4489023778de54bddd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604008029932545107, guid: 4ae8dd97a7d84b4489023778de54bddd, type: 3}
+      propertyPath: UVModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070903582945086518, guid: 4ae8dd97a7d84b4489023778de54bddd, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
