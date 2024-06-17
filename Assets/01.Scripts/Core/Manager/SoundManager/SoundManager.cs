@@ -29,7 +29,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         AudioPoolObject ao = PoolManager.Instance.Pop(PoolingType.Sound).GetComponent<AudioPoolObject>();
         ao.IsSFX = isSFX;
-        ao.Play(clip, pitch, GetVolume(isSFX), isLoop);
+        if (clip != null)
+            ao.Play(clip, pitch, GetVolume(isSFX), isLoop);
         AudioObjList.Add(ao);
     }
 

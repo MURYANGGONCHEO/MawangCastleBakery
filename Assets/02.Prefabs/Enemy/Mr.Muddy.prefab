@@ -292,7 +292,7 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: 133882
+  m_InstanceId: 194756
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
@@ -661,6 +661,7 @@ MonoBehaviour:
   attackParticle:
     attack: {fileID: 0}
   _cameraMoveInfo: {fileID: 11400000, guid: b2882aba5ace8704ea4296a9e69e1fff, type: 2}
+  attackClip: {fileID: 8300000, guid: 12ce4ff7c7cb1c347bc6cebe8ce1c64a, type: 3}
 --- !u!114 &935272695599999825
 MonoBehaviour:
   m_ObjectHideFlags: 0

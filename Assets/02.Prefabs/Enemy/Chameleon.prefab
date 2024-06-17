@@ -183,6 +183,7 @@ MonoBehaviour:
   attackParticle:
     attack: {fileID: 0}
   _cameraMoveInfo: {fileID: 11400000, guid: 3940cc0d67021ed40a88458271463f30, type: 2}
+  attackClip: {fileID: 8300000, guid: 3379743700378d44c97336149e16a360, type: 3}
   melonSpawnTrm: {fileID: 4344035709133795039}
 --- !u!114 &-8742309543402868280
 MonoBehaviour:
@@ -523,7 +524,7 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: 133092
+  m_InstanceId: 194842
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}

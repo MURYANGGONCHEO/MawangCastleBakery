@@ -12,6 +12,7 @@ public class MrMuddy : Enemy
     public override void Attack()
     {
         target.HealthCompo.ApplyDamage(CharStat.GetDamage(),this);
+        base.Attack();
         //VFXPlayer.PlayHitEffect(attackParticle, target.transform.position);
         MoveToOriginPos();
         OnAttackStart?.Invoke();

@@ -9,6 +9,7 @@ public class Chameleon : Enemy
 
     public override void Attack()
     {
+        base.Attack();
         OnAttackStart?.Invoke();
     }
 

@@ -18,6 +18,7 @@ public abstract class Enemy : Entity
 {
     [SerializeField] protected EnemyAttack attackParticle;
     [SerializeField] protected CameraMoveTypeSO _cameraMoveInfo;
+    [SerializeField] protected AudioClip attackClip;
 
     protected int attackAnimationHash = Animator.StringToHash("attack");
     protected int attackTriggerAnimationHash = Animator.StringToHash("attackTrigger");
@@ -86,7 +87,10 @@ public abstract class Enemy : Entity
         OnAttackStart -= HandleCameraAction;
         OnAttackEnd -= HandleAttackEnd;
     }
-    public abstract void Attack();
+    public virtual void Attack()
+    {
+        SoundManager.PlayAudio(attackClip, true);
+    }
     public virtual void TurnStart()
     {
         turnStatus = TurnStatus.Ready;
