@@ -10,7 +10,7 @@ public enum AilmentEnum : int
     None = 0,
     Chilled = 1,
     Shocked = 2,
-    Faint = 3,
+    Faint = 4,
 }
 
 public enum StackEnum : int

@@ -18,7 +18,10 @@ MonoBehaviour:
     _baseValue: 30
     modifiers: 
   armor:
-    _baseValue: 0
+    _baseValue: 1
+    modifiers: 
+  receivedDmgIncreaseValue:
+    _baseValue: 1
     modifiers: 
   damage:
     _baseValue: 15
@@ -32,3 +35,4 @@ MonoBehaviour:
   _dropItem: {fileID: 11400000, guid: 31e5be5266569f24f9a9beeb2421453c, type: 2}
   _level: 0
   _percentageModifier: 0
+  attackCnt: 1
