@@ -6,16 +6,17 @@ using UnityEngine.Events;
 public class TsumegoSystem : MonoBehaviour
 {
     [SerializeField] private UnityEvent<bool> _stageClearEvent;
-    [SerializeField] private UnityEvent<bool> _gameEndEvent; 
+    [SerializeField] private UnityEvent<bool> _gameEndEvent;
     public TsumegoInfo CurTsumegoInfo { get; set; }
 
     public void CheckClear()
     {
+        if (CurTsumegoInfo.Conditions.Count <= 0) return; 
+
         foreach(var condition in CurTsumegoInfo.Conditions)
         {
             if (!condition.CheckCondition())
             {
-                // ½ÇÆÐ
                 return;
             }
         }
@@ -25,13 +26,16 @@ public class TsumegoSystem : MonoBehaviour
 
     public void CheckDefeat()
     {
-        foreach(var condition in CurTsumegoInfo.DefeatConditions)
+        if (CurTsumegoInfo.DefeatConditions.Count <= 0) return;
+
+        foreach (var condition in CurTsumegoInfo.DefeatConditions)
         {
             if (!condition.CheckCondition())
             {
                 return;
             }
         }
+
         DefeatStage();
     }
 
@@ -49,5 +53,6 @@ public class TsumegoSystem : MonoBehaviour
         CurTsumegoInfo.IsClear = false;
         _gameEndEvent?.Invoke(true);
         _stageClearEvent?.Invoke(false);
+
     }
 }

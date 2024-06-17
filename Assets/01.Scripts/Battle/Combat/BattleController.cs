@@ -66,7 +66,6 @@ public class BattleController : MonoSingleton<BattleController>
             _isGameEnd = value;
             if (_isGameEnd)
             {
-
                 for (int i = 0; i < OnFieldMonsterArr.Length; i++)
                 {
                     Enemy e = OnFieldMonsterArr[i];
@@ -84,6 +83,8 @@ public class BattleController : MonoSingleton<BattleController>
                 //UIManager.Instance.GetSceneUI<BattleUI>().SystemActive?.Invoke(true);
                 _hpBarMaker.DeleteAllHPBar();
                 StopAllCoroutines();
+
+                BattleReader.OnBinding = true;
             }
         }
     }

@@ -22,6 +22,22 @@ public static class MaestrOffice
         }
     }
 
+    private static Camera _eCam;
+    public static Camera EffectCamera
+    {
+        get
+        {
+            if (_eCam != null)
+            {
+                return _eCam;
+            }
+
+            _eCam = Camera.main.transform.Find("EffectFilterCamera").GetComponent<Camera>();
+
+            return _eCam;
+        }
+    }
+
     private static Canvas _can;
     public static Canvas Canvas
     {

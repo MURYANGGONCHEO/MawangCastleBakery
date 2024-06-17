@@ -12,8 +12,12 @@ public class CandyParty : Enemy
 
     public override void Attack()
     {
+        base.Attack();
         OnAttackStart?.Invoke();
-        VFXPlayer.PlayParticle(attackParticle);
+        if(attackParticle.attack != null)
+        {
+            VFXPlayer.PlayParticle(attackParticle);
+        }
 
         StartCoroutine(AttackCor());
     }

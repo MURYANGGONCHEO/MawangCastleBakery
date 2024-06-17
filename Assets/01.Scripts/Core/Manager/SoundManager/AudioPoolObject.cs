@@ -8,14 +8,19 @@ public class AudioPoolObject : PoolableMono
     [SerializeField] private AudioSource source;
     public bool IsSFX { get; set; }
 
+    private float _saveValue;
+
     public void SetVolume(float vlaue)
     {
+        _saveValue = vlaue;
         source.volume = vlaue;
     }
 
     public void SetMasterVolume(float vlaue)
     {
-        source.volume *= vlaue;
+        Debug.Log(vlaue);
+        source.volume = _saveValue * vlaue;
+        Debug.Log(source.volume);
     }
 
     public override void Init()
@@ -39,7 +44,6 @@ public class AudioPoolObject : PoolableMono
     {
         if (isLoop)
         {
-            Debug.Log(volume);
             if (SoundManager.Instance.CurrentBgmObject != null)
             {
                 SoundManager.Instance.CurrentBgmObject.Push();

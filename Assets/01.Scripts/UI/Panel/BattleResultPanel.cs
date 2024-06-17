@@ -32,14 +32,16 @@ public class BattleResultPanel : PanelUI
     [SerializeField] private BattleResultProfilePanel _itemProfile;
     [SerializeField] private Transform _itemProfileTrm;
 
-    [SerializeField] private UnityEvent _sequenceEndEvent;
+    [SerializeField] private UnityEvent _clearEvent;
+    [SerializeField] private UnityEvent _defaetEvent;
 
     public void LookResult(bool isClear,
                            StageType stageType, 
                            string stageName, 
                            string conditionName)
     {
-        Camera.main.orthographic = true;
+        MaestrOffice.Camera.orthographic = true;
+        MaestrOffice.EffectCamera.orthographic = true;
 
         if (!isClear)
         {
@@ -83,7 +85,14 @@ public class BattleResultPanel : PanelUI
             _battleController.DeathEnemyList.Clear();
         });
 
-        seq.AppendCallback(() => _sequenceEndEvent?.Invoke());
+        if(isClear)
+        {
+            seq.AppendCallback(() => _clearEvent?.Invoke());
+        }
+        else
+        {
+            seq.AppendCallback(()=> _defaetEvent?.Invoke());
+        }
     }
 
     public void GotoPoolAllEnemy()

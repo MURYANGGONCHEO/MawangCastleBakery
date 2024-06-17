@@ -145,7 +145,7 @@ Material:
     - _Main_Pow: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.11
+    - _Opacity: 0.46
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -182,6 +182,6 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _edge_color: {r: 0, g: 0, b: 0, a: 0}
-    - _main_color_a: {r: 22.363523, g: 22.363523, b: 22.363523, a: 0}
+    - _main_color_a: {r: 6.4222326, g: 6.4222326, b: 6.4222326, a: 0}
     - _main_color_b: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

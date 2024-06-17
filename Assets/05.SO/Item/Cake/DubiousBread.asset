@@ -18,4 +18,4 @@ MonoBehaviour:
   itemIcon: {fileID: 1528250916, guid: 33a89ddaf46804244a00c86581ed9189, type: 3}
   dropChance: 50
   haveCount: 1
-  ToGetCardBase: {fileID: 0}
+  ToGetCardBase: {fileID: 4266173611949087453, guid: 59a619a467297c34e9f48b0679ef68e2, type: 3}

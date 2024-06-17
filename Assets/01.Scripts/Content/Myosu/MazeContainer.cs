@@ -11,7 +11,6 @@ public class MazeContainer : MonoBehaviour
     {
         if(_getMazeDataDic.Count != _mazeDataArr.Length)
         {
-            Debug.Log("MazeDataRead");
             _getMazeDataDic.Clear();
 
             foreach (MazeData data in _mazeDataArr)

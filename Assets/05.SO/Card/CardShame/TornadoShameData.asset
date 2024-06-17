@@ -19,7 +19,7 @@ MonoBehaviour:
     perValue: 2
   normalValueGroup:
   - cardShameType: 1
-    currentShame: 6
+    currentShame: 12
     info: 
   - cardShameType: 8
     currentShame: 8
@@ -29,36 +29,6 @@ MonoBehaviour:
     info: 
   cardShameDataList:
   - list:
-    - list:
-      - cardShameType: 1
-        currentShame: 6
-        info: 
-      - cardShameType: 8
-        currentShame: 8
-        info: 
-      - cardShameType: 16
-        currentShame: 6
-        info: 
-    - list:
-      - cardShameType: 1
-        currentShame: 8
-        info: 
-      - cardShameType: 8
-        currentShame: 8
-        info: 
-      - cardShameType: 16
-        currentShame: 6
-        info: 
-    - list:
-      - cardShameType: 1
-        currentShame: 10
-        info: 
-      - cardShameType: 8
-        currentShame: 8
-        info: 
-      - cardShameType: 16
-        currentShame: 6
-        info: 
     - list:
       - cardShameType: 1
         currentShame: 12
@@ -79,10 +49,9 @@ MonoBehaviour:
       - cardShameType: 16
         currentShame: 6
         info: 
-  - list:
     - list:
       - cardShameType: 1
-        currentShame: 12
+        currentShame: 16
         info: 
       - cardShameType: 8
         currentShame: 8
@@ -92,7 +61,7 @@ MonoBehaviour:
         info: 
     - list:
       - cardShameType: 1
-        currentShame: 16
+        currentShame: 18
         info: 
       - cardShameType: 8
         currentShame: 8
@@ -110,6 +79,7 @@ MonoBehaviour:
       - cardShameType: 16
         currentShame: 6
         info: 
+  - list:
     - list:
       - cardShameType: 1
         currentShame: 24
@@ -130,30 +100,9 @@ MonoBehaviour:
       - cardShameType: 16
         currentShame: 6
         info: 
-  - list:
     - list:
       - cardShameType: 1
-        currentShame: 18
-        info: 
-      - cardShameType: 8
-        currentShame: 8
-        info: 
-      - cardShameType: 16
-        currentShame: 6
-        info: 
-    - list:
-      - cardShameType: 1
-        currentShame: 24
-        info: 
-      - cardShameType: 8
-        currentShame: 8
-        info: 
-      - cardShameType: 16
-        currentShame: 6
-        info: 
-    - list:
-      - cardShameType: 1
-        currentShame: 30
+        currentShame: 32
         info: 
       - cardShameType: 8
         currentShame: 8
@@ -173,7 +122,58 @@ MonoBehaviour:
         info: 
     - list:
       - cardShameType: 1
+        currentShame: 40
+        info: 
+      - cardShameType: 8
+        currentShame: 8
+        info: 
+      - cardShameType: 16
+        currentShame: 6
+        info: 
+  - list:
+    - list:
+      - cardShameType: 1
+        currentShame: 36
+        info: 
+      - cardShameType: 8
+        currentShame: 8
+        info: 
+      - cardShameType: 16
+        currentShame: 6
+        info: 
+    - list:
+      - cardShameType: 1
         currentShame: 42
+        info: 
+      - cardShameType: 8
+        currentShame: 8
+        info: 
+      - cardShameType: 16
+        currentShame: 6
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 48
+        info: 
+      - cardShameType: 8
+        currentShame: 8
+        info: 
+      - cardShameType: 16
+        currentShame: 6
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 54
+        info: 
+      - cardShameType: 8
+        currentShame: 8
+        info: 
+      - cardShameType: 16
+        currentShame: 6
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 60
         info: 
       - cardShameType: 8
         currentShame: 8

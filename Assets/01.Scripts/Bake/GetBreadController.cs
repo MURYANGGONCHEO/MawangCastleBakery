@@ -27,7 +27,6 @@ public class GetBreadController : MonoBehaviour
 
     public void ExitProduction()
     {
-        _dough.ReturnDough();
         foreach (var production in _productionGraphicsObjArr)
         {
             production.ExitProduction();

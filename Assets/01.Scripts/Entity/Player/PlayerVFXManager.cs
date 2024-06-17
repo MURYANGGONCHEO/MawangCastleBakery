@@ -54,6 +54,7 @@ public class PlayerVFXManager : MonoBehaviour
             return;
         }
         _cardByEffects[cardInfo][combineLevel].Stop();
+        _cardByEffects[cardInfo][combineLevel].gameObject.SetActive(false);
     }
 
     public void PlayParticle(CardInfo card, Vector3 pos, int combineLevel, float duration)
