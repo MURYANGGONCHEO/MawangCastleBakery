@@ -17,7 +17,8 @@ MonoBehaviour:
   - {fileID: 7615068702723903097}
   stackBuffs:
   - type: 0
-    values: 010000000100000001000000
+    values: 0f2700000f2700000f270000
+  buffInfo: 
 --- !u!114 &7615068702723903097
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class QuenchingSkill : CardBase, ISkillEffectAnim
     {
         yield return new WaitForSeconds(0.3f);
 
-        Player.BuffStatCompo.AddStack(StackEnum.Forging, (int)CombineLevel + 1);
+        Player.BuffStatCompo.AddStack(StackEnum.Forging, buffSO.stackBuffs[0].values[(int)CombineLevel]);
         Player.BuffStatCompo.AddBuff(buffSO, 2, (int)CombineLevel);
 
         CombatMarkingData forgeData =
@@ -42,7 +42,7 @@ public class QuenchingSkill : CardBase, ISkillEffectAnim
         "진정한 강철은 수만번의 담금질 속에서 만들어진다.",
         int.MaxValue);
 
-        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, forgeData, (int)CombineLevel + 1);
+        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, forgeData, buffSO.stackBuffs[0].values[(int)CombineLevel]);
 
         Debug.Log($"Current Forging Stat: {Player.BuffStatCompo.GetStack(StackEnum.Forging)}");
     }

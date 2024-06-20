@@ -16,5 +16,5 @@ MonoBehaviour:
   specialBuffs: []
   stackBuffs:
   - type: 0
-    values: 102700000300000005000000
+    values: 0f2700000f2700000f270000
   buffInfo: 
