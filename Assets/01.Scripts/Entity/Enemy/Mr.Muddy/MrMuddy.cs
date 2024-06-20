@@ -15,8 +15,6 @@ public class MrMuddy : Enemy
         base.Attack();
         //VFXPlayer.PlayHitEffect(attackParticle, target.transform.position);
         MoveToOriginPos();
-        OnAttackStart?.Invoke();
-        //OnAttackEnd?.Invoke();
     }
 
     public override void SlowEntityBy(float percent)
@@ -28,6 +26,7 @@ public class MrMuddy : Enemy
         turnStatus = TurnStatus.Running;
         AnimatorCompo.SetBool(attackAnimationHash,true);
 
+        OnAttackStart?.Invoke();
         MoveToTargetForward(Vector3.zero);
     }
 
@@ -45,6 +44,7 @@ public class MrMuddy : Enemy
 
     protected override void HandleEndMoveToOriginPos()
     {
+        OnAttackEnd?.Invoke();
         turnStatus = TurnStatus.End;
     }
 

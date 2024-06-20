@@ -40,7 +40,7 @@ public class PlayerVFXManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("?!");
+                Debug.LogError($"{c.info}");
             }
         }
 
