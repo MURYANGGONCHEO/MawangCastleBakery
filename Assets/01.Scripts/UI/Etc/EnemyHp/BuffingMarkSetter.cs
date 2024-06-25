@@ -56,12 +56,12 @@ public class BuffingMarkSetter : MonoBehaviour
 
     private void HandleContentDecrease(object sender, EventArgs e)
     {
-        _contentTrm.sizeDelta -= new Vector2(42, 0);
+        _contentTrm.sizeDelta -= new Vector2(44, 0);
     }
 
     private void HandleContentIncrease(object sender, EventArgs e)
     {
-        _contentTrm.sizeDelta += new Vector2(42, 0);
+        _contentTrm.sizeDelta += new Vector2(44, 0);
     }
 
     private void Start()
@@ -94,7 +94,7 @@ public class BuffingMarkSetter : MonoBehaviour
 
     public void AddBuffingMark(CombatMarkingData markingData, int addCount = 1)
     {
-        BuffingMark target = _buffingMarkList.Find(x => x.CombatMarkingData.buffingType == markingData.buffingType);
+        BuffingMark target = _buffingMarkList.Find(x => x.CombatMarkingData.buffingInfo == markingData.buffingInfo);
         if (target == null)
         {
             BuffingMark buffingMark = Instantiate(_buffingMarkPrefab, _contentTrm);
