@@ -55,8 +55,6 @@ public class LookRecipePreviewPanel : PreviewPanel
 
     public void BakeCake()
     {
-        Debug.Log(_recipeElement);
-
         ItemDataIngredientSO[] data = 
         BakingManager.Instance.GetIngredientDatasByCakeName(_recipeElement.CakeItemData.itemName);
 

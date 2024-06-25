@@ -38,9 +38,7 @@ public class IngredientElement : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (IsSelected) return;
-
-        IsSelected = true;
+        IsSelected = !IsSelected;
         SelectThisItemAction?.Invoke(this);
     }
 }

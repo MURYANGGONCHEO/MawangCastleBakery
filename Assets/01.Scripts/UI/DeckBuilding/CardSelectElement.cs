@@ -52,4 +52,5 @@ public class CardSelectElement : MonoBehaviour, IPointerClickHandler
         _nameText.text = info.CardInfo.CardName;
         _costText.text = info.AbilityCost.ToString();
     }
+
 }

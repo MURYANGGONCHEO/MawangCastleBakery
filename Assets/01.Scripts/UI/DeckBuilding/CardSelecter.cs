@@ -50,4 +50,5 @@ public class CardSelecter : MonoBehaviour
             cse.SetInfo(DeckManager.Instance.GetCard(_canUseCardData.CanUseCardsList[i]), _deckBuilder);
         }
     }
+
 }
