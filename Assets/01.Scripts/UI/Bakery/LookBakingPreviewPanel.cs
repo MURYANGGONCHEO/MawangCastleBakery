@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class LookBakingPreviewPanel : PreviewPanel
 {
-    [SerializeField] 
+    [SerializeField]
     private Image[] _ingredientElementVisualArr = new Image[3];
     private IngredientElement[] _ingredientElementArr = new IngredientElement[3];
 
@@ -13,7 +13,7 @@ public class LookBakingPreviewPanel : PreviewPanel
 
     protected override void LookUpContent()
     {
-        for(int i = 0; i < _ingredientElementArr.Length; i++)
+        for (int i = 0; i < _ingredientElementArr.Length; i++)
         {
             _ingredientElementVisualArr[i].enabled = false;
             _ingredientElementArr[i] = null;
@@ -34,6 +34,18 @@ public class LookBakingPreviewPanel : PreviewPanel
 
         element.enabled = true;
         element.sprite = ingElement.IngredientData.itemIcon;
+    }
+
+    public void RemoveIngredientElement(int idx)
+    {
+        if (_ingredientElementArr[idx] == null) return;
+
+        _ingredientElementArr[idx].IsSelected = false;
+        _ingredientElementArr[idx] = null;
+        var element = _ingredientElementVisualArr[idx];
+
+        element.enabled = false;
+        element.sprite = null;
     }
 
     public void BakeCake()
@@ -58,7 +70,7 @@ public class LookBakingPreviewPanel : PreviewPanel
             BakeryUI bui = UIManager.Instance.GetSceneUI<BakeryUI>();
             BakeryData bd = new BakeryData();
 
-            if(DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
+            if (DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
             {
                 bd = DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
             }

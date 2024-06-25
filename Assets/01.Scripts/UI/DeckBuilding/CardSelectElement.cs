@@ -15,16 +15,22 @@ public class CardSelectElement : MonoBehaviour, IPointerClickHandler
     public CardBase CardBase => _cardInfo;
     private DeckBuilder _deckBuilder;
 
+    private bool _isSelect;
     public bool IsSelect
     {
         set
         {
+            _isSelect = value;
             _usingMask.SetActive(value);
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(_isSelect)
+        {
+            return;
+        }
         bool canSelect;
         _deckBuilder.AddDeck(CardBase, out canSelect);
         IsSelect = canSelect;

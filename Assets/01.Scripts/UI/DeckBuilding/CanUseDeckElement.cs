@@ -13,8 +13,8 @@ public class CanUseDeckElement : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     [SerializeField] private Image[] _cardGroupArr = new Image[5];
     [SerializeField] private TextMeshProUGUI _deckNameText;
-    [SerializeField] private float _onPointerEnterMoveY; 
-    [SerializeField] private float _onPointerExitMoveY; 
+    [SerializeField] private float _onPointerEnterMoveY;
+    [SerializeField] private float _onPointerExitMoveY;
     private DeckElement _deckInfo;
 
     [SerializeField] private CanvasGroup _deckSelectBubble;
@@ -27,6 +27,9 @@ public class CanUseDeckElement : MonoBehaviour, IPointerEnterHandler, IPointerEx
     private string _deckName;
 
     private PlayerSelectDeckInfoData _deckInfoData = new PlayerSelectDeckInfoData();
+
+    private Vector2[] _cardDefaultPos = new Vector2[5];
+    private Vector2[] _cardSpreadPos = new Vector2[5];
 
     private void SetBubbleInteractive(bool canInteractive)
     {
@@ -59,7 +62,7 @@ public class CanUseDeckElement : MonoBehaviour, IPointerEnterHandler, IPointerEx
         DeckInfo = deckInfo;
         _deckGenerator = deckGenerator;
 
-        for(int i = 0; i < _cardGroupArr.Length; i++)
+        for (int i = 0; i < _cardGroupArr.Length; i++)
         {
             CardBase card = DeckManager.Instance.GetCard(deckInfo.deck[i]);
             _cardGroupArr[i].sprite = card.CardInfo.CardVisual;
@@ -69,17 +72,26 @@ public class CanUseDeckElement : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         _deckName = deckInfo.deckName;
 
-        if(_deckName.Length > 6)
+        if (_deckName.Length > 6)
         {
-            _deckName = $"{_deckName.Substring(0, 6)}.."; 
+            _deckName = $"{_deckName.Substring(0, 6)}..";
         }
 
         _deckNameText.text = _deckName;
         _deckInfo = deckInfo;
-
+        SetCardSeqPos();
+        
         SetUpBubble();
     }
-
+    private void SetCardSeqPos()
+    {
+        for (int i = -2; i <= 2; i++)
+        {
+            _cardSpreadPos[i + 2] = new Vector2(_cardGroupArr[i + 2].transform.localPosition.x + (i * 5),
+                                        _onPointerEnterMoveY + (2 - Mathf.Abs(i)) * 5);
+            _cardDefaultPos[i + 2] = new Vector2(_cardGroupArr[i + 2].transform.localPosition.x, _onPointerExitMoveY);
+        }
+    }
     private void SetUpBubble()
     {
         _deckSelectBubble.alpha = 0;
@@ -113,8 +125,7 @@ public class CanUseDeckElement : MonoBehaviour, IPointerEnterHandler, IPointerEx
             Transform trm = _cardGroupArr[i + 2].transform;
 
             trm.DOKill();
-            trm.DOLocalMove(new Vector2(_cardGroupArr[i + 2].transform.localPosition.x + (i * 5),
-                                        _onPointerEnterMoveY + (2 - Mathf.Abs(i)) * 5), 0.3f).SetEase(Ease.OutBack);
+            trm.DOLocalMove(_cardSpreadPos[i + 2], 0.3f).SetEase(Ease.OutBack);
             trm.DOLocalRotateQuaternion(Quaternion.Euler(0, 0, -i * 5), 0.3f).SetEase(Ease.OutBack);
         }
 
@@ -133,8 +144,7 @@ public class CanUseDeckElement : MonoBehaviour, IPointerEnterHandler, IPointerEx
             Transform trm = _cardGroupArr[i].transform;
 
             trm.DOKill();
-            trm.DOLocalMove(new Vector2(_cardGroupArr[i].transform.localPosition.x - value,
-                                        _onPointerExitMoveY), 0.3f).SetEase(Ease.OutBack);
+            trm.DOLocalMove(_cardDefaultPos[i], 0.3f).SetEase(Ease.OutBack);
             trm.DOLocalRotateQuaternion(Quaternion.Euler(0, 0, 0), 0.3f).SetEase(Ease.OutBack);
         }
 

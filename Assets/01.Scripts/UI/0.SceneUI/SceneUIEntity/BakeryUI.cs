@@ -61,6 +61,11 @@ public class BakeryUI : SceneUI
         var bp = _previewPanels.FirstOrDefault(x => x.MySortType == RecipeSortType.Baking) as LookBakingPreviewPanel;
         bp.SetIngredientElement(element);
     }
+    public void RemoveIngredient(int idx)
+    {
+        var bp = _previewPanels.FirstOrDefault(x => x.MySortType == RecipeSortType.Baking) as LookBakingPreviewPanel;
+        bp.RemoveIngredientElement(idx);
+    }
 
     public void ProductionStart()
     {
