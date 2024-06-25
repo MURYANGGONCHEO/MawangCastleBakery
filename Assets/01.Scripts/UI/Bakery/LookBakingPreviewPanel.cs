@@ -29,11 +29,23 @@ public class LookBakingPreviewPanel : PreviewPanel
             _ingredientElementArr[idx].IsSelected = false;
         }
 
-        _ingredientElementArr[idx] = ingElement;
-        var element = _ingredientElementVisualArr[idx];
+        if (_ingredientElementArr[idx] != ingElement)
+        {
+            _ingredientElementArr[idx] = ingElement;
+            var element = _ingredientElementVisualArr[idx];
 
-        element.enabled = true;
-        element.sprite = ingElement.IngredientData.itemIcon;
+            element.enabled = true;
+            element.sprite = ingElement.IngredientData.itemIcon;
+        }
+        else
+        {
+            _ingredientElementArr[idx].IsSelected = false;
+            _ingredientElementArr[idx] = null;
+
+            var element = _ingredientElementVisualArr[idx];
+
+            element.enabled = false;
+        }
     }
 
     public void BakeCake()

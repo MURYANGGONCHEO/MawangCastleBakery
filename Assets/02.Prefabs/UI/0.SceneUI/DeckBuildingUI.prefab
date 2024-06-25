@@ -1559,7 +1559,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1359077376511904767}
         m_TargetAssemblyTypeName: DeckGenerator, Assembly-CSharp
-        m_MethodName: GenerateDeckList
+        m_MethodName: ResetDeckList
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
