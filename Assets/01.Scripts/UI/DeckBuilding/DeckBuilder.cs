@@ -114,6 +114,7 @@ public class DeckBuilder : MonoBehaviour
         }
 
         DeckElement de = new DeckElement(deckName, convertDataDeck);
+        _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
         _saveDeckData.SaveDeckList.Add(de);
         DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
     }

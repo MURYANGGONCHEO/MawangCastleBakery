@@ -34,8 +34,8 @@ public class SkillCardManagement : CardManagement
     {
         InCardZoneCatalogue.ListAdded += HandleCheckAcceptBtn;
 
-        TurnCounter.EnemyTurnStartEvent += (bool v) => _checkStageClearEvent?.Invoke();
-        TurnCounter.PlayerTurnStartEvent += (bool v) => _checkStageClearEvent?.Invoke();
+        TurnCounter.EnemyTurnEndEvent += () => _checkStageClearEvent?.Invoke();
+        TurnCounter.PlayerTurnEndEvent += () => _checkStageClearEvent?.Invoke();
     }
     private void HandleCheckAcceptBtn(object sender, EventArgs e)
     {
