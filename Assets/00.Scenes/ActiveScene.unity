@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 416503808}
   - component: {fileID: 416503807}
   - component: {fileID: 416503810}
+  - component: {fileID: 416503811}
   m_Layer: 0
   m_Name: EffectFilterCamera
   m_TagString: Untagged
@@ -273,6 +274,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861a54d45cb58d447b4798277da32efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &416503811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416503805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1662063447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8692280890089797074, guid: fdaa07104a9ccbe46b719d8b0b693de4, type: 3}
@@ -4230,7 +4265,6 @@ MonoBehaviour:
   _contentList:
   - {fileID: -6126685662487515999, guid: daf0e593fb232114ea029bfec8218f8c, type: 3}
   - {fileID: 8953992176711027676, guid: 1c8924ac0c305ec42889c9249fd22d1e, type: 3}
-  - {fileID: 8953992176711027676, guid: b50d8831a1be76e44923c46caf56c0bc, type: 3}
   - {fileID: 223837630935587753, guid: 15cabcab9d8d9e945b40871b2882854c, type: 3}
   _poolingList: {fileID: 11400000, guid: c18117bb158dcf642b3dd304381ef447, type: 2}
   _poolingTrm: {fileID: 1986963420806023945}

@@ -43,6 +43,8 @@ public class PlayerDetailedInfoPanel : PanelUI
 
         _canvasGroup.transform.localScale = Vector3.one * 1.1f;
         _canvasGroup.alpha = 1f;
+        _canvasGroup.interactable = true;
+        _canvasGroup.blocksRaycasts = true;
         FadePanel(true);
 
         _scalingTween = _canvasGroup.transform.DOScale(1, 0.1f);
@@ -53,6 +55,9 @@ public class PlayerDetailedInfoPanel : PanelUI
 
         _canvasGroup.transform.localScale = Vector3.one;
         FadePanel(false);
+
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
 
         Sequence seq = DOTween.Sequence();
         _scalingTween = seq;
