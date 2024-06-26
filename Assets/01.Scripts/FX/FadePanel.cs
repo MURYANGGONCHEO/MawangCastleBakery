@@ -34,7 +34,7 @@ public class FadePanel : MonoBehaviour
         material.SetFloat("_xOff", offset.x);
         material.SetFloat("_yOff", offset.y);
         
-        material.DOFloat(0.0f, Shader.PropertyToID("_radius"), 1.0f).SetUpdate(UpdateType.Fixed);
+        material.DOFloat(0.0f, Shader.PropertyToID("_radius"), 1.0f).SetUpdate(UpdateType.Fixed).SetEase(Ease.InOutBack);
     }
 
     private void DeFade()
