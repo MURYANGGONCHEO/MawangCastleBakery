@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -102,6 +103,12 @@ public class DeckBuilder : MonoBehaviour
         if (deckName.Length > 20 || deckName.Length == 0)
         {
             _errorEvent?.Invoke(ErrorTextBase.deckNameError);
+            return;
+        }
+
+        if(_saveDeckData.SaveDeckList.Any(n => n.deckName == deckName))
+        {
+            _errorEvent?.Invoke(ErrorTextBase.deckNameBothError);
             return;
         }
 

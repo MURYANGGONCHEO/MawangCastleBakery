@@ -145,7 +145,7 @@ public class SkillCardManagement : CardManagement
         BattleReader.CaptureHand();
     }
 
-    private void GenerateCardPosition(CardBase selectCard)
+    public void GenerateCardPosition(CardBase selectCard)
     {
         selectCard.transform.rotation = Quaternion.identity;
         BattleReader.AbilityTargetSystem.AllGenerateChainPos(true);
