@@ -35,6 +35,7 @@ public class HandRecover : MonoBehaviour
         CostCalculator.GetCost(card.AbilityCost);
 
         CardRecord myRec = card.CardRecordList.FirstOrDefault(x => x.CardID == card.CardID);
+        Debug.Log($"{myRec.HandIdx}");
         BattleReader.InHandCardList.Insert(myRec.HandIdx, card);
         card.transform.SetParent(_cardHandZone);
 

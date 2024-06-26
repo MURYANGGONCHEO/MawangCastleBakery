@@ -35,11 +35,14 @@ public class DeckGenerator : MonoBehaviour
 
     public List<DeckElement> CurrentDeckList { get; private set; } = new List<DeckElement>();
 
-    protected virtual void Start()
+    private void Awake()
     {
         _currentPage = _startPage;
-
         GenerateDeckList();
+    }
+
+    protected virtual void Start()
+    {
         ResetDeckList();
     }
 
@@ -50,6 +53,21 @@ public class DeckGenerator : MonoBehaviour
             _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
         }
 
+        List<DeckElement> nullDeckList = new List<DeckElement>();
+        for(int i = 0; i < _saveDeckData.SaveDeckList.Count; i++)
+        {
+            if (_saveDeckData.SaveDeckList[i].deckName == string.Empty)
+            {
+                nullDeckList.Add(_saveDeckData.SaveDeckList[i]);
+            }
+        }
+
+        foreach(var d in nullDeckList)
+        {
+            _saveDeckData.SaveDeckList.Remove(d);
+        }
+
+        CurrentDeckList.Clear();
         foreach(DeckElement de in _saveDeckData.SaveDeckList)
         {
             CurrentDeckList.Add(de);
@@ -88,7 +106,8 @@ public class DeckGenerator : MonoBehaviour
 
     public void ResetDeckList()
     {
-        GenerateDeckList(_saveDeckData.SaveDeckList);
+        GenerateDeckList();
+        GenerateDeckList(CurrentDeckList);
     }
 
     public void FilteringDeckList(List<DeckElement> deList)
@@ -124,6 +143,7 @@ public class DeckGenerator : MonoBehaviour
         for (int i = startIdx; i < maxIdx; i++)
         {
             CanUseDeckElement cude = Instantiate(_canUseDeckPrefab, _deckElemetTrm);
+            Debug.Log($"{deList.Count} {i}");
             Debug.Log($"{deList[i].deckName}, {deckName}");
             cude.SetDeckInfo(deList[i], this, deList[i].deckName == deckName);
         }

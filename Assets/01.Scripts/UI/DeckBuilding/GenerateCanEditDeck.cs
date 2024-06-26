@@ -14,6 +14,7 @@ public class GenerateCanEditDeck : DeckGenerator
     private void OnEnable()
     {
         UIManager.Instance.GetSceneUI<DeckBuildingUI>().IsEditing = false;
+        ResetDeckList();
     }
 
     protected override void SetSelectDeck(DeckElement deckElement)

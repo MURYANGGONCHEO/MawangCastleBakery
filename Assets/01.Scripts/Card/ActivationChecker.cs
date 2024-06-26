@@ -25,6 +25,8 @@ public class ActivationChecker : MonoBehaviour
 
     private void BindMouse()
     {
+        if(BattleReader.IsOnTargetting) return;
+
         if (Input.GetMouseButton(0) && BattleReader.OnBinding && BattleReader.OnPointerCard.CanUseThisCard)
         {
             if(BattleReader.OnPointerCard.Paneling)
