@@ -40,7 +40,6 @@ public class BattleResultPanel : PanelUI
                            string stageName, 
                            string conditionName)
     {
-        Debug.Log(99);
         MaestrOffice.Camera.orthographic = true;
         MaestrOffice.EffectCamera.orthographic = true;
 
