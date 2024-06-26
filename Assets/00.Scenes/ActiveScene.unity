@@ -977,7 +977,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 0
+    m_Time: 0.1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -3205,7 +3205,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 0.3
+    m_ImpulseDuration: 0.2
     m_ImpulseType: 0
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}
