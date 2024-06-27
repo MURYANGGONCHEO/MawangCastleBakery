@@ -16,10 +16,11 @@ MonoBehaviour:
   stageName: "\uD3D0\uD5C8\uC758 \uBCF5\uB3C4"
   stageType: 1
   stageBackGround: 1
+  stageCutScene: {fileID: 0}
   enemyGroup: {fileID: 11400000, guid: 26a9cc31cb655324e93b4ec850fa6e37, type: 2}
-  enemyFormation: {fileID: 0}
+  enemyFormation: {fileID: 11400000, guid: c66d88d76b6813149a77c46fdac6ae5e, type: 2}
   clearCondition: {fileID: 11400000, guid: cff655815dbe9ec4b8bdaeb341b876f9, type: 2}
   compensation:
     Item: {fileID: 11400000, guid: 276281a078b479d4ab21c22376c0f927, type: 2}
     count: 50
-  isClearThisStage: 0
+  isClearThisStage: 1
