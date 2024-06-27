@@ -12,22 +12,4 @@ public class DeckBuildingUI : SceneUI
         base.SceneUIStart();
         _deckBuilder = GetComponent<DeckBuilder>();
     }
-
-    public void OnDestroy()
-    {
-        if(IsEditing)
-            DataGenerate();
-    }
-
-    public void DataGenerate()
-    {
-        SaveDeckData saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
-
-        if (!_deckBuilder.IsDeckSaving)
-        {
-            saveDeckData.SaveDeckList.Insert(DeckManager.Instance.SaveDummyDeck.Item2, DeckManager.Instance.SaveDummyDeck.Item1);
-        }
-
-        DataManager.Instance.SaveData(saveDeckData, DataKeyList.saveDeckDataKey);
-    }
 }

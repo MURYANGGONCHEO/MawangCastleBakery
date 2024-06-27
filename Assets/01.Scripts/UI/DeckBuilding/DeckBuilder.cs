@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -105,6 +106,12 @@ public class DeckBuilder : MonoBehaviour
             return;
         }
 
+        if(_saveDeckData.SaveDeckList.Any(n => n.deckName == deckName))
+        {
+            _errorEvent?.Invoke(ErrorTextBase.deckNameBothError);
+            return;
+        }
+
         IsDeckSaving = true;
 
         List<string> convertDataDeck = new List<string>();
@@ -114,6 +121,7 @@ public class DeckBuilder : MonoBehaviour
         }
 
         DeckElement de = new DeckElement(deckName, convertDataDeck);
+        _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
         _saveDeckData.SaveDeckList.Add(de);
         DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
     }

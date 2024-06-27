@@ -24,9 +24,10 @@ public abstract class LightningCardBase : CardBase
                     ParticleSystem shockedFX = Instantiate(_staticEffect, Vector3.Lerp(me.transform.position, e.transform.position, 0.5f), Quaternion.identity);
 
                     // Set rotate
-                    Vector2 dir = e.transform.position - me.transform.position;
-                    float zRot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                    shockedFX.transform.rotation = Quaternion.Euler(0, 0, zRot);
+                    Vector3 dir = (e.transform.position - me.transform.position).normalized;
+                    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                    //shockedFX.transform.rotation = Quaternion.Euler(shockedFX.transform.rotation.x, angle + 45, shockedFX.transform.rotation.z);
+                    shockedFX.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
                     // Set size
                     float distance = Vector2.Distance(e.transform.position, me.transform.position);

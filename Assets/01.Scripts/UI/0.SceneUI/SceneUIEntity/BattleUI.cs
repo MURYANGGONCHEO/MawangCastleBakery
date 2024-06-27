@@ -51,6 +51,7 @@ public class BattleUI : SceneUI
             _battleResultPanel.gameObject.SetActive(true);
 
             StageDataSO currentStage = StageManager.Instanace.SelectStageData;
+            
             _battleResultPanel.LookResult(isClear,
                                           currentStage.stageType,
                                           currentStage.stageName,

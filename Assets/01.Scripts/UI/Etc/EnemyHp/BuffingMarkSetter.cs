@@ -46,6 +46,8 @@ public class BuffingMarkSetter : MonoBehaviour
     [SerializeField] private RectTransform _contentTrm;
 
     private ExpansionList<BuffingMark> _buffingMarkList = new ();
+    private List<CombatMarkingData> _currentMarkingDataList = new();
+
     public Transform BuffingPanelTrm { get; set; }
 
     private void Awake()
@@ -56,12 +58,12 @@ public class BuffingMarkSetter : MonoBehaviour
 
     private void HandleContentDecrease(object sender, EventArgs e)
     {
-        _contentTrm.sizeDelta -= new Vector2(42, 0);
+        _contentTrm.sizeDelta -= new Vector2(44, 0);
     }
 
     private void HandleContentIncrease(object sender, EventArgs e)
     {
-        _contentTrm.sizeDelta += new Vector2(42, 0);
+        _contentTrm.sizeDelta += new Vector2(44, 0);
     }
 
     private void Start()
@@ -75,26 +77,19 @@ public class BuffingMarkSetter : MonoBehaviour
 
     public void DecountBuffDuration()
     {
-        List<BuffingMark> disappearList = new();
-
-        foreach(var bm in _buffingMarkList)
+        foreach(var md in _currentMarkingDataList)
         {
-            int turnCount = --bm.CombatMarkingData.durationTurn;
-            if(turnCount == 0)
+            md.durationTurn -= 1;
+            if(md.durationTurn <= 0 )
             {
-                disappearList.Add(bm);
+                RemoveBuffingMark(md);
             }
-        }
-
-        foreach (var bm in disappearList)
-        {
-            RemoveBuffingMark(bm.CombatMarkingData);
         }
     }
 
     public void AddBuffingMark(CombatMarkingData markingData, int addCount = 1)
     {
-        BuffingMark target = _buffingMarkList.Find(x => x.CombatMarkingData.buffingType == markingData.buffingType);
+        BuffingMark target = _buffingMarkList.Find(x => x.CombatMarkingData.buffingInfo == markingData.buffingInfo);
         if (target == null)
         {
             BuffingMark buffingMark = Instantiate(_buffingMarkPrefab, _contentTrm);
@@ -111,6 +106,8 @@ public class BuffingMarkSetter : MonoBehaviour
         {
             target.TokenCount += addCount;
         }
+
+        _currentMarkingDataList.Add(markingData);
     }
 
     public void RemoveBuffingMark(CombatMarkingData markingData, int RemoveCount = 1)

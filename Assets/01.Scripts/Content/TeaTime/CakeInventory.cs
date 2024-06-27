@@ -26,6 +26,7 @@ public class CakeInventory : MonoBehaviour
 
             foreach(var cake in cakeDataList) 
             {
+                Debug.Log($"Name : {cake.CakeName}");
                 cakeList.Add((BakingManager.Instance.GetCakeDataByName(cake.CakeName), cake.Count));
             }
 

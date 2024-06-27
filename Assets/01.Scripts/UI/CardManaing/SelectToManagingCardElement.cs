@@ -20,7 +20,11 @@ public class SelectToManagingCardElement : MonoBehaviour, IPointerClickHandler
     {
         set
         {
-            UnSelectedAction?.Invoke();
+            if(!value)
+            {
+                UnSelectedAction?.Invoke();
+            }
+            
             _usingMask.SetActive(value);
         }
     }

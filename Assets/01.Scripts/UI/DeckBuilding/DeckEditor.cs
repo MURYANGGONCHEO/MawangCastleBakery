@@ -7,23 +7,10 @@ using UnityEngine.Events;
 public class DeckEditor : MonoBehaviour
 {
     [SerializeField] private GameObject _saveChecker;
-    private DeckElement _deckElement;
     [SerializeField] private UnityEvent<CardBase> _autoSelectCardEvent;
     [SerializeField] private UnityEvent<string> _autoSetDeckNameEvent;
 
     private SaveDeckData _saveDeckData = new SaveDeckData();
-
-    private void OnDisable()
-    {
-        if( _saveChecker.activeSelf)
-        {
-            if(DataManager.Instance.IsHaveData(DataKeyList.saveDeckDataKey))
-            {
-                _saveDeckData = DataManager.Instance.LoadData<SaveDeckData>(DataKeyList.saveDeckDataKey);
-            }
-            DataManager.Instance.SaveData(_saveDeckData, DataKeyList.saveDeckDataKey);
-        }
-    }
 
     public void SetEditDeckInfo(DeckElement deckElement)
     {

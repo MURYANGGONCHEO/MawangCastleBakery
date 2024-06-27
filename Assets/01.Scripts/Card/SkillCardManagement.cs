@@ -32,10 +32,10 @@ public class SkillCardManagement : CardManagement
 
     private void Start()
     {
-        InCardZoneCatalogue.ListAdded += HandleCheckAcceptBtn;
+        InCardZoneCatalogue.ListChanged += HandleCheckAcceptBtn;
 
-        TurnCounter.EnemyTurnStartEvent += (bool v) => _checkStageClearEvent?.Invoke();
-        TurnCounter.PlayerTurnStartEvent += (bool v) => _checkStageClearEvent?.Invoke();
+        TurnCounter.EnemyTurnEndEvent += () => _checkStageClearEvent?.Invoke();
+        TurnCounter.PlayerTurnEndEvent += () => _checkStageClearEvent?.Invoke();
     }
     private void HandleCheckAcceptBtn(object sender, EventArgs e)
     {
@@ -94,7 +94,7 @@ public class SkillCardManagement : CardManagement
             }
 
             TurnCounter.TurnCounting.ToEnemyTurnChanging(true);
-            _setupHandCardEvent?.Invoke(true);
+            //_setupHandCardEvent?.Invoke(true);
 
             BattleReader.AbilityTargetSystem.AllChainClear();
             
@@ -145,7 +145,7 @@ public class SkillCardManagement : CardManagement
         BattleReader.CaptureHand();
     }
 
-    private void GenerateCardPosition(CardBase selectCard)
+    public void GenerateCardPosition(CardBase selectCard)
     {
         selectCard.transform.rotation = Quaternion.identity;
         BattleReader.AbilityTargetSystem.AllGenerateChainPos(true);

@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 1204650954308566524}
   - component: {fileID: 7004860108036990839}
   - component: {fileID: 467661099153174564}
+  - component: {fileID: 6108343017326963354}
   m_Layer: 5
   m_Name: TraceIngredientFrame
   m_TagString: Untagged
@@ -153,6 +154,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6108343017326963354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314864638318988920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64503637e2953949a975c7cc553ac50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idx: 1
 --- !u!1 &314893310783414800
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +535,7 @@ GameObject:
   - component: {fileID: 4587842787601318471}
   - component: {fileID: 7900067749026059378}
   - component: {fileID: 1093483433739562107}
+  - component: {fileID: 5594115575739056806}
   m_Layer: 5
   m_Name: SubIngredientFrame
   m_TagString: Untagged
@@ -587,6 +602,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5594115575739056806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962379988553000690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64503637e2953949a975c7cc553ac50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idx: 2
 --- !u!1 &1016133921371662406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,7 +1134,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6599361968506537273}
+      - m_Target: {fileID: 857595022699698316}
         m_TargetAssemblyTypeName: LookRecipePreviewPanel, Assembly-CSharp
         m_MethodName: BakeCake
         m_Mode: 1
@@ -1884,6 +1912,7 @@ GameObject:
   - component: {fileID: 302161584413602844}
   - component: {fileID: 6802859547811349645}
   - component: {fileID: 4280636031591170478}
+  - component: {fileID: 3914537937601034882}
   m_Layer: 5
   m_Name: CoreIngredientFrame
   m_TagString: Untagged
@@ -1950,6 +1979,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3914537937601034882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3650274792990266061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64503637e2953949a975c7cc553ac50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idx: 0
 --- !u!1 &3846748747813199812
 GameObject:
   m_ObjectHideFlags: 0
@@ -5241,10 +5283,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 978433652415946617}
   - {fileID: 3377823825836365648}
   - {fileID: 5499443410013960832}
   - {fileID: 6421069770609156370}
+  - {fileID: 978433652415946617}
   m_Father: {fileID: 8081603623821224840}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

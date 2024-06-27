@@ -32,6 +32,6 @@ public class Pianissimo : MonoBehaviour
 
     private void Attack()
     {
-        _speed = 0.7f;
+        _speed = 1f;
     }
 }

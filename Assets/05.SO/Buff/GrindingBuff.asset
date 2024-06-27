@@ -15,7 +15,9 @@ MonoBehaviour:
   statBuffs:
   - type: 2
     values: 0a0000000f00000014000000
+    turn: 0
   specialBuffs: []
   stackBuffs:
   - type: 0
-    values: 010000000200000003000000
+    values: 0f2700000f2700000f270000
+  buffInfo: 
