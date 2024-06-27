@@ -94,7 +94,7 @@ public class SkillCardManagement : CardManagement
             }
 
             TurnCounter.TurnCounting.ToEnemyTurnChanging(true);
-            _setupHandCardEvent?.Invoke(true);
+            //_setupHandCardEvent?.Invoke(true);
 
             BattleReader.AbilityTargetSystem.AllChainClear();
             

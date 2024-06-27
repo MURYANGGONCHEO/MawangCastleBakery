@@ -60,6 +60,8 @@ public abstract class Entity : PoolableMono
 
     public BuffingMarkSetter BuffSetter { get; set; }
 
+    [HideInInspector]public bool Disappear;
+
     public void SelectChainningCharacter(Color skillColor, float Thickness)
     {
         _materialChangeTween.Kill();
@@ -95,6 +97,8 @@ public abstract class Entity : PoolableMono
     protected virtual void OnEnable()
     {
         HealthCompo.SetOwner(this);
+
+        Disappear = false;
 
         TurnCounter.RoundStartEvent += BuffStatCompo.UpdateBuff;
 
@@ -163,6 +167,7 @@ public abstract class Entity : PoolableMono
     {
 
         AnimatorCompo.SetTrigger(_deathAnimationHash);
+        Disappear = true;
         OnAnimationCall += GotoPool;
     }
 

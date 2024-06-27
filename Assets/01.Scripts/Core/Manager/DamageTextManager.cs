@@ -32,7 +32,8 @@ public class DamageTextManager : MonoSingleton<DamageTextManager>
     [SerializeField] private Color[] _textColors;
     [SerializeField] private ReactionWord[] _reactionType;
 
-    private Dictionary<Health, PopDamageText> entityByText = new();
+    private Dictionary<Health, (int, PopDamageText)> entityByText = new();
+    private List<PopDamageText> popupTxt = new();
 
     public void PopupDamageText(Health health, Vector3 position, int damage, DamageCategory category)
     {
@@ -40,27 +41,51 @@ public class DamageTextManager : MonoSingleton<DamageTextManager>
 
 
         PopDamageText dmgText = null;
-        if (!entityByText.TryGetValue(health, out dmgText))
+        (int, PopDamageText) value;
+        if (!entityByText.TryGetValue(health, out value))
         {
             dmgText = PoolManager.Instance.Pop(PoolingType.DamageText) as PopDamageText;
             dmgText.transform.position = Camera.main.transform.position;
             dmgText.DamageText.font = _damageTextFont;
+            dmgText.DamageText.fontSize = 6;
 
-            entityByText.Add(health, dmgText);
+            value = (0, dmgText);
+            entityByText.Add(health, value);
         }
+        dmgText = value.Item2;
+        value.Item1 += damage;
+
         dmgText.SetDamageText(position);
         int idx = (int)category;
         //이후 더하고 효과 추가
-        dmgText.UpdateText(damage, _textColors[idx]);
+        dmgText.UpdateText(value.Item1, _textColors[idx]);
         dmgText.ActiveCriticalDamage(category == DamageCategory.Critical);
+
+        entityByText[health] = value;
+    }
+    public void PopupExtraDamageText(Health health, Vector3 position, int damage, DamageCategory category)
+    {
+        PopDamageText dmgText = PoolManager.Instance.Pop(PoolingType.DamageText) as PopDamageText;
+        dmgText.transform.position = Camera.main.transform.position;
+        dmgText.DamageText.font = _damageTextFont;
+        dmgText.DamageText.fontSize = 3;
+
+        dmgText.SetDamageText(position);
+        int idx = (int)category;
+        dmgText.UpdateText(damage, _textColors[idx]);
+        popupTxt.Add(dmgText);
     }
 
     public void PushAllText()
     {
+        foreach (var t in popupTxt)
+        {
+            t.EndText();
+        }
+        popupTxt.Clear();
         foreach (var t in entityByText)
         {
-            t.Value.EndText();
-            t.Key.totalDmg = 0;
+            t.Value.Item2.EndText();
         }
         entityByText.Clear();
     }

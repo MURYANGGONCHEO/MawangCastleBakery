@@ -13,6 +13,15 @@ public class AilmentStat
 
     public event Action<AilmentEnum> EndOFAilmentEvent; // �����̻� ����� �߻�
 
+    public void Reset()
+    {
+        foreach (AilmentEnum ailm in Enum.GetValues(typeof(AilmentEnum)))
+        {
+            _ailmentStack[ailm] = 0;
+        }
+        currentAilment = AilmentEnum.None;
+    }
+
     public AilmentStat(Health health)
     {
         _ailmentStack = new Dictionary<AilmentEnum, int>();
@@ -63,8 +72,8 @@ public class AilmentStat
             case AilmentEnum.Chilled:
                 break;
             case AilmentEnum.Shocked:
-                //_ailmentStack[ailment] = 0;
-                //CuredAilment(ailment);
+                _ailmentStack[ailment] = 0;
+                CuredAilment(ailment);
                 _health.AilmentByDamage(ailment, Mathf.RoundToInt(_health.maxHealth * 0.07f));
                 break;
         }

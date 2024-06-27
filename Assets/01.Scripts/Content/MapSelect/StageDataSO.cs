@@ -26,7 +26,7 @@ public class Compensation
     public int count;
 }
 
-[CreateAssetMenu(menuName ="SO/StageData")]
+[CreateAssetMenu(menuName = "SO/StageData")]
 public class StageDataSO : ScriptableObject
 {
     public string stageNumber;
@@ -50,20 +50,26 @@ public class StageDataSO : ScriptableObject
         if (isClearThisStage) return;
 
         isClearThisStage = true;
-        string[] numArr = stageNumber.Split('-');
-
-        int chapteridx = Convert.ToInt16(numArr[0]);
-        int stageidx = Convert.ToInt16(numArr[1]);
-
         AdventureData ad = DataManager.Instance.LoadData<AdventureData>(DataKeyList.adventureDataKey);
-        Debug.Log($"{chapteridx}-{stageidx}");
-        string challingingStageData = $"{chapteridx}-{stageidx + 1}";
-        if(stageidx == 6)
+
+        //클리어 중인 메인 스테이지
+        if (stageType == StageType.Main)
         {
-            challingingStageData = $"{chapteridx + 1}-{1}";
+            string[] numArr = stageNumber.Split('-');
+
+            int chapteridx = Convert.ToInt16(numArr[0]);
+            int stageidx = Convert.ToInt16(numArr[1]);
+
+
+            Debug.Log($"{chapteridx}-{stageidx}");
+            string challingingStageData = $"{chapteridx}-{stageidx + 1}";
+            if (stageidx == 6)
+            {
+                challingingStageData = $"{chapteridx + 1}-{1}";
+            }
+            Debug.Log(challingingStageData);
+            ad.InChallingingStageCount = challingingStageData;
         }
-        Debug.Log(challingingStageData);
-        ad.InChallingingStageCount = challingingStageData;
 
         DataManager.Instance.SaveData(ad, DataKeyList.adventureDataKey);
     }
