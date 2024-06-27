@@ -218,7 +218,7 @@ public class AbilityTargettingSystem : MonoBehaviour
 
     public void TargettingCancle(int cardID)
     {
-        foreach(Enemy e in _battleController.OnFieldMonsterArr)
+        foreach (var e in BattleReader.CombatMarkManagement.GetEntityOnTarget(cardID))
         {
             BattleReader.CombatMarkManagement.RemoveBuffingData(e, cardID, BuffingType.Targetting);
         }
@@ -235,6 +235,8 @@ public class AbilityTargettingSystem : MonoBehaviour
 
         foreach (var e in _battleController.OnFieldMonsterArr)
         {
+            if (e is null) return;
+
             _battleController.maskEnableEvent?.Invoke(e);
         }
     }

@@ -143,8 +143,7 @@ public class DeckGenerator : MonoBehaviour
         for (int i = startIdx; i < maxIdx; i++)
         {
             CanUseDeckElement cude = Instantiate(_canUseDeckPrefab, _deckElemetTrm);
-            Debug.Log($"{deList.Count} {i}");
-            Debug.Log($"{deList[i].deckName}, {deckName}");
+
             cude.SetDeckInfo(deList[i], this, deList[i].deckName == deckName);
         }
 
@@ -162,7 +161,6 @@ public class DeckGenerator : MonoBehaviour
             _selectDeckObj.gameObject.SetActive(false);
             return;
         }
-        print(deckElement.deck);
         _selectDeckObj.gameObject.SetActive(true);
         _selectDeckObj.SetDeckInfo(deckElement.deckName, 
                                    DeckManager.Instance.GetDeck(deckElement.deck));
