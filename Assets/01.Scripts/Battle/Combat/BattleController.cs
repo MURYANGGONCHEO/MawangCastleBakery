@@ -66,6 +66,7 @@ public class BattleController : MonoSingleton<BattleController>
             _isGameEnd = value;
             if (_isGameEnd)
             {
+                DamageTextManager.Instance.PushAllText();
                 for (int i = 0; i < OnFieldMonsterArr.Length; i++)
                 {
                     Enemy e = OnFieldMonsterArr[i];

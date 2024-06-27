@@ -12,11 +12,11 @@ using UnityEngine.Events;
 
 public abstract class CardBase : MonoBehaviour,
                                  IPointerClickHandler,
-                                 IPointerEnterHandler, 
+                                 IPointerEnterHandler,
                                  IPointerExitHandler
 {
     public int CardID { get; set; }
-    public List<CardRecord> CardRecordList { get; set; } = new ();
+    public List<CardRecord> CardRecordList { get; set; } = new();
     public Action<CardBase> RecoverEvent { get; set; }
     [SerializeField] private float _toMovePosInSec;
     public RectTransform VisualRectTrm { get; private set; }
@@ -61,7 +61,7 @@ public abstract class CardBase : MonoBehaviour,
         {
             return visualTrm;
         }
-        
+
     }
     private bool _isActivingAbillity;
     protected bool IsActivingAbillity
@@ -74,7 +74,7 @@ public abstract class CardBase : MonoBehaviour,
         {
             _isActivingAbillity = value;
 
-            if(_isActivingAbillity)
+            if (_isActivingAbillity)
             {
                 BattleReader.LockHandCard(true);
             }
@@ -89,10 +89,10 @@ public abstract class CardBase : MonoBehaviour,
                                                                   CardShameType.Cost,
                                                                   (int)CombineLevel);
 
-    [HideInInspector]public BattleController battleController;
+    [HideInInspector] public BattleController battleController;
     protected Player Player => battleController.Player;
 
-    [SerializeField]protected BuffSO buffSO;
+    [SerializeField] protected BuffSO buffSO;
     [SerializeField] protected SEList<SEList<int>> damageArr;
 
     private TextMeshProUGUI _costText;
@@ -174,7 +174,7 @@ public abstract class CardBase : MonoBehaviour,
         seq.Join(transform.DOScale(1, _toMovePosInSec).SetEase(Ease.OutBack));
         seq.AppendCallback(() =>
         {
-            if(generateCallback)
+            if (generateCallback)
             {
                 BattleReader.CombineMaster.CombineGenerate();
                 BattleReader.OnPointerCard = null;
@@ -217,16 +217,16 @@ public abstract class CardBase : MonoBehaviour,
 
         if (BattleReader.OnPointerCard == null ||
             BattleReader.OnPointerCard == this ||
-            BattleReader.OnBinding   == false) return;
+            BattleReader.OnBinding == false) return;
 
         if (UIFunction.IsImagesOverlapping(BattleReader.OnPointerCard.VisualRectTrm, VisualRectTrm))
         {
-            if(BattleReader.OnPointerCard.transform.position.x > transform.position.x
+            if (BattleReader.OnPointerCard.transform.position.x > transform.position.x
             && BattleReader.GetIdx(BattleReader.OnPointerCard) > BattleReader.GetIdx(this))
             {
                 Shuffling();
             }
-            else if(BattleReader.OnPointerCard.transform.position.x < transform.position.x
+            else if (BattleReader.OnPointerCard.transform.position.x < transform.position.x
                  && BattleReader.GetIdx(BattleReader.OnPointerCard) < BattleReader.GetIdx(this))
             {
                 Shuffling();
@@ -240,7 +240,7 @@ public abstract class CardBase : MonoBehaviour,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (IsOnActivationZone || BattleReader.OnBinding || 
+        if (IsOnActivationZone || BattleReader.OnBinding ||
             BattleReader.IsOnTargetting) return;
 
         OnPointerSetCardAction?.Invoke(transform);
@@ -260,7 +260,7 @@ public abstract class CardBase : MonoBehaviour,
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (IsOnActivationZone || BattleReader.OnBinding || 
+        if (IsOnActivationZone || BattleReader.OnBinding ||
             BattleReader.IsOnTargetting) return;
 
         OnPointerInitCardAction?.Invoke(transform);
@@ -279,21 +279,24 @@ public abstract class CardBase : MonoBehaviour,
     {
         if (!IsOnActivationZone || BattleReader.IsOnTargetting) return;
 
-        var initList = BattleReader.SkillCardManagement.InCardZoneList;
+        var initList = BattleReader.SkillCardManagement.InCardZoneList as ExpansionList<CardBase>;
 
-        if (initList[initList.Count - 1] != this)
+        CardBase card = initList[initList.Count - 1];
+        if (card != this)
         {
             // Something;
+            initList.Remove(this);
             return;
         }
 
         RecoverEvent?.Invoke(this);
+        initList.Remove(this);
     }
 
     public int[] GetDamages()
     {
         int[] damages = new int[3];
-        for(int i = 0; i < 3; ++i)
+        for (int i = 0; i < 3; ++i)
         {
             damages[i] = (Player.CharStat.GetDamage() / 100) * CardManagingHelper.GetCardShame(CardInfo.cardShameData, CardShameType.Damage, i);
         }

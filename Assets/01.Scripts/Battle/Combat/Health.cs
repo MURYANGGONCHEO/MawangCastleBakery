@@ -55,7 +55,6 @@ public class Health : MonoBehaviour, IDamageable
     public bool IsFreeze;
     private KnockBackSystem _knockBack;
 
-    public int totalDmg = 0;
     protected void Awake()
     {
         _ailmentStat = new AilmentStat(this);
@@ -67,6 +66,8 @@ public class Health : MonoBehaviour, IDamageable
     {
         TurnCounter.RoundEndEvent += UpdateHealth;
         _ailmentStat.EndOFAilmentEvent += HandleEndOfAilment;
+
+        _ailmentStat.Reset();
 
         _isDead = false;
     }
@@ -123,7 +124,7 @@ public class Health : MonoBehaviour, IDamageable
     }
     public void ApplyDamage(int damage, Entity dealer, KnockBackType type = KnockBackType.PushBack)
     {
-        if (_isInvincible) return; //����ϰų� �������¸� ���̻� ������ ����.
+        if (_isInvincible|| _owner.Disappear) return; //����ϰų� �������¸� ���̻� ������ ����.
 
 
         if (dealer.CharStat.IsCritical(ref damage))
@@ -144,8 +145,7 @@ public class Health : MonoBehaviour, IDamageable
         if(receivedDmgIncreaseStat != null)
             damage += Mathf.RoundToInt(damage * (receivedDmgIncreaseStat.GetValue() * 0.01f));
 
-        totalDmg += damage;
-        DamageTextManager.Instance.PopupDamageText(this, _owner.transform.position, totalDmg, isLastHitCritical ? DamageCategory.Critical : DamageCategory.Noraml);
+        DamageTextManager.Instance.PopupDamageText(this, _owner.transform.position, damage, isLastHitCritical ? DamageCategory.Critical : DamageCategory.Noraml);
         if (!_isDead)
             foreach (var b in dealer.OnAttack)
             {
@@ -188,6 +188,7 @@ public class Health : MonoBehaviour, IDamageable
     //�����̻� �ɱ�.
     public void SetAilment(AilmentEnum ailment, int duration)
     {
+        if (_owner.Disappear) return;
         _ailmentStat.ApplyAilments(ailment, duration);
 
         OnAilmentChanged?.Invoke(_ailmentStat.currentAilment);
@@ -197,7 +198,8 @@ public class Health : MonoBehaviour, IDamageable
     {
         //��ũ������ �߰� �κ�.
         //������� ������ �ؽ�Ʈ �߰�
-        DamageTextManager.Instance.PopupDamageText(this, _owner.transform.position, damage, DamageCategory.Debuff);
+        _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
+        DamageTextManager.Instance.PopupExtraDamageText(this, _owner.transform.position, damage, DamageCategory.Debuff);
         OnDamageEvent?.Invoke(_currentHealth, maxHealth);
         AfterHitFeedbacks(damage);
 
