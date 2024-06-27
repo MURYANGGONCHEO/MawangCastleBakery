@@ -112,11 +112,11 @@ Material:
     - _aura_vpanner: 0.48
     - _blink_amount: 0
     - _dissolve_amount: 1
-    - _edge_width: 0.345
+    - _edge_width: 0.381
     - _is_up_direction: 1
     - _line_amount: 1
     - _line_opacity: 0.14
-    - _multiplier: 100
+    - _multiplier: 100.17
     - _noise_size: 64.8
     - _noise_str: 1.5
     - _outline_thick: 286.08
