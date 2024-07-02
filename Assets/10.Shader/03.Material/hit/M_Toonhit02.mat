@@ -109,18 +109,18 @@ Material:
     - _CULLMODE: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Dissolve: 0.36
+    - _Dissolve: 1
     - _DstBlend: 0
     - _Fade_Ditance: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Main_Ins: 1
+    - _Main_Ins: 2.67
     - _Main_Pow: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Opacity: 1
+    - _Opacity: 1.97
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -153,5 +153,5 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Main_Color: {r: 2.4608104, g: 1.1055815, b: 0.54684675, a: 0}
     - _edge_color: {r: 0, g: 0, b: 0, a: 0}
-    - _main_color_a: {r: 1, g: 1, b: 1, a: 0}
+    - _main_color_a: {r: 14.754423, g: 14.754423, b: 14.754423, a: 0}
   m_BuildTextureStacks: []

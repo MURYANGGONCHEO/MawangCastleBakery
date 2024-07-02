@@ -33,7 +33,6 @@ public class CustomGrabFeature : ScriptableRendererFeature
 
     public override void Create()
     {
-
         List<ShaderTagId> shaderTagIds = new List<ShaderTagId>();
         for (int i = 0; i < _settings.shaderTagStrings.Length; i++)
         {
