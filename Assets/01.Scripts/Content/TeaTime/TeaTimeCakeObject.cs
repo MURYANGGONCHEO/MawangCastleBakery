@@ -13,7 +13,8 @@ public class TeaTimeCakeObject : MonoBehaviour, IDragHandler, IEndDragHandler
     private Vector2 _usuallyPos;
 
     private ItemDataBreadSO _cakeSO;
-    public ItemDataBreadSO CakeInfo => _cakeSO;
+    private CakeData _info;
+    public CakeData CakeInfo => _info;
 
     private TeaTimeUI _teaTimeUI;
     private bool _isInitThisCakeInEatRange;
@@ -24,9 +25,10 @@ public class TeaTimeCakeObject : MonoBehaviour, IDragHandler, IEndDragHandler
         _usuallyPos = transform.position;
     }
 
-    public void SetCakeImage(ItemDataBreadSO info)
+    public void SetCakeImage(ItemDataBreadSO info,CakeData data)
     {
         _cakeSO = info;
+        _info = data;
         _cakeImg.sprite = info.itemIcon;
         _cakeImg.enabled = true;
     }
@@ -45,10 +47,10 @@ public class TeaTimeCakeObject : MonoBehaviour, IDragHandler, IEndDragHandler
             _teaTimeUI.TeaTimeCreamStand.EatCake(CakeInfo);
             _teaTimeUI.CakeCollocation.UnCollocateCake(CakeInfo);
 
-            Debug.Log($"ÄÉÀÌÅ© ÀÎÆ÷ : {CakeInfo}, Ä«µå : {CakeInfo.ToGetCardBase.CardInfo}");
+            Debug.Log($"ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ : {_cakeSO}, Ä«ï¿½ï¿½ : {_cakeSO.ToGetCardBase.CardInfo}");
 
             _teaTimeUI.TeaTimeCreamStand.Reaction();
-            UIManager.Instance.GetSceneUI<TeaTimeUI>().SetCard(CakeInfo.ToGetCardBase.CardInfo);
+            UIManager.Instance.GetSceneUI<TeaTimeUI>().SetCard(_cakeSO.ToGetCardBase.CardInfo);
 
             _cakeImg.enabled = false;
         }

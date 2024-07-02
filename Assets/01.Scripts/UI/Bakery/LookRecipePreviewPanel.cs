@@ -12,7 +12,7 @@ public class LookRecipePreviewPanel : PreviewPanel
     [SerializeField] private GameObject _plzSelectText;
     [SerializeField] private GameObject _recipeElementObj;
 
-    [Header("ÂüÁ¶")]
+    [Header("ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private Vector2 _crookedAngleRange;
     [SerializeField] private Image _cakeImage;
     [SerializeField] private TextMeshProUGUI _cakeNameText;
@@ -55,22 +55,23 @@ public class LookRecipePreviewPanel : PreviewPanel
 
     public void BakeCake()
     {
-        ItemDataIngredientSO[] data = 
+        ItemDataIngredientSO[] data =
         BakingManager.Instance.GetIngredientDatasByCakeName(_recipeElement.CakeItemData.itemName);
 
-        if(!BakingManager.Instance.CanBake(data))
+        if (!BakingManager.Instance.CanBake(data))
         {
             return;
         }
 
-        ItemDataBreadSO cake = BakingManager.Instance.BakeBread(data);
+        CakeData cake = BakingManager.Instance.BakeBread(data);
+        ItemDataBreadSO cakeSO = BakingManager.Instance.GetCakeDataByName(cake.CakeName);
 
         foreach (var item in data)
         {
             Inventory.Instance.RemoveItem(item);
         }
 
-        Inventory.Instance.AddItem(cake);
+        Inventory.Instance.AddItem(cakeSO);
 
         BakeryUI bui = UIManager.Instance.GetSceneUI<BakeryUI>();
 
@@ -81,11 +82,11 @@ public class LookRecipePreviewPanel : PreviewPanel
             bd = DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
         }
 
-        CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
+        CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.CakeName && x.Rank == cake.Rank);
 
         if (cakeData == null)
         {
-            bd.CakeDataList.Add(cakeData);
+            bd.CakeDataList.Add(BakingManager.Instance.cacheBread);
         }
         else
         {
@@ -94,7 +95,7 @@ public class LookRecipePreviewPanel : PreviewPanel
 
         DataManager.Instance.SaveData(bd, DataKeyList.bakeryRecipeDataKey);
 
-        bui.ToGetCakeType = cake;
+        bui.ToGetCakeType = cakeSO;
         bui.FilteringPreviewContent(MySortType);
         bui.RecipePanel.InvokeRecipeAction(MySortType);
 

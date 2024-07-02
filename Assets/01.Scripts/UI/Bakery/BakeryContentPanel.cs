@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -50,8 +51,10 @@ public class BakeryContentPanel : MonoBehaviour
     {
         if(_bakeryData == null) return;
 
+        HashSet<string> hash = new();
         foreach (CakeData cd in _bakeryData.CakeDataList)
         {
+            if(!hash.Add(cd.CakeName)) continue;
             RecipeElement re = Instantiate(_recipeElementPrefab, _recipeElementTrm);
             re.ThisCakeData = cd;
             re.SetCakeInfo(BakingManager.Instance.GetCakeDataByName(cd.CakeName));

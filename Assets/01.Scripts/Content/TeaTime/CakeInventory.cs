@@ -16,15 +16,15 @@ public class CakeInventory : MonoBehaviour
     {
         _content.Clear();
 
-        if(DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
+        if (DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
         {
-            List<CakeData> cakeDataList = 
+            List<CakeData> cakeDataList =
             DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey).
             CakeDataList;
 
-            List<(ItemDataSO, int)> cakeList = new ();
+            List<(ItemDataSO, int)> cakeList = new();
 
-            foreach(var cake in cakeDataList) 
+            foreach (var cake in cakeDataList)
             {
                 Debug.Log($"Name : {cake.CakeName}");
                 cakeList.Add((BakingManager.Instance.GetCakeDataByName(cake.CakeName), cake.Count));
@@ -40,7 +40,7 @@ public class CakeInventory : MonoBehaviour
 
                 CakeInventoryElement cie = Instantiate(_cakeElementPrefab, _content);
 
-                cie.SetInfo(cakeList[i].Item1, cakeList[i].Item2, _cakeCollocation, _cakeInvenPanel);
+                cie.SetInfo(cakeList[i].Item1, cakeList[i].Item2, _cakeCollocation, _cakeInvenPanel, cakeDataList[i]);
             }
         }
     }

@@ -4091,6 +4091,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2bcf6dbc6e0ffe14ca94acf4ca806df5, type: 2}
   - {fileID: 11400000, guid: 660723e770fbfa74580dd259bc9a0a6a, type: 2}
   - {fileID: 11400000, guid: 35ad5b7d998dc7340818715c3ef2ec83, type: 2}
+  cacheBread:
+    CakeName: 
+    IsFavorites: 0
+    Count: 0
+    Rank: 0
+  _ranks:
+  - num: 70
+    rank: 0
+  - num: 25
+    rank: 1
+  - num: 5
+    rank: 2
 --- !u!114 &6626603573827281288
 MonoBehaviour:
   m_ObjectHideFlags: 0

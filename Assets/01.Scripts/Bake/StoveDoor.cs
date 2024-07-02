@@ -22,7 +22,7 @@ public class StoveDoor : MonoBehaviour, IBakingProductionObject
         transform.SmartMoveY(true, _normalY, _easingTime);
     }
 
-    public void DoughInStove(int grade)
+    public void DoughInStove(CakeRank grade)
     {
         transform.SmartMoveY(true, _normalY, _easingTime * 3f, Ease.OutBounce);
     }
