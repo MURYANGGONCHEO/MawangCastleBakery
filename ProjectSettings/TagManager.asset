@@ -64,3 +64,6 @@ TagManager:
   - name: UIObject
     uniqueID: 4257045771
     locked: 0
+  - name: Episode
+    uniqueID: 1215645907
+    locked: 0
