@@ -24,6 +24,8 @@ public class CustomRenderPassFeature : ScriptableRendererFeature
         {
             CommandBuffer cmd = CommandBufferPool.Get();
 
+            if (null == cmd) return;
+
             cmd.Clear();
             cmd.GetTemporaryRT(Shader.PropertyToID(tmpRenderHandler.name), renderingData.cameraData.cameraTargetDescriptor);
             cmd.Blit(source, tmpRenderHandler.nameID, material);

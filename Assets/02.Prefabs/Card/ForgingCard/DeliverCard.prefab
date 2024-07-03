@@ -64,9 +64,9 @@ MonoBehaviour:
     - list: 19000000
   _soundEffect: {fileID: 8300000, guid: 181d30a94ff0a184a85cbcc5c6808802, type: 3}
   _skillDurations:
-  - 7.5
-  - 7.5
-  - 7.5
+  - 15
+  - 15
+  - 15
 --- !u!1 &3864059232419461052
 GameObject:
   m_ObjectHideFlags: 0

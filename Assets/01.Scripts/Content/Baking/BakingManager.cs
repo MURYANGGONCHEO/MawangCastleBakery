@@ -24,6 +24,12 @@ public struct CakeGroup
         cake = _cake;
     }
 }
+[System.Serializable]
+public struct RankWeight
+{
+    public int num;
+    public CakeRank rank;
+}
 
 public class BakingManager : MonoSingleton<BakingManager>
 {
@@ -36,6 +42,9 @@ public class BakingManager : MonoSingleton<BakingManager>
     [SerializeField] private List<ItemDataIngredientSO> _ingredientList = new();
 
     private List<CakeGroup> _cakeGroupList = new List<CakeGroup>();
+    public CakeData cacheBread; 
+
+    [SerializeField] private List<RankWeight> _ranks = new();
 
     private void Start()
     {
@@ -75,7 +84,7 @@ public class BakingManager : MonoSingleton<BakingManager>
 
         return true;
     }
-    public ItemDataBreadSO BakeBread(ItemDataIngredientSO[] ingredients)
+    public CakeData BakeBread(ItemDataIngredientSO[] ingredients)
     {
         if (!CanBake(ingredients))
         {
@@ -91,18 +100,44 @@ public class BakingManager : MonoSingleton<BakingManager>
         x.ingDatas[1] == ingNames[1] &&
         x.ingDatas[2] == ingNames[2]);
 
-        ItemDataBreadSO returnBread;
+        ItemDataBreadSO breadData;
 
         if(cg.Equals(default(CakeGroup)))
         {
-            returnBread = _cakeDictionary["DubiousBread"];
+            breadData = _cakeDictionary["DubiousBread"];
         }
         else
         {
-            returnBread = cg.cake;
+            breadData = cg.cake;
         }
-
+        CakeData returnBread = new CakeData(breadData.itemName, false)
+        {
+            Count = 1,
+            Rank = SetRank(),
+        };
+        cacheBread = returnBread;
         return returnBread;
+    }
+    private CakeRank SetRank()
+    {
+        float allWeight = 0;
+        foreach(var i in _ranks)
+        {
+            allWeight += i.num;
+        }
+        float pickNum = UnityEngine.Random.value;
+        float sumValues = 0f;
+        CakeRank returnValue = CakeRank.Normal;
+        for (int i = 0; i < _ranks.Count; i++)
+        {
+            sumValues += _ranks[i].num/allWeight;
+            if(pickNum <= sumValues)
+            {
+                returnValue = _ranks[i].rank;
+                break;
+            }   
+        }
+        return returnValue;
     }
 
     public ItemDataBreadSO GetCakeDataByName(string cakeName)

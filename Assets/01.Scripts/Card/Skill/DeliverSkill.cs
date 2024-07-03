@@ -34,7 +34,7 @@ public class DeliverSkill : CardBase, ISkillEffectAnim
 
     private IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(7.3f);
 
         foreach (var e in Player.GetSkillTargetEnemyList[this])
         {
@@ -46,7 +46,7 @@ public class DeliverSkill : CardBase, ISkillEffectAnim
             }
         }
 
-        yield return new WaitForSeconds(3.65f);
+        yield return new WaitForSeconds(3.6f);
 
         foreach(var e in Player.GetSkillTargetEnemyList[this])
         {

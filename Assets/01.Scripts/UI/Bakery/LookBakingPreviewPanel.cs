@@ -71,8 +71,9 @@ public class LookBakingPreviewPanel : PreviewPanel
 
         if (BakingManager.Instance.CanBake(ingDatas))
         {
-            ItemDataBreadSO cake = BakingManager.Instance.BakeBread(ingDatas);
-            Inventory.Instance.AddItem(cake);
+            CakeData cake = BakingManager.Instance.BakeBread(ingDatas);
+            ItemDataBreadSO cakeSO = BakingManager.Instance.GetCakeDataByName(cake.CakeName);
+            Inventory.Instance.AddItem(cakeSO);
 
             foreach (var ingData in ingDatas)
             {
@@ -87,11 +88,11 @@ public class LookBakingPreviewPanel : PreviewPanel
                 bd = DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
             }
 
-            CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.itemName);
+            CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.CakeName && x.Rank == cake.Rank);
             Debug.Log(cakeData);
             if (cakeData == null)
             {
-                bd.CakeDataList.Add(new CakeData(cake.itemName, false));
+                bd.CakeDataList.Add(BakingManager.Instance.cacheBread);
             }
             else
             {
@@ -100,7 +101,7 @@ public class LookBakingPreviewPanel : PreviewPanel
 
             DataManager.Instance.SaveData(bd, DataKeyList.bakeryRecipeDataKey);
 
-            bui.ToGetCakeType = cake;
+            bui.ToGetCakeType = cakeSO;
             bui.FilteringPreviewContent(MySortType);
             bui.RecipePanel.InvokeRecipeAction(MySortType);
 

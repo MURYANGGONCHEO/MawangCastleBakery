@@ -44,7 +44,7 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         transform.DOLocalMoveY(1.7f, EasingTime);
     }
 
-    public void DoughInStove(int grade)
+    public void DoughInStove(CakeRank grade)
     {
         SpriteRenderer qMarkRenderer = _qMark.GetComponent<SpriteRenderer>();
 
@@ -72,17 +72,17 @@ public class Stove : MonoBehaviour, IBakingProductionObject
         {
             switch (grade)
             {
-                case 0:
+                case CakeRank.Legend:
                     {
                         LegendGrade();
                     }
                     break;
-                case 1:
+                case CakeRank.Epic:
                     {
                         EpicGrade();
                     }
                     break;
-                case 2:
+                case CakeRank.Normal:
                     {
                         NormalGrade();
                     }
