@@ -18,4 +18,9 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 20fa7ed502f378b478f4a3547807dd27, type: 3}
   dropChance: 50
   haveCount: 1
-  ToGetCardBase: {fileID: 837378472443390461, guid: a99a1e3207e9c784bac056fe857771fe, type: 3}
+  ToGetCardBase:
+  - {fileID: 6658966002282652616, guid: ee331d83f94934e499d9add066bbbe1a, type: 3}
+  - {fileID: 8144915054667489356, guid: b9156aae93171854f8a8c5bf42dd1b4c, type: 3}
+  - {fileID: 4758132497896339568, guid: 329739728c4f14449b4a2150bbe9c022, type: 3}
+  - {fileID: 6335444186847260920, guid: 534e31b8501ada84780448c1ba288998, type: 3}
+  - {fileID: 3007661017682430650, guid: f2a2f6db7dcec374aacdf943a2b30633, type: 3}

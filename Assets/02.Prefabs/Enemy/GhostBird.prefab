@@ -421,7 +421,6 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
-  totalDmg: 0
 --- !u!114 &5643084232044557926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,7 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolingType: 33
-  <CharStat>k__BackingField: {fileID: 11400000, guid: a4581df0aa4d5df4bb658e431175de92, type: 2}
+  <CharStat>k__BackingField: {fileID: 11400000, guid: 3a9e22b46ff0a6d44a15d6958fd06a35, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -503,9 +502,11 @@ MonoBehaviour:
   lastMovePos: {x: 0, y: 0, z: 0}
   moveDuration: 0.1
   turnStatus: 0
+  Disappear: 0
   attackParticle:
     attack: {fileID: 0}
   _cameraMoveInfo: {fileID: 11400000, guid: f1e929ba6b0def44684b63d0155ace10, type: 2}
+  attackClip: {fileID: 0}
 --- !u!114 &-6969168908169264579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,7 +683,7 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: 133328
+  m_InstanceId: 87756
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}

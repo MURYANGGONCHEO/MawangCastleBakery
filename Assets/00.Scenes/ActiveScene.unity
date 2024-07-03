@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 0.5
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -3301,7 +3301,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 0.1
+    m_ImpulseDuration: 0.4
     m_ImpulseType: 0
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}
@@ -4860,6 +4860,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35ad5b7d998dc7340818715c3ef2ec83, type: 2}
   - {fileID: 11400000, guid: 276281a078b479d4ab21c22376c0f927, type: 2}
   - {fileID: 11400000, guid: 3ecff4985eca0b94aaf1f3fe229b8604, type: 2}
+  - {fileID: 11400000, guid: 16534161a2f83044abc9df4a22879764, type: 2}
+  - {fileID: 11400000, guid: 45eaa2a956d3bfd4ca8ed450c27e1f25, type: 2}
+  - {fileID: 11400000, guid: 2b6319a8301dc8b40a26c378a1532447, type: 2}
+  - {fileID: 11400000, guid: 15cc63198f186ba4f92317c5f0e3c585, type: 2}
+  - {fileID: 11400000, guid: b26b2275da5945c47a67bb0cedd5b820, type: 2}
   _cakeDataArr:
   - {fileID: 11400000, guid: a2dcd3252ef8c0c4d98f385f36915429, type: 2}
   - {fileID: 11400000, guid: 4eb8b922153dea447bf11104fbb0b74c, type: 2}

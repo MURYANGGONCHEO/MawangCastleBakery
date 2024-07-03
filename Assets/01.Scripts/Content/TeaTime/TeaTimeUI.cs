@@ -6,7 +6,14 @@ using UnityEngine.Playables;
 using UnityEngine.UI;
 using TMPro;
 using System.Xml.Serialization;
+using System;
+using UnityEngine.Rendering.Universal;
 
+[System.Serializable]
+public struct DirectorByRankInfo
+{
+    public CakeRank rank;
+}
 public class TeaTimeUI : SceneUI
 {
     [SerializeField] private EatRange _eatRange;
@@ -22,12 +29,7 @@ public class TeaTimeUI : SceneUI
     public GetCard GetCard => _getCard;
 
     [SerializeField]
-    private PlayableDirector director;
-
-    [SerializeField]
-    private Image cardImage;
-    [SerializeField]
-    private TextMeshProUGUI cardName;
+    private List<PlayableDirector> director;
 
     [SerializeField]
     private GameObject _tutorialPanel;
@@ -35,17 +37,18 @@ public class TeaTimeUI : SceneUI
     [SerializeField]
     private CakeInventory _cakeInven;
 
+
     public void SetCard(CardInfo cardInfo)
     {
-        cardImage.sprite = cardInfo.CardVisual;
-        cardName.text = cardInfo.CardName;
+        // cardImage.sprite = cardInfo.CardVisual;
+        // cardName.text = cardInfo.CardName;
 
         GetCard.GetCakeInfo(cardInfo);
     }
 
     public void DirectorStart()
     {
-        director.Play();
+        // director.Play();
     }
 
     public override void SceneUIStart()
@@ -60,5 +63,10 @@ public class TeaTimeUI : SceneUI
             DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
         }
         _cakeInven.CreateCakeElement();
+    }
+
+    public void SetDirector(CakeRank rank)
+    {
+
     }
 }
