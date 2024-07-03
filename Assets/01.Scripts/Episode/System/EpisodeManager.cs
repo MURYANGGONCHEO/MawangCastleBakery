@@ -45,6 +45,7 @@ public class EpisodeManager : MonoBehaviour
     public Action EpisodeEndEvent { get; set; }
 
     [HideInInspector] public int DialogueIdx { get; set; }
+    private int _endIdx;
     [HideInInspector] public List<LogData> dialogueLog = new List<LogData>();
     [HideInInspector] public bool isTextInTyping;
 
@@ -70,12 +71,14 @@ public class EpisodeManager : MonoBehaviour
     public void StartEpisode(EpisodeData data)
     {
         ActiveUIPlanel(true);
+        _endIdx = data.dialogueElement.Count;
         _episodeStartEvent?.Invoke(data);
     }
 
     public void StartEpisode(EpisodeData data, int[] pauseIndexs)
     {
         ActiveUIPlanel(true);
+        _endIdx = data.dialogueElement.Count;
         _pauseIdx = pauseIndexs;
         _episodeStartEvent?.Invoke(data);
     }
@@ -93,6 +96,12 @@ public class EpisodeManager : MonoBehaviour
 
     public void NextDialogue()
     {
+        Debug.Log($"{DialogueIdx}, {_endIdx}");
+        if (DialogueIdx == _endIdx)
+        {
+            ActiveUIPlanel(false);
+            return;
+        }
         _nextDialogueEvent?.Invoke();
     }
 
