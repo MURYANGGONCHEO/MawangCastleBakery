@@ -8,7 +8,6 @@ public class GetBreadController : MonoBehaviour
     private IBakingProductionObject[] _productionGraphicsObjArr;
     [SerializeField] private DoughHandler _dough;
 
-    [SerializeField] private int[] _perc = { 5, 25, 70 };
     [SerializeField] private int _testidx;
 
     private void Awake()
@@ -35,31 +34,19 @@ public class GetBreadController : MonoBehaviour
 
     public void DoughInStove()
     {
-        float randomValue = Random.value * 100;
 
-        int grade = -1;
         int cakeCount = 0;
-        float cumulative = 0f;
+        CakeRank rank = BakingManager.Instance.cacheBread.Rank;
 
-        for (int i = 0; i < _perc.Length; i++)
+        switch(rank)
         {
-            cumulative += _perc[i];
-            if(cumulative >= randomValue)
-            {
-                grade = i;
-                break;
-            }
-        }
-
-        switch(grade)
-        {
-            case 0:
+            case CakeRank.Legend:
                 cakeCount = 150;
                 break;
-            case 1:
+            case CakeRank.Epic:
                 cakeCount = 50;
                 break;
-            case 2:
+            case CakeRank.Normal:
                 cakeCount = 10;
                 break;
             default:
@@ -70,7 +57,7 @@ public class GetBreadController : MonoBehaviour
 
         foreach (var production in _productionGraphicsObjArr)
         {
-            production.DoughInStove(grade);
+            production.DoughInStove(rank);
         }
     }
 

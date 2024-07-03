@@ -19,7 +19,7 @@ public class Table : MonoBehaviour, IBakingProductionObject
         transform.SmartMove(false, _normalPos, EasingTime);
     }
 
-    public void DoughInStove(int grade)
+    public void DoughInStove(CakeRank grade)
     {
 
     }

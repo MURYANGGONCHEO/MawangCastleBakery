@@ -32,6 +32,9 @@ public class TeaTimeUI : SceneUI
     [SerializeField]
     private GameObject _tutorialPanel;
 
+    [SerializeField]
+    private CakeInventory _cakeInven;
+
     public void SetCard(CardInfo cardInfo)
     {
         cardImage.sprite = cardInfo.CardVisual;
@@ -56,5 +59,6 @@ public class TeaTimeUI : SceneUI
             cf.isFirstOnTeaTime = true;
             DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
         }
+        _cakeInven.CreateCakeElement();
     }
 }

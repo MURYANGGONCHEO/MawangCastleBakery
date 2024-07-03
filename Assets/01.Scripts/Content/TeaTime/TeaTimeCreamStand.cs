@@ -32,17 +32,19 @@ public class TeaTimeCreamStand : MonoBehaviour
         }
     }
 
-    public void EatCake(ItemDataBreadSO cakeInfo)
+    public void EatCake(CakeData cakeInfo,CakeInventoryElement element)
     {
         if(DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
         {
             BakeryData data = DataManager.Instance.LoadData<BakeryData>(DataKeyList.bakeryRecipeDataKey);
-            CakeData cd = data.CakeDataList.FirstOrDefault(x => x.CakeName == cakeInfo.itemName);
+            CakeData cd = data.CakeDataList.FirstOrDefault(x => x.CakeName == cakeInfo.CakeName && x.Rank == cakeInfo.Rank);
 
             cd.Count--;
+            element.SetCount(cd.Count);
             if(cd.Count == 0)
             {
                 data.CakeDataList.Remove(cd);
+                Destroy(element.gameObject);
             }
 
             DataManager.Instance.SaveData(data, DataKeyList.bakeryRecipeDataKey);
