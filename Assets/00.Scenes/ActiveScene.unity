@@ -360,6 +360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Grinding
       objectReference: {fileID: 0}
+    - target: {fileID: 7997511850347345421, guid: 9022dba0d5bc5804eacdfd62b306b53e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

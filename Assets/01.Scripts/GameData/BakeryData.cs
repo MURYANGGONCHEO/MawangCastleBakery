@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum CakeRank
 {
-    Normal,
-    Epic,
-    Legend
+    Normal = 1,
+    Epic = 3,
+    Legend= 5
 }
 
 [System.Serializable]

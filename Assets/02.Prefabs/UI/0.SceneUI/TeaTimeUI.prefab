@@ -15847,6 +15847,7 @@ MonoBehaviour:
   cardImage: {fileID: 2531722753668158105}
   cardName: {fileID: 7265767524300017268}
   _tutorialPanel: {fileID: 1262677839675376098}
+  _cakeInven: {fileID: 5428855754138009248}
 --- !u!320 &8973695357881045143
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -16067,18 +16068,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ActiveSelectCakePanel, Assembly-CSharp
         m_MethodName: ActiveCakeInventoryPanel
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 5428855754138009248}
-        m_TargetAssemblyTypeName: CakeInventory, Assembly-CSharp
-        m_MethodName: CreateCakeElement
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

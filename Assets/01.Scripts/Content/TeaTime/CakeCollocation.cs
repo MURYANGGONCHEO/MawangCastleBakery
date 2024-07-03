@@ -5,6 +5,7 @@ using UnityEngine;
 public class CakeCollocation : MonoBehaviour
 {
     [SerializeField] private TeaTimeCakeObject[] _cakeObjectArr = new TeaTimeCakeObject[3];
+    private CakeInventoryElement inventoryElement;
 
     public void UnCollocateCake(CakeData cakeInfo)
     {
@@ -20,13 +21,13 @@ public class CakeCollocation : MonoBehaviour
         Debug.LogWarning("����ũ ����");
     }
 
-    public void CollocateCake(ItemDataBreadSO cakeInfo,CakeData data)
+    public void CollocateCake(CakeInventoryElement element, ItemDataBreadSO cakeInfo,CakeData data)
     {
         for (int i = 0; i < _cakeObjectArr.Length; i++)
         {
             if (_cakeObjectArr[i].CanCollocate)
             {
-                _cakeObjectArr[i].SetCakeImage(cakeInfo,data);
+                _cakeObjectArr[i].SetCakeImage(element,cakeInfo,data);
                 _cakeObjectArr[i].CanCollocate = false;
                 return;
             }

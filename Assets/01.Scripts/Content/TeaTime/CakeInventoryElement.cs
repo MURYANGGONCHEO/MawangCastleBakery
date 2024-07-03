@@ -27,7 +27,7 @@ public class CakeInventoryElement : MonoBehaviour, IPointerClickHandler
         if (_isSelectThisCake) return;
 
         _isSelectThisCake = true;
-        _cakeCollocation.CollocateCake(_myCommonBreadData,_data);
+        _cakeCollocation.CollocateCake(this, _myCommonBreadData, _data);
         _usingMask.SetActive(true);
         _cakeInvenPanel.FadePanel(false, ()=> _cakeInvenPanel.gameObject.SetActive(false));
     }
@@ -45,6 +45,10 @@ public class CakeInventoryElement : MonoBehaviour, IPointerClickHandler
 
         _cakeImg.sprite = info.itemIcon;
         _nameText.text = $"{data.Rank}\n{info.itemName}";
+        _countText.text = $"<size=\"35\">X{count}</size>";
+    }
+    public void SetCount(int count)
+    {
         _countText.text = $"<size=\"35\">X{count}</size>";
     }
 }

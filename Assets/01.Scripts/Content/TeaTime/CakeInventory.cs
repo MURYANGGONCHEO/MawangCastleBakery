@@ -14,7 +14,7 @@ public class CakeInventory : MonoBehaviour
 
     public void CreateCakeElement()
     {
-        _content.Clear();
+        // _content.Clear();
 
         if (DataManager.Instance.IsHaveData(DataKeyList.bakeryRecipeDataKey))
         {
