@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3188bf866bca4a48b646ae953e1637a, type: 3}
   m_Name: GhostBirdStat
   m_EditorClassIdentifier: 
-  characterName: "\uBC25\uC0C8"
-  characterVisual: {fileID: 1255769904, guid: 492ca8ef26d090345a09061d513dab17, type: 3}
+  characterName: "\uC720\uB839\uC0C8"
+  characterVisual: {fileID: 328265390, guid: 173da77572612be43ae6897b764cb4ca, type: 3}
   maxHealth:
     _baseValue: 30
     modifiers: 
@@ -32,7 +32,7 @@ MonoBehaviour:
   criticalDamage:
     _baseValue: 50
     modifiers: 
-  _dropItem: {fileID: 11400000, guid: 31e5be5266569f24f9a9beeb2421453c, type: 2}
+  _dropItem: {fileID: 11400000, guid: 2b6319a8301dc8b40a26c378a1532447, type: 2}
   _level: 0
   _percentageModifier: 0
   attackCnt: 1

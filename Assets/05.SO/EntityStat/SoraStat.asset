@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3188bf866bca4a48b646ae953e1637a, type: 3}
   m_Name: SoraStat
   m_EditorClassIdentifier: 
-  characterName: "\uBC25\uC0C8"
-  characterVisual: {fileID: 1255769904, guid: 492ca8ef26d090345a09061d513dab17, type: 3}
+  characterName: "\uC18C\uB77C"
+  characterVisual: {fileID: 323182755, guid: 64553cd39ebf4ef41a6fc939f9c96b01, type: 3}
   maxHealth:
     _baseValue: 30
     modifiers: 
@@ -32,7 +32,7 @@ MonoBehaviour:
   criticalDamage:
     _baseValue: 50
     modifiers: 
-  _dropItem: {fileID: 11400000, guid: 31e5be5266569f24f9a9beeb2421453c, type: 2}
+  _dropItem: {fileID: 11400000, guid: 45eaa2a956d3bfd4ca8ed450c27e1f25, type: 2}
   _level: 0
   _percentageModifier: 0
   attackCnt: 1

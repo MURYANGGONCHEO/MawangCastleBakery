@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3188bf866bca4a48b646ae953e1637a, type: 3}
   m_Name: KiwiBirdStat
   m_EditorClassIdentifier: 
-  characterName: "\uBC25\uC0C8"
-  characterVisual: {fileID: 1255769904, guid: 492ca8ef26d090345a09061d513dab17, type: 3}
+  characterName: "\uD0A4\uC704\uC0C8"
+  characterVisual: {fileID: -622769903, guid: 4544d7a2278514f4aba4c123b352fd03, type: 3}
   maxHealth:
     _baseValue: 30
     modifiers: 
@@ -32,7 +32,7 @@ MonoBehaviour:
   criticalDamage:
     _baseValue: 50
     modifiers: 
-  _dropItem: {fileID: 11400000, guid: 31e5be5266569f24f9a9beeb2421453c, type: 2}
+  _dropItem: {fileID: 11400000, guid: 16534161a2f83044abc9df4a22879764, type: 2}
   _level: 0
   _percentageModifier: 0
   attackCnt: 1
