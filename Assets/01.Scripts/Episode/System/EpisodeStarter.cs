@@ -10,6 +10,7 @@ public class EpisodeStarter : MonoBehaviour
     {
         if (_episodeData.isAlreadyLook) return;
 
+        _episodeData.isAlreadyLook = true;
         EpisodeManager.Instanace.StartEpisode(_episodeData);
     }
 }

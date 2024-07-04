@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class LobbyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] private EpisodeData _toClearStoty;
     [SerializeField] private SceneType _toGoScene;
     [SerializeField] private Transform _visualTrm;
     private Tween _hoverTween;
@@ -31,6 +32,16 @@ public class LobbyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void PressThisButton()
     {
+        if (!_toClearStoty.isAlreadyLook)
+        {
+            ErrorText e = PoolManager.Instance.Pop(PoolingType.ErrorText) as ErrorText;
+            e.transform.SetParent(UIManager.Instance.CanvasTrm);
+            e.transform.localPosition = Vector3.zero;
+            e.Erroring("모험하기 입장 이후 해금");
+
+            return;
+        }
+
         GameManager.Instance.ChangeScene(_toGoScene);
     }
 }

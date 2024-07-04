@@ -1860,6 +1860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528f85d97050efe49b6e7343cdabd699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _toClearStoty: {fileID: 11400000, guid: b8a3b01a69db31d43a3b23d9c83162b5, type: 2}
   _toGoScene: 1
   _visualTrm: {fileID: 1391705876227818079}
 --- !u!1 &1643699310023743632
@@ -2437,6 +2438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528f85d97050efe49b6e7343cdabd699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _toClearStoty: {fileID: 11400000, guid: 91b95fbb15ff28b4d8777e9ffc3915ad, type: 2}
   _toGoScene: 9
   _visualTrm: {fileID: 7063642282780844574}
 --- !u!1 &2119998930295954210
@@ -4279,6 +4281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528f85d97050efe49b6e7343cdabd699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _toClearStoty: {fileID: 11400000, guid: 91b95fbb15ff28b4d8777e9ffc3915ad, type: 2}
   _toGoScene: 10
   _visualTrm: {fileID: 4419890497672868628}
 --- !u!114 &107268629546969627
@@ -6030,6 +6033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528f85d97050efe49b6e7343cdabd699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _toClearStoty: {fileID: 11400000, guid: 91b95fbb15ff28b4d8777e9ffc3915ad, type: 2}
   _toGoScene: 4
   _visualTrm: {fileID: 2834670198016438434}
 --- !u!114 &8478657051991799602
@@ -7561,6 +7565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528f85d97050efe49b6e7343cdabd699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _toClearStoty: {fileID: 11400000, guid: 91b95fbb15ff28b4d8777e9ffc3915ad, type: 2}
   _toGoScene: 6
   _visualTrm: {fileID: 7799280136371678064}
 --- !u!114 &6512897882462033000
@@ -8760,7 +8765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12034874932f0d47bdd4cc45ee30ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _episodeData: {fileID: 11400000, guid: 91b95fbb15ff28b4d8777e9ffc3915ad, type: 2}
+  _episodeData: {fileID: 11400000, guid: b8a3b01a69db31d43a3b23d9c83162b5, type: 2}
 --- !u!1 &6333631810383382162
 GameObject:
   m_ObjectHideFlags: 0
@@ -12147,6 +12152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528f85d97050efe49b6e7343cdabd699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _toClearStoty: {fileID: 11400000, guid: 91b95fbb15ff28b4d8777e9ffc3915ad, type: 2}
   _toGoScene: 8
   _visualTrm: {fileID: 5963002351792816716}
 --- !u!1 &8424275363699744064
@@ -12316,6 +12322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528f85d97050efe49b6e7343cdabd699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _toClearStoty: {fileID: 11400000, guid: 91b95fbb15ff28b4d8777e9ffc3915ad, type: 2}
   _toGoScene: 3
   _visualTrm: {fileID: 7892319245885707150}
 --- !u!114 &7981444747684238647
