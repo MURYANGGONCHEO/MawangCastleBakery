@@ -54,7 +54,7 @@ public class TeaTimeCakeObject : MonoBehaviour, IDragHandler, IEndDragHandler
             _teaTimeUI.TeaTimeCreamStand.Reaction();
             for (int i = 0; i < (int)_info.Rank; i++)
             {
-                UIManager.Instance.GetSceneUI<TeaTimeUI>().SetCard(_cakeSO.ToGetCardBase[Random.Range(0,_cakeSO.ToGetCardBase.Count)].CardInfo);
+                UIManager.Instance.GetSceneUI<TeaTimeUI>().SetCard(i,_cakeSO.ToGetCardBase[Random.Range(0,_cakeSO.ToGetCardBase.Count)].CardInfo);
             }
 
             _cakeImg.enabled = false;
