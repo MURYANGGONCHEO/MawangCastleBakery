@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 using TMPro;
 using System.Xml.Serialization;
@@ -14,7 +15,7 @@ using UnityEditor.Experimental.GraphView;
 public struct DirectorByRankInfo
 {
     public CakeRank rank;
-    public PlayableDirector director;
+    public TimelineAsset director;
 }
 [System.Serializable]
 public struct EatDirectorData
@@ -36,7 +37,7 @@ public class TeaTimeUI : SceneUI
     [SerializeField] private GetCard _getCard;
     public GetCard GetCard => _getCard;
 
-    private Dictionary<CakeRank, PlayableDirector> _directors = new();
+    private Dictionary<CakeRank, TimelineAsset> _directors = new();
     [SerializeField]
     private List<DirectorByRankInfo> _directorByRank = new();
     [SerializeField]
@@ -47,6 +48,7 @@ public class TeaTimeUI : SceneUI
 
     [SerializeField]
     private CakeInventory _cakeInven;
+    [SerializeField]
     private PlayableDirector _director = null;
     private void Awake()
     {
@@ -86,6 +88,6 @@ public class TeaTimeUI : SceneUI
 
     public void SetDirector(CakeRank rank)
     {
-        _director = _directors[rank];
+        _director.playableAsset = _directors[rank];
     }
 }
