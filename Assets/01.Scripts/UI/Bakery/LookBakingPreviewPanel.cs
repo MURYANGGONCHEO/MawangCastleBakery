@@ -89,7 +89,7 @@ public class LookBakingPreviewPanel : PreviewPanel
             }
 
             CakeData cakeData = bd.CakeDataList.FirstOrDefault(x => x.CakeName == cake.CakeName && x.Rank == cake.Rank);
-            Debug.Log(cakeData.CakeName);
+
             if (cakeData == null)
             {
                 bd.CakeDataList.Add(BakingManager.Instance.cacheBread);

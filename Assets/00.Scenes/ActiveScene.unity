@@ -4556,10 +4556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8724537186fb349abe1057d4e64a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryList:
-  - {fileID: 11400000, guid: 95dfa7db78c99034ba2a9decfc8e3539, type: 2}
-  - {fileID: 11400000, guid: 16534161a2f83044abc9df4a22879764, type: 2}
-  - {fileID: 11400000, guid: 45eaa2a956d3bfd4ca8ed450c27e1f25, type: 2}
+  _inventoryList: []
 --- !u!4 &7663057329350200401
 Transform:
   m_ObjectHideFlags: 0

@@ -962,7 +962,7 @@ MonoBehaviour:
     - "None\r"
   toReadCsvFile: {fileID: 4900000, guid: c68d36c66ad0f454994b7f91d63c9032, type: 3}
   cellRange: A1:H100
-  isAlreadyLook: 1
+  isAlreadyLook: 0
   captureData: {fileID: 11400000, guid: 9900e54710f4a75419c4a2b095bd628f, type: 2}
   dialogueElement:
   - standardElement:

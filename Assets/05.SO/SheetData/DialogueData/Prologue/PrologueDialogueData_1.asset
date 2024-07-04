@@ -440,7 +440,7 @@ MonoBehaviour:
     - "None\r"
   toReadCsvFile: {fileID: 4900000, guid: 650c58623d3e9f143a11337d8982c919, type: 3}
   cellRange: A2:H45
-  isAlreadyLook: 1
+  isAlreadyLook: 0
   captureData: {fileID: 11400000, guid: 3f557be75361b024cacfb8b0c69a5fd7, type: 2}
   dialogueElement:
   - standardElement:
