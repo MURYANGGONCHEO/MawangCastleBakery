@@ -16098,11 +16098,27 @@ MonoBehaviour:
   _creamStand: {fileID: 3839284644253613737}
   _cakeCollocation: {fileID: 507611781726430238}
   _getCard: {fileID: 192021098817977456}
-  director: {fileID: 8973695357881045143}
-  cardImage: {fileID: 2531722753668158105}
-  cardName: {fileID: 7265767524300017268}
+  _directorByRank:
+  - rank: 1
+    director: {fileID: 11400000, guid: 2edd3fab15b6e5044aa003e1b749ca22, type: 2}
+  - rank: 3
+    director: {fileID: 11400000, guid: c7d336668f4f3764895f1525a59b2264, type: 2}
+  - rank: 5
+    director: {fileID: 11400000, guid: e26b1d354ed96d74f8f64fdcc3d7b629, type: 2}
+  _directorData:
+  - cardImage: {fileID: 2531722753668158105}
+    cardName: {fileID: 7265767524300017268}
+  - cardImage: {fileID: 384368678144150256}
+    cardName: {fileID: 5871066158215300705}
+  - cardImage: {fileID: 2980127993083950376}
+    cardName: {fileID: 2581274683928517747}
+  - cardImage: {fileID: 521901648470755284}
+    cardName: {fileID: 1444875954539991618}
+  - cardImage: {fileID: 465393910981047047}
+    cardName: {fileID: 3368945919976153626}
   _tutorialPanel: {fileID: 1262677839675376098}
   _cakeInven: {fileID: 5428855754138009248}
+  _director: {fileID: 8973695357881045143}
 --- !u!320 &8973695357881045143
 PlayableDirector:
   m_ObjectHideFlags: 0

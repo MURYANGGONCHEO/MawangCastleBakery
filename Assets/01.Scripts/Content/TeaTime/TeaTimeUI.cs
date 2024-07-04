@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 using TMPro;
 using System.Xml.Serialization;
 using System;
 using UnityEngine.Rendering.Universal;
+using UnityEditor.Experimental.GraphView;
 
 [System.Serializable]
 public struct DirectorByRankInfo
 {
     public CakeRank rank;
+    public TimelineAsset director;
+}
+[System.Serializable]
+public struct EatDirectorData
+{
+    public Image cardImage;
+    public TextMeshProUGUI cardName;
 }
 public class TeaTimeUI : SceneUI
 {
@@ -28,27 +37,39 @@ public class TeaTimeUI : SceneUI
     [SerializeField] private GetCard _getCard;
     public GetCard GetCard => _getCard;
 
+    private Dictionary<CakeRank, TimelineAsset> _directors = new();
     [SerializeField]
-    private List<PlayableDirector> director;
+    private List<DirectorByRankInfo> _directorByRank = new();
+    [SerializeField]
+    private List<EatDirectorData> _directorData = new();
 
     [SerializeField]
     private GameObject _tutorialPanel;
 
     [SerializeField]
     private CakeInventory _cakeInven;
-
-
-    public void SetCard(CardInfo cardInfo)
+    [SerializeField]
+    private PlayableDirector _director = null;
+    private void Awake()
     {
-        // cardImage.sprite = cardInfo.CardVisual;
-        // cardName.text = cardInfo.CardName;
+        foreach (var item in _directorByRank)
+        {
+            _directors.Add(item.rank, item.director);
+        }
+    }
+
+    public void SetCard(int idx, CardInfo cardInfo)
+    {
+        _directorData[idx].cardImage.sprite = cardInfo.CardVisual;
+        _directorData[idx].cardName.text = cardInfo.CardName;
 
         GetCard.GetCakeInfo(cardInfo);
     }
 
     public void DirectorStart()
     {
-        // director.Play();
+
+        _director.Play();
     }
 
     public override void SceneUIStart()
@@ -67,6 +88,6 @@ public class TeaTimeUI : SceneUI
 
     public void SetDirector(CakeRank rank)
     {
-
+        _director.playableAsset = _directors[rank];
     }
 }
