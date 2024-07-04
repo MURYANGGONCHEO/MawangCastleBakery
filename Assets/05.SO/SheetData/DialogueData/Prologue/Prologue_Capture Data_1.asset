@@ -37,7 +37,7 @@ MonoBehaviour:
   - captureDataIDX: 20
     captureElement:
       activeType: 2
-      movePosition: {x: 86, y: -263}
+      movePosition: {x: 599, y: -263}
       rotationValue: {x: 0, y: 0, z: 0, w: 1}
   - captureDataIDX: 27
     captureElement:
