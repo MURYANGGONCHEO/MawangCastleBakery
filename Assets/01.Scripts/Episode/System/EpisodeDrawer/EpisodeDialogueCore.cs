@@ -6,7 +6,7 @@ using EpisodeDialogueDefine;
 
 public class EpisodeDialogueCore : MonoBehaviour
 {
-    [SerializeField] private EpisodeData _selectEpisodeData;
+    private EpisodeData _selectEpisodeData;
     private DialogueElement _selectDialogueElement;
     private EpisodeManager epiManager;
 
@@ -17,10 +17,6 @@ public class EpisodeDialogueCore : MonoBehaviour
     [SerializeField] private UnityEvent<CharacterType, Vector2, Quaternion> CharacterMoveEvent;
     [SerializeField] private UnityEvent<CharacterType, EmotionType> CharacterEmotionEvent;
 
-    private void Start()
-    {
-        HandleEpisodeStart(_selectEpisodeData);
-    }
     public void HandleEpisodeStart(EpisodeData episodeData)
     {
         epiManager = EpisodeManager.Instanace;
@@ -30,12 +26,14 @@ public class EpisodeDialogueCore : MonoBehaviour
 
     public void HandleNextDialogue()
     {
-        if(epiManager.PauseIdx.Length > 0)
+        
+        if (epiManager.PauseIdx.Length > 0)
         {
             if (epiManager.DialogueIdx == epiManager.PauseIdx[epiManager.PuaseCount])
             {
                 epiManager.SetPauseEpisode(true);
                 epiManager.PuaseCount++;
+                
                 return;
             }
         }
@@ -43,8 +41,10 @@ public class EpisodeDialogueCore : MonoBehaviour
         if (epiManager.DialogueIdx == _selectEpisodeData.dialogueElement.Count)
         {
             epiManager.EpisodeEndEvent?.Invoke();
+            Debug.Log($"{epiManager.DialogueIdx}, {_selectEpisodeData.dialogueElement.Count}");
             return;
         }
+
         
         _selectDialogueElement = _selectEpisodeData.dialogueElement[epiManager.DialogueIdx];
         PhaseEventConnect();

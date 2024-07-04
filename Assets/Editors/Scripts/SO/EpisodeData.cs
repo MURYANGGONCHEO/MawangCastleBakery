@@ -89,6 +89,7 @@ public struct DialogueElement
 #endif
 public class EpisodeData : LoadableData
 {
+    public bool isAlreadyLook;
     public EpisodeCaptureData captureData;
     public List<DialogueElement> dialogueElement = new List<DialogueElement>();
 

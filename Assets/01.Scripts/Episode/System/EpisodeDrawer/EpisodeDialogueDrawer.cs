@@ -35,7 +35,7 @@ public class EpisodeDialogueDrawer : MonoBehaviour
 
     [SerializeField] private Image[] _backGround;
     [SerializeField] private List<Sprite> _backGroundSpriteList = new List<Sprite>();
-    private BackGroundType _bgType = BackGroundType.Castle;
+    private BackGroundType _bgType = BackGroundType.Black;
 
     private EpisodeManager _episodeManager;
     private SoundSelecter _episodeSounder;
@@ -48,7 +48,6 @@ public class EpisodeDialogueDrawer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        TypingText();
         SkipText();
     }
 
@@ -62,40 +61,12 @@ public class EpisodeDialogueDrawer : MonoBehaviour
         }
     }
 
-    private void TypingText()
-    {
-        if (_episodeManager.isTextInTyping)
-        {
-            if (_typingTime >= _currentTime)
-            {
-                _syntexBuilder.Append(_syntexText[_idx]);
-                _syntexTextTmp.text = _syntexBuilder.ToString();
-                _episodeSounder.HandleOutputSFX(SFXType.texter);
-
-                _currentTime = 0;
-                _idx++;
-                if (_idx >= _syntexText.Length) _episodeManager.isTextInTyping = false;
-            }
-            _currentTime += Time.deltaTime;
-        }
-    }
-
-    private void ResetFunctions()
-    {
-        _syntexTextTmp.text = string.Empty;
-        _syntexBuilder.Clear();
-        _idx = 0;
-
-        _episodeManager.isTextInTyping = true;
-    }
-
     public void HandleStandardElementDraw(string name, string syntex, BackGroundType bgType)
     {
         _nameBase.SetActive(name != string.Empty);
 
         _nameTextPro = name;
-        _syntexText = syntex;
-        ResetFunctions();
+        _syntexTextTmp.text = syntex;
 
         if (_bgType == bgType) return;
         UpdateBackGround(bgType);
