@@ -54,7 +54,8 @@ public class BakeryContentPanel : MonoBehaviour
         HashSet<string> hash = new();
         foreach (CakeData cd in _bakeryData.CakeDataList)
         {
-            if(!hash.Add(cd.CakeName)) continue;
+            if(!hash.Add(cd.CakeName) || cd.CakeName == "DubiousBread") continue;
+
             RecipeElement re = Instantiate(_recipeElementPrefab, _recipeElementTrm);
             re.ThisCakeData = cd;
             re.SetCakeInfo(BakingManager.Instance.GetCakeDataByName(cd.CakeName));
