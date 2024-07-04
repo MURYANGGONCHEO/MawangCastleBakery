@@ -4143,7 +4143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6e4090b4382d0458c79f75fe84a769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _recipeTable: {fileID: 11400000, guid: c1f803e40fda9164fbf83898507ec085, type: 2}
+  _recipeTable: {fileID: 11400000, guid: 99ea990b0266def42bbd1d39b38bc505, type: 2}
   _breadList:
   - {fileID: 11400000, guid: a2dcd3252ef8c0c4d98f385f36915429, type: 2}
   - {fileID: 11400000, guid: 4eb8b922153dea447bf11104fbb0b74c, type: 2}
@@ -4163,10 +4163,15 @@ MonoBehaviour:
   _ingredientList:
   - {fileID: 11400000, guid: 88f374a1517a43b409740b4ed61138bd, type: 2}
   - {fileID: 11400000, guid: 95dfa7db78c99034ba2a9decfc8e3539, type: 2}
+  - {fileID: 11400000, guid: 2b6319a8301dc8b40a26c378a1532447, type: 2}
+  - {fileID: 11400000, guid: 45eaa2a956d3bfd4ca8ed450c27e1f25, type: 2}
   - {fileID: 11400000, guid: fc41c1c9390f49646a642dbd6805ff33, type: 2}
+  - {fileID: 11400000, guid: 16534161a2f83044abc9df4a22879764, type: 2}
+  - {fileID: 11400000, guid: b26b2275da5945c47a67bb0cedd5b820, type: 2}
   - {fileID: 11400000, guid: 2bcf6dbc6e0ffe14ca94acf4ca806df5, type: 2}
   - {fileID: 11400000, guid: 660723e770fbfa74580dd259bc9a0a6a, type: 2}
   - {fileID: 11400000, guid: 35ad5b7d998dc7340818715c3ef2ec83, type: 2}
+  - {fileID: 11400000, guid: 15cc63198f186ba4f92317c5f0e3c585, type: 2}
   cacheBread:
     CakeName: 
     IsFavorites: 0
@@ -4174,11 +4179,11 @@ MonoBehaviour:
     Rank: 0
   _ranks:
   - num: 70
-    rank: 0
-  - num: 25
     rank: 1
+  - num: 25
+    rank: 3
   - num: 5
-    rank: 2
+    rank: 5
 --- !u!114 &6626603573827281288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4551,7 +4556,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8724537186fb349abe1057d4e64a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryList: []
+  _inventoryList:
+  - {fileID: 11400000, guid: 95dfa7db78c99034ba2a9decfc8e3539, type: 2}
+  - {fileID: 11400000, guid: 16534161a2f83044abc9df4a22879764, type: 2}
+  - {fileID: 11400000, guid: 45eaa2a956d3bfd4ca8ed450c27e1f25, type: 2}
 --- !u!4 &7663057329350200401
 Transform:
   m_ObjectHideFlags: 0

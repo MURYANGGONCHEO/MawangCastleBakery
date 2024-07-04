@@ -64,12 +64,14 @@ public class Stove : MonoBehaviour, IBakingProductionObject
             seq.Join(qMarkRenderer.DOFade(1, EasingTime + 1).SetEase(Ease.OutQuad));
 
         }
-            seq.Append(transform.DORotate(Vector3.zero, EasingTime));
-            seq.Join(transform.DOLocalMoveX(0, EasingTime));
-            seq.Join(qMarkRenderer.DOFade(0, EasingTime));
+        seq.AppendCallback(() => Debug.Log("sds"));
+        seq.Append(transform.DORotate(Vector3.zero, EasingTime));
+        seq.Join(transform.DOLocalMoveX(0, EasingTime));
+        seq.Join(qMarkRenderer.DOFade(0, EasingTime));
 
-        seq.OnComplete(() =>
+        seq.AppendCallback(()=>
         {
+            Debug.Log(grade);
             switch (grade)
             {
                 case CakeRank.Legend:
