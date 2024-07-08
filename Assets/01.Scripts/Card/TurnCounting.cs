@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnCounting : MonoBehaviour
 {
@@ -13,9 +14,11 @@ public class TurnCounting : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _gameEndText;
     [SerializeField] private Transform _turnChaingLabel;
     [SerializeField] private GameObject _visualObject;
+    [SerializeField] private Button _turnSkipBtn;
 
     private TextMeshProUGUI _selectText;
     private Transform _selectTrm;
+    private bool _isTurnChange = false;
 
     [Header("����")]
     [SerializeField] private Transform _startPos;
@@ -27,6 +30,11 @@ public class TurnCounting : MonoBehaviour
 
         BattleReader.SetDeck(StageManager.Instanace.SelectDeck);
         TurnCounter.PlayerTurnStartEvent += ToPlayerTurnChanging;
+
+        _turnSkipBtn.onClick.AddListener(() =>
+        {
+            ToEnemyTurnChanging(true);
+        });
     }
 
     private void OnDestroy()
@@ -71,18 +79,20 @@ public class TurnCounting : MonoBehaviour
     {
 
         if (UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd) return;
-
         _selectTrm = _toPTChangingText.transform;
         _selectText = _toPTChangingText;
+
+        _turnSkipBtn.gameObject.SetActive(true); //플레이어 턴일 경우 턴 스킵 버튼의 액티브를 켜준다.
         TurnChanging(isTurnChange);
     }
 
     public void ToEnemyTurnChanging(bool isTurnChange)
     {
         if (UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd) return;
-
         _selectTrm = _toETChangingText.transform;
         _selectText = _toETChangingText;
+
+        _turnSkipBtn.gameObject.SetActive(false); //애너미일 경우는 꺼준다.
         TurnChanging(isTurnChange);
     }
 
