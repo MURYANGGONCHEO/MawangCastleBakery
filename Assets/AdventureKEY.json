@@ -1,6 +1,1 @@
-{
-  "ChallingingMineFloor": "1",
-  "IsLookUnLockProductionArr": [ false, false, false, false, false, false ],
-  "InChallingingMazeLoad": "1",
-  "InChallingingStageCount": "1-1"
-}
+{"ChallingingMineFloor":"1","IsLookUnLockProductionArr":[true,true,false,false,false,false],"InChallingingMazeLoad":"1","InChallingingStageCount":"1-1"}
