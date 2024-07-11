@@ -2,24 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-
-public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, AnimationClip>>
-{
-    public AnimationClipOverrides(int capacity) : base(capacity) { }
-
-    public AnimationClip this[string name]
-    {
-        get { return this.Find(x => x.Key.name.Equals(name)).Value; }
-        set
-        {
-            int index = this.FindIndex(x => x.Key.name.Equals(name));
-            if (index != -1)
-                this[index] = new KeyValuePair<AnimationClip, AnimationClip>(this[index].Key, value);
-        }
-    }
-}
+using DG.Tweening;
 public class Player : Entity
 {
     private readonly int _moveHash = Animator.StringToHash("Move");
@@ -28,9 +11,6 @@ public class Player : Entity
     public PlayerStat PlayerStat { get; private set; }
     public PlayerVFXManager VFXManager { get; private set; }
     private PlayerHPUI _hpUI;
-
-    private AnimatorOverrideController animatorOverrideController;
-    private AnimationClipOverrides clipOverrides;
 
     public Cream cream;
     private bool _isFront;
@@ -75,14 +55,6 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
-        animatorOverrideController = new AnimatorOverrideController(AnimatorCompo.runtimeAnimatorController);
-        AnimatorCompo.runtimeAnimatorController = animatorOverrideController;
-
-        ColliderCompo.enabled = true;
-
-        clipOverrides = new AnimationClipOverrides(animatorOverrideController.overridesCount);
-        animatorOverrideController.GetOverrides(clipOverrides);
-
 
         cream.OnAnimationCall = () => OnAnimationCall?.Invoke();
         cream.OnAnimationEnd = () => OnAnimationEnd?.Invoke();
@@ -132,8 +104,6 @@ public class Player : Entity
 
     public void UseAbility(CardBase card, bool isMove = false, bool isCream = false, bool isAllAttack = false, float duration = 0.6f)
     {
-        clipOverrides["UseAbility"] = card.CardInfo.abilityAnimation;
-        animatorOverrideController.ApplyOverrides(clipOverrides);
         if (!isCream)
         {
             AnimatorCompo.SetBool(_abilityHash, true);
@@ -165,7 +135,9 @@ public class Player : Entity
         }
 
         _isFront = front;
-        BattleController.ChangeXPosition(transform, cream.transform, callback);
+        transform.DOMoveX(cream.transform.position.x, 0.5f).OnComplete(() => callback?.Invoke());
+        cream.transform.DOMoveX(transform.position.x, 0.5f);
+        
     }
 
     public void EndAbility()
