@@ -75,8 +75,8 @@ public class CostCheck : MonoBehaviour
     {
         _accNumTween.Kill();
 
-        CostCalculator.AccumulateMoney += value;
-        _accTargetCost = CostCalculator.AccumulateMoney;
+        CostCalculator.CurrentAccumulateMoney += value;
+        _accTargetCost = CostCalculator.CurrentAccumulateMoney;
 
         _accCostText.transform.DOScale(Vector3.one * 1.2f, 0.2f).OnComplete(() =>
         _accCostText.transform.DOScale(Vector3.one, 0.2f));

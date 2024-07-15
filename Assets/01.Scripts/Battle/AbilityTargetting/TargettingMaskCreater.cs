@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Image = UnityEngine.UI.Image;
+
 public class TargettingMaskCreater : MonoBehaviour
 {
     private Dictionary<Enemy, TargetMask> _getTargetMaskDic = new Dictionary<Enemy, TargetMask>();  
@@ -13,6 +15,15 @@ public class TargettingMaskCreater : MonoBehaviour
         TargetMask tm = Instantiate(_targetMaskRect, transform);
         tm.MarkingEnemy = enemy;
         RectTransform rt = tm.transform as RectTransform;
+        Image img = tm.transform.GetComponent<Image>();
+        if(img)
+        {
+            img.raycastTarget = false;
+            img.maskable = false;
+
+            tm.GetTargetMarkImage().raycastTarget = false;
+            tm.GetTargetMarkImage().maskable = false;
+        }
         
         rt.localPosition = MaestrOffice.GetScreenPosToWorldPos(enemyPos);
 

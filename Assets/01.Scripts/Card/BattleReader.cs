@@ -221,7 +221,7 @@ public static class BattleReader
 
     public static int GetPosOnTopDrawCard()
     {
-        return 860 - ((CountOfCardInHand() -1) * 170);
+        return 860 - ((CountOfCardInHand() - 1) * 170);
     }
 
     public static int GetHandPos(CardBase cardBase)

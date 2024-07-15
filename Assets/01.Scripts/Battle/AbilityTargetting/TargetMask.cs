@@ -35,4 +35,9 @@ public class TargetMask : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         BattleReader.AbilityTargetSystem.CanBinding = true;
         ActiveTargetMark(false);
     }
+
+    public Image GetTargetMarkImage()
+    {
+        return _targetMarkImg;
+    }
 }

@@ -1,27 +1,41 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using static UnityEditor.Progress;
 
 public class AccumulateCost : MonoBehaviour
 {
     [SerializeField] private Vector3 _generateData;
     [SerializeField] private GameObject _menuObjectPrefab;
 
-    [SerializeField] private List<AccumulateObject> _menuObjects;
+    [SerializeField] private List<AccumulateObject> _menuObjects = new List<AccumulateObject>();
+    [SerializeField] private Sprite[] _sprites;
+
+    [SerializeField] private int _healCost = 3;
+    [SerializeField] private int _suffleCost = 5;
+
+    private List<Action> _actionList = new List<Action>();
 
     private void Awake()
     {
-        ObjectGenerator();
+        ActionGenerate();
+    }
+    private void Start()
+    {
+        ObjectGenerate();
     }
 
-    [ContextMenu("Object Generator")]
-    public void ObjectGenerator()
+    private void ObjectGenerate()
     {
-        for(int i = (int)_generateData.x; i < _generateData.y + _generateData.x; i++)
+        int index = 0;
+        for (int i = (int)_generateData.x; i < _generateData.y + _generateData.x; i++)
         {
             Vector3 pos = new Vector3(
-                Mathf.Cos(((_generateData.z/_generateData.y) * i) * Mathf.Deg2Rad), 
-                Mathf.Sin(((_generateData.z/_generateData.y) * i) * Mathf.Deg2Rad), 
+                Mathf.Cos(((_generateData.z / _generateData.y) * i) * Mathf.Deg2Rad),
+                Mathf.Sin(((_generateData.z / _generateData.y) * i) * Mathf.Deg2Rad),
                 0.0f
             ) * 200.0f;
 
@@ -30,6 +44,7 @@ public class AccumulateCost : MonoBehaviour
 
             obj.transform.SetParent(transform);
             obj.GetComponent<RectTransform>().localScale = Vector3.zero;
+            obj.GetComponent<RectTransform>().localPosition = Vector3.zero;
             ao.movePos = pos;
 
             obj.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
@@ -37,7 +52,30 @@ public class AccumulateCost : MonoBehaviour
                 AccumulateMenuClose();
             });
 
+            switch (index)
+            {
+                case 0:
+                    ao.skillImage.sprite = _sprites[0];
+                    ao.skillImage.color = new Color(1, 1, 1, 1);
+                    obj.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
+                    {
+                        Heal();
+                    });
+                    break;
+                case 1:
+                    ao.skillImage.sprite = _sprites[1];
+                    ao.skillImage.color = new Color(1, 1, 1, 1);
+                    obj.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
+                    {
+                        Draw();
+                    });
+                    break;
+                default:
+                    break;
+            }
+
             _menuObjects.Add(ao);
+            index++;
         }
 
         AccumulateMenuClose();
@@ -45,9 +83,9 @@ public class AccumulateCost : MonoBehaviour
 
     public void AccumulateMenuOpen()
     {
-        foreach(var item in _menuObjects)
+        foreach (var item in _menuObjects)
         {
-            if(item != null)
+            if (item != null)
             {
                 item.OpenMenu();
             }
@@ -60,7 +98,7 @@ public class AccumulateCost : MonoBehaviour
 
     public void AccumulateMenuClose()
     {
-        foreach(var item in _menuObjects)
+        foreach (var item in _menuObjects)
         {
             if (item != null)
             {
@@ -71,5 +109,39 @@ public class AccumulateCost : MonoBehaviour
                 Debug.LogError("item is null : at AccumulateCost Close");
             }
         }
+    }
+
+    private void ActionGenerate()
+    {
+        _actionList.Add(() =>
+        {
+            Heal();
+        });
+
+        _actionList.Add(() =>
+        {
+            Draw();
+        });
+    }
+
+    private void Heal()
+    {
+        if (CostCalculator.CurrentAccumulateMoney < _healCost) return;
+
+        BattleController.Instance.Player.HealthCompo.ApplyHeal(10);
+    }
+
+    private void Draw()
+    {
+        if (CostCalculator.CurrentAccumulateMoney < _suffleCost) return;
+
+        int count = BattleReader.CountOfCardInHand();
+        foreach (CardBase card in BattleReader.GetHandCards())
+        {
+            BattleReader.CardDrawer.DestroyCard(card);
+        }
+
+        BattleReader.GetHandCards().Clear();
+        BattleReader.CardDrawer.DrawCard(count, true);
     }
 }

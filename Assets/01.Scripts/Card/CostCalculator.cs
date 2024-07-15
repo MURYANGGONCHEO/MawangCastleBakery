@@ -7,7 +7,7 @@ public static class CostCalculator
 {
     public static int CurrentMoney { get; set; } = 10;
     public static int CurrentExMana { get; private set; }
-    public static int AccumulateMoney { get; set; } = 0;
+    public static int CurrentAccumulateMoney { get; set; } = 0;
 
     public static Action<int> MoneyChangeEvent;
     public static Action<int> AccumulateChangeEvent;
@@ -17,10 +17,10 @@ public static class CostCalculator
     {
         CurrentMoney = 10;
         CurrentExMana = 0;
-        AccumulateMoney = 0;
+        CurrentAccumulateMoney = 0;
 
         MoneyChangeEvent?.Invoke(CurrentMoney);
-        AccumulateChangeEvent?.Invoke(AccumulateMoney);
+        AccumulateChangeEvent?.Invoke(CurrentAccumulateMoney);
         ExtraManaChangeEvent?.Invoke(CurrentExMana);
     }
 
@@ -58,8 +58,8 @@ public static class CostCalculator
 
     public static void UseAccCost(int toUseAccCost)
     {
-        AccumulateMoney = Mathf.Clamp(AccumulateMoney -= toUseAccCost, 0, int.MaxValue);
-        AccumulateChangeEvent?.Invoke(AccumulateMoney);
+        CurrentAccumulateMoney = Mathf.Clamp(CurrentAccumulateMoney -= toUseAccCost, 0, int.MaxValue);
+        AccumulateChangeEvent?.Invoke(CurrentAccumulateMoney);
     }
 
     public static void GetExMana(int togetMana)
