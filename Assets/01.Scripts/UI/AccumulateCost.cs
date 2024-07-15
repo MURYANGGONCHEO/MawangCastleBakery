@@ -127,14 +127,14 @@ public class AccumulateCost : MonoBehaviour
     private void Heal()
     {
         if (CostCalculator.CurrentAccumulateMoney < _healCost) return;
-
+        CostCalculator.AccumulateChangeEvent?.Invoke(-_healCost);
         BattleController.Instance.Player.HealthCompo.ApplyHeal(10);
     }
 
     private void Draw()
     {
         if (CostCalculator.CurrentAccumulateMoney < _suffleCost) return;
-
+        CostCalculator.AccumulateChangeEvent?.Invoke(-_suffleCost);
         int count = BattleReader.CountOfCardInHand();
         foreach (CardBase card in BattleReader.GetHandCards())
         {

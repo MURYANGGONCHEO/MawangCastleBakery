@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class CostCheck : MonoBehaviour
 {
     [SerializeField] private GameObject _costObject;
+    [SerializeField] private GameObject _accCostObject;
     private Tween _numberingTween;
     private Tween _accNumTween;
     private int _targetCost;
@@ -30,6 +31,7 @@ public class CostCheck : MonoBehaviour
         TurnCounter.PlayerTurnStartEvent += HandleEnableCostObj;
 
         TurnCounter.PlayerTurnEndEvent += HandleDisableCostObj;
+        TurnCounter.PlayerTurnEndEvent += HandleAccChange;
     }
 
     private void OnDisable()
@@ -38,16 +40,19 @@ public class CostCheck : MonoBehaviour
         CostCalculator.ExtraManaChangeEvent -= HandleCheckExMana;
         TurnCounter.PlayerTurnStartEvent -= HandleEnableCostObj;
         TurnCounter.PlayerTurnEndEvent -= HandleDisableCostObj;
+        TurnCounter.PlayerTurnEndEvent -= HandleAccChange;
     }
 
     private void HandleEnableCostObj(bool  vlaue)
     {
         _costObject.SetActive(true);
+        _accCostObject.SetActive(true);
     }
 
     private void HandleDisableCostObj()
     {
         _costObject.SetActive(false);
+        _accCostObject.SetActive(false);
     }
 
     private void HandleCalculateExMana(bool a)
@@ -90,7 +95,6 @@ public class CostCheck : MonoBehaviour
     public void HandleAccChange()
     {
         HandleCheckCost(0);
-
         HandleCheckAccumulateCost(CostCalculator.CurrentMoney);
     }
 
