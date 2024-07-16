@@ -43,6 +43,8 @@ public class CombineMaster : MonoBehaviour
 
     public void CombineCard(CardBase cb_1, CardBase cb_2)
     {
+        BattleReader.IsOnTargetting = true;
+
         float combineXPos = (cb_1.transform.localPosition.x + cb_2.transform.localPosition.x) * 0.5f;
         Vector3 fxSpawnPos = (cb_1.transform.position + cb_2.transform.position) * 0.5f;
         float targeXtPos = cb_2.transform.localPosition.x;
@@ -66,6 +68,10 @@ public class CombineMaster : MonoBehaviour
             cb_2.transform.rotation = Quaternion.identity;
         });
         seq.Append(cb_2.transform.DORotate(new Vector3(0, 360, 0), 0.3f, RotateMode.FastBeyond360));
-        seq.AppendCallback(() => cb_2.SetUpCard(targeXtPos, true));
+        seq.AppendCallback(() => 
+        { 
+            cb_2.SetUpCard(targeXtPos, true);
+            BattleReader.IsOnTargetting = false;
+        });
     }
 }

@@ -50,10 +50,11 @@ public class TeaTimeCakeObject : MonoBehaviour, IDragHandler, IEndDragHandler
 
             // Debug.Log($"����ũ ���� : {_cakeSO}, ī�� : {_cakeSO.ToGetCardBase.CardInfo}");
 
+            UIManager.Instance.GetSceneUI<TeaTimeUI>().SetDirector(_info.Rank);
             _teaTimeUI.TeaTimeCreamStand.Reaction();
             for (int i = 0; i < (int)_info.Rank; i++)
             {
-                UIManager.Instance.GetSceneUI<TeaTimeUI>().SetCard(_cakeSO.ToGetCardBase[Random.Range(0,_cakeSO.ToGetCardBase.Count)].CardInfo);
+                UIManager.Instance.GetSceneUI<TeaTimeUI>().SetCard(i,_cakeSO.ToGetCardBase[Random.Range(0,_cakeSO.ToGetCardBase.Count)].CardInfo);
             }
 
             _cakeImg.enabled = false;
