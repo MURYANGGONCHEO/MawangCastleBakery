@@ -1,10 +1,6 @@
-using DG.Tweening;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using static UnityEditor.Progress;
 
 public class AccumulateCost : MonoBehaviour
 {
@@ -16,6 +12,9 @@ public class AccumulateCost : MonoBehaviour
 
     [SerializeField] private int _healCost = 3;
     [SerializeField] private int _suffleCost = 5;
+
+    [SerializeField] private ParticleSystem _healFX;
+    [SerializeField] private ParticleSystem _suffleFX;
 
     private List<Action> _actionList = new List<Action>();
 
@@ -67,7 +66,7 @@ public class AccumulateCost : MonoBehaviour
                     ao.skillImage.color = new Color(1, 1, 1, 1);
                     obj.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
                     {
-                        Draw();
+                        Suffle();
                     });
                     break;
                 default:
@@ -120,7 +119,7 @@ public class AccumulateCost : MonoBehaviour
 
         _actionList.Add(() =>
         {
-            Draw();
+            Suffle();
         });
     }
 
@@ -128,10 +127,12 @@ public class AccumulateCost : MonoBehaviour
     {
         if (CostCalculator.CurrentAccumulateMoney < _healCost) return;
         CostCalculator.AccumulateChangeEvent?.Invoke(-_healCost);
+
+        _healFX.Play();
         BattleController.Instance.Player.HealthCompo.ApplyHeal(10);
     }
 
-    private void Draw()
+    private void Suffle()
     {
         if (CostCalculator.CurrentAccumulateMoney < _suffleCost) return;
         CostCalculator.AccumulateChangeEvent?.Invoke(-_suffleCost);
@@ -141,6 +142,7 @@ public class AccumulateCost : MonoBehaviour
             BattleReader.CardDrawer.DestroyCard(card);
         }
 
+        _suffleFX.Play();
         BattleReader.GetHandCards().Clear();
         BattleReader.CardDrawer.DrawCard(count, true);
     }

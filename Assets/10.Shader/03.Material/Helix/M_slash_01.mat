@@ -125,10 +125,10 @@ Material:
     - _threshold: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Emi_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Emi_Color: {r: 2.297397, g: 2.297397, b: 2.297397, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _Main_Color: {r: 3.031433, g: 3.031433, b: 3.031433, a: 0}
+    - _Main_Color: {r: 19.468576, g: 19.468576, b: 19.468576, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _main_color: {r: 12.996038, g: 12.996038, b: 12.996038, a: 0}
     - _subs_color: {r: 0, g: 0, b: 0, a: 0}
