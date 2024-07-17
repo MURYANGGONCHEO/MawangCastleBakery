@@ -7,6 +7,7 @@ namespace SynergyClass
 {
     public class SynergyChecker : MonoBehaviour
     {
+        [SerializeField]
         private List<Synergy> _synergyList;
         public List<Synergy> SynergyList
         {
@@ -20,15 +21,17 @@ namespace SynergyClass
         {
             int checkCnt = 0;
 
+            List<CardBase> cardsInDeckList = StageManager.Instanace.SelectDeck;
+
             foreach (CardBase conditionCard in synergy.ConditionCards)
             {
-                checkCnt += (BattleReader.InDeckCardList.Find(card => card.CardID == conditionCard.CardID) != null) ? 1 : 0;
+                checkCnt += (cardsInDeckList.Find(card => card.name == conditionCard.name) != null) ? 1 : 0;
             }
 
             synergy.Enable = (checkCnt >= synergy.ConditionCheckValue) ? true : false;
         }
 
-        public void SetAllSynergyEnable()
+        public void CheckSynergyEnable()
         {
             foreach (Synergy synergy in _synergyList)
             {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeliverSkill : CardBase, ISkillEffectAnim
+public class DeliverSkill : ForgingCardBase, ISkillEffectAnim
 {
     public override void Abillity()
     {

@@ -4,8 +4,12 @@ using UnityEngine;
 
 namespace SynergyClass
 {
-    public class SynergyImpact
+    public abstract class SynergyImpact
     {
+        protected Player _player = BattleController.Instance.Player;
+        protected Synergy _ownerSynergy;
 
+        public void SetOwnerSynergy(Synergy ownerSynergy) { _ownerSynergy = ownerSynergy; }
+        public abstract void ImpactExcution();
     }
 }

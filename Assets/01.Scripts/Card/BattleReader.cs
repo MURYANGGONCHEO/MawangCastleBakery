@@ -200,6 +200,7 @@ public static class BattleReader
 
     public static CardBase GetRandomCardInDeck()
     {
+
         return InDeckCardList[Random.Range(0, InDeckCardList.Count)];
     }
 

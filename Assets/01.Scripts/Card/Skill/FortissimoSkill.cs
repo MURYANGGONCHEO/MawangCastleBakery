@@ -40,7 +40,7 @@ public class FortissimoSkill : MusicCardBase, ISkillEffectAnim
             Destroy(obj, 1.0f);
         }
 
-        Player.BuffStatCompo.AddStack(StackEnum.DMGMusicaldNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
+        AddDMGMusicalNoteStack();
         Debug.Log($"Stacks: DEF({Player.BuffStatCompo.GetStack(StackEnum.DEFMusicalNote)}) / DMG({Player.BuffStatCompo.GetStack(StackEnum.DMGMusicaldNote)}) / FAINT({Player.BuffStatCompo.GetStack(StackEnum.FAINTMusicalNote)})");
 
         CombatMarkingData data = new CombatMarkingData(BuffingType.MusicAtk,

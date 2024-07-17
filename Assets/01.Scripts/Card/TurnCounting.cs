@@ -27,6 +27,14 @@ public class TurnCounting : MonoBehaviour
 
         BattleReader.SetDeck(StageManager.Instanace.SelectDeck);
         TurnCounter.PlayerTurnStartEvent += ToPlayerTurnChanging;
+        foreach (CardBase card in BattleReader.InDeckCardList)
+        {
+            if(card.TryGetComponent<IEndowStackSkill>(out IEndowStackSkill endowStackSkill))
+            {
+                Debug.Log("Reset addition");
+                endowStackSkill.ResetAdditionStack();
+            }
+        }
     }
 
     private void OnDestroy()
