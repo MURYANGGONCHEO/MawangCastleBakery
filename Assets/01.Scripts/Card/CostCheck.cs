@@ -78,6 +78,7 @@ public class CostCheck : MonoBehaviour
 
     private void HandleCheckAccumulateCost(int value)
     {
+        if (_accCostText == null) return;
         _accNumTween.Kill();
 
         CostCalculator.CurrentAccumulateMoney += value;
