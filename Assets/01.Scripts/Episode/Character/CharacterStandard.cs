@@ -45,10 +45,11 @@ public class CharacterStandard : MonoBehaviour
 
     public void MoveCharacter(Vector2 pos)
     {
-        Debug.Log(pos);
         if (_alreadyInPos == pos) return;
 
         _moveTween.Kill();
+        transform.DOKill();
+
         _moveTween = transform.DOLocalMove(pos, _moveTime);
         _alreadyInPos = pos;
     }
