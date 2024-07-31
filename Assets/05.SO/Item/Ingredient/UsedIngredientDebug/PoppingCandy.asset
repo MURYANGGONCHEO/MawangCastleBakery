@@ -19,5 +19,5 @@ MonoBehaviour:
   dropChance: 50
   haveCount: 0
   itemIndex: 1
-  ingredientType: 2
+  ingredientType: 1
   isUsed: 0

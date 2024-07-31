@@ -16,12 +16,12 @@ MonoBehaviour:
   SynergyDesc: "\uC2DC\uB108\uC9C0 \uD14C\uC2A4\uD2B8: \uC99D\uAC00\uB7C9 100"
   ImpactCoefficient: 5
   BuffSO: {fileID: 0}
-  ImpactType: 5
+  ImpactType: 6
   ConditionCheckValue: 5
   ConditionCards:
-  - {fileID: 5748652539787976741, guid: a0794c5962988d74c86d94ffc1918cb3, type: 3}
-  - {fileID: 1182562819176431207, guid: 5bf5d4925bdfe46438d16b7b45978937, type: 3}
-  - {fileID: 4639469628356081375, guid: b2d5239ed44dd2a4a97d0f7c920cb472, type: 3}
-  - {fileID: -7162307452140123895, guid: b26e696ab30652246b24e4af03d24508, type: 3}
-  - {fileID: 4217125336049410786, guid: 09147711f0e85594f96854b9767a05a1, type: 3}
+  - {fileID: 837378472443390461, guid: a99a1e3207e9c784bac056fe857771fe, type: 3}
+  - {fileID: 4277209690870593837, guid: a2a218320ef604548835f6bbf54b8f5c, type: 3}
+  - {fileID: 3845310100515176492, guid: 580b75815babf2d44bd7db37a775176c, type: 3}
+  - {fileID: 4266173611949087453, guid: 59a619a467297c34e9f48b0679ef68e2, type: 3}
+  - {fileID: 2594644735774939664, guid: 364665f755a7ee54a97c1376c8c04a23, type: 3}
   Enable: 1
