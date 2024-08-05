@@ -1142,6 +1142,56 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &879131040708768974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1919171011393117059}
+  - component: {fileID: 4251425708133664528}
+  m_Layer: 5
+  m_Name: SynergyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1919171011393117059
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879131040708768974}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6079171035529997813}
+  m_Father: {fileID: 3002571063873485048}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4251425708133664528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879131040708768974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f295127f050e0a4892968520dff2bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _synergyChecker: {fileID: 3437194605603309881}
 --- !u!1 &1059529919634717243
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,6 +3561,7 @@ RectTransform:
   - {fileID: 6875900908826729757}
   - {fileID: 3420154087844498095}
   - {fileID: 8464104272742476555}
+  - {fileID: 1919171011393117059}
   - {fileID: 8731799001952309575}
   - {fileID: 6009916202714694763}
   - {fileID: 5194463536357166434}
@@ -4379,6 +4430,18 @@ MonoBehaviour:
   _battleStartEvent:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 4251425708133664528}
+        m_TargetAssemblyTypeName: SynergyManager, Assembly-CSharp
+        m_MethodName: SynergyInit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 6725370481074937570}
         m_TargetAssemblyTypeName: TurnCounting, Assembly-CSharp
         m_MethodName: BattleStart
@@ -6476,6 +6539,56 @@ MonoBehaviour:
   - characterFaceVisual: {fileID: 21300000, guid: 32c2c73dd6351234fb5e8cdfc01721e4, type: 3}
     line: "\uC774\uC815\uB3C4\uB294 \n\uAC00\uBFD0\uD558\uC8E0! "
   _speachBubble: {fileID: 1198907826303237867}
+--- !u!1 &8078508118625249449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6079171035529997813}
+  - component: {fileID: 3437194605603309881}
+  m_Layer: 5
+  m_Name: SynergyChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6079171035529997813
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8078508118625249449}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1919171011393117059}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3437194605603309881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8078508118625249449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3786ae4c48c8f074082e5d3cfba80a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _synergyList:
+  - {fileID: 11400000, guid: c76adb185986e564bb5c12a4d871cad0, type: 2}
 --- !u!1 &8165656545168704638
 GameObject:
   m_ObjectHideFlags: 0

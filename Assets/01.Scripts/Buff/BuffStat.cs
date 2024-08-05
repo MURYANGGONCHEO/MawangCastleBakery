@@ -46,6 +46,7 @@ public class BuffStat
             buff = so.Clone();
             buff.SetOwner(_owner, combineLevel);
             buff.AppendBuff();
+            
             _buffDic.Add(buff);
         }
     }

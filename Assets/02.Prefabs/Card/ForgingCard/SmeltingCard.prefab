@@ -64,6 +64,7 @@ MonoBehaviour:
   - 6.5
   - 6.5
   - 6.5
+  additionStack: 0
 --- !u!1 &4510029413196098872
 GameObject:
   m_ObjectHideFlags: 0

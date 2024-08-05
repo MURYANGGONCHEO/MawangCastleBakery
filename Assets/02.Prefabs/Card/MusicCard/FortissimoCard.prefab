@@ -66,6 +66,8 @@ MonoBehaviour:
   - 5
   - 5
   - 5
+  additionStack: 7
+  stackType: 2
 --- !u!1 &5095892556922366697
 GameObject:
   m_ObjectHideFlags: 0

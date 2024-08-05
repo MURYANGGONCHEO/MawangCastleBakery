@@ -18,7 +18,7 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
         SoundManager.PlayAudio(_soundEffect, true);
         Player.VFXManager.PlayPianissimoParticle(this, Player.transform.position, true);
         StartCoroutine(AttackCor());
-        Player.BuffStatCompo.AddStack(StackEnum.DEFMusicalNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
+        //Player.BuffStatCompo.AddStack(StackEnum.DEFMusicalNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
         Player.OnAnimationCall -= HandleAnimationCall;
     }
 
@@ -52,7 +52,7 @@ public class PianissimoSkill : MusicCardBase, ISkillEffectAnim
         //    yield return new WaitForSeconds(0.4f);
         //}
 
-        Player.BuffStatCompo.AddStack(StackEnum.DEFMusicalNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
+        AddDEFMusicalNoteStack();
         Debug.Log($"Stacks: DEF({Player.BuffStatCompo.GetStack(StackEnum.DEFMusicalNote)}) / DMG({Player.BuffStatCompo.GetStack(StackEnum.DMGMusicaldNote)}) / FAINT({Player.BuffStatCompo.GetStack(StackEnum.FAINTMusicalNote)})");
 
         CombatMarkingData data = new CombatMarkingData(BuffingType.MusicDef,

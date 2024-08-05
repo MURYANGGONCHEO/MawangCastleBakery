@@ -4143,7 +4143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6e4090b4382d0458c79f75fe84a769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _recipeTable: {fileID: 11400000, guid: c1f803e40fda9164fbf83898507ec085, type: 2}
+  _recipeTable: {fileID: 11400000, guid: 99ea990b0266def42bbd1d39b38bc505, type: 2}
   _breadList:
   - {fileID: 11400000, guid: a2dcd3252ef8c0c4d98f385f36915429, type: 2}
   - {fileID: 11400000, guid: 4eb8b922153dea447bf11104fbb0b74c, type: 2}
