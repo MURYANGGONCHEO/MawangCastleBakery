@@ -28,6 +28,9 @@ public class SynergyManager : MonoSingleton<SynergyManager>
     [SerializeField]
     private SynergyChecker _synergyChecker;
 
+    [SerializeField]
+    private SynergyUI _synergyUI;
+
     private Dictionary<SynergyImpactType, SynergyImpact> _synergyImpactDic = new Dictionary<SynergyImpactType, SynergyImpact>();
 
     public void SynergyInit()
@@ -35,6 +38,8 @@ public class SynergyManager : MonoSingleton<SynergyManager>
         _synergyChecker.SetAllSynergyDisable();
         SynergySetting();
         SynergyActiveEnable();
+
+        ShowSynergy();
     }
 
     public void SynergySetting()
@@ -75,5 +80,16 @@ public class SynergyManager : MonoSingleton<SynergyManager>
             if (synergy.Enable)
                 synergy.SynergyImpact.ImpactExcution();
         }
+    }
+
+    public SynergyChecker GetSynergyChecker()
+    {
+        return _synergyChecker;
+    }
+
+    public void ShowSynergy()
+    {
+        _synergyUI.SettingSynergyList();
+        _synergyUI.SynergyShow();
     }
 }
