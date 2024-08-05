@@ -273,9 +273,9 @@ public class AbilityTargettingSystem : MonoBehaviour
     private void EnemyMarking(Enemy e)
     {
         e.ChainningCardList.Add(_selectCard);
-        e.SelectedOnAttack(_selectCard);
+		e.SelectedOnAttack(_selectCard);
 
-        int idx = _getTargetArrowDic[_selectCard].Count - 1;
+		int idx = _getTargetArrowDic[_selectCard].Count - 1;
         Tween t = _getTargetArrowDic[_selectCard][idx].ReChainning(() =>
         {
             Instantiate(_chainImPact, e.transform.position, Quaternion.identity);

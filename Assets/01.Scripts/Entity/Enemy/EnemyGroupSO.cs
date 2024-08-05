@@ -6,12 +6,12 @@ using UnityEngine;
 public struct FirstSpawnData
 {
     public int mapIdx;
-    public Entity enemy;
+    public Enemy enemy;
 }
 [CreateAssetMenu(menuName = "SO/EnemyGroup")]
 public class EnemyGroupSO : ScriptableObject
 {
     public List<FirstSpawnData> firstSpawns = new(); 
-    public List<Entity> enemies = new List<Entity>();
+    public List<Enemy> enemies = new List<Enemy>();
 
 }

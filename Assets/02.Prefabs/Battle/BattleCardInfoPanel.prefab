@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b3d4d7b689f2a4eb51a019aae20e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 28
+  _poolingType: 28
   _cardNameText: {fileID: 2395228909174991741}
   _cardInfoText: {fileID: 5693396870771773772}
 --- !u!1 &1665799686253147067

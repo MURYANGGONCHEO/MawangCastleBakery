@@ -358,6 +358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd29e6f9fd0590408bffbc8ef255923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 8
+  _poolingType: 8
   _skillNameText: {fileID: 5647898270537236419}
   _skillInfoText: {fileID: 1638513635370113135}

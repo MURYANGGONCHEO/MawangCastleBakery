@@ -1,10 +1,11 @@
 using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SkillCardManagement : CardManagement
+public class SkillCardManagement : CardManagement,ITurnAction
 {
     [SerializeField] private TargettingMaskCreater _maskCreater;
     private ExpansionList<CardBase> InCardZoneCatalogue = new ExpansionList<CardBase>();
@@ -30,12 +31,16 @@ public class SkillCardManagement : CardManagement
     [SerializeField] private UnityEvent _checkStageClearEvent;
     [SerializeField] private UnityEvent<bool> _setupHandCardEvent;
 
+    private CardBase _activeCard = null;
+
     private void Start()
     {
         InCardZoneCatalogue.ListChanged += HandleCheckAcceptBtn;
 
         TurnCounter.EnemyTurnEndEvent += () => _checkStageClearEvent?.Invoke();
         TurnCounter.PlayerTurnEndEvent += () => _checkStageClearEvent?.Invoke();
+
+        BattleController.Instance.turnSeq[TurnType.Player].OnSequenceEnd += EndChainningCard;
     }
     private void HandleCheckAcceptBtn(object sender, EventArgs e)
     {
@@ -66,9 +71,10 @@ public class SkillCardManagement : CardManagement
             if (i == maxCount - 1)
             {
                 seq.InsertCallback(1, () => 
-                { 
-                    ChainingSkill();
-                });
+                {
+					BattleController.Instance.StartTurnSequence(TurnType.Player,0f, 2f);
+					//ChainingSkill();
+				});
             }
         }
     }
@@ -83,31 +89,32 @@ public class SkillCardManagement : CardManagement
             beforeChainingEvent?.Invoke();
             _isInChaining = true;
         }
-        else if (_isInChaining && InCardZoneCatalogue.Count == 0)
-        {
-            _afterChanningEvent?.Invoke();
-            _isInChaining = false;
-
-            foreach(Transform t in _activationCardZone)
-            {
-                Destroy(t.gameObject);
-            }
-
-            TurnCounter.TurnCounting.ToEnemyTurnChanging(true);
-            //_setupHandCardEvent?.Invoke(true);
-
-            BattleReader.AbilityTargetSystem.AllChainClear();
-            
-            return;
-        }
 
         CardBase selectCard = InCardZoneCatalogue[0];
         InCardZoneCatalogue.Remove(selectCard);
 
+        _activeCard = selectCard;
+
         selectCard.ActiveInfo();
         UseAbility(selectCard);
     }
+    private void EndChainningCard()
+	{
+        useCardEndEvnet?.Invoke();
 
+        _afterChanningEvent?.Invoke();
+        _activeCard = null;
+        _isInChaining = false;
+
+        foreach (Transform t in _activationCardZone)
+        {
+            Destroy(t.gameObject);
+        }
+
+        //_setupHandCardEvent?.Invoke(true);
+
+        BattleReader.AbilityTargetSystem.AllChainClear();
+    }
     public override void UseAbility(CardBase selectCard)
     {
         selectCard.battleController.CameraController.
@@ -123,14 +130,16 @@ public class SkillCardManagement : CardManagement
         selectCard.transform.SetParent(_cardWaitZone);
 
         BattleReader.RemoveCardInHand(BattleReader.OnPointerCard);
-        InCardZoneCatalogue.Add(selectCard);
-        selectCard.IsOnActivationZone = true;
+		InCardZoneCatalogue.Add(selectCard);
+		selectCard.IsOnActivationZone = true;
 
         selectCard.transform.DOScale(1.1f, 0.3f);
         
         GenerateCardPosition(selectCard);
         BattleReader.CombineMaster.CombineGenerate();
         BattleReader.CaptureHand();
+
+        BattleController.Instance.AddFirstAction(TurnType.Player, this);
     }
 
     public void SetSkillCardInHandZone()
@@ -190,4 +199,16 @@ public class SkillCardManagement : CardManagement
         }
 
     }
+
+	public IEnumerator Execute()
+	{
+        ChainingSkill();
+        yield return new WaitUntil(() => !_activeCard.IsActivingAbillity);
+
+	}
+
+	public bool CanUse()
+	{
+        return !BattleController.Instance.Player.HealthCompo.IsDead;
+	}
 }

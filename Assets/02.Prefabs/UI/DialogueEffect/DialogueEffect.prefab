@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83466f2a7770c35499d2e0ea2c0e167e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 1
+  _poolingType: 1
   _bubble: {fileID: 2567988859117426839}
   _effectElement: {fileID: 5886746105291298747}
   _fadingTime: 0.2

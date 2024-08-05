@@ -203,8 +203,9 @@ GameObject:
   - component: {fileID: 3850225376827042522}
   - component: {fileID: 3771741343195937834}
   - component: {fileID: 6992864929696230875}
-  - component: {fileID: 1972142121172214754}
   - component: {fileID: 5734629806555441456}
+  - component: {fileID: 7613857227468964564}
+  - component: {fileID: 4556129813048457813}
   m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
@@ -300,18 +301,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1972142121172214754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3771289693002838959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd41f161c1656b47ac97dd3d572e21b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5734629806555441456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,10 +327,49 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: 86888
+  m_InstanceId: 81142
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
+--- !u!114 &7613857227468964564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771289693002838959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce52bda515708a4ea3bf3dcddea58e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEndDessolve:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9124964992351494015}
+        m_TargetAssemblyTypeName: Entity, Assembly-CSharp
+        m_MethodName: GoToPool
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4556129813048457813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771289693002838959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb23e896ea0bdde44a78fbbc4d2e7414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4392604180872084995
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,11 +558,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1505078689310769958}
   - component: {fileID: 5200897870458168595}
-  - component: {fileID: 2041607005419312741}
   - component: {fileID: 3303132278619687457}
   - component: {fileID: 9124964992351494015}
   - component: {fileID: 5505460555375558076}
-  - component: {fileID: -1385341860034492975}
   m_Layer: 7
   m_Name: DduckFrog
   m_TagString: Untagged
@@ -603,19 +629,6 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
---- !u!114 &2041607005419312741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361212991974532067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927d0c5dd4dff604eb1c458b753681b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  datas: []
 --- !u!61 &3303132278619687457
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -673,22 +686,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0aea1fa16ea094780a3867eb695115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 31
+  _poolingType: 31
   <CharStat>k__BackingField: {fileID: 11400000, guid: d91531e20547bb44a92490a2a7727ec3, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
+  target: {fileID: 0}
   hpBarTrm: {fileID: 6946468496451767205}
   forwardTrm: {fileID: 8826935808434868624}
-  target: {fileID: 0}
-  lastMovePos: {x: 0, y: 0, z: 0}
-  moveDuration: 0.1
-  turnStatus: 0
-  Disappear: 0
-  attackParticle:
-    attack: {fileID: 0}
-  _cameraMoveInfo: {fileID: 11400000, guid: efbb7ba3f753f9a47ab299f1d83cc652, type: 2}
-  attackClip: {fileID: 8300000, guid: fc37cfb859cc88344a094c091ce10c31, type: 3}
+  statesData:
+  - actionType: 5
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: efbb7ba3f753f9a47ab299f1d83cc652, type: 2}
+    skillSound: {fileID: 8300000, guid: fc37cfb859cc88344a094c091ce10c31, type: 3}
+  - actionType: 0
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: 0901b32cb9c8e224cb769684f1140630, type: 2}
+    skillSound: {fileID: 0}
+  spawnData: {fileID: 11400000, guid: d985b6a788eb51b4da38286cec760ff5, type: 2}
+  dessolve: {fileID: 7613857227468964564}
 --- !u!114 &5505460555375558076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,19 +719,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockBackAmount: 0.07
   filpX: 1
-  _isPlayer: 0
---- !u!114 &-1385341860034492975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361212991974532067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockBackAmount: 0
-  filpX: 0
   _isPlayer: 0

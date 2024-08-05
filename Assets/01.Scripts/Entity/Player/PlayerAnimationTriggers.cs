@@ -14,10 +14,10 @@ public class PlayerAnimationTriggers : MonoBehaviour
 
     private void AnimationEndTrigger()
     {
-        _player.OnAnimationEnd?.Invoke();
     }
     private void AnimationEventTrigger()
     {
         _player.OnAnimationCall?.Invoke();
+        //_player.AnimationTrigger = true;
     }
 }

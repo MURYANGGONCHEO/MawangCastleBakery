@@ -24,7 +24,7 @@ public class RiceCakeFrogBuff : SpecialBuff, IOnHitDamage
 
         Enemy e = dealer as Enemy;
         hitEnemy = e;
-        e.OnAttackEnd += HandleEndEnemyAttack;
+        //e.OnAttackEnd += HandleEndEnemyAttack;
 
         hitCount--;
         int amount = Mathf.RoundToInt(entity.HealthCompo.maxHealth * healAmounts[combineLevel] * 0.01f);
@@ -38,6 +38,6 @@ public class RiceCakeFrogBuff : SpecialBuff, IOnHitDamage
     {
         isActive = false;
         entity.HealthCompo.MakeInvincible(false);
-        hitEnemy.OnAttackEnd -= HandleEndEnemyAttack;
+        //hitEnemy.OnAttackEnd -= HandleEndEnemyAttack;
     }
 }

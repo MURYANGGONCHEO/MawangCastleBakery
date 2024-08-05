@@ -5,7 +5,6 @@ using UnityEngine;
 using DG.Tweening;
 public class Player : Entity
 {
-    private readonly int _moveHash = Animator.StringToHash("Move");
     private readonly int _abilityHash = Animator.StringToHash("Ability");
 
     public PlayerStat PlayerStat { get; private set; }
@@ -22,7 +21,10 @@ public class Player : Entity
 
     [SerializeField] private ParticleSystem hitEffect;
     [SerializeField] private AudioClip hitSfx;
- 
+
+    public Action OnAnimationCall;
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -56,8 +58,8 @@ public class Player : Entity
     {
         base.Start();
 
-        cream.OnAnimationCall = () => OnAnimationCall?.Invoke();
-        cream.OnAnimationEnd = () => OnAnimationEnd?.Invoke();
+        //cream.OnAnimationCall = () => OnAnimationCall?.Invoke();
+        //cream.OnAnimationEnd = () => OnAnimationEnd?.Invoke();
 
         TurnCounter.PlayerTurnStartEvent += TurnStart;
         TurnCounter.PlayerTurnEndEvent += TurnEnd;
@@ -95,28 +97,23 @@ public class Player : Entity
     private IEnumerator DeathDelay()
     {
         yield return new WaitForSeconds(0.5f);
-        AnimatorCompo.SetBool(_deathAnimationHash, true);
+        AnimatorCompo.SetBool(deathAnimHash, true);
     }
 
-    public override void SlowEntityBy(float percent)
-    {
-    }
-
-    public void UseAbility(CardBase card, bool isMove = false, bool isCream = false, bool isAllAttack = false, float duration = 0.6f)
+    public void UseAbility(CardBase card, bool isCream = false, bool isAllAttack = false, float duration = 0.6f)
     {
         if (!isCream)
         {
             AnimatorCompo.SetBool(_abilityHash, true);
-            AnimatorCompo.SetBool(_moveHash, isMove);
 
-            if (isMove)
-            {
-                if (isAllAttack)
-                    MoveToEnemiesCenter(duration);
-                else
-                    MoveToTargetForward(GetSkillTargetEnemyList[card][0].forwardTrm.position);
-                if (_isFront) lastMovePos = cream.transform.position;
-            }
+            //if (isMove)
+            //{
+            //    if (isAllAttack)
+            //        MoveToEnemiesCenter(duration);
+            //    else
+            //        MoveToTargetForward(GetSkillTargetEnemyList[card][0].forwardTrm.position);
+            //    if (_isFront) lastMovePos = cream.transform.position;
+            //}
             ChangePosWithCream(false);
         }
         else
@@ -143,16 +140,10 @@ public class Player : Entity
     public void EndAbility()
     {
         AnimatorCompo.SetBool(_abilityHash, false);
-        AnimatorCompo.SetBool(_moveHash, false);
     }
 
-    protected override void HandleEndMoveToTarget()
-    {
-        AnimatorCompo.SetBool(_moveHash, false);
-    }
-
-    protected override void HandleEndMoveToOriginPos()
-    {
-        // �ϴ� �Ұ� ����
-    }
+	public override void Init()
+	{
+		throw new NotImplementedException();
+	}
 }

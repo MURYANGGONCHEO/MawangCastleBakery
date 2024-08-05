@@ -36,7 +36,7 @@ public class TripleStepSkill : CardBase, ISkillEffectAnim
     public void HandleEffectEnd()
     {
         Player.EndAbility();
-        Player.MoveToOriginPos();
+        //Player.MoveToOriginPos();
         Player.VFXManager.EndParticle(CardInfo, (int)CombineLevel);
         IsActivingAbillity = false;
         Player.VFXManager.OnEndEffectEvent -= HandleEffectEnd;
@@ -52,24 +52,24 @@ public class TripleStepSkill : CardBase, ISkillEffectAnim
     {
         for (int i = 0; i < 2; ++i)
         {
-            yield return new WaitForSeconds(0.2f);
-            Player.target.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
+			//    yield return new WaitForSeconds(0.2f);
+			//    Player.target.HealthCompo.ApplyDamage(GetDamage(CombineLevel), Player);
 
-            if (Player.target != null)
-            {
-                GameObject fx = Instantiate(CardInfo.hitEffect.gameObject, Player.target.transform.position, Quaternion.identity);
-                Destroy(fx, 1.0f);
+			//    if (Player.target != null)
+			//    {
+			//        GameObject fx = Instantiate(CardInfo.hitEffect.gameObject, Player.target.transform.position, Quaternion.identity);
+			//        Destroy(fx, 1.0f);
 
-                FeedbackManager.Instance.ShakeScreen(new Vector3(-.25f, .25f, 0));
-            }
-        }
+			//        FeedbackManager.Instance.ShakeScreen(new Vector3(-.25f, .25f, 0));
+			//    }
+		}
 
-        yield return new WaitForSeconds(2.6f);
+		yield return new WaitForSeconds(2.6f);
 
-        Player.target.HealthCompo.ApplyDamage(GetDamage(CombineLevel) * 2, Player);
+        //Player.target.HealthCompo.ApplyDamage(GetDamage(CombineLevel) * 2, Player);
 
-        GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, Player.target.transform.position, Quaternion.identity);
-        Destroy(obj, 1.0f);
+        //GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, Player.target.transform.position, Quaternion.identity);
+        //Destroy(obj, 1.0f);
         FeedbackManager.Instance.ShakeScreen(2);
         FeedbackManager.Instance.EndSpeed = 2.0f;
     }

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f0d44a38aaa6a428eb8b54069fed15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 33
+  _poolingType: 35
   flyTime: 0.5
 --- !u!1 &8177024120107830850
 GameObject:

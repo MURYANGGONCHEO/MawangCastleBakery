@@ -4,86 +4,80 @@ using UnityEngine;
 
 public enum TurnType
 {
-    Player,
-    Enemy
-}
-
-public enum TurnStatus
-{
-    Ready,
-    Running,
-    End
+	Player,
+	Enemy
 }
 
 public static class TurnCounter
 {
-    public static TurnType CurrentTurnType { get; private set; } = TurnType.Enemy;
-    public static int TurnCount { get; private set; }
-    public static int RoundCount { get; private set; }
+	public static TurnType CurrentTurnType { get; private set; } = TurnType.Enemy;
+	public static int TurnCount { get; private set; }
+	public static int RoundCount { get; private set; }
 
-    public static Action RoundEndEvent;
-    public static Action RoundStartEvent;
 
-    public static Action<bool> EnemyTurnStartEvent;
-    public static Action EnemyTurnEndEvent;
+	public static Action RoundEndEvent;
+	public static Action RoundStartEvent;
 
-    public static Action<bool> PlayerTurnStartEvent;
-    public static Action PlayerTurnEndEvent;
+	public static Action<bool> EnemyTurnStartEvent;
+	public static Action EnemyTurnEndEvent;
 
-    private static TurnCounting _turnCounting;
-    public static TurnCounting TurnCounting
-    {
-        get
-        {
-            if(_turnCounting != null)
-            {
-                return _turnCounting;
-            }
-            _turnCounting = GameObject.FindObjectOfType<TurnCounting>();
-            return _turnCounting;
-        }
-    }
+	public static Action<bool> PlayerTurnStartEvent;
+	public static Action PlayerTurnEndEvent;
 
-    public static void Init()
-    {
-        CurrentTurnType = TurnType.Player;
-        TurnCount = 0;
-        RoundCount = 0;
-    }
+	private static TurnCounting _turnCounting;
+	public static TurnCounting TurnCounting
+	{
+		get
+		{
+			if (_turnCounting != null)
+			{
+				return _turnCounting;
+			}
+			_turnCounting = GameObject.FindObjectOfType<TurnCounting>();
+			return _turnCounting;
+		}
+	}
 
-    public static void ChangeRound()
-    {
-        if(RoundCount != 0)
-        {
-            RoundEndEvent?.Invoke();
-        }
+	public static void Init()
+	{
+		CurrentTurnType = TurnType.Player;
+		TurnCount = 0;
+		RoundCount = 0;
+	}
 
-        RoundCount++;
-        RoundStartEvent?.Invoke();
-    }
+	public static void ChangeRound()
+	{
+		if (RoundCount != 0)
+		{
+			RoundEndEvent?.Invoke();
+		}
 
-    public static void ChangeTurn()
-    {
-        TurnCount++;
+		RoundCount++;
+		RoundStartEvent?.Invoke();
+	}
 
-        if(CurrentTurnType == TurnType.Player)
-        {
-            CurrentTurnType = TurnType.Enemy;
+	public static void ChangeTurn()
+	{
+		TurnCount++;
 
-            PlayerTurnEndEvent?.Invoke();
-            EnemyTurnStartEvent?.Invoke(false);
-        }
-        else
-        {
-            CurrentTurnType = TurnType.Player;
+		if (CurrentTurnType == TurnType.Player)
+		{
+			CurrentTurnType = TurnType.Enemy;
 
-            EnemyTurnEndEvent?.Invoke();
-            PlayerTurnStartEvent?.Invoke(false);
-        }
+			PlayerTurnEndEvent?.Invoke();
+			EnemyTurnStartEvent?.Invoke(false);
+		}
+		else
+		{
+			CurrentTurnType = TurnType.Player;
 
-        if(TurnCount % 2 == 0)
-        {
-            ChangeRound();
-        }
-    }
+			EnemyTurnEndEvent?.Invoke();
+			PlayerTurnStartEvent?.Invoke(false);
+		}
+
+		if (TurnCount % 2 == 0)
+		{
+			ChangeRound();
+		}
+	}
 }

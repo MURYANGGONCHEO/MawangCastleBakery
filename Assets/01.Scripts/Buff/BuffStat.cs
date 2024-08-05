@@ -85,8 +85,8 @@ public class BuffStat
         {
             case IOnTakeDamage i:
                 {
-                    if (!_owner.OnAttack.Contains(i))
-                        _owner.OnAttack.Add(i);
+                    //if (!_owner.OnAttack.Contains(i))
+                        //_owner.OnAttack.Add(i);
                 }
                 break;
             case IOnHitDamage i:
@@ -114,8 +114,8 @@ public class BuffStat
         {
             case IOnTakeDamage i:
                 {
-                    if (_owner.OnAttack.Contains(i))
-                        _owner.OnAttack.Remove(i);
+                    //if (_owner.OnAttack.Contains(i))
+                        //_owner.OnAttack.Remove(i);
                 }
                 break;
             case IOnHitDamage i:

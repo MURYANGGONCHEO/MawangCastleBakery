@@ -7,98 +7,103 @@ using UnityEngine;
 
 public class TurnCounting : MonoBehaviour
 {
-    [Header("����")]
-    [SerializeField] private TextMeshProUGUI _toPTChangingText;
-    [SerializeField] private TextMeshProUGUI _toETChangingText;
-    [SerializeField] private TextMeshProUGUI _gameEndText;
-    [SerializeField] private Transform _turnChaingLabel;
-    [SerializeField] private GameObject _visualObject;
+	[Header("����")]
+	[SerializeField] private TextMeshProUGUI _toPTChangingText;
+	[SerializeField] private TextMeshProUGUI _toETChangingText;
+	[SerializeField] private TextMeshProUGUI _gameEndText;
+	[SerializeField] private Transform _turnChaingLabel;
+	[SerializeField] private GameObject _visualObject;
 
-    private TextMeshProUGUI _selectText;
-    private Transform _selectTrm;
+	private TextMeshProUGUI _selectText;
+	private Transform _selectTrm;
 
-    [Header("����")]
-    [SerializeField] private Transform _startPos;
-    [SerializeField] private Transform _normalPos;
-    [SerializeField] private Transform _endPos;
+	[Header("����")]
+	[SerializeField] private Transform _startPos;
+	[SerializeField] private Transform _normalPos;
+	[SerializeField] private Transform _endPos;
 
-    private void Start()
-    {
+	private void Start()
+	{
 
-        BattleReader.SetDeck(StageManager.Instanace.SelectDeck);
-        TurnCounter.PlayerTurnStartEvent += ToPlayerTurnChanging;
-    }
+		BattleReader.SetDeck(StageManager.Instanace.SelectDeck);
+		TurnCounter.PlayerTurnStartEvent += ToPlayerTurnChanging;
+	}
 
-    private void OnDestroy()
-    {
-        TurnCounter.PlayerTurnStartEvent -= ToPlayerTurnChanging;
-    }
+	private void OnDestroy()
+	{
+		TurnCounter.PlayerTurnStartEvent -= ToPlayerTurnChanging;
+	}
 
-    public void BattleEnd(bool isBattleEnd)
-    {
-        _visualObject.SetActive(!isBattleEnd);
-    }
+	public void BattleEnd(bool isBattleEnd)
+	{
+		_visualObject.SetActive(!isBattleEnd);
+	}
 
-    public void BattleStart()
-    {
-        TurnCounter.Init();
-        CostCalculator.Init();
+	public void BattleStart()
+	{
+		TurnCounter.Init();
+		CostCalculator.Init();
 
-        Sequence seq = DOTween.Sequence();
-        seq.AppendCallback(() => ToPlayerTurnChanging(false));
-        BattleReader.CardDrawer.DrawCard(5);
-        //seq.AppendCallback(() => BattleReader.CardDrawer.DrawCard(5));
-    }
+		Sequence seq = DOTween.Sequence();
+		seq.AppendCallback(() =>
+		{
+			ToPlayerTurnChanging(false);
+			TurnCounter.ChangeRound();
+		});
 
-    public Sequence BattleEndSequence(bool isVictory)
-    {
-        _gameEndText.transform.localScale = Vector3.one * 1.2f;
+		BattleReader.CardDrawer.DrawCard(5);
+		//seq.AppendCallback(() => BattleReader.CardDrawer.DrawCard(5));
+	}
 
-        Sequence seq = DOTween.Sequence();
-        seq.Append(_turnChaingLabel.DOScaleY(1, 0.4f));
+	public Sequence BattleEndSequence(bool isVictory)
+	{
+		_gameEndText.transform.localScale = Vector3.one * 1.2f;
 
-        _gameEndText.text = isVictory ? "VICTORY" : "DEFEAT";
+		Sequence seq = DOTween.Sequence();
+		seq.Append(_turnChaingLabel.DOScaleY(1, 0.4f));
 
-        seq.Join(_gameEndText.DOFade(1, 0.4f));
-        seq.AppendInterval(1f);
-        seq.Append(_turnChaingLabel.DOScaleY(0, 0.4f));
-        seq.Join(_gameEndText.DOFade(0, 0.4f));
+		_gameEndText.text = isVictory ? "VICTORY" : "DEFEAT";
 
-        return seq;
-    }
+		seq.Join(_gameEndText.DOFade(1, 0.4f));
+		seq.AppendInterval(1f);
+		seq.Append(_turnChaingLabel.DOScaleY(0, 0.4f));
+		seq.Join(_gameEndText.DOFade(0, 0.4f));
 
-    public void ToPlayerTurnChanging(bool isTurnChange)
-    {
+		return seq;
+	}
 
-        if (UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd) return;
+	public void ToPlayerTurnChanging(bool isTurnChange)
+	{
 
-        _selectTrm = _toPTChangingText.transform;
-        _selectText = _toPTChangingText;
-        TurnChanging(isTurnChange);
-    }
+		if (UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd) return;
 
-    public void ToEnemyTurnChanging(bool isTurnChange)
-    {
-        if (UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd) return;
+		_selectTrm = _toPTChangingText.transform;
+		_selectText = _toPTChangingText;
+		TurnChanging(isTurnChange);
+	}
 
-        _selectTrm = _toETChangingText.transform;
-        _selectText = _toETChangingText;
-        TurnChanging(isTurnChange);
-    }
+	public void ToEnemyTurnChanging(bool isTurnChange)
+	{
+		if (UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd) return;
 
-    private void TurnChanging(bool isTurnChange)
-    {
-        _selectTrm.transform.localPosition = _startPos.localPosition;
-        _selectText.color = new Color(1, 1, 1, 1);
+		_selectTrm = _toETChangingText.transform;
+		_selectText = _toETChangingText;
+		TurnChanging(isTurnChange);
+	}
 
-        Sequence seq = DOTween.Sequence();
-        seq.Append(_selectTrm.DOLocalMove(_normalPos.localPosition, 0.5f).SetEase(Ease.OutCubic));
-        seq.Join(_turnChaingLabel.DOScaleY(1, 0.4f));
-        seq.AppendInterval(0.5f);
-        seq.Append(_selectTrm.DOLocalMove(_endPos.localPosition, 0.5f).SetEase(Ease.InCubic));
-        seq.Join(_selectText.DOFade(0, 0.5f));
-        seq.Join(_turnChaingLabel.DOScaleY(0, 0.4f));
-        if (isTurnChange)
-            seq.AppendCallback(TurnCounter.ChangeTurn);
-    }
+	private void TurnChanging(bool isTurnChange)
+	{
+		_selectTrm.transform.localPosition = _startPos.localPosition;
+		_selectText.color = new Color(1, 1, 1, 1);
+
+		Sequence seq = DOTween.Sequence();
+		seq.Append(_selectTrm.DOLocalMove(_normalPos.localPosition, 0.5f).SetEase(Ease.OutCubic));
+		seq.Join(_turnChaingLabel.DOScaleY(1, 0.4f));
+		seq.AppendInterval(0.5f);
+		seq.Append(_selectTrm.DOLocalMove(_endPos.localPosition, 0.5f).SetEase(Ease.InCubic));
+		seq.Join(_selectText.DOFade(0, 0.5f));
+		seq.Join(_turnChaingLabel.DOScaleY(0, 0.4f));
+		if (isTurnChange)
+			seq.AppendCallback(TurnCounter.ChangeTurn);
+	}
 }

@@ -4,52 +4,14 @@ using UnityEngine;
 
 public class MrMuddy : Enemy
 {
-    protected override void Start()
+	public override void Init()
+	{
+	}
+
+	protected override void Start()
     {
         base.Start();
     }
 
-    public override void Attack()
-    {
-        target.HealthCompo.ApplyDamage(CharStat.GetDamage(),this);
-        base.Attack();
-        //VFXPlayer.PlayHitEffect(attackParticle, target.transform.position);
-        MoveToOriginPos();
-    }
-
-    public override void SlowEntityBy(float percent)
-    {
-    }
-
-    public override void TurnAction()
-    {
-        turnStatus = TurnStatus.Running;
-        AnimatorCompo.SetBool(attackAnimationHash,true);
-
-        OnAttackStart?.Invoke();
-        MoveToTargetForward(Vector3.zero);
-    }
-
-    public override void TurnEnd()
-    {
-        base.TurnEnd();
-    }
-
-    public override void TurnStart()
-    {
-        base.TurnStart();
-        OnAttackEnd?.Invoke();
-
-    }
-
-    protected override void HandleEndMoveToOriginPos()
-    {
-        OnAttackEnd?.Invoke();
-        turnStatus = TurnStatus.End;
-    }
-
-    protected override void HandleEndMoveToTarget()
-    {
-        Attack();
-    }
+    
 }

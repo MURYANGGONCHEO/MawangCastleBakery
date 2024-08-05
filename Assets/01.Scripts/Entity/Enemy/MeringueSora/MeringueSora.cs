@@ -24,31 +24,9 @@ public class MeringueSora : Enemy
         base.OnEnable();
         BuffStatCompo.AddBuff(specialBuff, 0);
     }
-    public override void Attack()
-    {
-        OnAttackStart?.Invoke();
-        MoveToTargetForward(Vector3.zero);
-    }
 
-    public override void SlowEntityBy(float percent)
-    {
 
-    }
-    public override void TurnAction()
-    {
-        Attack();
-    }
-
-    protected override void HandleEndMoveToOriginPos()
-    {
-        turnStatus = TurnStatus.End;
-        OnAttackEnd?.Invoke();
-    }
-
-    protected override void HandleEndMoveToTarget()
-    {
-        AnimatorCompo.SetTrigger(attackTriggerAnimationHash);
-        target.HealthCompo.ApplyDamage(CharStat.GetDamage(), this);
-        MoveToOriginPos();
-    }
+	public override void Init()
+	{
+	}
 }

@@ -9,7 +9,7 @@ public class DotanSkill : CardBase, ISkillEffectAnim
         IsActivingAbillity = true;
         Player.UseAbility(this);
         Player.OnAnimationCall += () => Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
-        Player.OnAnimationEnd += () => IsActivingAbillity = false;
+        //Player.OnAnimationEnd += () => IsActivingAbillity = false;
     }
 
     public void HandleAnimationCall()

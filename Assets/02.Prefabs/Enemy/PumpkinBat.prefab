@@ -136,8 +136,9 @@ GameObject:
   - component: {fileID: 5434553928329087454}
   - component: {fileID: 1110300100323318447}
   - component: {fileID: 1292889296595154094}
-  - component: {fileID: 5942028443090167008}
   - component: {fileID: 1791642760680306216}
+  - component: {fileID: 1206381452366292499}
+  - component: {fileID: 6730292966352049478}
   m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
@@ -233,18 +234,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5942028443090167008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3473578683084821486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd41f161c1656b47ac97dd3d572e21b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1791642760680306216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,10 +260,49 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: 79984
+  m_InstanceId: 83098
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
+--- !u!114 &1206381452366292499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3473578683084821486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce52bda515708a4ea3bf3dcddea58e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEndDessolve:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 159784293569747907}
+        m_TargetAssemblyTypeName: Entity, Assembly-CSharp
+        m_MethodName: GoToPool
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6730292966352049478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3473578683084821486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb23e896ea0bdde44a78fbbc4d2e7414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4909941054126739337
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +377,6 @@ GameObject:
   - component: {fileID: 3599452180879212325}
   - component: {fileID: 474947790128974778}
   - component: {fileID: 159784293569747907}
-  - component: {fileID: 6201914371747861088}
   - component: {fileID: 5570287621423313586}
   - component: {fileID: 6668691617051349318}
   m_Layer: 7
@@ -422,7 +449,6 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
-  totalDmg: 0
 --- !u!114 &159784293569747907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,34 +461,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593c04c14b7d6b0409570a5a3d4cc375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 14
+  _poolingType: 14
   <CharStat>k__BackingField: {fileID: 11400000, guid: ed75f7e9450ad644ab1a648412c99bf5, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
+  target: {fileID: 0}
   hpBarTrm: {fileID: 7447601190323375790}
   forwardTrm: {fileID: 1990067731696797334}
-  target: {fileID: 0}
-  lastMovePos: {x: 0, y: 0, z: 0}
-  moveDuration: 0.1
-  turnStatus: 0
-  attackParticle:
-    attack: {fileID: 5804965274282454122}
-  _cameraMoveInfo: {fileID: 11400000, guid: 5ec4c3e5d2aeb3b44907b595085deb0f, type: 2}
-  attackClip: {fileID: 0}
---- !u!114 &6201914371747861088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5538058483777057668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927d0c5dd4dff604eb1c458b753681b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  datas: []
+  statesData:
+  - actionType: 9
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: 5ec4c3e5d2aeb3b44907b595085deb0f, type: 2}
+    skillSound: {fileID: 0}
+  - actionType: 0
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: 0901b32cb9c8e224cb769684f1140630, type: 2}
+    skillSound: {fileID: 0}
+  spawnData: {fileID: 11400000, guid: d985b6a788eb51b4da38286cec760ff5, type: 2}
+  dessolve: {fileID: 1206381452366292499}
 --- !u!61 &5570287621423313586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -858,7 +875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7333173977426979562, guid: b8c27a8429c1f044bbd368b0554ee2cd, type: 3}
       propertyPath: m_Name
-      value: P_ultrasound
+      value: UltraSound
       objectReference: {fileID: 0}
     - target: {fileID: 7333173977426979562, guid: b8c27a8429c1f044bbd368b0554ee2cd, type: 3}
       propertyPath: m_IsActive

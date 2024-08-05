@@ -24420,7 +24420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c9a4986b0a3d9478413956f2bc28eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 18
+  _poolingType: 18
   mainParticleSystem: {fileID: 3034967318903964723}
   pushTime: 1
   hitSound: {fileID: 0}

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 304453977096951386}
   - component: {fileID: 4165387368568365851}
   - component: {fileID: 1638869186076608737}
-  - component: {fileID: 5520290045535691304}
+  - component: {fileID: 3415325406454011932}
+  - component: {fileID: 2137896453927254669}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -107,7 +108,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5520290045535691304
+--- !u!114 &3415325406454011932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +117,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 5210753479459781599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd41f161c1656b47ac97dd3d572e21b, type: 3}
+  m_Script: {fileID: 11500000, guid: bce52bda515708a4ea3bf3dcddea58e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEndDessolve:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6518812675603749712}
+        m_TargetAssemblyTypeName: Entity, Assembly-CSharp
+        m_MethodName: GoToPool
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2137896453927254669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5210753479459781599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb23e896ea0bdde44a78fbbc4d2e7414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6033189612070580296
@@ -307,7 +335,6 @@ GameObject:
   - component: {fileID: 943471458251414188}
   - component: {fileID: 6518812675603749712}
   - component: {fileID: 3214285344207638200}
-  - component: {fileID: 8826672199404272160}
   - component: {fileID: 5306270658333313601}
   - component: {fileID: -9055359671575334127}
   m_Layer: 7
@@ -349,21 +376,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236c27414546acb458df93379c5f9f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 16
+  _poolingType: 16
   <CharStat>k__BackingField: {fileID: 11400000, guid: 58045535cdd3d0f4d977f29f438a0ed2, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
+  target: {fileID: 0}
   hpBarTrm: {fileID: 2359823008276158933}
   forwardTrm: {fileID: 8424131560452119225}
-  target: {fileID: 0}
-  lastMovePos: {x: 0, y: 0, z: 0}
-  moveDuration: 0.1
-  turnStatus: 0
-  attackParticle:
-    attack: {fileID: 0}
-  _cameraMoveInfo: {fileID: 11400000, guid: 936a0e891b9c1904a8512f55b0ce6431, type: 2}
-  attackClip: {fileID: 0}
+  statesData:
+  - actionType: 0
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: 0901b32cb9c8e224cb769684f1140630, type: 2}
+    skillSound: {fileID: 0}
+  - actionType: 6
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: 936a0e891b9c1904a8512f55b0ce6431, type: 2}
+    skillSound: {fileID: 0}
+  spawnData: {fileID: 11400000, guid: d985b6a788eb51b4da38286cec760ff5, type: 2}
+  dessolve: {fileID: 3415325406454011932}
 --- !u!114 &3214285344207638200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,20 +435,6 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
-  totalDmg: 0
---- !u!114 &8826672199404272160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9090521753744756415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927d0c5dd4dff604eb1c458b753681b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  datas: []
 --- !u!61 &5306270658333313601
 BoxCollider2D:
   m_ObjectHideFlags: 0

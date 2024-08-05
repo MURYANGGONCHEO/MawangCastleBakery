@@ -64,7 +64,7 @@ public abstract class CardBase : MonoBehaviour,
 
     }
     private bool _isActivingAbillity;
-    protected bool IsActivingAbillity
+    public bool IsActivingAbillity
     {
         get
         {
@@ -80,8 +80,8 @@ public abstract class CardBase : MonoBehaviour,
             }
             else
             {
-                ExitThisCard();
-            }
+				ExitThisCard();
+			}
         }
     }
     [SerializeField] private Material _cardMat;
@@ -157,7 +157,7 @@ public abstract class CardBase : MonoBehaviour,
         seq.InsertCallback(1, () =>
         {
             BattleReader.SkillCardManagement.SetCardInfo(CardInfo, false);
-            BattleReader.SkillCardManagement.ChainingSkill();
+            //BattleReader.SkillCardManagement.ChainingSkill();
             BattleReader.LockHandCard(false);
 
             Destroy(gameObject);

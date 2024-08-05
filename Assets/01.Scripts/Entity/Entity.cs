@@ -3,255 +3,144 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
-#if UNITY_EDITOR
-using UnityEditor;
-using UnityEditorInternal;
-#endif
 using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class Entity : PoolableMono
 {
-    #region components
-    public Animator AnimatorCompo { get; private set; }
-    public Health HealthCompo { get; private set; }
-    public SpriteRenderer SpriteRendererCompo { get; private set; }
-    public BattleController BattleController { get; set; }
-    public BuffStat BuffStatCompo { get; private set; }
-    [field: SerializeField] public CharacterStat CharStat { get; private set; }
+	#region components
+	public Animator AnimatorCompo { get; private set; }
+	public Health HealthCompo { get; private set; }
+	public SpriteRenderer SpriteRendererCompo { get; private set; }
+	public BattleController BattleController { get; set; }
+	public BuffStat BuffStatCompo { get; private set; }
+	[field: SerializeField] public CharacterStat CharStat { get; private set; }
 
-    public Collider2D ColliderCompo { get; private set; }
-    #endregion
+	public Collider2D ColliderCompo { get; private set; }
 
-    protected int _hitAnimationHash = Animator.StringToHash("hit");
-    protected int _deathAnimationHash = Animator.StringToHash("death");
+	public bool AnimationTrigger
+	{
+		get
+		{
+			if (_animationTrigger)
+			{
+				_animationTrigger = false;
+				return true;
+			}
+			return false;
+		}
+		set => _animationTrigger = value;
+	}
+	#endregion
 
-    public UnityEvent<float> OnHealthBarChanged;
-    public Action OnAnimationCall;
-    public Action OnAnimationEnd;
+	private bool _animationTrigger = false;
 
-    public Action OnMoveTarget;
-    public Action OnMoveOriginPos;
+	#region animationHash
+	protected int hitAnimHash = Animator.StringToHash("hit");
+	protected int deathAnimHash = Animator.StringToHash("death");
+	#endregion
 
-    public Action OnAttackStart;
-    public Action OnAttackEnd;
+	public UnityEvent<float> OnHealthBarChanged;
 
-    public List<IOnTakeDamage> OnAttack = new();
+	public Entity target;
 
-    [Header("셋팅값들")]
+	[Header("셋팅값들")]
+	public Transform hpBarTrm;
+	public Transform forwardTrm;
 
-    public Transform hpBarTrm;
-    public Transform forwardTrm;
+	public List<CardBase> ChainningCardList { get; set; } = new List<CardBase>();
 
-    public Entity target;
+	private Tween _materialChangeTween;
 
-    [SerializeField] protected Vector3 lastMovePos;
-    [SerializeField] protected float moveDuration = 0.1f;
+	public BuffingMarkSetter BuffSetter { get; set; }
 
-    public TurnStatus turnStatus;
+	public void SelectChainningCharacter(Color skillColor, float Thickness)
+	{
+		_materialChangeTween.Kill();
 
+		Material mat = new Material(SpriteRendererCompo.material);
+		SpriteRendererCompo.material = mat;
 
-    public UnityEvent BeforeChainingEvent => BattleReader.SkillCardManagement.beforeChainingEvent;
+		mat.SetFloat("_outline_thickness", 0);
+		mat.SetColor("_outline_color", skillColor);
 
-    public List<CardBase> ChainningCardList { get; set; } = new List<CardBase>();
+		_materialChangeTween = mat.DOFloat(Thickness, "_outline_thickness", 0.2f);
+	}
 
-    private Tween _materialChangeTween;
-
-    public BuffingMarkSetter BuffSetter { get; set; }
-
-    [HideInInspector]public bool Disappear;
-
-    public void SelectChainningCharacter(Color skillColor, float Thickness)
-    {
-        _materialChangeTween.Kill();
-
-        Material mat = new Material(SpriteRendererCompo.material);
-        SpriteRendererCompo.material = mat;
-
-        mat.SetFloat("_outline_thickness", 0);
-        mat.SetColor("_outline_color", skillColor);
-
-        _materialChangeTween = mat.DOFloat(Thickness, "_outline_thickness", 0.2f);
-    }
-
-    protected virtual void Awake()
-    {
-        Transform visualTrm = transform.Find("Visual");
-        AnimatorCompo = visualTrm.GetComponent<Animator>();
-        HealthCompo = GetComponent<Health>();
-        SpriteRendererCompo = visualTrm.GetComponent<SpriteRenderer>();
-        HealthCompo.SetOwner(this);
-
-        CharStat = Instantiate(CharStat); //������ ����
-        CharStat.SetOwner(this);
-
-        ColliderCompo = GetComponent<Collider2D>();
-
-        BuffStatCompo = new BuffStat(this);
-    }
-
-    protected virtual void Start()
-    {
-    }
-    protected virtual void OnEnable()
-    {
-        HealthCompo.SetOwner(this);
-
-        Disappear = false;
-
-        TurnCounter.RoundStartEvent += BuffStatCompo.UpdateBuff;
-
-        OnMoveTarget += HandleEndMoveToTarget;
-        OnMoveOriginPos += HandleEndMoveToOriginPos;
-
-        HealthCompo.OnAilmentChanged.AddListener(HandleAilmentChanged);
-        OnHealthBarChanged?.Invoke(HealthCompo.GetNormalizedHealth()); //�ִ�ġ�� UI����.
-
-        HealthCompo.OnDeathEvent.AddListener(HandleDie);
-        HealthCompo.OnDeathEvent.AddListener(BuffStatCompo.ClearStat);
-        HealthCompo.OnHitEvent.AddListener(HandleHit);
-
-        ColliderCompo.enabled = true;
-    }
-    protected virtual void OnDisable()
-    {
-        BuffStatCompo.ClearStat();
-
-        OnMoveTarget -= HandleEndMoveToTarget;
-        OnMoveOriginPos -= HandleEndMoveToOriginPos;
-
-        HealthCompo.OnDeathEvent.RemoveListener(HandleDie);
-        HealthCompo.OnDeathEvent.RemoveListener(BuffStatCompo.ClearStat);
-
-        HealthCompo.OnAilmentChanged.RemoveListener(HandleAilmentChanged);
-
-        HealthCompo.OnHitEvent.RemoveListener(HandleHit);
-    }
-
-    private void OnDestroy()
-    {
-        HealthCompo.OnAilmentChanged.RemoveListener(HandleAilmentChanged);
-    }
-
-    //���ῡ ���� ó��.
-    private void HandleAilmentChanged(AilmentEnum ailment)
-    {
-        if ((ailment & AilmentEnum.Chilled) > 0) //������¸� ���ǵ� ������
-        {
-            //���� ���׿� ���� ����
-            float resistance = (100 - CharStat.armor.GetValue()) * 0.01f;
-            SlowEntityBy(0.5f * resistance);
-        }
-        else
-        {
-            ReturnDefaultSpeed();
-        }
-    }
-
-    protected virtual void HandleHit(int dmg)
-    {
-        //UI����
-        FeedbackManager.Instance.Blink(SpriteRendererCompo.material, 0.1f);
-
-        float currentHealth = HealthCompo.GetNormalizedHealth();
-        if (currentHealth > 0)
-        {
-            AnimatorCompo.SetTrigger(_hitAnimationHash);
-        }
-
-        OnHealthBarChanged?.Invoke(currentHealth);
-    }
-
-    protected virtual void HandleDie()
-    {
-
-        AnimatorCompo.SetTrigger(_deathAnimationHash);
-        Disappear = true;
-        OnAnimationCall += GotoPool;
-    }
-
-    public abstract void SlowEntityBy(float percent); //���ο�� �ڽĵ��� ����.
-
-    protected virtual void ReturnDefaultSpeed()
-    {
-        AnimatorCompo.speed = 1; //���� ���ǵ�� �ǵ�����.
-    }
-
-    public virtual void FreezeTime(bool isFreeze, bool isFrozenWithoutTimer = false)
-    {
-        if (isFreeze)
-        {
-            Debug.Log("Freezed");
-            AnimatorCompo.speed = 0; //�ִϸ��̼� ����. �̵� ����.
-        }
-        else
-        {
-            Debug.Log("UnFreezed");
-            AnimatorCompo.speed = 1;
-        }
-    }
-
-    public virtual void MoveToTargetForward(Vector3 pos)
-    {
-        lastMovePos = transform.position;
+	protected virtual void Awake()
+	{
+		//변수 초기화
+		Transform visualTrm = transform.Find("Visual");
+		AnimatorCompo = visualTrm.GetComponent<Animator>();
+		HealthCompo = GetComponent<Health>();
+		SpriteRendererCompo = visualTrm.GetComponent<SpriteRenderer>();
+		HealthCompo.SetOwner(this);
 
 
-        Sequence seq = DOTween.Sequence();
-        //seq.Append(transform.DOMove(target.forwardTrm.position, moveDuration));
-        seq.Append(transform.DOJump(target.forwardTrm.position, 1, 1, 0.6f));
+		CharStat = Instantiate(CharStat); //������ ����
+		CharStat.SetOwner(this);
 
-        seq.OnComplete(() => OnMoveTarget?.Invoke());
-    }
+		ColliderCompo = GetComponent<Collider2D>();
 
-    public virtual void MoveToEnemiesCenter(float duration)
-    {
-        lastMovePos = transform.position;
+		BuffStatCompo = new BuffStat(this);
+	}
 
+	protected virtual void Start()
+	{
+	}
+	protected virtual void OnEnable()
+	{
+		HealthCompo.SetOwner(this);
 
-        Sequence seq = DOTween.Sequence();
-        //seq.Append(transform.DOMove(target.forwardTrm.position, moveDuration));
-        seq.Append(transform.DOJump(BattleController.FormationCenterPos, 1, 1, duration));
-        seq.OnComplete(()=>OnMoveTarget?.Invoke());
-    }
+		TurnCounter.RoundStartEvent += BuffStatCompo.UpdateBuff;
 
-    protected abstract void HandleEndMoveToTarget();
-    public virtual void MoveToOriginPos()
-    {
-        transform.DOMove(lastMovePos, moveDuration).OnComplete(OnMoveOriginPos.Invoke);
-    }
-    protected abstract void HandleEndMoveToOriginPos();
+		HealthCompo.OnAilmentChanged.AddListener(HandleAilmentChanged);
+		OnHealthBarChanged?.Invoke(HealthCompo.GetNormalizedHealth()); //�ִ�ġ�� UI����.
 
+		HealthCompo.OnDeathEvent.AddListener(HandleDie);
+		HealthCompo.OnDeathEvent.AddListener(BuffStatCompo.ClearStat);
+		HealthCompo.OnHitEvent.AddListener(HandleHit);
 
-    public void GotoPool()
-    {
-        OnAnimationCall -= GotoPool;
-        StartCoroutine(DissolveCo());
-    }
-    private IEnumerator DissolveCo()
-    {
-        float timer = 0;
-        while (timer < 1)
-        {
-            timer += Time.deltaTime;
-            SpriteRendererCompo.material.SetFloat("_dissolve_amount", Mathf.Lerp(0, 1, timer));
-            yield return null;
-        }
-        HealthCompo.OnDeathEvent.RemoveAllListeners();
-        PoolManager.Instance.Push(this);
+		ColliderCompo.enabled = true;
+	}
+	protected virtual void OnDisable()
+	{
+		BuffStatCompo.ClearStat();
 
-    }
+		HealthCompo.OnDeathEvent.RemoveListener(HandleDie);
+		HealthCompo.OnDeathEvent.RemoveListener(BuffStatCompo.ClearStat);
 
-    public override void Init()
-    {
-        OnHealthBarChanged.RemoveAllListeners();
-        //OnAnimationCall = null;
-        //OnAnimationEnd = null;
+		HealthCompo.OnAilmentChanged.RemoveListener(HandleAilmentChanged);
 
-        //OnMoveTarget = null;
-        //OnMoveOriginPos = null;
+		HealthCompo.OnHitEvent.RemoveListener(HandleHit);
+	}
 
-        //OnAttackStart = null;
-        //OnAttackEnd = null;
-    }
+	private void HandleAilmentChanged(AilmentEnum ailment)
+	{
+	}
+
+	protected virtual void HandleHit(int dmg)
+	{
+		//UI����
+		FeedbackManager.Instance.Blink(SpriteRendererCompo.material, 0.1f);
+
+		float currentHealth = HealthCompo.GetNormalizedHealth();
+		if (currentHealth > 0)
+		{
+			AnimatorCompo.SetTrigger(hitAnimHash);
+		}
+
+		OnHealthBarChanged?.Invoke(currentHealth);
+	}
+
+	protected virtual void HandleDie()
+	{
+		AnimatorCompo.SetBool(deathAnimHash, true);
+	}
+
+	public void GoToPool()
+	{
+		PoolManager.Instance.Push(this);
+	}
+
 }

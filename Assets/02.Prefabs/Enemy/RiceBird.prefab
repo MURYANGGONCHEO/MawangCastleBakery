@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 194789760340883695}
   - component: {fileID: 6647752025258119573}
   - component: {fileID: 5057607630725575793}
-  - component: {fileID: 5934534184934652097}
+  - component: {fileID: 5613121128702102028}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -107,7 +107,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5934534184934652097
+--- !u!114 &5613121128702102028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1149127179303288955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd41f161c1656b47ac97dd3d572e21b, type: 3}
+  m_Script: {fileID: 11500000, guid: bce52bda515708a4ea3bf3dcddea58e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3965359866585723266
@@ -245,7 +245,6 @@ GameObject:
   - component: {fileID: 3907618615114122599}
   - component: {fileID: 5540631362451432190}
   - component: {fileID: 4237488455597836665}
-  - component: {fileID: 5295220763491429833}
   - component: {fileID: 1585280121605563005}
   - component: {fileID: -4425380910067853617}
   m_Layer: 0
@@ -287,20 +286,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea59481a724236c46a13b520485437b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 17
+  _poolingType: 17
   <CharStat>k__BackingField: {fileID: 11400000, guid: 69f8ae33e5cbb034b9d27715e56eb224, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
+  target: {fileID: 0}
   hpBarTrm: {fileID: 5352089228719263992}
   forwardTrm: {fileID: 4980443758013225063}
-  target: {fileID: 0}
-  lastMovePos: {x: 0, y: 0, z: 0}
-  moveDuration: 0.1
-  turnStatus: 0
-  attackParticle:
-    attack: {fileID: 0}
-  _cameraMoveInfo: {fileID: 11400000, guid: 936a0e891b9c1904a8512f55b0ce6431, type: 2}
+  statesData: []
+  spawnData: {fileID: 0}
+  dessolve: {fileID: 5613121128702102028}
 --- !u!114 &4237488455597836665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,20 +337,6 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
-  totalDmg: 0
---- !u!114 &5295220763491429833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6105448646824021433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927d0c5dd4dff604eb1c458b753681b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  datas: []
 --- !u!61 &1585280121605563005
 BoxCollider2D:
   m_ObjectHideFlags: 0

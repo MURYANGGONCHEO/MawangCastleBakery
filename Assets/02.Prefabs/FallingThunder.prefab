@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8af67599a9dfe944b402181d07a292c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 23
+  _poolingType: 23
   particleSystems:
   - {fileID: 8846443511993066839}
   - {fileID: 8846443511993066839}

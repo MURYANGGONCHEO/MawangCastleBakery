@@ -25,7 +25,7 @@ public class DrySkyThunderSkill : LightningCardBase, ISkillEffectAnim
 
     public void HandleEffectEnd()
     {
-        Player.MoveToOriginPos();
+        //Player.MoveToOriginPos();
         Player.EndAbility();
         Player.VFXManager.EndParticle(CardInfo, (int)CombineLevel);
         IsActivingAbillity = false;
@@ -39,7 +39,7 @@ public class DrySkyThunderSkill : LightningCardBase, ISkillEffectAnim
 
         yield return new WaitForSeconds(1.25f);
 
-        Player.UseAbility(this, true, false, true, 0.1f);
+        //Player.UseAbility(this, true, false, true, 0.1f);
 
         var targetList = Player.GetSkillTargetEnemyList[this];
 

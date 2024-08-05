@@ -71,6 +71,7 @@ public class CameraController : MonoBehaviour
 
     public void StartCameraSequnce(CameraMoveTypeSO moveType, bool stayCam = false, Action endCallBack = null)
     {
+        if (moveType == null) return;
         if (_runningCamCor != null)
         {
             StopCoroutine(_runningCamCor);

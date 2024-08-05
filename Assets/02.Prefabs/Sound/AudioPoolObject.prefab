@@ -141,5 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9685573a2c00ba4f97a641494751dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 15
+  _poolingType: 15
   source: {fileID: 5564869717783522427}

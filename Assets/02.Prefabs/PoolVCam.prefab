@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ebb24bab4b60a4da551f88bc3f8eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 20
+  _poolingType: 20
 --- !u!114 &5094838242261005029
 MonoBehaviour:
   m_ObjectHideFlags: 0

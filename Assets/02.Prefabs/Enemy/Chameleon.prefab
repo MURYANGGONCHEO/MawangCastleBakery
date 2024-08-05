@@ -10,11 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2034156526833590011}
   - component: {fileID: 3861506993422593879}
-  - component: {fileID: 749734682985271945}
   - component: {fileID: 5518132954554097469}
   - component: {fileID: 2701667884253395548}
   - component: {fileID: 53557295238351374}
-  - component: {fileID: -8742309543402868280}
   m_Layer: 7
   m_Name: Chameleon
   m_TagString: Untagged
@@ -83,19 +81,6 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
---- !u!114 &749734682985271945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155549396413779262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927d0c5dd4dff604eb1c458b753681b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  datas: []
 --- !u!61 &5518132954554097469
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -168,38 +153,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f9792e4e88c534890a0930e753c04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 36
+  _poolingType: 36
   <CharStat>k__BackingField: {fileID: 11400000, guid: e4062201ba56b81418d6ff415c653c10, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
+  target: {fileID: 0}
   hpBarTrm: {fileID: 2885081995942438042}
   forwardTrm: {fileID: 5893639574038885792}
-  target: {fileID: 0}
-  lastMovePos: {x: 0, y: 0, z: 0}
-  moveDuration: 0.1
-  turnStatus: 0
-  Disappear: 0
-  attackParticle:
-    attack: {fileID: 0}
-  _cameraMoveInfo: {fileID: 11400000, guid: 3940cc0d67021ed40a88458271463f30, type: 2}
-  attackClip: {fileID: 8300000, guid: 3379743700378d44c97336149e16a360, type: 3}
+  statesData:
+  - actionType: 0
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: 0901b32cb9c8e224cb769684f1140630, type: 2}
+    skillSound: {fileID: 0}
+  - actionType: 7
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: 3940cc0d67021ed40a88458271463f30, type: 2}
+    skillSound: {fileID: 8300000, guid: 3379743700378d44c97336149e16a360, type: 3}
+  spawnData: {fileID: 11400000, guid: d985b6a788eb51b4da38286cec760ff5, type: 2}
+  dessolve: {fileID: 2315851594513133670}
   melonSpawnTrm: {fileID: 4344035709133795039}
---- !u!114 &-8742309543402868280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155549396413779262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockBackAmount: 0
-  filpX: 0
-  _isPlayer: 0
 --- !u!1 &1915506819097911827
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,8 +362,9 @@ GameObject:
   - component: {fileID: 5166883219835033195}
   - component: {fileID: 8211462864248791313}
   - component: {fileID: 7037805150859628271}
-  - component: {fileID: 8721794359855954715}
   - component: {fileID: 2655793601729803319}
+  - component: {fileID: 2315851594513133670}
+  - component: {fileID: 1721586583454469317}
   m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
@@ -486,18 +460,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8721794359855954715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5979691052943553165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd41f161c1656b47ac97dd3d572e21b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2655793601729803319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,10 +486,49 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: 83392
+  m_InstanceId: 80852
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
+--- !u!114 &2315851594513133670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979691052943553165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce52bda515708a4ea3bf3dcddea58e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEndDessolve:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 53557295238351374}
+        m_TargetAssemblyTypeName: Entity, Assembly-CSharp
+        m_MethodName: GoToPool
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1721586583454469317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979691052943553165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb23e896ea0bdde44a78fbbc4d2e7414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7133997869378311337
 GameObject:
   m_ObjectHideFlags: 0

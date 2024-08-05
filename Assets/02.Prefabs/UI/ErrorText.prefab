@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f4389a9965684468bf5e106ffee575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 10
+  _poolingType: 10
   _errorImg: {fileID: 8826688336434145220}
   _errorText: {fileID: 4325463100249979046}
   _fadeTime: 1.5

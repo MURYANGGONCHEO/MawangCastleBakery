@@ -10,11 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4281366448975466596}
   - component: {fileID: 1162303534560937463}
-  - component: {fileID: 8857882347362131033}
   - component: {fileID: 4766362780943724604}
   - component: {fileID: 4222394787632999790}
   - component: {fileID: 2774288351425483891}
-  - component: {fileID: 1583485428861208966}
   m_Layer: 7
   m_Name: Sora
   m_TagString: Untagged
@@ -83,19 +81,6 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
---- !u!114 &8857882347362131033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631086464338657092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927d0c5dd4dff604eb1c458b753681b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  datas: []
 --- !u!61 &4766362780943724604
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -153,22 +138,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebcb3a97e98a7b479705ce06c2b995c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 32
+  _poolingType: 32
   <CharStat>k__BackingField: {fileID: 11400000, guid: 681cdc6162bd4cd4b843b5aa5c1f97eb, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
+  target: {fileID: 0}
   hpBarTrm: {fileID: 4512115928746267901}
   forwardTrm: {fileID: 5604354623745697263}
-  target: {fileID: 0}
-  lastMovePos: {x: 0, y: 0, z: 0}
-  moveDuration: 0.1
-  turnStatus: 0
-  Disappear: 0
-  attackParticle:
-    attack: {fileID: 0}
-  _cameraMoveInfo: {fileID: 11400000, guid: bd102c9d7b2571c40b7b0103b4900541, type: 2}
-  attackClip: {fileID: 0}
+  statesData:
+  - actionType: 0
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: 0901b32cb9c8e224cb769684f1140630, type: 2}
+    skillSound: {fileID: 0}
+  - actionType: 4
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: bd102c9d7b2571c40b7b0103b4900541, type: 2}
+    skillSound: {fileID: 0}
+  spawnData: {fileID: 11400000, guid: d985b6a788eb51b4da38286cec760ff5, type: 2}
+  dessolve: {fileID: 6665171787801965183}
   specialBuff: {fileID: 11400000, guid: 6f8d149370e800340b2855f4de5c6bdd, type: 2}
 --- !u!114 &2774288351425483891
 MonoBehaviour:
@@ -184,21 +172,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockBackAmount: 0.07
   filpX: 1
-  _isPlayer: 0
---- !u!114 &1583485428861208966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631086464338657092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3194de63ff251c646a1065f5b1cb8e04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockBackAmount: 0
-  filpX: 0
   _isPlayer: 0
 --- !u!1 &2029345023109488489
 GameObject:
@@ -274,8 +247,9 @@ GameObject:
   - component: {fileID: 5495131576810049014}
   - component: {fileID: 1350348306918604464}
   - component: {fileID: 3313932347744251805}
-  - component: {fileID: 8469327844983534514}
   - component: {fileID: 3473723038736494894}
+  - component: {fileID: 6665171787801965183}
+  - component: {fileID: 3806339389261575155}
   m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
@@ -371,18 +345,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8469327844983534514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4914963774668728297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd41f161c1656b47ac97dd3d572e21b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3473723038736494894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,10 +371,49 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: 87564
+  m_InstanceId: 83452
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
+--- !u!114 &6665171787801965183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914963774668728297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce52bda515708a4ea3bf3dcddea58e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEndDessolve:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4222394787632999790}
+        m_TargetAssemblyTypeName: Entity, Assembly-CSharp
+        m_MethodName: GoToPool
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3806339389261575155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914963774668728297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb23e896ea0bdde44a78fbbc4d2e7414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5202388722664653933
 GameObject:
   m_ObjectHideFlags: 0

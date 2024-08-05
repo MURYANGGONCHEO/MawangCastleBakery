@@ -6,83 +6,8 @@ using UnityEngine;
 
 public class KingButterDog : Enemy
 {
-    protected override void Start() 
-    {
-        base.Start();
-    }
-    public override void Attack()
-    {
-        target.HealthCompo.ApplyDamage(CharStat.GetDamage(), this);
-        //VFXPlayer.PlayHitEffect(attackParticle, target.transform.position);
-    }
+	public override void Init()
+	{
+	}
 
-    public override void SlowEntityBy(float percent)
-    {
-    }
-
-    public override void TurnAction()
-    {
-        OnAttackStart?.Invoke();
-        MoveToTargetForward(Vector3.zero);
-    }
-
-    public override void MoveToTargetForward(Vector3 p)
-    {
-        lastMovePos = transform.position;
-
-        //seq.Append(transform.DOMove(target.forwardTrm.position, moveDuration));
-        Vector3 pos = new Vector3(20, transform.position.y,transform.position.z);
-
-        Vector3 jumpPos = Vector3.zero;
-        jumpPos.y = transform.position.y;
-        jumpPos.x = transform.position.x + 3;
-        jumpPos.z = transform.position.z;
-        StartCoroutine(AttackCor());
-
-        Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOJump(jumpPos, 1f, 1, 0.5f));
-        seq.Append(transform.DOMove(pos, 0.5f)).SetEase(Ease.Linear);
-
-        seq.OnComplete(OnMoveTarget.Invoke);
-    }
-
-    private IEnumerator AttackCor()
-    {
-        yield return new WaitForSeconds(0.8f);
-        Attack();
-        OnAttackEnd?.Invoke();
-    }
-
-
-    public override void Spawn(Vector3 spawnPos, Action callBack)
-    {
-        SpriteRendererCompo.material.SetFloat("_dissolve_amount", 0);
-
-        AnimatorCompo.SetBool(spawnAnimationHash, true);
-
-        transform.position = spawnPos + new Vector3(-20f, 0);
-        transform.DOMoveX(spawnPos.x, 1f).SetEase(Ease.InCubic).OnComplete(() =>
-        {
-            AnimatorCompo.SetBool(spawnAnimationHash, false);
-            turnStatus = TurnStatus.Ready;
-
-            callBack?.Invoke();
-        });
-    }
-    public override void MoveToOriginPos()
-    {
-        transform.DOMove(lastMovePos, 0.5f).SetEase(Ease.Linear).OnComplete(OnMoveOriginPos.Invoke);
-    }
-
-
-    protected override void HandleEndMoveToOriginPos()
-    {
-        turnStatus = TurnStatus.End;
-    }
-
-    protected override void HandleEndMoveToTarget()
-    {
-        transform.position = new Vector3(-20, transform.position.y,transform.position.z);
-        MoveToOriginPos();
-    }
 }

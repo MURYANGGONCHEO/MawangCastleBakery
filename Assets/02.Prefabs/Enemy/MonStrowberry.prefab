@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1432605093709410898}
   - component: {fileID: 5899726458415576063}
   - component: {fileID: 3440683223502143726}
-  - component: {fileID: 6342149766395403752}
   - component: {fileID: 1379288962630803514}
+  - component: {fileID: 2970561494453476816}
+  - component: {fileID: 1474892550274019031}
   m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
@@ -108,18 +109,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6342149766395403752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047897270111511810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd41f161c1656b47ac97dd3d572e21b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1379288962630803514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,10 +135,49 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: 133676
+  m_InstanceId: 82428
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
+--- !u!114 &2970561494453476816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047897270111511810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce52bda515708a4ea3bf3dcddea58e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEndDessolve:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9093887842485498522}
+        m_TargetAssemblyTypeName: Entity, Assembly-CSharp
+        m_MethodName: GoToPool
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1474892550274019031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047897270111511810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb23e896ea0bdde44a78fbbc4d2e7414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3416370300168082675
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +283,6 @@ GameObject:
   - component: {fileID: 8493968749243393008}
   - component: {fileID: 4414431798692363424}
   - component: {fileID: 9093887842485498522}
-  - component: {fileID: 775191448855244615}
   - component: {fileID: 2318848655234622396}
   - component: {fileID: -4172119782272233042}
   m_Layer: 7
@@ -328,7 +355,6 @@ MonoBehaviour:
     currentAilment: 0
   isLastHitCritical: 0
   IsFreeze: 0
-  totalDmg: 0
 --- !u!114 &9093887842485498522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,33 +367,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50989267ad4eb5440958722919e2a5be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 13
+  _poolingType: 13
   <CharStat>k__BackingField: {fileID: 11400000, guid: 77bbf83f7aff9f8468c1bb6d4d687b5e, type: 2}
   OnHealthBarChanged:
     m_PersistentCalls:
       m_Calls: []
+  target: {fileID: 0}
   hpBarTrm: {fileID: 8219984505675715037}
   forwardTrm: {fileID: 8435905279967449171}
-  target: {fileID: 0}
-  lastMovePos: {x: 0, y: 0, z: 0}
-  moveDuration: 0.1
-  turnStatus: 0
-  attackParticle:
-    attack: {fileID: 9194934482362972306}
-  _cameraMoveInfo: {fileID: 11400000, guid: d2c4a7e6e16720e42956b19a8c5e5bc2, type: 2}
---- !u!114 &775191448855244615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4750873841488341647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927d0c5dd4dff604eb1c458b753681b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  datas: []
+  statesData:
+  - actionType: 0
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: 0901b32cb9c8e224cb769684f1140630, type: 2}
+    skillSound: {fileID: 0}
+  - actionType: 1
+    actionIcon: {fileID: 0}
+    cameraInfo: {fileID: 11400000, guid: b2882aba5ace8704ea4296a9e69e1fff, type: 2}
+    skillSound: {fileID: 0}
+  spawnData: {fileID: 11400000, guid: d985b6a788eb51b4da38286cec760ff5, type: 2}
+  dessolve: {fileID: 2970561494453476816}
 --- !u!61 &2318848655234622396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -567,7 +585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3856647967313336348}
   m_Layer: 7
-  m_Name: SeedGun
+  m_Name: SeedGun1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -901,7 +919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5031158330665112198, guid: e0d65b92238355b4fadbe842b37712f6, type: 3}
       propertyPath: m_Name
-      value: P_Seedgun_level1
+      value: SeedGun
       objectReference: {fileID: 0}
     - target: {fileID: 5031158330665112198, guid: e0d65b92238355b4fadbe842b37712f6, type: 3}
       propertyPath: m_IsActive
@@ -1042,14 +1060,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3599030315999073390, guid: e0d65b92238355b4fadbe842b37712f6, type: 3}
   m_PrefabInstance: {fileID: 7883379448226082124}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9194934482362972306 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1368421278148285918, guid: e0d65b92238355b4fadbe842b37712f6, type: 3}
-  m_PrefabInstance: {fileID: 7883379448226082124}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcef8551a237a0d4a9bd043d7c6b8ea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
