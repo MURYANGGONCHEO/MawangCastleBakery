@@ -792,7 +792,7 @@ MonoBehaviour:
       fadeType: 0
     captureElement:
       activeType: 2
-      movePosition: {x: 86, y: -263}
+      movePosition: {x: 599, y: -263}
       rotationValue: {x: 0, y: 0, z: 0, w: 1}
     priviewSprite: {fileID: 0}
     isLinker: 0
@@ -840,8 +840,8 @@ MonoBehaviour:
     productElement:
       fadeType: 0
     captureElement:
-      activeType: 0
-      movePosition: {x: 0, y: 0}
+      activeType: 2
+      movePosition: {x: 599, y: -232}
       rotationValue: {x: 0, y: 0, z: 0, w: 1}
     priviewSprite: {fileID: 21300000, guid: cefc726b7ab2b1e4b81370ddbb68a285, type: 3}
     isLinker: 0
@@ -907,7 +907,7 @@ MonoBehaviour:
       fadeType: 0
     captureElement:
       activeType: 2
-      movePosition: {x: 217, y: -198}
+      movePosition: {x: 599, y: -232}
       rotationValue: {x: 0, y: 0, z: -0.07628405, w: 0.99708617}
     priviewSprite: {fileID: 21300000, guid: cefc726b7ab2b1e4b81370ddbb68a285, type: 3}
     isLinker: 0
@@ -925,7 +925,7 @@ MonoBehaviour:
       fadeType: 0
     captureElement:
       activeType: 2
-      movePosition: {x: 217, y: -232}
+      movePosition: {x: 599, y: -232}
       rotationValue: {x: 0, y: 0, z: 0, w: 1}
     priviewSprite: {fileID: 21300000, guid: cefc726b7ab2b1e4b81370ddbb68a285, type: 3}
     isLinker: 0
