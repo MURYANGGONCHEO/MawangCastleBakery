@@ -78,4 +78,21 @@ public class DataManager : MonoSingleton<DataManager>
     {
         return Path.Combine(Application.dataPath, $"{dataKey}.json");
     }
+
+    public void ResetData()
+    {
+        if (File.Exists(_dataKeyFilePath))
+        {
+            string[] keyArr = File.ReadAllText(_dataKeyFilePath).Split(",");
+            int saveFileCount = keyArr.Length - 1;
+
+            for(int i = 0; i <  saveFileCount; i++)
+            {
+                if(File.Exists(keyArr[i]))
+                {
+                    File.Delete(keyArr[i]);
+                }
+            }
+        }
+    }
 }
