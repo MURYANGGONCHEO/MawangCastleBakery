@@ -18,7 +18,7 @@ public class TargettingMaskCreater : MonoBehaviour
         Image img = tm.transform.GetComponent<Image>();
         if(img)
         {
-            img.raycastTarget = false;
+            //img.raycastTarget = false;
             img.maskable = false;
 
             tm.GetTargetMarkImage().raycastTarget = false;
