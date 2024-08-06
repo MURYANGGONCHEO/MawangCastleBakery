@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: ForgingStackGainUpSynergySO
   m_EditorClassIdentifier: 
   SynergyName: "\uC7AC\uB828 \uC644\uB8CC \uC2A4\uD0DD \uD68D\uB4DD\uB7C9 \uC99D\uAC00"
-  SynergyDesc: "\uC7AC\uB828 \uC644\uB8CC \uC2A4\uD0DD \uD68D\uB4DD\uB7C9 2 \uC99D\uAC00"
+  SynergyDesc: "\uC7AC\uB828 \uC644\uB8CC \uC2A4\uD0DD \uD68D\uB4DD\uB7C9 2 \uC99D\uAC00\n(\uC7AC\uB828
+    + \uC528\uB4DC\uAC74 + \uB2F4\uAE08\uC9C8 = \uCD9C\uD558)"
   ImpactCoefficient: 2
   BuffSO: {fileID: 0}
   ImpactType: 5

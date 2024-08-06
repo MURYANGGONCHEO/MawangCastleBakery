@@ -24,7 +24,7 @@ MonoBehaviour:
     currentShame: 2
     info: 
   - cardShameType: 8
-    currentShame: 0
+    currentShame: 6
     info: 
   - cardShameType: 16
     currentShame: 6

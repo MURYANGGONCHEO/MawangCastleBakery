@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: FAINTStackGainUpSynergySO
   m_EditorClassIdentifier: 
   SynergyName: "\uACE0\uC74C \uC7A5\uC804 \uC2A4\uD0DD \uD68D\uB4DD\uB7C9 \uC99D\uAC00"
-  SynergyDesc: "\uACE0\uC74C \uC7A5\uC804 \uC2A4\uD0DD \uD68D\uB4DD\uB7C9 1 \uC99D\uAC00"
+  SynergyDesc: "\uACE0\uC74C \uC7A5\uC804 \uC2A4\uD0DD \uD68D\uB4DD\uB7C9 1 \uC99D\uAC00\n(\uCC9C\uCC9C\uD788~
+    + \uB9C8\uBB34\uB9AC! + \uD55C\uBC88 \uB354! + \uCE94\uB514 \uC2A4\uD2B8\uB9BC
+    \uBC84\uC2A4\uD2B8)"
   ImpactCoefficient: 1
   BuffSO: {fileID: 0}
   ImpactType: 8
