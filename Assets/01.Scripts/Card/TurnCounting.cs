@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnCounting : MonoBehaviour
 {
@@ -13,9 +14,11 @@ public class TurnCounting : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _gameEndText;
     [SerializeField] private Transform _turnChaingLabel;
     [SerializeField] private GameObject _visualObject;
-
+    [SerializeField] private Button _turnSkipBtn;
+    [SerializeField] private OnSkill _costChecker;
     private TextMeshProUGUI _selectText;
     private Transform _selectTrm;
+    private bool _isTurnChaing = false;
 
     [Header("����")]
     [SerializeField] private Transform _startPos;
@@ -35,6 +38,11 @@ public class TurnCounting : MonoBehaviour
                 endowStackSkill.ResetAdditionStack();
             }
         }
+
+        _turnSkipBtn.onClick.AddListener(() =>
+        {
+            ToEnemyTurnChanging(true);
+        });
     }
 
     private void OnDestroy()
@@ -71,7 +79,7 @@ public class TurnCounting : MonoBehaviour
         seq.AppendInterval(1f);
         seq.Append(_turnChaingLabel.DOScaleY(0, 0.4f));
         seq.Join(_gameEndText.DOFade(0, 0.4f));
-
+        Time.timeScale = 1;
         return seq;
     }
 
@@ -82,6 +90,9 @@ public class TurnCounting : MonoBehaviour
 
         _selectTrm = _toPTChangingText.transform;
         _selectText = _toPTChangingText;
+
+        _turnSkipBtn.gameObject.SetActive(true);
+        _costChecker.SystemUp();
         TurnChanging(isTurnChange);
     }
 
@@ -91,6 +102,7 @@ public class TurnCounting : MonoBehaviour
 
         _selectTrm = _toETChangingText.transform;
         _selectText = _toETChangingText;
+        _turnSkipBtn.gameObject.SetActive(false);
         TurnChanging(isTurnChange);
     }
 
