@@ -503,7 +503,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217852661470170898}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1159,7 +1159,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8731799001952309575}
-  - component: {fileID: 8499134613290408392}
   m_Layer: 5
   m_Name: System
   m_TagString: Untagged
@@ -1199,21 +1198,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8499134613290408392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752801673233679141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa99e5231fa3fc4fa69ea31772d3b62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _systemTrm: {fileID: 8731799001952309575}
-  _downPos: {x: 0, y: -336}
-  _defaultPos: {x: 0, y: 0}
 --- !u!1 &776085897762945930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3484779793645749806}
   - component: {fileID: 2611047847261095998}
+  - component: {fileID: 6145406527928656161}
   m_Layer: 5
   m_Name: CostChecker
   m_TagString: Untagged
@@ -1590,6 +1575,21 @@ MonoBehaviour:
   _accCostObject: {fileID: 9059914252177025944}
   _costText: {fileID: 8113116798454300524}
   _accCostText: {fileID: 4364563388894271935}
+--- !u!114 &6145406527928656161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701636509836499557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa99e5231fa3fc4fa69ea31772d3b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _systemTrm: {fileID: 3484779793645749806}
+  _downPos: {x: -793, y: -696}
+  _defaultPos: {x: -793, y: -420}
 --- !u!1 &1779028958185464880
 GameObject:
   m_ObjectHideFlags: 0
@@ -3469,9 +3469,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3710,6 +3710,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6145406527928656161}
+        m_TargetAssemblyTypeName: OnSkill, Assembly-CSharp
+        m_MethodName: SystemDown
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4087971204963527436
 GameObject:
   m_ObjectHideFlags: 0
@@ -3816,6 +3828,7 @@ RectTransform:
   m_Children:
   - {fileID: 8293587396974968327}
   - {fileID: 4507916689113883167}
+  - {fileID: 6480153595107273438}
   - {fileID: 3723019226109103157}
   - {fileID: 49864010104170632}
   - {fileID: 379168712995245674}
@@ -3829,7 +3842,6 @@ RectTransform:
   - {fileID: 6471666182048625025}
   - {fileID: 6785437480678893715}
   - {fileID: 4365758940663410546}
-  - {fileID: 6480153595107273438}
   - {fileID: 5866461963653487280}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4676,9 +4688,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4912,19 +4924,7 @@ MonoBehaviour:
   _activationTurmValue: 155
   useCardEndEvnet:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8499134613290408392}
-        m_TargetAssemblyTypeName: OnSkill, Assembly-CSharp
-        m_MethodName: SystemUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   beforeChainingEvent:
     m_PersistentCalls:
       m_Calls:
@@ -4973,18 +4973,6 @@ MonoBehaviour:
       - m_Target: {fileID: 3961605674819758161}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8499134613290408392}
-        m_TargetAssemblyTypeName: OnSkill, Assembly-CSharp
-        m_MethodName: SystemDown
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5780,6 +5768,8 @@ MonoBehaviour:
   _gameEndText: {fileID: 7317619082367787535}
   _turnChaingLabel: {fileID: 677948911788336570}
   _visualObject: {fileID: 6916100158410159588}
+  _turnSkipBtn: {fileID: 1466502726357290903}
+  _costChecker: {fileID: 6145406527928656161}
   _startPos: {fileID: 5247548553580168836}
   _normalPos: {fileID: 871447478420705596}
   _endPos: {fileID: 4231084449006360184}
@@ -5891,7 +5881,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0008239746}
+  m_AnchoredPosition: {x: 0, y: 0.0009765625}
   m_SizeDelta: {x: 1390.6829, y: 726.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814725439195008491
@@ -7396,9 +7386,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7603,9 +7593,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
