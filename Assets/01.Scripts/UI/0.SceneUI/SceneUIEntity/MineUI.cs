@@ -9,6 +9,8 @@ public class MineUI : SceneUI
     [SerializeField]
     protected GameObject _tutorialPanel;
 
+    [SerializeField] private MineInfo[] _mineInfoArr;
+
     public override void SceneUIStart()
     {
         base.SceneUIStart();
@@ -18,9 +20,17 @@ public class MineUI : SceneUI
         CheckOnFirst cf = DataManager.Instance.LoadData<CheckOnFirst>(DataKeyList.checkIsFirstPlayGameDataKey);
         if (!cf.isFirstOnEnterDungeon)
         {
-            _tutorialPanel.SetActive(true);
+            //_tutorialPanel?.SetActive(true);
             cf.isFirstOnEnterDungeon = true;
             DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
+        }
+
+        if(DeckManager.Instance.GetDungeonDeckMakeChance() == 5)
+        {
+            foreach(var m in _mineInfoArr)
+            {
+                m.IsClearThisStage = false;
+            }
         }
     }
 
@@ -31,6 +41,16 @@ public class MineUI : SceneUI
 
     public void GoToBattle()
     {
+        foreach (var m in _mineInfoArr)
+        {
+            if(!m.IsClearThisStage)
+            {
+                StageManager.Instanace.SelectStageData = m.stageData;
+                break;
+            }
+        }
+
+        StageManager.Instanace.SelectDeck = DeckManager.Instance.DungeonDeckList;
         GameManager.Instance.ChangeScene(SceneType.battle);
     }
 }

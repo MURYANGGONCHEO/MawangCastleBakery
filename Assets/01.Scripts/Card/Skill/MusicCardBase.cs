@@ -32,6 +32,10 @@ public abstract class MusicCardBase : CardBase, IEndowStackSkill
         foreach (var e in battleController.OnFieldMonsterArr)
         {
             e?.BuffStatCompo.AddBuff(buffSO, (int)CombineLevel + 2, (int)CombineLevel);
+
+            CombatMarkingData f_data = new CombatMarkingData(BuffingType.MusicFaint,
+                                 buffSO.buffInfo, (int)CombineLevel + 1);
+            BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, f_data, buffSO.stackBuffs[0].values[(int)CombineLevel]);
         }
     }
 
