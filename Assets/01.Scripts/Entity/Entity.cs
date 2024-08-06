@@ -90,6 +90,8 @@ public abstract class Entity : PoolableMono
 	}
 	protected virtual void OnEnable()
 	{
+		HealthCompo.OnDeathEvent.RemoveAllListeners();
+
 		HealthCompo.SetOwner(this);
 
 		TurnCounter.RoundStartEvent += BuffStatCompo.UpdateBuff;

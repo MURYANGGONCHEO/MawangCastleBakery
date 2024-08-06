@@ -345,7 +345,6 @@ public class BattleController : MonoSingleton<BattleController>
 	public void DeadMonster(Enemy enemy)
 	{
 		OnFieldMonsterArr[Array.IndexOf(OnFieldMonsterArr, enemy)] = null;
-		enemy.HealthCompo.OnDeathEvent = null;
 		DeathEnemyList.Add(enemy);
 		maskDisableEvent?.Invoke(enemy);
 	}
