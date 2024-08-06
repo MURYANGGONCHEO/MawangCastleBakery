@@ -14,14 +14,24 @@ public class SynergyUI : MonoBehaviour
 
     bool _onList = false;
 
+    [SerializeField] private bool _isDeckBuilding = false;
+
     public void SettingSynergyList()
     {
-        foreach(var item in SynergyManager.Instance.GetSynergyChecker().SynergyList)
+        if (!_isDeckBuilding)
         {
-            if(item.Enable)
+            foreach(var item in SynergyManager.Instance.GetSynergyChecker().SynergyList)
             {
-                enableSynergyList.Add(item);
+                if(item.Enable)
+                {
+                    enableSynergyList.Add(item);
+                }
             }
+        }
+        else
+        {
+            Debug.Log("Test");
+            enableSynergyList = SynergyManager.Instance.GetSynergyChecker().SynergyList;
         }
     }
 
