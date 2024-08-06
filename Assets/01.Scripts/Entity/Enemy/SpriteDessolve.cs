@@ -13,6 +13,10 @@ public class SpriteDessolve : MonoBehaviour
 	{
 		sp = GetComponent<SpriteRenderer>();
 	}
+	private void OnEnable()
+	{
+		sp.material.SetFloat("_dissolve_amount", 0);
+	}
 	public void Dessolve(float time)
 	{
 		StartCoroutine(DessolveCor(time));

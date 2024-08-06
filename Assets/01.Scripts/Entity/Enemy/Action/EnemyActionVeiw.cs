@@ -14,6 +14,15 @@ public class EnemyActionVeiw : MonoBehaviour
 	{
 		Reduce();
 	}
+	private void OnEnable()
+	{
+		foreach (var s in _nodes)
+		{
+			Destroy(s.gameObject);
+		}
+		_nodes.Clear();
+		Reduce();
+	}
 
 	public void AddAction(EnemyAction ea, int i)
 	{
