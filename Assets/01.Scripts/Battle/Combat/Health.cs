@@ -212,4 +212,8 @@ public class Health : MonoBehaviour, IDamageable
 		_isInvincible = value;
 	}
 
+    public void SetHp(int value)
+    {
+        _currentHealth = maxHealth = value;
+    }
 }

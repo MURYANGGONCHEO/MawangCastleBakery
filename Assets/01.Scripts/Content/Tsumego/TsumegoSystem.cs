@@ -46,6 +46,11 @@ public class TsumegoSystem : MonoBehaviour
         _gameEndEvent?.Invoke(true);
         _stageClearEvent?.Invoke(true);
         // 클리어 연출, 보상 지급, 클리어 데이터 갱신 처리
+
+        if(StageManager.Instanace.SelectStageData.stageType == StageType.Mine)
+        {
+            DeckManager.Instance.SetDungeonDeckMakeChance(3);
+        }
     }
 
     public void DefeatStage()
@@ -54,5 +59,9 @@ public class TsumegoSystem : MonoBehaviour
         _gameEndEvent?.Invoke(true);
         _stageClearEvent?.Invoke(false);
 
+        if (StageManager.Instanace.SelectStageData.stageType == StageType.Mine)
+        {
+            DeckManager.Instance.SetDungeonDeckMakeChance(5);
+        }
     }
 }

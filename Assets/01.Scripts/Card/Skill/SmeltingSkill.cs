@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmeltingSkill : CardBase, ISkillEffectAnim
+public class SmeltingSkill : ForgingCardBase, ISkillEffectAnim
 {
     public override void Abillity()
     {
@@ -25,7 +25,7 @@ public class SmeltingSkill : CardBase, ISkillEffectAnim
     public void HandleEffectEnd()
     {
         Player.EndAbility();
-        Player.VFXManager.EndParticle(CardInfo, (int)CombineLevel + 1);
+        Player.VFXManager.EndParticle(CardInfo, (int)CombineLevel);
         IsActivingAbillity = false;
         Player.VFXManager.OnEndEffectEvent -= HandleEffectEnd;
     }
@@ -34,7 +34,9 @@ public class SmeltingSkill : CardBase, ISkillEffectAnim
     {
         yield return new WaitForSeconds(0.3f);
 
-        Player.BuffStatCompo.AddStack(StackEnum.Forging, buffSO.stackBuffs[0].values[(int)CombineLevel]);
+        Debug.Log($"Before Forging Stack: {Player.BuffStatCompo.GetStack(StackEnum.Forging)}");
+        AddStack();
+        Debug.Log($"After Forging Stack: {Player.BuffStatCompo.GetStack(StackEnum.Forging)}");
         Player.BuffStatCompo.AddBuff(buffSO, 2, (int)CombineLevel);
 
         CombatMarkingData forgeData =
@@ -42,7 +44,7 @@ public class SmeltingSkill : CardBase, ISkillEffectAnim
         "진정한 강철은 수만번의 담금질 속에서 만들어진다.",
         int.MaxValue);
 
-        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, forgeData, buffSO.stackBuffs[0].values[(int)CombineLevel]);
+        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, forgeData, buffSO.stackBuffs[0].values[(int)CombineLevel] + additionStack);
 
         Debug.Log($"Current Forging Stat: {Player.BuffStatCompo.GetStack(StackEnum.Forging)}");
     }

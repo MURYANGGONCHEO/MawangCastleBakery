@@ -1,4 +1,5 @@
 using DG.Tweening;
+using ExtensionFunction;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,5 +35,10 @@ public class TargetMask : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         BattleReader.SelectEnemy = null;
         BattleReader.AbilityTargetSystem.CanBinding = true;
         ActiveTargetMark(false);
+    }
+
+    public Image GetTargetMarkImage()
+    {
+        return _targetMarkImg;
     }
 }

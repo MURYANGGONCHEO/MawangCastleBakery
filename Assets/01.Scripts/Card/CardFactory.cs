@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CardFactory : MonoBehaviour
 {
@@ -54,6 +55,8 @@ public class CardFactory : MonoBehaviour
             {
                 CardBase selectInfo = BattleReader.GetRandomCardInDeck();
 
+                print(selectInfo.name);
+
                 _toDrawCatalog.Enqueue(selectInfo);
             }
         }
@@ -62,7 +65,7 @@ public class CardFactory : MonoBehaviour
             for (int i = 0; i < count; i++)
             {
                 CardBase selectInfo = BattleReader.GetCardInDeck();
-
+                print(selectInfo.name);
                 _toDrawCatalog.Enqueue(selectInfo);
             }
         }

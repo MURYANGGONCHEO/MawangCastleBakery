@@ -16,7 +16,8 @@ public class FortissimoSkill : MusicCardBase, ISkillEffectAnim
     public void HandleAnimationCall()
     {
         SoundManager.PlayAudio(_soundEffect, true);
-        Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
+        //Player.VFXManager.PlayParticle(CardInfo, (int)CombineLevel, _skillDurations[(int)CombineLevel]);
+        Player.VFXManager.PlayParticle(this, Player.GetSkillTargetEnemyList[this][0].transform.position);
         StartCoroutine(AttackCor());
         Player.OnAnimationCall -= HandleAnimationCall;
     }
@@ -40,7 +41,7 @@ public class FortissimoSkill : MusicCardBase, ISkillEffectAnim
             Destroy(obj, 1.0f);
         }
 
-        Player.BuffStatCompo.AddStack(StackEnum.DMGMusicaldNote, buffSO.stackBuffs[0].values[(int)CombineLevel]);
+        AddDMGMusicalNoteStack();
         Debug.Log($"Stacks: DEF({Player.BuffStatCompo.GetStack(StackEnum.DEFMusicalNote)}) / DMG({Player.BuffStatCompo.GetStack(StackEnum.DMGMusicaldNote)}) / FAINT({Player.BuffStatCompo.GetStack(StackEnum.FAINTMusicalNote)})");
 
         CombatMarkingData data = new CombatMarkingData(BuffingType.MusicAtk,

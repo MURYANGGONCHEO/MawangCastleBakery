@@ -4,18 +4,22 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnCounting : MonoBehaviour
 {
-	[Header("����")]
-	[SerializeField] private TextMeshProUGUI _toPTChangingText;
-	[SerializeField] private TextMeshProUGUI _toETChangingText;
-	[SerializeField] private TextMeshProUGUI _gameEndText;
-	[SerializeField] private Transform _turnChaingLabel;
-	[SerializeField] private GameObject _visualObject;
 
-	private TextMeshProUGUI _selectText;
-	private Transform _selectTrm;
+    [Header("����")]
+    [SerializeField] private TextMeshProUGUI _toPTChangingText;
+    [SerializeField] private TextMeshProUGUI _toETChangingText;
+    [SerializeField] private TextMeshProUGUI _gameEndText;
+    [SerializeField] private Transform _turnChaingLabel;
+    [SerializeField] private GameObject _visualObject;
+    [SerializeField] private Button _turnSkipBtn;
+    [SerializeField] private OnSkill _costChecker;
+    private TextMeshProUGUI _selectText;
+    private Transform _selectTrm;
+    private bool _isTurnChaing = false;
 
 	[Header("����")]
 	[SerializeField] private Transform _startPos;
@@ -24,10 +28,22 @@ public class TurnCounting : MonoBehaviour
 
 	private void Start()
 	{
+        BattleReader.SetDeck(StageManager.Instanace.SelectDeck);
+        TurnCounter.PlayerTurnStartEvent += ToPlayerTurnChanging;
+        foreach (CardBase card in BattleReader.InDeckCardList)
+        {
+            if(card.TryGetComponent<IEndowStackSkill>(out IEndowStackSkill endowStackSkill))
+            {
+                Debug.Log("Reset addition");
+                endowStackSkill.ResetAdditionStack();
+            }
+        }
 
-		BattleReader.SetDeck(StageManager.Instanace.SelectDeck);
-		TurnCounter.PlayerTurnStartEvent += ToPlayerTurnChanging;
-	}
+        _turnSkipBtn.onClick.AddListener(() =>
+        {
+            ToEnemyTurnChanging(true);
+        });
+    }
 
 	private void OnDestroy()
 	{
@@ -62,34 +78,36 @@ public class TurnCounting : MonoBehaviour
 		Sequence seq = DOTween.Sequence();
 		seq.Append(_turnChaingLabel.DOScaleY(1, 0.4f));
 
-		_gameEndText.text = isVictory ? "VICTORY" : "DEFEAT";
 
-		seq.Join(_gameEndText.DOFade(1, 0.4f));
-		seq.AppendInterval(1f);
-		seq.Append(_turnChaingLabel.DOScaleY(0, 0.4f));
-		seq.Join(_gameEndText.DOFade(0, 0.4f));
-
-		return seq;
-	}
-
+        seq.Join(_gameEndText.DOFade(1, 0.4f));
+        seq.AppendInterval(1f);
+        seq.Append(_turnChaingLabel.DOScaleY(0, 0.4f));
+        seq.Join(_gameEndText.DOFade(0, 0.4f));
+        Time.timeScale = 1;
+        return seq;
+    }
 	public void ToPlayerTurnChanging(bool isTurnChange)
 	{
 
 		if (UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd) return;
+        _selectTrm = _toPTChangingText.transform;
+        _selectText = _toPTChangingText;
 
-		_selectTrm = _toPTChangingText.transform;
-		_selectText = _toPTChangingText;
-		TurnChanging(isTurnChange);
+        _turnSkipBtn.gameObject.SetActive(true);
+        _costChecker.SystemUp();
+        TurnChanging(isTurnChange);
+
 	}
 
 	public void ToEnemyTurnChanging(bool isTurnChange)
 	{
 		if (UIManager.Instance.GetSceneUI<BattleUI>().IsBattleEnd) return;
+        _selectTrm = _toETChangingText.transform;
+        _selectText = _toETChangingText;
+        _turnSkipBtn.gameObject.SetActive(false);
+        TurnChanging(isTurnChange);
+    }
 
-		_selectTrm = _toETChangingText.transform;
-		_selectText = _toETChangingText;
-		TurnChanging(isTurnChange);
-	}
 
 	private void TurnChanging(bool isTurnChange)
 	{

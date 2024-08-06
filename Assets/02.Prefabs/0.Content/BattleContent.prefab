@@ -13249,6 +13249,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ccab6fde32eb6d34683d276342e1083c, type: 2}
     - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
+      propertyPath: cardAndEffects.Array.data[27].poolObject
+      value: 
+      objectReference: {fileID: 8757323107581500810, guid: 324be28c8b1fcf5419a9f48e58a58d0b, type: 3}
+    - target: {fileID: 1754398608876273925, guid: d061e98295b71314fb2799d7e4fdb2ca, type: 3}
       propertyPath: cardAndEffects.Array.data[28].poolObject
       value: 
       objectReference: {fileID: 8757323107581500810, guid: bd3447c511beddb4fbe64c03c29f17ae, type: 3}

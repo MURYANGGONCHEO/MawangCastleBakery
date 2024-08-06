@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReforgingSkill : CardBase, ISkillEffectAnim
+public class ReforgingSkill : ForgingCardBase, ISkillEffectAnim
 {
     public override void Abillity()
     {
@@ -34,13 +34,15 @@ public class ReforgingSkill : CardBase, ISkillEffectAnim
     {
         yield return new WaitForSeconds(0.3f);
 
-        Player.BuffStatCompo.AddStack(StackEnum.Forging, buffSO.stackBuffs[0].values[(int)CombineLevel]);
+        Debug.Log($"Before Forging Stack: {Player.BuffStatCompo.GetStack(StackEnum.Forging)}");
+        AddStack();
+        Debug.Log($"After Forging Stack: {Player.BuffStatCompo.GetStack(StackEnum.Forging)}");
 
         CombatMarkingData forgeData =
         new CombatMarkingData(BuffingType.Smelting,
         "진정한 강철은 수만번의 담금질 속에서 만들어진다.",
         int.MaxValue);
 
-        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, forgeData, buffSO.stackBuffs[0].values[(int)CombineLevel]);
+        BattleReader.CombatMarkManagement.AddBuffingData(Player, CardID, forgeData, buffSO.stackBuffs[0].values[(int)CombineLevel] + additionStack);
     }
 }

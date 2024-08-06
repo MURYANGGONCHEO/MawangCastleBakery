@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DeckManager : MonoSingleton<DeckManager>
@@ -8,6 +9,10 @@ public class DeckManager : MonoSingleton<DeckManager>
     private Dictionary<string, CardBase> _getCardDic = new();
     public (DeckElement, int) SaveDummyDeck { get; set; }
 
+    private int _canSelectDungeonDeckChance = 5;
+    public List<CardBase> DungeonDeckList { get; private set; } = new List<CardBase>();
+    public List<CardBase> NewDungeonCardList { get; private set; } = new List<CardBase>();
+
     private void Awake()
     {
         foreach(CardBase card in _totalCardArr)
@@ -15,12 +20,14 @@ public class DeckManager : MonoSingleton<DeckManager>
             _getCardDic.Add(card.CardInfo.CardName, card);
         }
     }
-
+    public CardInfo[] GetCardInfoList()
+    {
+        return _totalCardArr.Select(x => x.CardInfo).ToArray();
+    }
     public CardBase GetCard(string cardName)
     {
         return _getCardDic[cardName];
     }
-
     public List<string> GetDeckData(List<CardBase> deck)
     {
         List<string> data = new List<string>();
@@ -32,7 +39,6 @@ public class DeckManager : MonoSingleton<DeckManager>
 
         return data;
     }
-
     public List<CardBase> GetDeck(List<string> deckData)
     {
         List<CardBase> _deck = new ();
@@ -43,5 +49,23 @@ public class DeckManager : MonoSingleton<DeckManager>
         }
 
         return _deck;
+    }
+    public CardInfo GetRandomCardInfo()
+    {
+        return _totalCardArr[Random.Range(0, _totalCardArr.Length)].CardInfo;
+    }
+    public void SetDungeonDeck(CardBase card)
+    {
+        _canSelectDungeonDeckChance--;
+        NewDungeonCardList.Add(card);
+        DungeonDeckList.Add(card);
+    }
+    public int GetDungeonDeckMakeChance()
+    {
+        return _canSelectDungeonDeckChance;
+    }
+    public void SetDungeonDeckMakeChance(int num)
+    {
+        _canSelectDungeonDeckChance = num;
     }
 }
