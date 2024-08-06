@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SynergyName: "\uC804\uD22C\uC758 \uC120\uC728 \uC2A4\uD0DD \uD68D\uB4DD\uB7C9 \uC99D\uAC00"
   SynergyDesc: "\uC804\uD22C\uC758 \uC120\uC728 \uC2A4\uD0DD \uD68D\uB4DD\uB7C9 2
-    \uC99D\uAC00"
+    \uC99D\uAC00\n(\uD06C\uAC8C! + \uB9C8\uBB34\uB9AC!)"
   ImpactCoefficient: 2
   BuffSO: {fileID: 0}
   ImpactType: 7

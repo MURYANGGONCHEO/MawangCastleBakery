@@ -22,7 +22,7 @@ MonoBehaviour:
     currentShame: 15
     info: 
   - cardShameType: 8
-    currentShame: 3
+    currentShame: 5
     info: 
   - cardShameType: 16
     currentShame: 2

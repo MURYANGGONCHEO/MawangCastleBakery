@@ -19,10 +19,10 @@ MonoBehaviour:
     perValue: 3
   normalValueGroup:
   - cardShameType: 1
-    currentShame: 10
+    currentShame: 15
     info: 
   - cardShameType: 8
-    currentShame: 0
+    currentShame: 5
     info: 
   - cardShameType: 16
     currentShame: 2
@@ -31,7 +31,7 @@ MonoBehaviour:
   - list:
     - list:
       - cardShameType: 1
-        currentShame: 10
+        currentShame: 15
         info: 
       - cardShameType: 8
         currentShame: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
         info: 
     - list:
       - cardShameType: 1
-        currentShame: 13
+        currentShame: 18
         info: 
       - cardShameType: 8
         currentShame: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
         info: 
     - list:
       - cardShameType: 1
-        currentShame: 16
+        currentShame: 21
         info: 
       - cardShameType: 8
         currentShame: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
         info: 
     - list:
       - cardShameType: 1
-        currentShame: 19
+        currentShame: 24
         info: 
       - cardShameType: 8
         currentShame: 0
@@ -71,58 +71,7 @@ MonoBehaviour:
         info: 
     - list:
       - cardShameType: 1
-        currentShame: 22
-        info: 
-      - cardShameType: 8
-        currentShame: 0
-        info: 
-      - cardShameType: 16
-        currentShame: 2
-        info: 
-  - list:
-    - list:
-      - cardShameType: 1
-        currentShame: 20
-        info: 
-      - cardShameType: 8
-        currentShame: 0
-        info: 
-      - cardShameType: 16
-        currentShame: 2
-        info: 
-    - list:
-      - cardShameType: 1
-        currentShame: 26
-        info: 
-      - cardShameType: 8
-        currentShame: 0
-        info: 
-      - cardShameType: 16
-        currentShame: 2
-        info: 
-    - list:
-      - cardShameType: 1
-        currentShame: 32
-        info: 
-      - cardShameType: 8
-        currentShame: 0
-        info: 
-      - cardShameType: 16
-        currentShame: 2
-        info: 
-    - list:
-      - cardShameType: 1
-        currentShame: 38
-        info: 
-      - cardShameType: 8
-        currentShame: 0
-        info: 
-      - cardShameType: 16
-        currentShame: 2
-        info: 
-    - list:
-      - cardShameType: 1
-        currentShame: 44
+        currentShame: 27
         info: 
       - cardShameType: 8
         currentShame: 0
@@ -143,7 +92,17 @@ MonoBehaviour:
         info: 
     - list:
       - cardShameType: 1
-        currentShame: 39
+        currentShame: 36
+        info: 
+      - cardShameType: 8
+        currentShame: 0
+        info: 
+      - cardShameType: 16
+        currentShame: 2
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 42
         info: 
       - cardShameType: 8
         currentShame: 0
@@ -163,7 +122,18 @@ MonoBehaviour:
         info: 
     - list:
       - cardShameType: 1
-        currentShame: 57
+        currentShame: 54
+        info: 
+      - cardShameType: 8
+        currentShame: 0
+        info: 
+      - cardShameType: 16
+        currentShame: 2
+        info: 
+  - list:
+    - list:
+      - cardShameType: 1
+        currentShame: 45
         info: 
       - cardShameType: 8
         currentShame: 0
@@ -173,7 +143,37 @@ MonoBehaviour:
         info: 
     - list:
       - cardShameType: 1
-        currentShame: 66
+        currentShame: 54
+        info: 
+      - cardShameType: 8
+        currentShame: 0
+        info: 
+      - cardShameType: 16
+        currentShame: 2
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 63
+        info: 
+      - cardShameType: 8
+        currentShame: 0
+        info: 
+      - cardShameType: 16
+        currentShame: 2
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 72
+        info: 
+      - cardShameType: 8
+        currentShame: 0
+        info: 
+      - cardShameType: 16
+        currentShame: 2
+        info: 
+    - list:
+      - cardShameType: 1
+        currentShame: 81
         info: 
       - cardShameType: 8
         currentShame: 0
