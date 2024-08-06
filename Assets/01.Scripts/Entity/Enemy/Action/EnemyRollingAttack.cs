@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class EnemyRollingAttack : EnemyAction
 {
-	public EnemyRollingAttack(Enemy owner, Image actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
+	public EnemyRollingAttack(Enemy owner, Sprite actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
 	{
 	}
 
-	public override IEnumerator Execute()
+	protected override IEnumerator Activate()
+
 	{
 		BattleController.Instance.CameraController.StartCameraSequnce(camInfo);
 		SoundManager.PlayAudio(actionSound, true);

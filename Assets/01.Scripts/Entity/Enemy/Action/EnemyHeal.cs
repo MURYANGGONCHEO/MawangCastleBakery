@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyHeal : EnemyAction
 {
-	public EnemyHeal(Enemy owner, Image actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
+	public EnemyHeal(Enemy owner, Sprite actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
 	{
 	}
 
@@ -13,7 +13,8 @@ public class EnemyHeal : EnemyAction
 	{
 
 	}
-	public override IEnumerator Execute()
+	protected override IEnumerator Activate()
+
 	{
 		isRunning = true;
 		BattleController.Instance.CameraController.StartCameraSequnce(camInfo, false, () => isRunning = false);

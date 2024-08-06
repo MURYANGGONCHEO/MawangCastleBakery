@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class EnemyJumpAttack : EnemyAction
 {
-	public EnemyJumpAttack(Enemy owner, Image actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
+	public EnemyJumpAttack(Enemy owner, Sprite actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
 	{
 	}
 
-	public override IEnumerator Execute()
+	protected override IEnumerator Activate()
+
 	{
 		isRunning = true;
 		BattleController.Instance.CameraController.StartCameraSequnce(camInfo);

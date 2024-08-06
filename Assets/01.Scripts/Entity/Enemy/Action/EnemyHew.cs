@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class EnemyHew : EnemyAction
 {
-	public EnemyHew(Enemy owner, Image actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
+	public EnemyHew(Enemy owner, Sprite actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
 	{
 	}
 
-	public override IEnumerator Execute()
+	protected override IEnumerator Activate()
+
 	{
 		isRunning = true;
 		Vector3 lastMovePos = _owner.transform.position;

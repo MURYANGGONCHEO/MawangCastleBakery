@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class EnemyCandyLaser : EnemyAction
 {
 	private ParticleInfo _laser;
-	public EnemyCandyLaser(Enemy owner, Image actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
+	public EnemyCandyLaser(Enemy owner, Sprite actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
 	{
 	}
 
-	public override IEnumerator Execute()
+	protected override IEnumerator Activate()
 	{
 		isRunning = true;
 		BattleController.Instance.CameraController.StartCameraSequnce(camInfo);

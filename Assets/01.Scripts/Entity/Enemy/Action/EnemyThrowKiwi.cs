@@ -8,11 +8,12 @@ public class EnemyThrowKiwi : EnemyAction
 	private Transform _kiwiSpawnTrm;
 	private ThrowController _throwKiwi;
 
-	public EnemyThrowKiwi(Enemy owner, Image actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
+	public EnemyThrowKiwi(Enemy owner, Sprite actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
 	{
 	}
 
-	public override IEnumerator Execute()
+	protected override IEnumerator Activate()
+
 	{
 		isRunning = true;
 		BattleController.Instance.CameraController.StartCameraSequnce(camInfo);

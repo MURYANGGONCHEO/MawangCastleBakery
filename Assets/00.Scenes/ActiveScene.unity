@@ -361,9 +361,13 @@ MonoBehaviour:
   target: {fileID: 0}
   hpBarTrm: {fileID: 0}
   forwardTrm: {fileID: 0}
+  OnClickEvent:
+    m_PersistentCalls:
+      m_Calls: []
   statesData: []
   spawnData: {fileID: 0}
   dessolve: {fileID: 0}
+  actionVeiw: {fileID: 0}
 --- !u!114 &531586130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3310,7 +3314,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 0.2
+    m_ImpulseDuration: 0.1
     m_ImpulseType: 0
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}

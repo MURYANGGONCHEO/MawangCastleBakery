@@ -169,6 +169,7 @@ public class BattleController : MonoSingleton<BattleController>
 		_hpBarMaker.SetupHpBar(Player);
 		Player.HealthCompo.OnDeathEvent.AddListener(() => IsGameEnd = true);
 
+		turnSeq[TurnType.Player].OnSequenceStart += HandlePlayerStartSeq;
 		turnSeq[TurnType.Player].OnSequenceEnd += TurnCounter.ChangeTurn;
 		turnSeq[TurnType.Player].OnEndAction += CalculateDeathEntity;
 		turnSeq[TurnType.Player].OnEndAction += DamageTextManager.Instance.PushAllText;
@@ -182,7 +183,14 @@ public class BattleController : MonoSingleton<BattleController>
 		turnSeq[TurnType.Enemy].OnEndAction += BackGroundFadeIn;
 		turnSeq[TurnType.Enemy].OnEndAction += () => OnChangeTurnEnemy?.Invoke();
 	}
-
+	private void HandlePlayerStartSeq()
+	{
+		foreach (var e in OnFieldMonsterArr)
+		{
+			if (e == null) return;
+			e.actionVeiw.Reduce();
+		}
+	}
 	private void HandleOnRoundStart()
 	{
 		List<Enemy> enemies = new();
@@ -193,7 +201,7 @@ public class BattleController : MonoSingleton<BattleController>
 		}
 		for (int i = 0; i < onFieldMonsterNum; i++)
 		{
-			AddLastAction(TurnType.Enemy, enemies[UnityEngine.Random.Range(0, enemies.Count)].GetState());
+			AddLastAction(TurnType.Enemy, enemies[UnityEngine.Random.Range(0, enemies.Count)].GetState(i + 1));
 		}
 	}
 

@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class EnemyThorwMelon : EnemyAction
 {
 	private ThrowController _throwMelon;
-	public EnemyThorwMelon(Enemy owner, Image actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
+	public EnemyThorwMelon(Enemy owner, Sprite actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
 	{
 	}
 
-	public override IEnumerator Execute()
+		protected override IEnumerator Activate()
 	{
 		BattleController.Instance.CameraController.StartCameraSequnce(camInfo);
 		SoundManager.PlayAudio(actionSound, true);

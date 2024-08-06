@@ -8,11 +8,12 @@ public class EnemyUltraSound : EnemyAction
 {
 	private ParticleInfo _ultraSound;
 
-	public EnemyUltraSound(Enemy owner, Image actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
+	public EnemyUltraSound(Enemy owner, Sprite actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound) : base(owner, actionIcon, cameraInfo, skillSound)
 	{
 	}
 
-	public override IEnumerator Execute()
+	protected override IEnumerator Activate()
+
 	{
 		_owner.AnimatorCompo.SetBool("attack", true);
 		BattleController.Instance.CameraController.StartCameraSequnce(camInfo);

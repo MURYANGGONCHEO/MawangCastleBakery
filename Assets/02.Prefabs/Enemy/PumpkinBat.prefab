@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1979756508571820976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5276567818645947324}
+  - component: {fileID: 2925325128287493236}
+  m_Layer: 7
+  m_Name: EnemyActionView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5276567818645947324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979756508571820976}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3599452180879212325}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2925325128287493236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979756508571820976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8911753f42e38f4b90f952ecdcc9946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preps: {fileID: 7062631270039390754, guid: 522e3a771f2eccc4b878321fa085d60b, type: 3}
 --- !u!1 &2382087932064187377
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +305,7 @@ MonoBehaviour:
   - {x: 0.36832762, y: -1.20824, z: 0}
   m_ShapePathHash: -1826483275
   m_Mesh: {fileID: 0}
-  m_InstanceId: 83098
+  m_InstanceId: 94880
   m_LocalBounds:
     m_Center: {x: -0.053611517, y: -0.91139424, z: 0}
     m_Extent: {x: 0.42193913, y: 0.2968458, z: 0}
@@ -399,6 +444,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5276567818645947324}
   - {fileID: 7447601190323375790}
   - {fileID: 5434553928329087454}
   - {fileID: 8781841885519210767}
@@ -469,17 +515,23 @@ MonoBehaviour:
   target: {fileID: 0}
   hpBarTrm: {fileID: 7447601190323375790}
   forwardTrm: {fileID: 1990067731696797334}
+  OnClickEvent:
+    m_PersistentCalls:
+      m_Calls: []
   statesData:
   - actionType: 9
-    actionIcon: {fileID: 0}
+    actionIcon: {fileID: -1343346006, guid: a89793a0c95392c4590f37d14a89d833, type: 3}
     cameraInfo: {fileID: 11400000, guid: 5ec4c3e5d2aeb3b44907b595085deb0f, type: 2}
     skillSound: {fileID: 0}
+    amount: 5
   - actionType: 0
-    actionIcon: {fileID: 0}
+    actionIcon: {fileID: 21300000, guid: f40e4d63d88ca43489a0e7613fe27858, type: 3}
     cameraInfo: {fileID: 11400000, guid: 0901b32cb9c8e224cb769684f1140630, type: 2}
     skillSound: {fileID: 0}
+    amount: 1
   spawnData: {fileID: 11400000, guid: d985b6a788eb51b4da38286cec760ff5, type: 2}
   dessolve: {fileID: 1206381452366292499}
+  actionVeiw: {fileID: 2925325128287493236}
 --- !u!61 &5570287621423313586
 BoxCollider2D:
   m_ObjectHideFlags: 0

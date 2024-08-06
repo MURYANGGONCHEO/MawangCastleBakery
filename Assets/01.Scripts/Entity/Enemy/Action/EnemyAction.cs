@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,15 +18,21 @@ public enum EnemyActionEnum
 }
 public abstract class EnemyAction : ITurnAction
 {
-	public Image stateIcon;
+	public Sprite stateIcon;
 	public CameraMoveTypeSO camInfo;
 	public AudioClip actionSound;
+	public event Action OnEndEvnet;
 	protected Enemy _owner;
 	protected bool isRunning;
-	public EnemyAction(Enemy owner, Image actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound)
+	public EnemyAction(Enemy owner, Sprite actionIcon, CameraMoveTypeSO cameraInfo, AudioClip skillSound)
 	{ _owner = owner; stateIcon = actionIcon; camInfo = cameraInfo; actionSound = skillSound; }
 	public abstract void Init();
-	public abstract IEnumerator Execute();
+	public IEnumerator Execute()
+	{
+		yield return Activate();
+		OnEndEvnet?.Invoke();
+	}
+	protected abstract IEnumerator Activate();
 
 	public bool CanUse()
 	{
