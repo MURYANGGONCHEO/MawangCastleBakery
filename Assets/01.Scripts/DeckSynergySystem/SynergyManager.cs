@@ -92,4 +92,9 @@ public class SynergyManager : MonoSingleton<SynergyManager>
         _synergyUI.SettingSynergyList();
         _synergyUI.SynergyShow();
     }
+
+    public void ShowAllSynergy()
+    {
+        ShowSynergy();
+    }
 }
