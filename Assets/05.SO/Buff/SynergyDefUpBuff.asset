@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statBuffs:
   - type: 1
-    values: 64000000c80000002c010000
+    values: e2ffffffe2ffffffe2ffffff
     turn: 0
   specialBuffs: []
   stackBuffs: []
