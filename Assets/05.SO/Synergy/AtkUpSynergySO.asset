@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: AtkUpSynergySO
   m_EditorClassIdentifier: 
   SynergyName: "\uACF5\uACA9\uB825 \uC99D\uAC00"
-  SynergyDesc: "\uACF5\uACA9\uB825 40 \uC99D\uAC00"
+  SynergyDesc: "\uACF5\uACA9\uB825 40 \uC99D\uAC00\n(\uC528\uB4DC\uAC74 + \uD654\uC774\uD2B8
+    \uC194\uB8E8\uC83C + \uD38C\uD0A8 \uD31D)"
   ImpactCoefficient: 40
   BuffSO: {fileID: 0}
   ImpactType: 0
@@ -22,4 +23,4 @@ MonoBehaviour:
   - {fileID: 6394540229310288568, guid: 7c2ebb8eaff453848bea348a7370b33f, type: 3}
   - {fileID: -5554570068127067684, guid: 42b9630885a7926409f286c35eeec457, type: 3}
   - {fileID: 3007661017682430650, guid: f2a2f6db7dcec374aacdf943a2b30633, type: 3}
-  Enable: 0
+  Enable: 1

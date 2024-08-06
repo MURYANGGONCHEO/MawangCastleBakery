@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: MaxHpUpSynergySO
   m_EditorClassIdentifier: 
   SynergyName: "\uCD5C\uB300 \uCCB4\uB825 \uC99D\uAC00"
-  SynergyDesc: "\uCD5C\uB300 \uCCB4\uB825 100 \uC99D\uAC00"
+  SynergyDesc: "\uCD5C\uB300 \uCCB4\uB825 100 \uC99D\uAC00\n(\uC81C\uB828 + \uB2F4\uAE08\uC9C8
+    + \uB9C8\uB978 \uD558\uB298\uC5D0 \uB0A0\uBCBC\uB77D)"
   ImpactCoefficient: 100
   BuffSO: {fileID: 0}
   ImpactType: 2

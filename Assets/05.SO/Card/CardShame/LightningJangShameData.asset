@@ -19,7 +19,7 @@ MonoBehaviour:
     perValue: 3
   normalValueGroup:
   - cardShameType: 1
-    currentShame: 5
+    currentShame: 16
     info: 
   - cardShameType: 8
     currentShame: 3

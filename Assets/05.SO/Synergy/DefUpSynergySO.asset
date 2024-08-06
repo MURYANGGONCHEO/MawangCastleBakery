@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: DefUpSynergySO
   m_EditorClassIdentifier: 
   SynergyName: "\uBC29\uC5B4\uB825 \uC99D\uAC00"
-  SynergyDesc: "\uBC29\uC5B4\uB825 30 \uC99D\uAC00"
+  SynergyDesc: "\uBC29\uC5B4\uB825 30 \uC99D\uAC00\n(\uC22B\uB3CC\uC9C8 + \uB099\uB8B0
+    + \uD53C\uB8B0\uCE68)"
   ImpactCoefficient: 30
   BuffSO: {fileID: 0}
   ImpactType: 1

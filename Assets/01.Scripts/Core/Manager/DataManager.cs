@@ -88,6 +88,7 @@ public class DataManager : MonoSingleton<DataManager>
 
             for(int i = 0; i <  saveFileCount; i++)
             {
+                if (keyArr[i] == "PlayersDeck" || keyArr[i] == "CanUseCardsDataKey") continue;
                 if(File.Exists(keyArr[i]))
                 {
                     File.Delete(keyArr[i]);

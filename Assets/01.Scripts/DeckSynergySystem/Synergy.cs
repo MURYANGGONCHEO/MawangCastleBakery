@@ -8,6 +8,7 @@ namespace SynergyClass
     public class Synergy : ScriptableObject
     {
         public string SynergyName;              // Name of synergy
+        [TextArea]
         public string SynergyDesc;              // Description of synergy
         public int ImpactCoefficient;           // Buff's turn, Buff's increase value, stat increase value etc...
         public BuffSO BuffSO;                   // Buff to apply for if this synergy's impact has buff or debuff
