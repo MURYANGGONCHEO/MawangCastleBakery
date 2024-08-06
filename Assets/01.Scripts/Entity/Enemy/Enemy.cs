@@ -36,7 +36,13 @@ public abstract class Enemy : Entity
 			var cState = Activator.CreateInstance(t, this, data.actionIcon, data.cameraInfo, data.skillSound) as EnemyAction;
 			cState.Init();
 			states.Add(data.actionType, cState);
-			cState.OnEndEvnet += actionVeiw.RemoveAction;
+		}
+	}
+	private void OnEnable()
+	{
+		foreach (var i in states)
+		{
+			i.Value.OnEndEvnet += actionVeiw.RemoveAction;
 		}
 	}
 	private void OnDisable()
@@ -68,7 +74,13 @@ public abstract class Enemy : Entity
 		actionVeiw.AddAction(action, i);
 		return action;
 	}
-
+	protected override void HandleDie()
+	{
+		base.HandleDie();
+		EnemyStat es = CharStat as EnemyStat;
+		Inventory.Instance.GetIngredientInThisBattle.Add(es.DropItem);
+		Inventory.Instance.AddItem(es.DropItem);
+	}
 	public void Spawn(Vector3 selectPos, Action spawnCallBack)
 	{
 		spawnData.SpawnSeq(transform, selectPos, spawnCallBack);
