@@ -4958,7 +4958,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 679546362648455149}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999986
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5041,18 +5041,6 @@ MonoBehaviour:
   _battleStartEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4251425708133664528}
-        m_TargetAssemblyTypeName: SynergyManager, Assembly-CSharp
-        m_MethodName: SynergyInit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6725370481074937570}
         m_TargetAssemblyTypeName: TurnCounting, Assembly-CSharp
         m_MethodName: BattleStart
@@ -5068,6 +5056,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2494791636583702813}
         m_TargetAssemblyTypeName: BattleController, Assembly-CSharp
         m_MethodName: SetStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4251425708133664528}
+        m_TargetAssemblyTypeName: SynergyManager, Assembly-CSharp
+        m_MethodName: SynergyInit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6091,7 +6091,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.00018310547}
+  m_AnchoredPosition: {x: 0, y: 0.0010070801}
   m_SizeDelta: {x: 1390.6829, y: 726.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814725439195008491
@@ -7661,6 +7661,7 @@ MonoBehaviour:
   enableSynergyList: []
   _synergyObject: {fileID: 5280765604092785518, guid: 92a31dd235b270045a42fb5958812548, type: 3}
   _synergyTrm: {fileID: 6798737174558890216}
+  _isDeckBuilding: 0
 --- !u!1 &8716922857803300854
 GameObject:
   m_ObjectHideFlags: 0
