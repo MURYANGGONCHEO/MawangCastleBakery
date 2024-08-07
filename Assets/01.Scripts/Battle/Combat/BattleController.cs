@@ -99,7 +99,7 @@ public class BattleController : MonoSingleton<BattleController>
 					if (e == null) continue;
 
 					OnFieldMonsterArr[i] = null;
-					//PoolManager.Instance.Push(e);
+					PoolManager.Instance.Push(e);
 				}
 
 				CostCalculator.Init();
