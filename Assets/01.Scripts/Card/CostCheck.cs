@@ -48,7 +48,7 @@ public class CostCheck : MonoBehaviour
     private void HandleCalculateExMana(bool a)
     {
         CostCalculator.GetExMana(CostCalculator.CurrentMoney);
-        CostCalculator.CurrentMoney = 10;
+        CostCalculator.CurrentMoney = CostCalculator.MaxMoney;
         CostCalculator.GetCost(0);
     }
 

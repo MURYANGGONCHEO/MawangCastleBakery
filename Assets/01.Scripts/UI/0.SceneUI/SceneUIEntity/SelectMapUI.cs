@@ -15,6 +15,10 @@ public class SelectMapUI : SceneUI
         SceneObserver.BeforeSceneType = SceneType.Lobby;
 
         GenerateUnLockPanel();
+
+        GameManager.Instance.stat.atkAddValue = 0;
+        GameManager.Instance.stat.hpAddValue = 0;
+        CostCalculator.CurrentMoney = 10;
     }
 
     public AdventureData GetAdventureData()

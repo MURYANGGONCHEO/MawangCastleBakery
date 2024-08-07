@@ -21,6 +21,11 @@ public class MyosuUI : SceneUI
             cf.isFirstOnEnterMaze = true;
             DataManager.Instance.SaveData(cf, DataKeyList.checkIsFirstPlayGameDataKey);
         }
+
+        AdventureData data = DataManager.Instance.LoadData<AdventureData>(DataKeyList.adventureDataKey);
+        GameManager.Instance.stat.atkAddValue = data.MazeAtkAddValue;
+        GameManager.Instance.stat.hpAddValue = data.MazeHpAddvalue;
+        CostCalculator.CurrentMoney = data.MazeCostAddValue;
     }
 
     public void ApearText()
