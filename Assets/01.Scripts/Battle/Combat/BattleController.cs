@@ -90,6 +90,9 @@ public class BattleController : MonoSingleton<BattleController>
 			_isGameEnd = value;
 			if (_isGameEnd)
 			{
+				turnSeq[TurnType.Enemy].Clear();
+				turnSeq[TurnType.Player].Clear();
+				StopAllCoroutines();
 				StopCoroutine(curSeqCor);
 
 				DamageTextManager.Instance.PushAllText();
@@ -99,7 +102,7 @@ public class BattleController : MonoSingleton<BattleController>
 					if (e == null) continue;
 
 					OnFieldMonsterArr[i] = null;
-					//PoolManager.Instance.Push(e);
+					PoolManager.Instance.Push(e);
 				}
 
 				CostCalculator.Init();
@@ -107,7 +110,6 @@ public class BattleController : MonoSingleton<BattleController>
 
 				//UIManager.Instance.GetSceneUI<BattleUI>().SystemActive?.Invoke(true);
 				_hpBarMaker.DeleteAllHPBar();
-				StopAllCoroutines();
 
 				BattleReader.OnBinding = true;
 			}
@@ -228,7 +230,7 @@ public class BattleController : MonoSingleton<BattleController>
 
 			maskEnableEvent?.Invoke(e);
 		}
-		if(!IsGameEnd) StartTurnSequence(TurnType.Enemy);
+		if (!IsGameEnd) StartTurnSequence(TurnType.Enemy);
 	}
 
 
@@ -261,13 +263,13 @@ public class BattleController : MonoSingleton<BattleController>
 				betweenTime = 0.3f;
 			}
 			if (e is null) continue;
-			
+
 
 			//e.TurnAction();
 
 
 
-			
+
 
 			if (_isGameEnd) break;
 			yield return new WaitForSeconds(1.5f);

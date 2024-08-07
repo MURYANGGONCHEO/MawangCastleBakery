@@ -36,6 +36,6 @@ public abstract class EnemyAction : ITurnAction
 
 	public bool CanUse()
 	{
-		return !_owner.HealthCompo.IsDead;
+		return !_owner.HealthCompo.IsDead && !BattleController.Instance.IsGameEnd;
 	}
 }
