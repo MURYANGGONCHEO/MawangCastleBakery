@@ -25,7 +25,8 @@ public class TurnSequence : LinkedList<ITurnAction>
 				OnEndAction?.Invoke();
 			}
 			Remove(work);
-			yield return waitCor;
+			if (work.CanUse())
+				yield return waitCor;
 		}
 		Clear();
 		OnSequenceEnd?.Invoke();

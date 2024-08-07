@@ -27,9 +27,7 @@ public abstract class Enemy : Entity
 	{
 		base.Awake();
 		actionVeiw = transform.Find("EnemyActionView").GetComponent<EnemyActionVeiw>();
-	}
-	protected override void Start()
-	{
+		
 		foreach (var data in statesData)
 		{
 			Type t = Type.GetType(data.actionType.ToString());
@@ -38,15 +36,17 @@ public abstract class Enemy : Entity
 			states.Add(data.actionType, cState);
 		}
 	}
-	private void OnEnable()
+	protected override void OnEnable()
 	{
+		base.OnEnable();
 		foreach (var i in states)
 		{
 			i.Value.OnEndEvnet += actionVeiw.RemoveAction;
 		}
 	}
-	private void OnDisable()
+	protected override void OnDisable()
 	{
+		base.OnDisable();
 		foreach (var i in states)
 		{
 			i.Value.OnEndEvnet -= actionVeiw.RemoveAction;
