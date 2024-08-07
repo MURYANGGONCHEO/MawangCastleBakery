@@ -9929,7 +9929,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[0].img
@@ -9950,7 +9950,11 @@ PrefabInstance:
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[4].img
       value: 
-      objectReference: {fileID: 21300000, guid: 1408ccffd7d55d34c84f405b2ac91147, type: 3}
+      objectReference: {fileID: 21300000, guid: 281f8cc36fe633445bf9b68910b776bb, type: 3}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[5].img
+      value: 
+      objectReference: {fileID: 21300000, guid: aacdcdcc0751df349af5e35fe1085b1c, type: 3}
     - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: _panelList.Array.data[0].desc
       value: "\uD604\uC7AC \uB371 \uBAA9\uB85D\uC744 \uD655\uC778\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
@@ -9975,6 +9979,13 @@ PrefabInstance:
       propertyPath: _panelList.Array.data[4].desc
       value: "\uB371\uC758 \uC774\uB984\uC744 \uC815\uD558\uAC70\uB098 \n\uAD6C\uC131\uC744
         \uBCC0\uACBD\uD558\uACE0 \uC800\uC7A5\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154464125544194574, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
+      propertyPath: _panelList.Array.data[5].desc
+      value: "\uC2DC\uB108\uC9C0\uB294 \uB371 \uAD6C\uC131\uC774 \uC870\uAC74\uC744
+        \uB9CC\uC871\uD558\uBA74 \uBC1C\uB3D9\uB429\uB2C8\uB2E4.\n\uB3D9\uC2DC\uC5D0
+        \uC5EC\uB7EC \uC2DC\uB108\uC9C0\uB97C \uBC1C\uB3D9\uC2DC\uD0AC \uC218\uB3C4
+        \uC788\uC2B5\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 5227593064061578911, guid: 055ac38499681bc41a1d113e22e01302, type: 3}
       propertyPath: m_Pivot.x
