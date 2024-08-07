@@ -45,7 +45,7 @@ public class BattleResultPanel : PanelUI
 
         if (!isClear)
         {
-            _clearText.text = "�������� �й�..";
+            _clearText.text = "스테이지 패배..";
         }
         else
         {
