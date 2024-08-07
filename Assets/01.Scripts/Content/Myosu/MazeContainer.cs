@@ -7,6 +7,9 @@ public class MazeContainer : MonoBehaviour
     [SerializeField] private MazeData[] _mazeDataArr;
     private Dictionary<int, MazeData> _getMazeDataDic = new ();
 
+    [SerializeField] private MazeStatSO[] _mazeStatDataArr;
+    public MazeStatSO[] MazeStatDataArr => _mazeStatDataArr;
+
     public StageDataSO[] GetMazeDataByLoad(int load)
     {
         if(_getMazeDataDic.Count != _mazeDataArr.Length)

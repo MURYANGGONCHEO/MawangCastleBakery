@@ -23,10 +23,10 @@ public class CompensationBubble : MonoBehaviour
         _visual.color = c;
     }
 
-    public void SpeachUpBubble(Sprite compensationVisual, int amount)
+    public void SpeachUpBubble(Sprite compensationVisual, string amount)
     {
         _comcompensationVisual.sprite = compensationVisual;
-        _comcompensationAmountTxt.text = $"X{amount}";
+        _comcompensationAmountTxt.text = amount;
 
         transform.localScale = Vector3.zero;
         _visual.color = new Color(0, 0, 0, 0);
