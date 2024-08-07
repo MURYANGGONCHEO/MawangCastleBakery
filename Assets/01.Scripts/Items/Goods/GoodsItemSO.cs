@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum GoodsType
 {
-    LoadStone = 0
+    LoadStone = 0,
+    Rune
 }
 
 [CreateAssetMenu(menuName = "SO/Items/GoodsItem")]
