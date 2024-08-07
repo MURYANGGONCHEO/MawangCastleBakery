@@ -7,6 +7,21 @@ public class LightningJangSkill : LightningCardBase, ISkillEffectAnim
 {
     public override void Abillity()
     {
+        foreach (var e in Player.GetSkillTargetEnemyList[this])
+        {
+            if (e == null)
+            {
+                foreach (var fe in battleController.OnFieldMonsterArr)
+                {
+                    if (fe != null)
+                    {
+                        Player.GetSkillTargetEnemyList[this][0] = fe;
+                        Player.target = fe;
+                    }
+                }
+            }
+        }
+
         IsActivingAbillity = true;
         targets = Player.GetSkillTargetEnemyList[this];
         Player.OnAnimationCall += HandleAnimationCall;
@@ -20,10 +35,13 @@ public class LightningJangSkill : LightningCardBase, ISkillEffectAnim
             //GameObject obj = Instantiate(CardInfo.hitEffect.gameObject, Player.target.transform.position, Quaternion.identity);
             //Destroy(obj, 1.0f);
 
-            foreach (var m in battleController.OnFieldMonsterArr)
+            foreach (var e in battleController.OnFieldMonsterArr)
             {
-                if (targets.Contains(m)) continue;
-                m?.SpriteRendererCompo.DOColor(minimumColor, .5f);
+                if (e != null)
+                {
+                    if (Player.GetSkillTargetEnemyList[this].Contains(e)) continue;
+                    e.SpriteRendererCompo.DOColor(minimumColor, 0.5f);
+                }
             }
         }
     }

@@ -72,6 +72,7 @@ public class LookBakingPreviewPanel : PreviewPanel
         if (BakingManager.Instance.CanBake(ingDatas))
         {
             CakeData cake = BakingManager.Instance.BakeBread(ingDatas);
+            if (cake == null) return;
             ItemDataBreadSO cakeSO = BakingManager.Instance.GetCakeDataByName(cake.CakeName);
             Inventory.Instance.AddItem(cakeSO);
 

@@ -9,6 +9,20 @@ public class SeedGunSkill : CardBase, ISkillEffectAnim
 
     public override void Abillity()
     {
+        foreach(var e in Player.GetSkillTargetEnemyList[this])
+        {
+            if(e == null)
+            {
+                foreach(var fe in battleController.OnFieldMonsterArr)
+                {
+                    if(fe != null)
+                    {
+                        Player.GetSkillTargetEnemyList[this][0] = fe;
+                        Player.target = fe;
+                    }
+                }
+            }
+        }
         IsActivingAbillity = true;
 
         yPos = Player.transform.position.y;
@@ -19,8 +33,11 @@ public class SeedGunSkill : CardBase, ISkillEffectAnim
 
         foreach (var e in battleController.OnFieldMonsterArr)
         {
-            if (Player.GetSkillTargetEnemyList[this].Contains(e)) continue;
-            e.SpriteRendererCompo.DOColor(minimumColor, 0.5f);
+            if(e != null)
+            {
+                if (Player.GetSkillTargetEnemyList[this].Contains(e)) continue;
+                e.SpriteRendererCompo.DOColor(minimumColor, 0.5f);
+            }
         }
     }
 

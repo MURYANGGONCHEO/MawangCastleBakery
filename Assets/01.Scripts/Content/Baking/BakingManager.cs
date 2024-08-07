@@ -42,7 +42,7 @@ public class BakingManager : MonoSingleton<BakingManager>
     [SerializeField] private List<ItemDataIngredientSO> _ingredientList = new();
 
     private List<CakeGroup> _cakeGroupList = new List<CakeGroup>();
-    public CakeData cacheBread; 
+    public CakeData cacheBread;
 
     [SerializeField] private List<RankWeight> _ranks = new();
 
@@ -77,9 +77,9 @@ public class BakingManager : MonoSingleton<BakingManager>
 
     public bool CanBake(ItemDataIngredientSO[] ingredients)
     {
-        foreach(ItemDataIngredientSO i in ingredients)
+        foreach (ItemDataIngredientSO i in ingredients)
         {
-            if(i.haveCount <= 0) return false;
+            if (i.haveCount <= 0) return false;
         }
 
         return true;
@@ -95,16 +95,25 @@ public class BakingManager : MonoSingleton<BakingManager>
         string[] ingNames = ingredients.Select(x => x.itemName).ToArray();
         Array.Sort(ingNames);
 
-        CakeGroup cg = _cakeGroupList.FirstOrDefault(x => 
+        foreach(var c in _cakeGroupList)
+        {
+            Debug.Log(c.cake.itemName);
+            foreach(var i in c.ingDatas)
+            {
+            }
+        }
+
+        CakeGroup cg = _cakeGroupList.FirstOrDefault(x =>
         x.ingDatas[0] == ingNames[0] &&
         x.ingDatas[1] == ingNames[1] &&
         x.ingDatas[2] == ingNames[2]);
 
         ItemDataBreadSO breadData;
 
-        if(cg.Equals(default(CakeGroup)))
+        if (cg.Equals(default(CakeGroup)))
         {
             breadData = _cakeDictionary["DubiousBread"];
+            return null;
         }
         else
         {
@@ -121,7 +130,7 @@ public class BakingManager : MonoSingleton<BakingManager>
     private CakeRank SetRank()
     {
         float allWeight = 0;
-        foreach(var i in _ranks)
+        foreach (var i in _ranks)
         {
             allWeight += i.num;
         }
@@ -130,19 +139,19 @@ public class BakingManager : MonoSingleton<BakingManager>
         CakeRank returnValue = CakeRank.Normal;
         for (int i = 0; i < _ranks.Count; i++)
         {
-            sumValues += _ranks[i].num/allWeight;
-            if(pickNum <= sumValues)
+            sumValues += _ranks[i].num / allWeight;
+            if (pickNum <= sumValues)
             {
                 returnValue = _ranks[i].rank;
                 break;
-            }   
+            }
         }
         return returnValue;
     }
 
     public ItemDataBreadSO GetCakeDataByName(string cakeName)
     {
-        if(!_cakeDictionary.ContainsKey(cakeName))
+        if (!_cakeDictionary.ContainsKey(cakeName))
         {
             Debug.LogError($"{cakeName} is Not Exist!");
             return null;
@@ -179,7 +188,7 @@ public class BakingManager : MonoSingleton<BakingManager>
     [ContextMenu("GET_ALL_INGREDIENT")]
     public void TEST_Get_All_Ingredient_Item()
     {
-        foreach(var item in _ingredientList)
+        foreach (var item in _ingredientList)
         {
             Inventory.Instance.AddItem(item);
         }
