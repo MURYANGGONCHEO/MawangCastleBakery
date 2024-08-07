@@ -30,7 +30,7 @@ public class TargetMask : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (!BattleReader.AbilityTargetSystem.OnTargetting) return;
+        //if (!BattleReader.AbilityTargetSystem.OnTargetting) return;
 
         BattleReader.SelectEnemy = null;
         BattleReader.AbilityTargetSystem.CanBinding = true;

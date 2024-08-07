@@ -285,10 +285,10 @@ public abstract class CardBase : MonoBehaviour,
         if (card != this)
         {
             // Something;
-            initList.Remove(this);
+            //initList.Remove(this);
             return;
         }
-
+        BattleController.Instance.turnSeq[TurnType.Player].Remove(CardReader.SkillCardManagement);
         RecoverEvent?.Invoke(this);
         initList.Remove(this);
     }
