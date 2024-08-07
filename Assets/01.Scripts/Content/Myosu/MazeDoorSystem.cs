@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class MazeDoorSystem : MonoBehaviour
 {
@@ -22,9 +23,16 @@ public class MazeDoorSystem : MonoBehaviour
 
         StageDataSO[] sdArr = _mazeContainer.GetMazeDataByLoad(load);
 
-        for(int i = 0; i < sdArr.Length; i++)
+        for (int i = 0; i < sdArr.Length; i++)
         {
-            _mazeDoorArr[i].AssignedStageInfo = sdArr[i];
+            if (Random.Range(0, 100) > 30)
+            {
+                _mazeDoorArr[i].AssignedStageInfo = sdArr[i];
+            }
+            else
+            {
+                _mazeDoorArr[i].UpgradeStatInfo = _mazeContainer.MazeStatDataArr[i];
+            }
         }
     }
 

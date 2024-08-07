@@ -17,8 +17,7 @@ namespace SynergyClass
         {
             foreach (Entity e in BattleController.Instance.OnFieldMonsterArr)
             {
-                if (e == null) continue;
-                e.BuffStatCompo.AddBuff(_ownerSynergy.BuffSO, _ownerSynergy.ImpactCoefficient, 0);
+                e?.BuffStatCompo.AddBuff(_ownerSynergy.BuffSO, _ownerSynergy.ImpactCoefficient, 0);
             }
         }
     }

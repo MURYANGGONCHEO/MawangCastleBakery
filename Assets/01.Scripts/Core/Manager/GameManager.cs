@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    public PlayerStat stat;
+
     [Header("Contents")]
     [SerializeField] private List<Content> _contentList = new List<Content>();
     private Dictionary<SceneType, Content> _contentDic = new Dictionary<SceneType, Content>();

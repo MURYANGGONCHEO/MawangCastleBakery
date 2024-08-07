@@ -20,7 +20,7 @@ public class SeedGunSkill : CardBase, ISkillEffectAnim
         foreach (var e in battleController.OnFieldMonsterArr)
         {
             if (Player.GetSkillTargetEnemyList[this].Contains(e)) continue;
-            e.SpriteRendererCompo.DOColor(minimumColor, 0.5f);
+            e?.SpriteRendererCompo.DOColor(minimumColor, 0.5f);
         }
     }
 
