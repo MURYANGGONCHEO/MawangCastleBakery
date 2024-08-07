@@ -11,6 +11,8 @@ public class MazeDoor : MonoBehaviour, IPointerEnterHandler,
                                        IPointerClickHandler
 {
     public StageDataSO AssignedStageInfo { get; set; }
+    public MazeStatSO UpgradeStatInfo { get; set; }
+
     private CanvasGroup _visual;
     public CanvasGroup Visual
     {
@@ -48,7 +50,15 @@ public class MazeDoor : MonoBehaviour, IPointerEnterHandler,
 
         _hoverTween = transform.DOScale(transform.localScale * 1.1f, 0.3f);
         _shakeTween = transform.DOShakeRotation(1f, 3, 10).SetLoops(-1);
-        _comBubble.SpeachUpBubble(AssignedStageInfo.compensation.Item.itemIcon, 50);
+
+        if(AssignedStageInfo != null)
+        {
+            _comBubble.SpeachUpBubble(AssignedStageInfo.compensation.Item.itemIcon, $"X50");
+        }
+        else
+        {
+            _comBubble.SpeachUpBubble(UpgradeStatInfo.icon, $"+{UpgradeStatInfo.addValue}");
+        }
 
         _doorHoverEvent?.Invoke(this);
     }
@@ -80,9 +90,36 @@ public class MazeDoor : MonoBehaviour, IPointerEnterHandler,
         seq.Join(_doorTrm.DOLocalRotateQuaternion(Quaternion.Euler(0, -90, 0), 1));
         seq.AppendCallback(() => 
         {
-            StageManager.Instanace.SelectStageData = AssignedStageInfo;
-            GameManager.Instance.ChangeScene(SceneType.battle);
+            if(AssignedStageInfo != null)
+            {
+                StageManager.Instanace.SelectStageData = AssignedStageInfo;
+                GameManager.Instance.ChangeScene(SceneType.battle);
+            }
+            else
+            {
+                AdventureData data = DataManager.Instance.LoadData<AdventureData>(DataKeyList.adventureDataKey);
+
+                switch (UpgradeStatInfo.mazeInUpgradeStat)
+                {
+                    case MazeInUpgradeStat.Hp:
+                        GameManager.Instance.stat.hpAddValue += UpgradeStatInfo.addValue;
+                        data.MazeHpAddvalue += UpgradeStatInfo.addValue;
+                        break;
+                    case MazeInUpgradeStat.Atk:
+                        GameManager.Instance.stat.atkAddValue += UpgradeStatInfo.addValue;
+                        data.MazeAtkAddValue += UpgradeStatInfo.addValue;
+                        break;
+                    case MazeInUpgradeStat.Cost:
+                        CostCalculator.MaxMoney += UpgradeStatInfo.addValue;
+                        data.MazeCostAddValue += UpgradeStatInfo.addValue;
+                        break;
+                }
+
+                DataManager.Instance.SaveData(data, DataKeyList.adventureDataKey);
+                GameManager.Instance.ChangeScene(SceneType.Myosu);
+            }
         });
+
         _doorSelectEvent?.Invoke(this);
     }
 }

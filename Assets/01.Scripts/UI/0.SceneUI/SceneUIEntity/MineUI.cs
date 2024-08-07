@@ -32,6 +32,10 @@ public class MineUI : SceneUI
                 m.IsClearThisStage = false;
             }
         }
+
+        GameManager.Instance.stat.atkAddValue = 0;
+        GameManager.Instance.stat.hpAddValue = 0;
+        CostCalculator.CurrentMoney = 10;
     }
 
     public void GotoEditDeck()

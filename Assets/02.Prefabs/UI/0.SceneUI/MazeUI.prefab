@@ -1399,6 +1399,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mazeDataArr:
   - {fileID: 11400000, guid: c628c8deacfc4ef47b280cede63f86a1, type: 2}
+  - {fileID: 11400000, guid: 19303a3a8477bcc4fa225fa4222b975a, type: 2}
+  _mazeStatDataArr:
+  - {fileID: 11400000, guid: 37100b2ed829ec74fa1901c5bb9eff7a, type: 2}
+  - {fileID: 11400000, guid: a0321ec3e6297924faf6ba3ddf51550b, type: 2}
+  - {fileID: 11400000, guid: 66d90d9bbfa18e445b6e415d586a4644, type: 2}
 --- !u!1 &6072231903774335706
 GameObject:
   m_ObjectHideFlags: 0

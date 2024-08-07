@@ -24,7 +24,7 @@ MonoBehaviour:
     _baseValue: 1
     modifiers: 
   damage:
-    _baseValue: 100
+    _baseValue: 80
     modifiers: 
   criticalChance:
     _baseValue: 10
@@ -32,3 +32,5 @@ MonoBehaviour:
   criticalDamage:
     _baseValue: 50
     modifiers: 
+  hpAddValue: 0
+  atkAddValue: 0
