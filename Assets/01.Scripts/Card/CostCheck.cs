@@ -38,6 +38,8 @@ public class CostCheck : MonoBehaviour
     {
         CostCalculator.MoneyChangeEvent -= HandleCheckCost;
         CostCalculator.ExtraManaChangeEvent -= HandleCheckExMana;
+        CostCalculator.AccumulateChangeEvent -= HandleCheckAccumulateCost;
+
         TurnCounter.PlayerTurnStartEvent -= HandleEnableCostObj;
         TurnCounter.PlayerTurnEndEvent -= HandleDisableCostObj;
         TurnCounter.PlayerTurnEndEvent -= HandleAccChange;

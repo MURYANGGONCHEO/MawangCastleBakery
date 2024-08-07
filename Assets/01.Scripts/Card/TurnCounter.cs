@@ -22,7 +22,7 @@ public static class TurnCounter
 	public static Action EnemyTurnEndEvent;
 
 	public static Action<bool> PlayerTurnStartEvent;
-	public static Action PlayerTurnEndEvent;
+	public static Action PlayerTurnEndEvent = null;
 
 	private static TurnCounting _turnCounting;
 	public static TurnCounting TurnCounting
@@ -43,7 +43,7 @@ public static class TurnCounter
 		CurrentTurnType = TurnType.Player;
 		TurnCount = 0;
 		RoundCount = 0;
-	}
+    }
 
 	public static void ChangeRound()
 	{

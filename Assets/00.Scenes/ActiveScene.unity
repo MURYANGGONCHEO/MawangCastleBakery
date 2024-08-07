@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 0.5
+    m_Time: 0.3
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -4355,6 +4355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1e09e65e1a19749882a20a69248b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: 986bedc6b174a84419a420fa3d940f80, type: 2}
   _contentList:
   - {fileID: -6126685662487515999, guid: daf0e593fb232114ea029bfec8218f8c, type: 3}
   - {fileID: 8953992176711027676, guid: 1c8924ac0c305ec42889c9249fd22d1e, type: 3}

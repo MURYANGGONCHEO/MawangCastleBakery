@@ -25,7 +25,7 @@ public class MyosuUI : SceneUI
         AdventureData data = DataManager.Instance.LoadData<AdventureData>(DataKeyList.adventureDataKey);
         GameManager.Instance.stat.atkAddValue = data.MazeAtkAddValue;
         GameManager.Instance.stat.hpAddValue = data.MazeHpAddvalue;
-        CostCalculator.CurrentMoney = data.MazeCostAddValue;
+        CostCalculator.CurrentMoney += data.MazeCostAddValue;
     }
 
     public void ApearText()

@@ -5,7 +5,7 @@ using System;
 
 public static class CostCalculator
 {
-    public static int MaxMoney { get; set; }
+    public static int MaxMoney { get; set; } = 10;
 
     public static int CurrentMoney { get; set; } = 10;
     public static int CurrentExMana { get; private set; }
