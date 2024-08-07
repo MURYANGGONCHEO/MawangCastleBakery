@@ -84,6 +84,8 @@ public class TurnCounting : MonoBehaviour
         seq.Append(_turnChaingLabel.DOScaleY(0, 0.4f));
         seq.Join(_gameEndText.DOFade(0, 0.4f));
         Time.timeScale = 1;
+
+		BattleController.Instance.Player.BuffStatCompo.ClearStat();
         return seq;
     }
 	public void ToPlayerTurnChanging(bool isTurnChange)
