@@ -74,18 +74,17 @@ public class TurnCounting : MonoBehaviour
 	public Sequence BattleEndSequence(bool isVictory)
 	{
 		_gameEndText.transform.localScale = Vector3.one * 1.2f;
+        Time.timeScale = 1;
+		BattleController.Instance.Player.BuffStatCompo.ClearStat();
 
 		Sequence seq = DOTween.Sequence();
 		seq.Append(_turnChaingLabel.DOScaleY(1, 0.4f));
-
 
         seq.Join(_gameEndText.DOFade(1, 0.4f));
         seq.AppendInterval(1f);
         seq.Append(_turnChaingLabel.DOScaleY(0, 0.4f));
         seq.Join(_gameEndText.DOFade(0, 0.4f));
-        Time.timeScale = 1;
 
-		BattleController.Instance.Player.BuffStatCompo.ClearStat();
         return seq;
     }
 	public void ToPlayerTurnChanging(bool isTurnChange)
