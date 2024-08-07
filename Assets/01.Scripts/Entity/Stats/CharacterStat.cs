@@ -30,6 +30,9 @@ public class CharacterStat : ScriptableObject
     public Stat armor;
     public Stat receivedDmgIncreaseValue;
 
+    public int hpAddValue;
+    public int atkAddValue;
+
     [Header("Offensive stats")]
     public Stat damage;
     public Stat criticalChance;
@@ -122,7 +125,7 @@ public class CharacterStat : ScriptableObject
 
     public int GetMaxHealthValue()
     {
-        return maxHealth.GetValue();
+        return maxHealth.GetValue() + hpAddValue;
     }
 
 
