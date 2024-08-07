@@ -28,6 +28,7 @@ public class SkillCardManagement : CardManagement,ITurnAction
     public UnityEvent beforeChainingEvent;
     [SerializeField] private UnityEvent _afterChanningEvent;
     [SerializeField] private UnityEvent<bool> _acceptBtnSwitchEvent;
+    [SerializeField] private UnityEvent<bool> _InverseAcceptBtnSwitchEvent;
     [SerializeField] private UnityEvent _checkStageClearEvent;
     [SerializeField] private UnityEvent<bool> _setupHandCardEvent;
 
@@ -45,6 +46,7 @@ public class SkillCardManagement : CardManagement,ITurnAction
     private void HandleCheckAcceptBtn(object sender, EventArgs e)
     {
         _acceptBtnSwitchEvent?.Invoke(InCardZoneCatalogue.Count != 0);
+        _InverseAcceptBtnSwitchEvent?.Invoke(InCardZoneCatalogue.Count == 0);
     }
     public void SetupCardsInActivationZone()
     {

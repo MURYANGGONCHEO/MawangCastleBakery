@@ -89,9 +89,17 @@ public class DataManager : MonoSingleton<DataManager>
             for(int i = 0; i <  saveFileCount; i++)
             {
                 if (keyArr[i] == "PlayersDeck" || keyArr[i] == "CanUseCardsDataKey") continue;
-                if(File.Exists(keyArr[i]))
+                if(File.Exists(GetFilePath(keyArr[i])))
                 {
-                    File.Delete(keyArr[i]);
+                    if (keyArr[i] == "AdventureKEY")
+                    {
+                        File.WriteAllText(GetFilePath(keyArr[i]), "");
+                        File.WriteAllText(GetFilePath(keyArr[i]), "{\"ChallingingMineFloor\":\"1\",\"IsLookUnLockProductionArr\":[true,false,false,false,false,false],\"InChallingingMazeLoad\":\"1\",\"MazeHpAddvalue\":0,\"MazeAtkAddValue\":10,\"MazeCostAddValue\":10,\"InChallingingStageCount\":\"1-1\"}");
+                    }
+                    else
+                    {
+                        File.Delete(GetFilePath(keyArr[i]));
+                    }
                 }
             }
         }
